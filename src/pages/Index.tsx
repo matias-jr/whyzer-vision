@@ -1,12 +1,35 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navigation from '@/components/whyzer/Navigation';
+import HeroSection from '@/components/whyzer/HeroSection';
+import LogoBar from '@/components/whyzer/LogoBar';
+import ProblemStatement from '@/components/whyzer/ProblemStatement';
+import ProductShowcase from '@/components/whyzer/ProductShowcase';
+import HowItWorks from '@/components/whyzer/HowItWorks';
+import BentoFeatures from '@/components/whyzer/BentoFeatures';
+import Testimonials from '@/components/whyzer/Testimonials';
+import Pricing from '@/components/whyzer/Pricing';
+import TheVault from '@/components/whyzer/TheVault';
+import FAQ from '@/components/whyzer/FAQ';
+import FinalCTA from '@/components/whyzer/FinalCTA';
+import Footer from '@/components/whyzer/Footer';
+import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen" style={{ background: 'hsl(240 20% 5%)' }}>
+      <GrainOverlay />
+      <Navigation />
+      <HeroSection />
+      <LogoBar />
+      <ProblemStatement />
+      <ProductShowcase />
+      <HowItWorks />
+      <BentoFeatures />
+      <Testimonials />
+      <Pricing />
+      <TheVault />
+      <FAQ />
+      <FinalCTA />
+      <Footer />
     </div>
   );
 };
