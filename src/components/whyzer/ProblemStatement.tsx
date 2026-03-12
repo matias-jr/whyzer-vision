@@ -16,7 +16,7 @@ const painPoints = [
   },
   {
     icon: Lock,
-    iconColor: 'text-electric',
+    iconColor: 'text-primary',
     title: 'Intelligence locked in PDFs nobody reads',
     body: '10-Ks, earnings calls, and investor letters contain the deal-winning narrative. Most sellers never open them.',
   },
@@ -27,18 +27,16 @@ const ProblemStatement = () => {
   const cardRef = useStaggerReveal(painPoints.length);
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32 px-6 lg:px-12" style={{ background: 'hsl(240 20% 5%)' }}>
+    <section ref={sectionRef} className="py-24 lg:py-32 px-6 lg:px-12 bg-background">
       <div className="max-w-[900px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
-        {/* Left quote */}
         <div className="lg:w-[40%]">
-          <p className="font-display italic text-2xl md:text-4xl text-foreground leading-[1.4]">
+          <p className="font-display text-2xl md:text-4xl text-foreground leading-[1.4] uppercase">
             "Most sellers pitch operational benefits to low-level stakeholders.
             <br /><br />
             <span className="text-primary">Elite sellers</span> craft financial narratives for executives."
           </p>
         </div>
 
-        {/* Right cards */}
         <div className="lg:w-[60%] flex flex-col gap-4">
           {painPoints.map((point, i) => {
             const Icon = point.icon;
@@ -46,7 +44,7 @@ const ProblemStatement = () => {
               <div
                 key={i}
                 ref={cardRef(i)}
-                className="bg-card border border-foreground/[0.06] rounded-xl p-6 transition-all duration-300 hover:shadow-[0_0_40px_rgba(201,168,76,0.06)]"
+                className="bg-card border border-foreground/[0.06] rounded-xl p-6 transition-all duration-300 hover:shadow-[0_0_40px_rgba(200,200,200,0.04)]"
               >
                 <Icon size={24} className={`${point.iconColor} mb-3`} />
                 <h3 className="font-body text-foreground font-semibold text-base mb-2">{point.title}</h3>

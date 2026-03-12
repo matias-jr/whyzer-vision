@@ -15,7 +15,7 @@ import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
 const Index = () => {
   return (
-    <div className="min-h-screen" style={{ background: 'hsl(240 20% 5%)' }}>
+    <div className="min-h-screen bg-background">
       <GrainOverlay />
       <Navigation />
       <HeroSection />
