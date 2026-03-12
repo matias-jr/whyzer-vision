@@ -45,7 +45,7 @@ const TheVault = () => {
               return (
                 <div
                   key={i}
-                  className="flex items-center gap-3 bg-card border border-foreground/[0.06] rounded-xl px-5 py-4 transition-all duration-300 hover:border-foreground/[0.12]"
+                  className="flex items-center gap-3 bg-card border border-foreground/[0.06] rounded-xl px-5 py-4 transition-all duration-300 hover:border-foreground/[0.15] hover:bg-foreground/[0.04] hover:shadow-[0_0_20px_rgba(255,255,255,0.03)]"
                 >
                   <Icon size={18} className="text-text-secondary flex-shrink-0" />
                   <span className="text-foreground text-sm font-medium">{item.label}</span>

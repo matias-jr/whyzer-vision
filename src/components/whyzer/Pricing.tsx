@@ -1,15 +1,46 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Check, Diamond } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
+const EU_COUNTRIES = new Set([
+  'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE',
+  'IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE',
+  // non-EU Europe that uses EUR or is broadly "Europe"
+  'CH','NO','IS','AL','BA','ME','MK','RS','MD','UA','BY','GE','AM','AZ',
+  'LI','MC','SM','VA','AD','XK',
+]);
+
+type Currency = { symbol: string; yearSuffix: string };
+
+const CURRENCIES: Record<string, Currency> = {
+  GBP: { symbol: '£', yearSuffix: '/year' },
+  EUR: { symbol: '€', yearSuffix: '/year' },
+  USD: { symbol: '$', yearSuffix: '/year' },
+};
+
 const Pricing = () => {
   const [annual, setAnnual] = useState(true);
+  const [currency, setCurrency] = useState<Currency>(CURRENCIES.USD);
   const sectionRef = useScrollReveal();
 
-  const premiumPrice = annual ? '$47' : '$57';
-  const elitePrice = annual ? '$83' : '$97';
-  const premiumNote = annual ? '$570.00/year' : '$684.00/year';
-  const eliteNote = annual ? '$997.00/year' : '$1,164.00/year';
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then((r) => r.json())
+      .then((data) => {
+        const code: string = data.country_code ?? '';
+        if (code === 'GB') setCurrency(CURRENCIES.GBP);
+        else if (EU_COUNTRIES.has(code)) setCurrency(CURRENCIES.EUR);
+        // else stays USD
+      })
+      .catch(() => {/* silently keep USD */});
+  }, []);
+
+  const s = currency.symbol;
+
+  const premiumPrice = annual ? `${s}47` : `${s}57`;
+  const elitePrice = annual ? `${s}83` : `${s}97`;
+  const premiumNote = annual ? `${s}570.00${currency.yearSuffix}` : `${s}684.00${currency.yearSuffix}`;
+  const eliteNote = annual ? `${s}997.00${currency.yearSuffix}` : `${s}1,164.00${currency.yearSuffix}`;
 
   const checkIcon = <Check size={16} className="text-primary flex-shrink-0 mt-0.5" />;
 

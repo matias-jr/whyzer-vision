@@ -33,28 +33,41 @@ const HowItWorks = () => {
 
     video.pause();
 
-    const handleScroll = () => {
-      const rect = container.getBoundingClientRect();
-      const containerHeight = container.offsetHeight;
-      const viewportHeight = window.innerHeight;
+    let targetProgress = 0;
+    let currentProgress = 0;
+    let rafId: number;
 
-      const scrollableDistance = containerHeight - viewportHeight;
-      const scrolled = -rect.top;
-      const p = Math.max(0, Math.min(1, scrolled / scrollableDistance));
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-      setProgress(p);
+    const tick = () => {
+      currentProgress = lerp(currentProgress, targetProgress, 0.08);
+
+      setProgress(currentProgress);
 
       if (video.duration && isFinite(video.duration)) {
-        video.currentTime = p * video.duration;
+        video.currentTime = currentProgress * video.duration;
       }
 
-      if (p < 0.33) setActiveStep(0);
-      else if (p < 0.66) setActiveStep(1);
+      if (currentProgress < 0.33) setActiveStep(0);
+      else if (currentProgress < 0.66) setActiveStep(1);
       else setActiveStep(2);
+
+      rafId = requestAnimationFrame(tick);
     };
 
+    const handleScroll = () => {
+      const rect = container.getBoundingClientRect();
+      const scrollableDistance = container.offsetHeight - window.innerHeight;
+      const scrolled = -rect.top;
+      targetProgress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
+    };
+
+    rafId = requestAnimationFrame(tick);
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
@@ -81,7 +94,7 @@ const HowItWorks = () => {
             className="absolute inset-0"
             style={{
               background:
-                'linear-gradient(to right, rgba(8,8,8,0.97) 0%, rgba(8,8,8,0.88) 30%, rgba(8,8,8,0.55) 55%, rgba(8,8,8,0.0) 100%)',
+                'linear-gradient(to right, rgba(8,8,8,1) 0%, rgba(8,8,8,0.96) 35%, rgba(8,8,8,0.75) 60%, rgba(8,8,8,0.15) 100%)',
             }}
           />
 

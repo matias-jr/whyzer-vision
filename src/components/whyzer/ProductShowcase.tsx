@@ -94,7 +94,7 @@ const ProductShowcase = () => {
               }}
             >
               <div className="h-10 flex items-center px-4 gap-2 border-b border-foreground/[0.06]" style={{ background: '#1a1a1a' }}>
-                <div className="flex gap-1.5">
+                <div className="flex gap-1.5 cursor-default">
                   <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
                   <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
                   <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
@@ -111,8 +111,8 @@ const ProductShowcase = () => {
                   {['◈', '⊞', '◎', '⚡'].map((icon, i) => (
                     <div
                       key={i}
-                      className={`w-8 h-8 rounded-md flex items-center justify-center text-sm ${
-                        i === 0 ? 'bg-primary/[0.15] text-primary' : 'text-text-tertiary hover:text-text-secondary'
+                      className={`w-8 h-8 rounded-md flex items-center justify-center text-sm cursor-default select-none ${
+                        i === 0 ? 'bg-primary/[0.15] text-primary' : 'text-text-tertiary'
                       }`}
                     >
                       {icon}
@@ -138,12 +138,12 @@ const ProductShowcase = () => {
                       <div className="h-3 w-1/2 bg-foreground/[0.03] rounded mt-1.5" />
 
                       <div className="flex gap-3 mt-5">
-                        <button className="px-4 py-2 bg-primary text-primary-foreground text-xs font-bold rounded-md">
+                        <div className="px-4 py-2 bg-primary text-primary-foreground text-xs font-bold rounded-md cursor-default select-none">
                           View Full POV
-                        </button>
-                        <button className="px-4 py-2 border border-foreground/[0.08] text-foreground text-xs rounded-md">
+                        </div>
+                        <div className="px-4 py-2 border border-foreground/[0.08] text-foreground text-xs rounded-md cursor-default select-none">
                           Copy to Outreach
-                        </button>
+                        </div>
                       </div>
                     </div>
                   </div>
