@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
+const TOTAL_FRAMES = 159;
+
 const steps = [
   {
     num: '01',
@@ -21,33 +23,74 @@ const steps = [
 
 const HowItWorks = () => {
   const sectionRef = useScrollReveal();
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const framesRef = useRef<HTMLImageElement[]>([]);
+  const loadedRef = useRef(0);
   const [activeStep, setActiveStep] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [ready, setReady] = useState(false);
 
+  // Preload all frames
   useEffect(() => {
-    const video = videoRef.current;
-    const container = containerRef.current;
-    if (!video || !container) return;
+    const imgs: HTMLImageElement[] = [];
+    let loaded = 0;
 
-    video.pause();
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+      const img = new Image();
+      const idx = i;
+      img.onload = () => {
+        loaded++;
+        loadedRef.current = loaded;
+        if (loaded === TOTAL_FRAMES) setReady(true);
+        // Draw first frame immediately once it loads
+        if (idx === 1) {
+          const canvas = canvasRef.current;
+          if (canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+          }
+        }
+      };
+      img.src = `/frames/frame_${String(i).padStart(4, '0')}.jpg`;
+      imgs.push(img);
+    }
+    framesRef.current = imgs;
+  }, []);
+
+  // Scroll → frame draw (via rAF + lerp for smooth transitions)
+  useEffect(() => {
+    const container = containerRef.current;
+    const canvas = canvasRef.current;
+    if (!container || !canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
     let targetProgress = 0;
     let currentProgress = 0;
+    let lastFrame = -1;
     let rafId: number;
 
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
     const tick = () => {
-      currentProgress = lerp(currentProgress, targetProgress, 0.08);
+      currentProgress = lerp(currentProgress, targetProgress, 0.1);
 
-      setProgress(currentProgress);
+      const frameIdx = Math.min(
+        TOTAL_FRAMES - 1,
+        Math.round(currentProgress * (TOTAL_FRAMES - 1))
+      );
 
-      if (video.duration && isFinite(video.duration)) {
-        video.currentTime = currentProgress * video.duration;
+      if (frameIdx !== lastFrame) {
+        const img = framesRef.current[frameIdx];
+        if (img?.complete && img.naturalWidth > 0) {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          lastFrame = frameIdx;
+        }
       }
 
+      setProgress(currentProgress);
       if (currentProgress < 0.33) setActiveStep(0);
       else if (currentProgress < 0.66) setActiveStep(1);
       else setActiveStep(2);
@@ -75,21 +118,16 @@ const HowItWorks = () => {
       <div ref={containerRef} className="relative" style={{ height: '300vh' }}>
         <div className="sticky top-0 h-screen overflow-hidden">
 
-          {/* Full-bleed video background */}
-          <video
-            ref={videoRef}
-            src="/whyzer-video-v2.mp4"
-            muted
-            playsInline
-            preload="auto"
+          {/* Canvas — full-bleed background */}
+          <canvas
+            ref={canvasRef}
+            width={1280}
+            height={720}
             className="absolute inset-0 w-full h-full"
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'right center',
-            }}
+            style={{ objectFit: 'cover', objectPosition: 'right center' }}
           />
 
-          {/* Left-to-right gradient so text stays legible */}
+          {/* Left-to-right gradient overlay */}
           <div
             className="absolute inset-0"
             style={{
@@ -102,8 +140,7 @@ const HowItWorks = () => {
           <div
             className="absolute inset-0"
             style={{
-              background:
-                'linear-gradient(to top, rgba(8,8,8,0.6) 0%, transparent 30%)',
+              background: 'linear-gradient(to top, rgba(8,8,8,0.6) 0%, transparent 30%)',
             }}
           />
 
@@ -122,17 +159,14 @@ const HowItWorks = () => {
               <div className="relative flex flex-col items-center" style={{ width: 2 }}>
                 <div
                   className="absolute top-0 w-full rounded-full"
-                  style={{
-                    height: '100%',
-                    background: 'rgba(255,255,255,0.08)',
-                  }}
+                  style={{ height: '100%', background: 'rgba(255,255,255,0.08)' }}
                 />
                 <div
-                  className="absolute top-0 w-full rounded-full transition-none"
+                  className="absolute top-0 w-full rounded-full"
                   style={{
                     height: `${progress * 100}%`,
                     background: 'linear-gradient(to bottom, #5EEAD4, #C8C8C8)',
-                    transition: 'height 0.1s linear',
+                    transition: 'height 0.05s linear',
                   }}
                 />
               </div>
@@ -168,9 +202,30 @@ const HowItWorks = () => {
                 ))}
               </div>
             </div>
+
+            {/* Loading indicator */}
+            {!ready && (
+              <div className="mt-8 flex items-center gap-3">
+                <div
+                  className="w-24 h-0.5 rounded-full overflow-hidden"
+                  style={{ background: 'rgba(255,255,255,0.08)' }}
+                >
+                  <div
+                    className="h-full rounded-full transition-all duration-300"
+                    style={{
+                      width: `${(loadedRef.current / TOTAL_FRAMES) * 100}%`,
+                      background: '#5EEAD4',
+                    }}
+                  />
+                </div>
+                <span className="font-mono text-[10px] text-text-tertiary uppercase tracking-widest">
+                  Loading
+                </span>
+              </div>
+            )}
           </div>
 
-          {/* Scroll progress pill — bottom center */}
+          {/* Step pill indicators — bottom center */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
             {steps.map((_, i) => (
               <div
