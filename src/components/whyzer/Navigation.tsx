@@ -26,10 +26,9 @@ const Navigation = () => {
         }`}
         style={{
           backdropFilter: 'blur(20px)',
-          background: 'rgba(10,10,15,0.85)',
+          background: 'rgba(30,30,30,0.85)',
         }}
       >
-        {/* Logo */}
         <a href="#" className="flex items-center">
           <img
             src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
@@ -45,7 +44,6 @@ const Navigation = () => {
           </span>
         </a>
 
-        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -58,12 +56,8 @@ const Navigation = () => {
           ))}
         </div>
 
-        {/* Desktop CTAs */}
         <div className="hidden md:flex items-center gap-4">
-          <a
-            href="#"
-            className="text-sm text-foreground hover:text-primary transition-colors duration-200"
-          >
+          <a href="#" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
             Log In
           </a>
           <a
@@ -74,7 +68,6 @@ const Navigation = () => {
           </a>
         </div>
 
-        {/* Mobile Hamburger */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -84,11 +77,10 @@ const Navigation = () => {
         </button>
       </nav>
 
-      {/* Mobile Overlay */}
       {mobileOpen && (
         <div
           className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8"
-          style={{ background: 'rgba(10,10,15,0.97)' }}
+          style={{ background: 'rgba(30,30,30,0.97)' }}
         >
           {navLinks.map((link) => (
             <a

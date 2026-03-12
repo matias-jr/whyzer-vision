@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Instrument Serif", "serif"],
+        display: ["Oswald", "sans-serif"],
         body: ["Inter", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },

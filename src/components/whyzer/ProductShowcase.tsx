@@ -56,20 +56,15 @@ const ProductShowcase = () => {
     <section
       ref={sectionRef}
       id="features"
-      className="py-24 lg:py-32 px-6 lg:px-12"
-      style={{
-        background: 'radial-gradient(ellipse at center, hsl(240 27% 8%) 0%, hsl(240 20% 5%) 100%)',
-      }}
+      className="py-24 lg:py-32 px-6 lg:px-12 bg-background"
     >
       <div className="max-w-[1200px] mx-auto">
-        {/* Header */}
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">The Product</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.03em]">
+        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
           From Account to Boardroom Narrative in Minutes
         </h2>
 
         <div className="flex flex-col lg:flex-row gap-10">
-          {/* Tabs */}
           <div className="lg:w-[40%] flex flex-col gap-2">
             {tabs.map((tab) => (
               <button
@@ -91,16 +86,14 @@ const ProductShowcase = () => {
             ))}
           </div>
 
-          {/* Browser Mockup */}
           <div className="lg:w-[60%] relative">
             <div
               className="rounded-2xl border border-foreground/[0.08] overflow-hidden"
               style={{
-                boxShadow: '0 40px 120px rgba(0,0,0,0.8), 0 0 60px rgba(201,168,76,0.06)',
+                boxShadow: '0 40px 120px rgba(0,0,0,0.8), 0 0 60px rgba(200,200,200,0.03)',
               }}
             >
-              {/* Title bar */}
-              <div className="h-10 bg-[hsl(240,20%,8%)] flex items-center px-4 gap-2 border-b border-foreground/[0.06]">
+              <div className="h-10 flex items-center px-4 gap-2 border-b border-foreground/[0.06]" style={{ background: '#1a1a1a' }}>
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
                   <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
@@ -113,9 +106,7 @@ const ProductShowcase = () => {
                 </div>
               </div>
 
-              {/* App content */}
-              <div className="flex min-h-[360px]" style={{ background: 'hsl(240, 25%, 7%)' }}>
-                {/* Sidebar */}
+              <div className="flex min-h-[360px]" style={{ background: '#161616' }}>
                 <div className="hidden sm:flex w-14 flex-col items-center py-4 gap-3 border-r border-foreground/[0.06]">
                   {['◈', '⊞', '◎', '⚡'].map((icon, i) => (
                     <div
@@ -129,23 +120,15 @@ const ProductShowcase = () => {
                   ))}
                 </div>
 
-                {/* Main */}
                 <div className="flex-1 p-6 relative">
-                  <div
-                    key={activeTab}
-                    className="animate-[fade-in_0.3s_ease-out]"
-                  >
-                    {/* POV Card */}
+                  <div key={activeTab} className="animate-[fade-in_0.3s_ease-out]">
                     <div className="bg-card border border-foreground/[0.06] rounded-xl p-5">
                       <h4 className="font-body font-semibold text-foreground text-base mb-3">
                         {content.title}
                       </h4>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {content.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-0.5 rounded-md bg-primary/[0.1] text-primary text-[11px] font-mono"
-                          >
+                          <span key={tag} className="px-2 py-0.5 rounded-md bg-primary/[0.1] text-primary text-[11px] font-mono">
                             {tag}
                           </span>
                         ))}
@@ -165,10 +148,9 @@ const ProductShowcase = () => {
                     </div>
                   </div>
 
-                  {/* Floating badges */}
                   <div className="hidden lg:block">
                     <div className="absolute -top-2 -right-3 animate-float">
-                      <div className="bg-card border border-foreground/[0.08] rounded-lg px-3 py-1.5 text-[11px] font-mono text-electric">
+                      <div className="bg-card border border-foreground/[0.08] rounded-lg px-3 py-1.5 text-[11px] font-mono text-primary">
                         10-K Filed Q1
                       </div>
                     </div>

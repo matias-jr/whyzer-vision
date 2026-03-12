@@ -33,7 +33,7 @@ const HeroCanvas = () => {
         speed: 0.3 + Math.random() * 1.2,
         char: chars[Math.floor(Math.random() * chars.length)],
         opacity: 0.03 + Math.random() * 0.06,
-        color: Math.random() > 0.6 ? '#4ECDC4' : '#C9A84C',
+        color: Math.random() > 0.6 ? '#999999' : '#C8C8C8',
       });
     }
     particlesRef.current = particles;
@@ -75,21 +75,20 @@ const HeroCanvas = () => {
       const w = canvas.width;
       const h = canvas.height;
 
-      // Smooth mouse follow
       smoothMouse.current.x = lerp(smoothMouse.current.x, mouseRef.current.x, 0.06);
       smoothMouse.current.y = lerp(smoothMouse.current.y, mouseRef.current.y, 0.06);
 
       ctx.clearRect(0, 0, w, h);
 
-      // Background gradient
+      // Subtle grey gradient
       const bgGrad = ctx.createRadialGradient(w * 0.3, h * 0.5, 0, w * 0.3, h * 0.5, w * 0.6);
-      bgGrad.addColorStop(0, 'rgba(201,168,76,0.08)');
+      bgGrad.addColorStop(0, 'rgba(200,200,200,0.04)');
       bgGrad.addColorStop(1, 'transparent');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, w, h);
 
       const bgGrad2 = ctx.createRadialGradient(w * 0.8, h * 0.2, 0, w * 0.8, h * 0.2, w * 0.5);
-      bgGrad2.addColorStop(0, 'rgba(78,205,196,0.05)');
+      bgGrad2.addColorStop(0, 'rgba(150,150,150,0.03)');
       bgGrad2.addColorStop(1, 'transparent');
       ctx.fillStyle = bgGrad2;
       ctx.fillRect(0, 0, w, h);
@@ -115,7 +114,7 @@ const HeroCanvas = () => {
       const cy = h / 2 + (smoothMouse.current.y - 0.5) * 40;
 
       const ringRadii = [Math.min(w, h) * 0.28, Math.min(w, h) * 0.35, Math.min(w, h) * 0.42];
-      const ringColors = ['rgba(201,168,76,0.12)', 'rgba(78,205,196,0.08)', 'rgba(201,168,76,0.06)'];
+      const ringColors = ['rgba(200,200,200,0.10)', 'rgba(150,150,150,0.06)', 'rgba(200,200,200,0.04)'];
 
       ringsRef.current = ringsRef.current.map((angle, i) => angle + ringSpeeds[i]);
 
@@ -123,18 +122,16 @@ const HeroCanvas = () => {
         ctx.save();
         ctx.translate(cx, cy);
         ctx.rotate(angle);
-        
-        // Tilt based on mouse
+
         const tiltX = (smoothMouse.current.y - 0.5) * 0.3;
-        
+
         ctx.beginPath();
         ctx.ellipse(0, 0, ringRadii[i], ringRadii[i] * (0.3 + tiltX * 0.2), 0, 0, Math.PI * 2);
         ctx.strokeStyle = ringColors[i];
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
-        // Glow
-        ctx.shadowColor = i === 1 ? 'rgba(78,205,196,0.3)' : 'rgba(201,168,76,0.3)';
+        ctx.shadowColor = 'rgba(200,200,200,0.15)';
         ctx.shadowBlur = 20;
         ctx.stroke();
         ctx.shadowBlur = 0;
@@ -145,7 +142,7 @@ const HeroCanvas = () => {
       // Vignette
       const vignetteGrad = ctx.createRadialGradient(w / 2, h / 2, w * 0.2, w / 2, h / 2, w * 0.7);
       vignetteGrad.addColorStop(0, 'transparent');
-      vignetteGrad.addColorStop(1, 'rgba(10,10,15,0.85)');
+      vignetteGrad.addColorStop(1, 'rgba(30,30,30,0.9)');
       ctx.fillStyle = vignetteGrad;
       ctx.fillRect(0, 0, w, h);
 

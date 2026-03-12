@@ -38,10 +38,10 @@ const FAQ = () => {
   const sectionRef = useScrollReveal();
 
   return (
-    <section ref={sectionRef} id="faq" className="py-24 lg:py-32 px-6 lg:px-12" style={{ background: 'hsl(240 20% 5%)' }}>
+    <section ref={sectionRef} id="faq" className="py-24 lg:py-32 px-6 lg:px-12 bg-background">
       <div className="max-w-[720px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">FAQs</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-12 tracking-[-0.03em]">
+        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-12 tracking-[-0.02em] uppercase">
           Questions, Answered.
         </h2>
 

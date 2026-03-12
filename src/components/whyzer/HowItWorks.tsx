@@ -1,77 +1,127 @@
-import { Search, Loader, Sparkles } from 'lucide-react';
-import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
+import { useRef, useEffect, useState } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const steps = [
   {
     num: '01',
     title: 'Search Your Target Account',
     body: 'Enter any publicly traded company. Whyzer instantly accesses SEC filings, earnings call transcripts, investor letters, and board-level communications.',
-    visual: 'search',
   },
   {
     num: '02',
     title: 'Whyzer Analyzes the Financial Story',
     body: "Our expert-crafted prompts — built by reps who've closed $160M+ in deals — extract the strategic priorities, financial tensions, and executive mindset from thousands of data points.",
-    visual: 'process',
   },
   {
     num: '03',
     title: 'Generate Your Point of View',
     body: 'Receive 3–5 boardroom-ready POVs, complete with KPIs, executive quotes, financial context, and next-step messaging. Ready to send in under 2 minutes.',
-    visual: 'sparkle',
   },
 ];
 
 const HowItWorks = () => {
   const sectionRef = useScrollReveal();
-  const stepRef = useStaggerReveal(3);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+
+    // Ensure video is ready for scrubbing
+    video.pause();
+
+    const handleScroll = () => {
+      const rect = container.getBoundingClientRect();
+      const containerHeight = container.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      // Calculate scroll progress through the sticky section
+      // The section is 300vh tall, so the sticky content scrolls for 200vh
+      const scrollableDistance = containerHeight - viewportHeight;
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
+
+      // Scrub video
+      if (video.duration && isFinite(video.duration)) {
+        video.currentTime = progress * video.duration;
+      }
+
+      // Update active step
+      if (progress < 0.33) setActiveStep(0);
+      else if (progress < 0.66) setActiveStep(1);
+      else setActiveStep(2);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section ref={sectionRef} id="how-it-works" className="py-24 lg:py-32 px-6 lg:px-12" style={{ background: 'hsl(240 20% 5%)' }}>
-      <div className="max-w-[1200px] mx-auto">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">How It Works</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.03em]">
-          Three Steps to a Boardroom-Ready POV
-        </h2>
+    <section id="how-it-works" ref={sectionRef}>
+      <div ref={containerRef} className="relative bg-background" style={{ height: '300vh' }}>
+        <div className="sticky top-0 h-screen flex flex-col lg:flex-row items-center overflow-hidden">
+          {/* Left — Text content */}
+          <div className="lg:w-[45%] px-6 lg:px-12 py-12 lg:py-0 flex flex-col justify-center">
+            <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">How It Works</p>
+            <h2 className="font-display text-3xl md:text-5xl text-foreground mb-12 tracking-[-0.02em] uppercase">
+              Three Steps to a Boardroom-Ready POV
+            </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
-          {/* Connecting line */}
-          <div className="hidden lg:block absolute top-10 left-[16.6%] right-[16.6%] border-t border-dashed border-text-tertiary/30" />
-
-          {steps.map((step, i) => (
-            <div key={i} ref={stepRef(i)} className="text-center lg:text-left">
-              <span className="font-mono text-primary text-5xl lg:text-6xl font-bold mb-6 inline-block">
-                {step.num}
-              </span>
-              <h3 className="font-body text-foreground text-xl font-semibold mb-3">{step.title}</h3>
-              <p className="text-text-secondary text-sm leading-relaxed mb-6">{step.body}</p>
-
-              {/* Micro-visual */}
-              <div className="inline-flex items-center justify-center">
-                {step.visual === 'search' && (
-                  <div className="bg-card border border-foreground/[0.06] rounded-lg px-4 py-2.5 flex items-center gap-2">
-                    <Search size={14} className="text-text-tertiary" />
-                    <span className="font-mono text-sm text-electric">NVIDIA</span>
-                    <div className="w-px h-4 bg-primary animate-pulse" />
+            <div className="space-y-8">
+              {steps.map((step, i) => (
+                <div
+                  key={i}
+                  className={`flex gap-5 transition-all duration-500 ${
+                    activeStep === i ? 'opacity-100' : 'opacity-30'
+                  }`}
+                >
+                  <span className="font-mono text-primary text-3xl lg:text-4xl font-bold shrink-0 w-12">
+                    {step.num}
+                  </span>
+                  <div>
+                    <h3 className="font-body text-foreground text-lg font-semibold mb-2">{step.title}</h3>
+                    <p className="text-text-secondary text-sm leading-relaxed">{step.body}</p>
                   </div>
-                )}
-                {step.visual === 'process' && (
-                  <div className="flex items-center gap-3">
-                    <Loader size={20} className="text-primary animate-spin-dots" />
-                    <span className="text-text-secondary text-xs font-mono">Analyzing...</span>
-                  </div>
-                )}
-                {step.visual === 'sparkle' && (
-                  <div className="relative">
-                    <div className="bg-card border border-primary/20 rounded-lg px-4 py-2 text-xs font-mono text-primary">
-                      POV Generated ✓
-                    </div>
-                    <Sparkles size={14} className="text-primary absolute -top-2 -right-2 animate-sparkle" />
-                  </div>
-                )}
-              </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Right — Video */}
+          <div className="lg:w-[55%] h-full flex items-center justify-center p-6 lg:p-12">
+            <div
+              className="w-full max-w-[640px] rounded-2xl overflow-hidden border border-foreground/[0.08]"
+              style={{
+                boxShadow: '0 40px 120px rgba(0,0,0,0.6), 0 0 40px rgba(200,200,200,0.03)',
+              }}
+            >
+              {/* Browser chrome */}
+              <div className="h-9 flex items-center px-4 gap-2 border-b border-foreground/[0.06]" style={{ background: '#1a1a1a' }}>
+                <div className="flex gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                </div>
+                <div className="flex-1 flex justify-center">
+                  <div className="bg-foreground/[0.06] rounded px-3 py-0.5 text-[10px] font-mono text-text-tertiary">
+                    app.whyzer.ai
+                  </div>
+                </div>
+              </div>
+              <video
+                ref={videoRef}
+                src="/whyzer-video.mp4"
+                muted
+                playsInline
+                preload="auto"
+                className="w-full block"
+                style={{ background: '#1e1e1e' }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

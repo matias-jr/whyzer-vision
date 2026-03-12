@@ -37,7 +37,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Canvas wrapper with perspective */}
       <div
         ref={wrapperRef}
         className="absolute inset-0"
@@ -49,31 +48,26 @@ const HeroSection = () => {
         <HeroCanvas />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-[800px] mx-auto">
-        {/* Eyebrow */}
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-6">
           AI Point of View Platform for Enterprise Sellers
         </p>
 
-        {/* H1 */}
-        <h1 className="font-display text-[40px] md:text-[56px] lg:text-[72px] leading-[1.1] tracking-[-0.03em] text-foreground mb-6">
+        <h1 className="font-display text-[40px] md:text-[56px] lg:text-[72px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
           Read the Financial Story.
           <br />
-          <em className="italic">Write the Sales Story.</em>
+          <span className="bg-gradient-to-br from-[#C8C8C8] to-[#4A4A4A] bg-clip-text text-transparent">Write the Sales Story.</span>
         </h1>
 
-        {/* Subheadline */}
         <p className="font-body text-lg md:text-xl text-text-secondary max-w-[540px] mx-auto leading-[1.7] mb-10">
           Whyzer turns thousands of financial data points from SEC filings, earnings calls,
           and board-level sources into boardroom-ready Points of View — instantly.
         </p>
 
-        {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <a
             href="#pricing"
-            className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold text-base px-6 h-12 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_20px_rgba(201,168,76,0.3)] active:scale-[0.98]"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold text-base px-6 h-12 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_20px_rgba(200,200,200,0.2)] active:scale-[0.98]"
           >
             Start Free — 3 Accounts
           </a>
@@ -85,7 +79,6 @@ const HeroSection = () => {
           </a>
         </div>
 
-        {/* Social proof */}
         <div className="flex items-center justify-center gap-2 text-text-secondary text-[13px]">
           <div className="flex">
             {[...Array(5)].map((_, i) => (
@@ -98,7 +91,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
         <ChevronDown size={20} className="text-text-tertiary animate-pulse-down" />
         <span className="text-[11px] uppercase tracking-[0.15em] text-text-tertiary">
