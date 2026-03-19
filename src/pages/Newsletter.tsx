@@ -5,19 +5,19 @@ import { Zap, Eye, BookOpen } from 'lucide-react';
 
 const valueProps = [
   {
-    icon: Zap,
-    label: 'No Tool Overload',
-    description: 'Only what moves your specific deal forward — curated, not dumped.',
+    icon: Eye,
+    label: 'How your customers are using AI to learn about you',
+    description: 'Buyers are running deep AI-powered research on your company, your competitors, and your weaknesses before you even get on a call. We surface what they\'re finding — so you walk in prepared, not surprised.',
   },
   {
-    icon: Eye,
-    label: 'What Buyers Already Know',
-    description: 'Understand exactly how buyers use AI to research and evaluate vendors like you.',
+    icon: Zap,
+    label: 'How to use AI in your own selling',
+    description: 'Not generic prompts. Real techniques that strategic sellers are using right now to run better discovery, craft sharper proposals, and close faster — tailored to B2B enterprise deals.',
   },
   {
     icon: BookOpen,
-    label: 'One Read, Real Leverage',
-    description: 'A weekly digest you can act on by Friday. No prompts to build. No guessing.',
+    label: 'How your company could use AI',
+    description: 'The sellers who win aren\'t just better at pitching — they understand where AI fits in their buyer\'s world. We help you spot those moments and turn them into conversations that unlock new value.',
   },
 ];
 
@@ -178,17 +178,17 @@ const Newsletter = () => {
       >
         {/* Overline */}
         <p className="nl-fade-up-1 nl-overline-cursor font-mono-brand text-xs uppercase tracking-[0.2em] text-primary mb-6">
-          Weekly Intelligence
+          Join the Newsletter Strategic Sellers are using to level up in the AI world
         </p>
 
         {/* Headline */}
         <h1 className="nl-fade-up-2 font-display text-center text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] mb-6 text-white">
-          The AI Edge Your<br />Buyers Already Have
+          AI Secrets for<br />Strategic Sellers
         </h1>
 
         {/* Subhead */}
         <p
-          className="nl-fade-up-3 font-body text-lg leading-[1.7] text-center max-w-[520px] mb-12"
+          className="nl-fade-up-3 font-body text-lg leading-[1.7] text-center max-w-[560px] mb-12"
           style={{
             background: 'linear-gradient(135deg, #C8C8C8 0%, #EFEFEF 45%, #7A7A7A 100%)',
             WebkitBackgroundClip: 'text',
@@ -196,8 +196,7 @@ const Newsletter = () => {
             backgroundClip: 'text',
           }}
         >
-          Buyers are using AI in ways most sellers can't imagine. Every week, we close that gap —
-          with curated intelligence that applies directly to your deals, not to AI in general.
+          Buyers are using AI in ways most sellers can't imagine. Reps get drowned in daily AI updates not knowing where to start. Every week, we close that gap — you'll receive curated AI insights that apply directly to your deals, not to AI in general.
         </p>
 
         {/* Form */}
@@ -234,6 +233,9 @@ const Newsletter = () => {
 
       {/* ── Value Props ── */}
       <section className="py-20 px-6 lg:px-12" style={{ zIndex: 1, position: 'relative' }}>
+        <div className="max-w-[1200px] mx-auto mb-10 text-center">
+          <p className="font-mono-brand text-xs uppercase tracking-[0.2em] text-primary mb-3">Weekly AI nuggets to surface</p>
+        </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
           {valueProps.map((prop, i) => {
             const Icon = prop.icon;
