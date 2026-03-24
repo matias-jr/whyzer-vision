@@ -64,7 +64,7 @@ const Footer = () => (
     </div>
 
     <div className="max-w-[1200px] mx-auto mt-12 pt-6 border-t border-foreground/[0.06]">
-      <p className="text-text-tertiary text-[13px]">© 2025 Whyzer.ai · All rights reserved</p>
+      <p className="text-text-tertiary text-[13px]">© {new Date().getFullYear()} Whyzer.ai · All rights reserved</p>
     </div>
   </footer>
 );

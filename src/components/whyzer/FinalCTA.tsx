@@ -8,25 +8,24 @@ const FinalCTA = () => {
       ref={sectionRef}
       className="py-24 lg:py-32 px-6 lg:px-12"
       style={{
-        background: 'radial-gradient(ellipse at center, rgba(200,200,200,0.04) 0%, #1e1e1e 60%)',
+        background: '#0A0A0A',
+        backgroundImage: 'radial-gradient(ellipse 90% 90% at 100% 100%, rgba(40,24,73,1) 0%, rgba(100,67,168,0.35) 40%, transparent 65%)',
       }}
     >
       <div className="max-w-[640px] mx-auto text-center">
         <h2 className="font-display text-4xl md:text-[52px] text-foreground leading-[1.15] tracking-[-0.02em] mb-6 uppercase">
-          Stop Researching. Start Commanding.
+          Stop Researching. <span className="text-primary">Start Commanding.</span>
         </h2>
         <p className="text-text-secondary text-lg leading-relaxed mb-10">
           Join the AEs who show up to executive meetings with a boardroom-ready Point of View — not a product pitch.
         </p>
         <a
           href="#pricing"
-          className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 hover:shadow-[0_0_24px_rgba(200,200,200,0.2)] active:scale-[0.98] transition-all duration-200"
+          className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 hover:shadow-[0_0_36px_rgba(129,89,212,0.6)] active:scale-[0.98] transition-all duration-200"
+          style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
         >
-          Start Free — 3 Accounts Included
+          Start Closing Deals with Whyzer Today
         </a>
-        <p className="text-text-secondary text-[13px] mt-5">
-          No credit card required · Cancel anytime
-        </p>
       </div>
     </section>
   );

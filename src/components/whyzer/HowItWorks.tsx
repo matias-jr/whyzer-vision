@@ -6,18 +6,18 @@ const TOTAL_FRAMES = 159;
 const steps = [
   {
     num: '01',
-    title: 'Search Your Target Account',
-    body: 'Enter any publicly traded company. Whyzer instantly accesses SEC filings, earnings call transcripts, investor letters, and board-level communications.',
+    title: 'Follow the Money',
+    body: "Revenue growth, gross margin, R&D spend, capex priorities — all mapped to your solution's ROI angle. You pinpoint exactly where the account is investing and what they need to justify.",
   },
   {
     num: '02',
-    title: 'Whyzer Analyzes the Financial Story',
-    body: "Our expert-crafted prompts — built by reps who've closed $160M+ in deals — extract the strategic priorities, financial tensions, and executive mindset from thousands of data points.",
+    title: 'Surface the Tension',
+    body: 'Every executive has a gap between their stated goal and the blocker preventing it. Whyzer finds that tension in the filings — and gives you the exact framing to open the conversation.',
   },
   {
     num: '03',
-    title: 'Generate Your Point of View',
-    body: 'Receive 3–5 boardroom-ready POVs, complete with KPIs, executive quotes, financial context, and next-step messaging. Ready to send in under 2 minutes.',
+    title: 'Deploy the Narrative',
+    body: '3–5 ready-to-use POVs with executive quotes, financial context, and next-step messaging. From research to outreach in under 2 minutes. Every time, on every account.',
   },
 ];
 
@@ -150,7 +150,7 @@ const HowItWorks = () => {
               How It Works
             </p>
             <h2 className="font-display text-3xl md:text-5xl text-foreground mb-12 tracking-[-0.02em] uppercase leading-tight">
-              Three Steps to a<br />Boardroom-Ready POV
+              Three Steps to a<br /><span className="text-primary">Boardroom-Ready POV</span>
             </h2>
 
             {/* Steps with progress track */}
@@ -165,7 +165,7 @@ const HowItWorks = () => {
                   className="absolute top-0 w-full rounded-full"
                   style={{
                     height: `${progress * 100}%`,
-                    background: 'linear-gradient(to bottom, #5EEAD4, #C8C8C8)',
+                    background: 'linear-gradient(to bottom, #8159d4, #6443A8)',
                     transition: 'height 0.05s linear',
                   }}
                 />
@@ -184,7 +184,7 @@ const HowItWorks = () => {
                     <div className="flex items-baseline gap-4 mb-2">
                       <span
                         className="font-mono text-sm font-bold"
-                        style={{ color: activeStep === i ? '#5EEAD4' : 'rgba(255,255,255,0.3)' }}
+                        style={{ color: activeStep === i ? '#8159d4' : 'rgba(255,255,255,0.3)' }}
                       >
                         {step.num}
                       </span>

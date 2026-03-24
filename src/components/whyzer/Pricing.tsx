@@ -48,15 +48,16 @@ const Pricing = () => {
     <section
       ref={sectionRef}
       id="pricing"
-      className="py-24 lg:py-32 px-6 lg:px-12 bg-background"
+      className="py-24 lg:py-32 px-6 lg:px-12"
       style={{
-        background: 'radial-gradient(ellipse at center, rgba(200,200,200,0.03) 0%, #1e1e1e 70%)'
+        background: '#0A0A0A',
+        backgroundImage: 'radial-gradient(ellipse 90% 70% at 50% 15%, rgba(40,24,73,0.9) 0%, rgba(40,24,73,0.4) 40%, transparent 65%)',
       }}
     >
       <div className="max-w-[1100px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4 text-center">Pricing</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-10 tracking-[-0.02em] text-center uppercase">
-          Choose Your Competitive Edge
+          Choose Your <span className="text-primary">Competitive Edge</span>
         </h2>
 
         <div className="flex items-center justify-center gap-3 mb-12">
@@ -64,7 +65,7 @@ const Pricing = () => {
           <button
             onClick={() => setAnnual(!annual)}
             className="relative w-14 h-7 rounded-full border border-foreground/[0.1] transition-colors duration-200"
-            style={{ background: annual ? '#C8C8C8' : '#333' }}
+            style={{ background: annual ? '#7B5CF0' : '#333' }}
           >
             <div
               className={`absolute top-0.5 w-6 h-6 rounded-full bg-background transition-transform duration-200 ${
@@ -79,26 +80,35 @@ const Pricing = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
           {/* PREMIUM */}
-          <div className="bg-card border border-foreground/[0.07] rounded-2xl p-8 lg:p-9">
+          <div
+            className="rounded-2xl p-8 lg:p-9 transition-all duration-300"
+            style={{
+              background: 'rgba(20,14,40,0.6)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              border: '1px solid rgba(129,89,212,0.15)',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(129,89,212,0.25)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 40px rgba(0,0,0,0.5)'; }}
+          >
             <div className="flex items-start justify-between mb-4">
-              <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">Premium Plan</span>
-              <span className="text-[11px] px-2 py-0.5 rounded-full border border-foreground/[0.1] text-text-secondary bg-foreground/[0.06]">
-                STARTER
-              </span>
+              <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">Whyzer Premium</span>
+              <span className="text-[11px] px-2 py-0.5 rounded-full border border-foreground/[0.1] text-text-secondary bg-foreground/[0.06]">STARTER</span>
             </div>
             <div className="mb-1">
               <span className="text-5xl font-bold text-foreground">{premiumPrice}</span>
-              <span className="text-lg text-text-secondary">/mo</span>
+              <span className="text-sm text-text-secondary ml-1">per seat / month</span>
             </div>
-            <p className="text-[13px] text-text-tertiary mb-6">{premiumNote}</p>
+            <p className="text-[13px] text-text-tertiary mb-4">{premiumNote}</p>
+            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">The full POV engine and global coverage. Everything you need to show up to executive meetings prepared — without the manual research.</p>
             <div className="border-t border-foreground/[0.08] pt-6 mb-6" />
-            <ul className="space-y-3 mb-8 text-[15px]">
+            <ul className="space-y-3 mb-8 text-[14px]">
               {[
-                'Public and private companies worldwide',
                 'Unlimited Company reports',
                 'Add up to 30 new companies each month',
                 'Unlimited DealMap',
-                '2 Whyzer & Jamal podcast generations per month',
+                '2 Whyzer & Jamal podcasts per month',
                 '2 Executive POV Dossiers',
                 'Email Campaign Generator',
                 'Chat with WhyzerAI',
@@ -109,98 +119,103 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button className="w-full py-3 rounded-lg border border-foreground/[0.15] text-foreground font-medium hover:bg-foreground/[0.05] transition-colors">
-              Upgrade to Premium
-            </button>
+            <a
+              href="#"
+              className="block w-full py-3 rounded-lg border text-foreground font-semibold text-center transition-all duration-200 text-sm"
+              style={{ borderColor: 'rgba(129,89,212,0.3)', background: 'rgba(129,89,212,0.08)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.18)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.08)'; }}
+            >
+              Get Started Now
+            </a>
           </div>
 
           {/* ELITE */}
           <div className="relative lg:scale-[1.04] z-10">
             <div className="flex justify-center -mb-px">
-              <span
-                className="px-4 py-1.5 rounded-full text-xs font-bold uppercase text-primary-foreground"
-                style={{ background: 'linear-gradient(135deg, #C8C8C8, #4A4A4A)' }}
-              >
+              <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase text-white" style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}>
                 ✦ Most Popular
               </span>
             </div>
             <div
-              className="bg-card rounded-2xl p-8 lg:p-9"
+              className="rounded-2xl p-8 lg:p-9 transition-all duration-300"
               style={{
-                border: '1px solid rgba(200,200,200,0.25)',
-                boxShadow: '0 0 80px rgba(200,200,200,0.06), 0 20px 60px rgba(0,0,0,0.6)',
+                background: 'rgba(30,18,60,0.7)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(129,89,212,0.4)',
+                boxShadow: '0 0 60px rgba(100,67,168,0.2), 0 20px 60px rgba(0,0,0,0.6)',
               }}
             >
               <div className="flex items-start justify-between mb-4">
-                <span className="font-mono text-xs uppercase tracking-wider text-primary">Elite Plan</span>
-                <span className="text-[11px] px-2 py-0.5 rounded-full border border-primary/30 text-primary bg-primary/[0.15]">
-                  FULL ACCESS
-                </span>
+                <span className="font-mono text-xs uppercase tracking-wider text-primary">Whyzer Elite</span>
+                <span className="text-[11px] px-2 py-0.5 rounded-full border border-primary/30 text-primary bg-primary/[0.12]">FULL ACCESS</span>
               </div>
               <div className="mb-1">
-                <span className="text-5xl font-bold text-primary">{elitePrice}</span>
-                <span className="text-lg text-text-secondary">/mo</span>
+                <span className="text-5xl font-bold text-foreground">{elitePrice}</span>
+                <span className="text-sm text-text-secondary ml-1">per seat / month</span>
               </div>
-              <p className="text-[13px] text-text-tertiary mb-6">{eliteNote}</p>
-              <div className="border-t border-primary/[0.15] pt-6 mb-6" />
-              <ul className="space-y-3 mb-8 text-[15px]">
+              <p className="text-[13px] text-text-tertiary mb-4">{eliteNote}</p>
+              <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Everything in Premium, plus Jamal's complete methodology: the frameworks behind every 7- and 8-figure deal he's closed.</p>
+              <div className="border-t border-primary/[0.12] pt-6 mb-6" />
+              <ul className="space-y-3 mb-8 text-[14px]">
                 {[
-                  'Public and private companies worldwide',
-                  'Unlimited Company reports',
+                  'Everything in Premium',
                   'Add unlimited new companies each month',
                   'Unlimited podcast generation',
                   'Unlimited Executive POV Dossiers',
-                  'Email Campaign Generator',
-                  'Chat with WhyzerAI',
-                  'Monthly live sessions',
-                  'Access to Coach Jamal — your AI sales co-pilot',
+                  'The Vault — Jamal\'s full enterprise selling playbook',
+                  'Coach Jamal AI, your sales co-pilot',
+                  'Pipeline Flywheel & MDA Masterclass',
+                  'Executive Outreach Course',
+                  'Financial Fluency 101',
+                  'Whyzer Academy, monthly upskilling live sessions led by Jamal',
                 ].map((f, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-foreground">
                     {checkIcon}
                     <span>{f}</span>
                   </li>
                 ))}
-                <li className="flex items-start gap-2.5">
-                  <Diamond size={16} className="text-primary flex-shrink-0 mt-0.5" />
-                  <span className="font-bold text-primary" style={{ textShadow: '0 0 12px rgba(200,200,200,0.2)' }}>
-                    ACCESS TO THE VAULT
-                  </span>
-                </li>
               </ul>
               <a
                 href="https://subscribe.whyzer.ai/elite-monthly"
-                className="block w-full py-3 rounded-lg bg-primary text-primary-foreground font-bold text-center hover:brightness-110 hover:shadow-[0_0_24px_rgba(200,200,200,0.2)] transition-all"
+                className="block w-full py-3 rounded-lg text-white font-bold text-center hover:brightness-110 hover:shadow-[0_0_28px_rgba(129,89,212,0.5)] transition-all text-sm"
+                style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
               >
-                Start Now
+                Get Started
               </a>
             </div>
           </div>
 
           {/* CORPORATE */}
-          <div className="bg-card border border-foreground/[0.07] rounded-2xl p-8 lg:p-9">
+          <div
+            className="rounded-2xl p-8 lg:p-9 transition-all duration-300"
+            style={{
+              background: 'rgba(20,14,40,0.6)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              border: '1px solid rgba(129,89,212,0.15)',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(129,89,212,0.25)'; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 40px rgba(0,0,0,0.5)'; }}
+          >
             <div className="flex items-start justify-between mb-4">
-              <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">Corporate Plan</span>
-              <span className="text-[11px] px-2 py-0.5 rounded-full border border-foreground/[0.1] text-text-secondary bg-foreground/[0.06]">
-                TEAMS
-              </span>
+              <span className="font-mono text-xs uppercase tracking-wider text-text-secondary">Corporate / Teams</span>
+              <span className="text-[11px] px-2 py-0.5 rounded-full border border-foreground/[0.1] text-text-secondary bg-foreground/[0.06]">TEAMS</span>
             </div>
             <div className="mb-1">
               <span className="text-5xl font-bold text-foreground">Custom</span>
             </div>
-            <p className="text-[13px] text-text-tertiary mb-6">Volume pricing available</p>
+            <p className="text-[13px] text-text-tertiary mb-4">contact for team pricing</p>
+            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Bring Whyzer to your org. Volume pricing for sales teams, plus the founding coaching bonus — a 3-hour live session with Jamal for your entire team — for the first 5 qualifying purchases.</p>
             <div className="border-t border-foreground/[0.08] pt-6 mb-6" />
-            <ul className="space-y-3 mb-8 text-[15px]">
+            <ul className="space-y-3 mb-8 text-[14px]">
               {[
                 'Everything in Elite',
-                'Unlimited seats & user management',
-                'Dedicated account success manager',
-                'Custom onboarding & team training',
-                'CRM & Salesforce integration (priority access)',
-                'Slack integration for real-time alerts',
-                'Custom AI prompt configuration',
-                'SSO / Single Sign-On',
-                'Role-based access controls',
-                'SLA & compliance documentation',
+                'Volume team pricing',
+                'Dedicated onboarding',
+                '3-hr live session with Jamal',
               ].map((f, i) => (
                 <li key={i} className="flex items-start gap-2.5 text-foreground">
                   {checkIcon}
@@ -210,9 +225,12 @@ const Pricing = () => {
             </ul>
             <a
               href="mailto:sales@whyzer.ai"
-              className="block w-full py-3 rounded-lg border border-foreground/[0.15] text-foreground font-medium text-center hover:bg-foreground/[0.05] transition-colors"
+              className="block w-full py-3 rounded-lg border text-foreground font-semibold text-center transition-all duration-200 text-sm"
+              style={{ borderColor: 'rgba(129,89,212,0.3)', background: 'rgba(129,89,212,0.08)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.18)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.08)'; }}
             >
-              Contact Sales →
+              Talk to Jamal Directly →
             </a>
           </div>
         </div>

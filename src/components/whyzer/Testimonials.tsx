@@ -1,12 +1,12 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const testimonials = [
-  { quote: 'Feels like a business analyst is watching your back… all the context is laid out.', name: 'Matt Brown' },
-  { quote: 'What used to take a rep a year, I can do in two weeks with Whyzer.', name: 'David Inukpuk' },
-  { quote: "It's built for our specific needs. Way better than agents like Perplexity or Claude for strategic selling.", name: 'Brian Tripp' },
-  { quote: 'I love the earnings call summaries and use chat constantly.', name: 'Michael Corvo' },
-  { quote: 'Absolutely necessary and needed in our profession.', name: 'Rob Sader' },
-  { quote: 'Compared to tools like HockeyStack, Whyzer makes detailed info from 10Ks, 10Qs, and earnings reports actually usable.', name: 'Lee Winer' },
+  { quote: 'I feel like I have to really up my AI game.', name: 'Chris Carlton' },
+  { quote: "I need to be top of my game when speaking to executives — with data, with metrics. That's really what motivated me to use Whyzer and join this conversation.", name: 'Kent' },
+  { quote: 'I played around with Whyzer yesterday… I was blown away. The podcast gave me a really good idea on how to structure not just the deal, but the talk prep.', name: 'Mo' },
+  { quote: "Amazing prompts. First tool I've found that resonates with the way I dig into clients.", name: 'Bill Neal' },
+  { quote: 'Even though I try to stay on top of my ICP accounts, Whyzer consistently surfaces insights that make me think, "How come I didn\'t know that?"', name: 'Jeff Clarke' },
+  { quote: "Whyzer flagged a cybersecurity breach that helped me book a CISO meeting on my first try using Jamal's technique — it worked immediately.", name: 'Paul Hammond' },
 ];
 
 const TestimonialCard = ({ quote, name }: { quote: string; name: string }) => (

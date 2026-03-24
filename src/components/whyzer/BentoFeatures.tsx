@@ -1,113 +1,207 @@
-import { Shield, Network } from 'lucide-react';
 import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
-import { Area, AreaChart, Line, LineChart, ResponsiveContainer } from 'recharts';
+import { Area, AreaChart, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
-const chartData = [
-  { v: 20 }, { v: 35 }, { v: 28 }, { v: 45 }, { v: 42 }, { v: 58 }, { v: 52 },
-  { v: 68 }, { v: 62 }, { v: 75 }, { v: 80 }, { v: 72 }, { v: 88 },
+const revenueData = [
+  { q: 'Q1 23', v: 28 }, { q: 'Q2 23', v: 35 }, { q: 'Q3 23', v: 31 },
+  { q: 'Q4 23', v: 48 }, { q: 'Q1 24', v: 52 }, { q: 'Q2 24', v: 61 },
+  { q: 'Q3 24', v: 58 }, { q: 'Q4 24', v: 75 },
+];
+
+const marginData = [
+  { q: 'Q1', v: 52 }, { q: 'Q2', v: 55 }, { q: 'Q3', v: 51 },
+  { q: 'Q4', v: 59 }, { q: 'Q1', v: 63 }, { q: 'Q2', v: 67 },
+  { q: 'Q3', v: 64 }, { q: 'Q4', v: 71 },
 ];
 
 const BentoFeatures = () => {
   const sectionRef = useScrollReveal();
-  const cardRef = useStaggerReveal(6);
+  const cardRef = useStaggerReveal(4);
 
-  const cardBase = 'bg-card border border-foreground/[0.06] rounded-2xl p-8 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_0_40px_rgba(200,200,200,0.03)]';
+  const cardBase = 'rounded-2xl p-8 transition-all duration-300 hover:translate-y-[-2px]';
+  const cardStyle = { background: '#171717', boxShadow: '0px 8px 32px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.04)' };
+  const cardHoverStyle = '0px 24px 56px rgba(0,0,0,0.7), 0 0 0 1px rgba(129,89,212,0.35), 0 0 30px rgba(100,67,168,0.15)';
 
   return (
     <section
       ref={sectionRef}
-      className="py-24 lg:py-32 px-6 lg:px-12 bg-background"
+      id="features"
+      className="py-24 lg:py-32 px-6 lg:px-12"
       style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-        backgroundSize: '60px 60px',
+        background: '#0A0A0A',
+        backgroundImage: `
+          radial-gradient(ellipse 70% 60% at 80% 30%, rgba(40,24,73,0.9) 0%, rgba(100,67,168,0.15) 40%, transparent 65%),
+          radial-gradient(ellipse 50% 40% at 10% 80%, rgba(40,24,73,0.4) 0%, transparent 50%),
+          linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)
+        `,
+        backgroundSize: 'auto, auto, 60px 60px, 60px 60px',
       }}
     >
       <div className="max-w-[1200px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">Features</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
-          The Arsenal of an Elite Seller
+          The Arsenal of an <span className="text-primary">Elite Seller</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div ref={cardRef(0)} className={`${cardBase} lg:col-span-2`}>
-            <div className="h-32 mb-4 flex items-center justify-center overflow-hidden rounded-lg bg-background/50">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={chartData}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          {/* Card 1 — Earnings Call Podcasts (large, glass) */}
+          <div
+            ref={cardRef(0)}
+            className={`${cardBase} relative`}
+            style={{
+              background: 'rgba(255,255,255,0.05)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              boxShadow: '0px 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0px 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)'; }}
+          >
+            <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl" style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.5), transparent)' }} />
+            {/* Podcast player visual */}
+            <div className="h-36 mb-6 rounded-xl overflow-hidden relative flex flex-col justify-center px-5 gap-3" style={{ background: 'rgba(0,0,0,0.35)' }}>
+              <div className="flex items-center gap-3 mb-1">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(129,89,212,0.3)' }}>
+                  <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M2 1l9 6-9 6V1z" fill="#8159d4"/></svg>
+                </div>
+                <div>
+                  <div className="text-[11px] text-foreground font-semibold font-mono">Q4 Earnings — NVIDIA Corp</div>
+                  <div className="text-[10px] text-text-tertiary font-mono">3:12 / 3:47</div>
+                </div>
+                <div className="ml-auto text-[10px] font-mono px-2 py-0.5 rounded" style={{ background: 'rgba(129,89,212,0.2)', color: '#8159d4' }}>AI Summary</div>
+              </div>
+              {/* Waveform bars */}
+              <div className="flex items-center gap-[3px] h-8">
+                {[4,8,14,10,18,22,16,24,20,28,18,24,16,20,12,18,22,16,10,14,8,12,6,10,8].map((h, i) => (
+                  <div
+                    key={i}
+                    className="rounded-sm flex-1"
+                    style={{
+                      height: `${h}px`,
+                      background: i < 14 ? '#8159d4' : 'rgba(255,255,255,0.15)',
+                      opacity: i < 14 ? 0.9 : 0.5,
+                    }}
+                  />
+                ))}
+              </div>
+              {/* Progress bar */}
+              <div className="h-0.5 rounded-full" style={{ background: 'rgba(255,255,255,0.1)' }}>
+                <div className="h-full rounded-full w-[84%]" style={{ background: 'linear-gradient(90deg, #8159d4, #6443A8)' }} />
+              </div>
+            </div>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Earnings Call Podcasts</h3>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              AI-generated audio summaries. Understand the account's narrative in 3 minutes — on the commute, before the call, no PDFs required.
+            </p>
+          </div>
+
+          {/* Card 2 — Interactive Financial Visualizations */}
+          <div
+            ref={cardRef(1)}
+            className={`${cardBase} relative`}
+            style={cardStyle}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardStyle.boxShadow; }}
+          >
+            <div className="h-36 mb-6 rounded-xl overflow-hidden p-3" style={{ background: 'rgba(0,0,0,0.35)' }}>
+              <div className="flex justify-between items-center mb-2 px-1">
+                <span className="text-[10px] font-mono text-text-tertiary uppercase tracking-wider">Revenue Growth</span>
+                <span className="text-[10px] font-mono text-primary">+22% YoY</span>
+              </div>
+              <ResponsiveContainer width="100%" height="80%">
+                <AreaChart data={revenueData} margin={{ top: 2, right: 0, left: 0, bottom: 0 }}>
                   <defs>
-                    <linearGradient id="greyGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#C8C8C8" stopOpacity={0.3} />
-                      <stop offset="100%" stopColor="#C8C8C8" stopOpacity={0} />
+                    <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#8159d4" stopOpacity={0.45} />
+                      <stop offset="100%" stopColor="#8159d4" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <Area type="monotone" dataKey="v" stroke="#C8C8C8" strokeWidth={2} fill="url(#greyGrad)" />
+                  <XAxis dataKey="q" tick={{ fontSize: 8, fill: 'rgba(255,255,255,0.3)' }} axisLine={false} tickLine={false} />
+                  <Area type="monotone" dataKey="v" stroke="#8159d4" strokeWidth={2} fill="url(#revGrad)" dot={false} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Follow the Money</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Interactive Financial Visualizations</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              Whyzer highlights exactly where your target accounts are investing time, money, and attention — so you can align your message to their most urgent initiatives.
+              Pinpoint what customer executives care about with charts that make the financial data impossible to ignore — and easy to reference in the room.
             </p>
           </div>
 
-          <div ref={cardRef(1)} className={cardBase}>
-            <div className="h-20 mb-4 flex items-center justify-center">
-              <svg viewBox="0 0 200 40" className="w-full h-full" preserveAspectRatio="none">
-                <path
-                  d="M0 20 Q10 5, 20 20 Q30 35, 40 20 Q50 5, 60 20 Q70 35, 80 20 Q90 5, 100 20 Q110 35, 120 20 Q130 5, 140 20 Q150 35, 160 20 Q170 5, 180 20 Q190 35, 200 20"
-                  fill="none"
-                  stroke="#C8C8C8"
-                  strokeWidth="2"
-                  strokeDasharray="1000"
-                  className="animate-waveform"
-                  opacity="0.6"
-                />
-              </svg>
+          {/* Card 3 — Executive Intelligence */}
+          <div
+            ref={cardRef(2)}
+            className={`${cardBase} relative`}
+            style={cardStyle}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardStyle.boxShadow; }}
+          >
+            <div className="h-36 mb-6 rounded-xl overflow-hidden p-5 flex flex-col justify-between" style={{ background: 'rgba(0,0,0,0.35)' }}>
+              <div className="flex items-start gap-3">
+                <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style={{ background: 'rgba(129,89,212,0.2)', color: '#8159d4' }}>CFO</div>
+                <div>
+                  <p className="text-[11px] text-foreground leading-relaxed italic">"Our priority is margin recovery without sacrificing AI infrastructure investment."</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 mt-2">
+                <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
+                <span className="text-[9px] font-mono text-text-tertiary uppercase tracking-wider">Q3 Earnings Call · Board Member</span>
+                <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
+              </div>
+              <div className="flex gap-2">
+                {['NVIDIA', 'Investor Letter', 'Q3 Priority'].map(tag => (
+                  <span key={tag} className="text-[9px] font-mono px-2 py-0.5 rounded" style={{ background: 'rgba(129,89,212,0.15)', color: '#8159d4' }}>{tag}</span>
+                ))}
+              </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">AI Podcast Briefings</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Executive Intelligence</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              Instant AI-generated podcast summaries of earnings calls. Understand the narrative in 3 minutes.
+              C-suite quotes, board member priorities, investor communications. Know what they're already thinking — and say it back to them before anyone else does.
             </p>
           </div>
 
-          <div ref={cardRef(2)} className={cardBase}>
-            <div className="h-20 mb-4 flex items-center justify-center">
-              <span className="text-6xl text-primary opacity-40 font-display">"</span>
+          {/* Card 4 — Global Coverage (large, glass) */}
+          <div
+            ref={cardRef(3)}
+            className={`${cardBase} relative`}
+            style={{
+              background: 'rgba(255,255,255,0.04)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              boxShadow: '0px 8px 32px rgba(0,0,0,0.6)',
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0px 8px 32px rgba(0,0,0,0.6)'; }}
+          >
+            <div className="h-36 mb-6 rounded-xl overflow-hidden p-5 flex flex-col justify-between" style={{ background: 'rgba(0,0,0,0.3)' }}>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { flag: '🇩🇪', label: 'Europe', sub: 'SAP, Nestlé, ASML', count: '18,400+' },
+                  { flag: '🇯🇵', label: 'Asia-Pac', sub: 'Samsung, Bosch, Sony', count: '14,200+' },
+                  { flag: '🇺🇸', label: 'Private US', sub: 'Bootstrapped & PE-backed', count: '11,000+' },
+                  { flag: '🌎', label: 'LatAm', sub: 'Petrobras, Mercado Libre', count: '6,400+' },
+                ].map(r => (
+                  <div key={r.label} className="flex items-center gap-2 rounded-lg px-2 py-1.5" style={{ background: 'rgba(255,255,255,0.04)' }}>
+                    <span className="text-lg">{r.flag}</span>
+                    <div>
+                      <div className="text-[10px] font-semibold text-foreground">{r.label}</div>
+                      <div className="text-[9px] text-primary font-mono">{r.count}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="text-center mt-1">
+                <span className="text-xs font-mono text-text-tertiary">50,000+ companies worldwide</span>
+              </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Executive Nuggets</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Global Coverage</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              Actual quotes from C-suite, board members, and investors. Say what they're already thinking.
+              50,000+ public international and private US companies. SAP, Nestlé, Samsung, Bosch — the accounts other sellers can't research, now fully covered.
             </p>
           </div>
 
-          <div ref={cardRef(3)} className={`${cardBase} lg:col-span-2`}>
-            <div className="h-32 mb-4 flex items-center justify-center overflow-hidden rounded-lg bg-background/50">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData}>
-                  <Line type="monotone" dataKey="v" stroke="#999999" strokeWidth={2} dot={false} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Interactive Visualizations</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              Pinpoint what customer executives care about with visualizations that make the data impossible to ignore.
-            </p>
-          </div>
-
-          <div ref={cardRef(4)} className={cardBase}>
-            <Shield size={28} className="text-primary mb-4" />
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Secure by Design</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              Public data only. Encrypted infrastructure. Your research stays yours.
-            </p>
-          </div>
-
-          <div ref={cardRef(5)} className={cardBase}>
-            <Network size={28} className="text-primary mb-4" />
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Built for Scale</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              Track 50 or 5,000 accounts. The platform handles the volume automatically.
-            </p>
-          </div>
         </div>
       </div>
     </section>

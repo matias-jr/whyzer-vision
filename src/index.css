@@ -6,31 +6,36 @@
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
-    --background-secondary: 0 0% 12%;
-    --foreground: 50 35% 95%;
+    /* Surface hierarchy — The Executive Obsidian */
+    --background: 0 0% 4%;          /* #0A0A0A — The Infinite Void */
+    --background-secondary: 0 0% 10%; /* #1A1A1A — surface_container */
+    --surface-low: 0 0% 9%;         /* #171717 — cards */
+    --surface-high: 0 0% 16%;       /* #292929 — hover state */
+    --foreground: 20 5% 91%;        /* #E8E5E3 — warm off-white, never pure #FFF */
 
-    --card: 0 0% 10%;
-    --card-foreground: 50 35% 95%;
+    --card: 0 0% 9%;                /* #171717 */
+    --card-foreground: 20 5% 91%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 50 35% 95%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 20 5% 91%;
 
-    --primary: 0 0% 78%;
-    --primary-foreground: 0 0% 7%;
+    --primary: 261 58% 58%;        /* #8159d4 — Whyzer purple (readable on dark) */
+    --primary-foreground: 0 0% 100%; /* white text on purple */
+    --primary-deep: 260 42% 46%;   /* #6443A8 — deep brand purple for button fills */
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 50 35% 95%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 20 5% 91%;
 
     --muted: 0 0% 33%;
     --muted-foreground: 0 0% 57%;
 
     --accent: 0 0% 60%;
-    --accent-foreground: 0 0% 7%;
+    --accent-foreground: 0 0% 6%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 50 35% 95%;
+    --destructive-foreground: 20 5% 91%;
 
+    /* Ghost borders — felt, not seen */
     --border: 0 0% 100% / 0.06;
     --border-active: 0 0% 100% / 0.12;
     --input: 0 0% 100% / 0.06;
@@ -38,13 +43,14 @@
 
     --radius: 0.5rem;
 
-    --text-primary: 50 35% 95%;
-    --text-secondary: 0 0% 57%;
-    --text-tertiary: 0 0% 33%;
+    /* Text — warm scale, never pure white */
+    --text-primary: 20 5% 91%;      /* #E8E5E3 */
+    --text-secondary: 20 3% 57%;    /* #939190 — warm mid-gray */
+    --text-tertiary: 0 0% 33%;      /* #545454 */
 
-    --gold: 0 0% 78%;
-    --gold-glow: 0 0% 60%;
-    --electric: 0 0% 78%;
+    --gold: 258 81% 63%;
+    --gold-glow: 258 70% 50%;
+    --electric: 258 81% 63%;
 
     --sidebar-background: 0 0% 7%;
     --sidebar-foreground: 50 35% 95%;
@@ -90,6 +96,32 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ── Glassmorphism utility — DESIGN.md "Glass & Gradient" rule ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Super-diffuse shadow — DESIGN.md Elevation ── */
+.shadow-diffuse {
+  box-shadow: 0px 24px 48px rgba(0, 0, 0, 0.45), 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+.shadow-diffuse-hover:hover {
+  box-shadow: 0px 32px 64px rgba(0, 0, 0, 0.5), 0px 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Inner top glow — for elite feature cards ── */
+.inner-glow-top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, rgba(200, 200, 200, 0.09) 0%, transparent 35%);
+  pointer-events: none;
 }
 
 /* Grain overlay */

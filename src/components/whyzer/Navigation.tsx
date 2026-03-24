@@ -22,12 +22,12 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 lg:px-12 transition-all duration-300 ${
-          scrolled ? 'border-b border-foreground/[0.06]' : ''
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-6 lg:px-12 transition-all duration-500"
         style={{
-          backdropFilter: 'blur(20px)',
-          background: 'rgba(30,30,30,0.85)',
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          background: scrolled ? 'rgba(18,18,18,0.94)' : 'rgba(15,15,15,0.4)',
+          boxShadow: scrolled ? '0 1px 0 rgba(255,255,255,0.05), 0 4px 20px rgba(0,0,0,0.4)' : 'none',
         }}
       >
         <a href="#" className="flex items-center">
@@ -58,14 +58,15 @@ const Navigation = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <a href="#" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
+          <a href="https://app.whyzer.ai/login" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
             Log In
           </a>
           <a
             href="#pricing"
-            className="text-sm font-bold bg-primary text-primary-foreground px-4 py-2 rounded-md hover:brightness-110 transition-all duration-200"
+            className="text-sm font-bold text-white px-4 py-2 rounded-md hover:brightness-110 transition-all duration-200"
+            style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
           >
-            Start Free
+            Start Now
           </a>
         </div>
 
@@ -94,7 +95,7 @@ const Navigation = () => {
             </a>
           ))}
           <a
-            href="#"
+            href="https://app.whyzer.ai/login"
             className="text-lg text-text-secondary hover:text-foreground transition-colors"
             onClick={() => setMobileOpen(false)}
           >
@@ -102,10 +103,11 @@ const Navigation = () => {
           </a>
           <a
             href="#pricing"
-            className="text-lg font-bold bg-primary text-primary-foreground px-8 py-3 rounded-md"
+            className="text-lg font-bold text-white px-8 py-3 rounded-md"
+            style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
             onClick={() => setMobileOpen(false)}
           >
-            Start Free
+            Start Now
           </a>
         </div>
       )}

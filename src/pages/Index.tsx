@@ -5,6 +5,7 @@ import ProblemStatement from '@/components/whyzer/ProblemStatement';
 import ProductShowcase from '@/components/whyzer/ProductShowcase';
 import HowItWorks from '@/components/whyzer/HowItWorks';
 import BentoFeatures from '@/components/whyzer/BentoFeatures';
+import UseCases from '@/components/whyzer/UseCases';
 import Testimonials from '@/components/whyzer/Testimonials';
 import Pricing from '@/components/whyzer/Pricing';
 import TheVault from '@/components/whyzer/TheVault';
@@ -24,6 +25,7 @@ const Index = () => {
       <ProductShowcase />
       <HowItWorks />
       <BentoFeatures />
+      <UseCases />
       <Testimonials />
       <Pricing />
       <TheVault />

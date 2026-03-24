@@ -56,32 +56,45 @@ const ProductShowcase = () => {
     <section
       ref={sectionRef}
       id="features"
-      className="py-24 lg:py-32 px-6 lg:px-12 bg-background"
+      className="py-24 lg:py-32 px-6 lg:px-12 relative overflow-hidden"
+      style={{
+        background: '#0A0A0A',
+        backgroundImage: 'radial-gradient(ellipse 70% 60% at 70% 60%, rgba(40,24,73,0.7) 0%, transparent 65%)',
+      }}
     >
       <div className="max-w-[1200px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">The Product</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
-          From Account to Boardroom Narrative in Minutes
+          From Account to <span className="text-primary">Boardroom Narrative</span> — in Minutes
         </h2>
 
         <div className="flex flex-col lg:flex-row gap-10">
-          <div className="lg:w-[40%] flex flex-col gap-2">
-            {tabs.map((tab) => (
+          <div className="lg:w-[40%] flex flex-col gap-1">
+            {tabs.map((tab, i) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`text-left p-4 rounded-lg transition-all duration-200 ${
+                className={`text-left p-4 rounded-lg transition-all duration-200 flex items-start gap-4 ${
                   activeTab === tab.id
-                    ? 'bg-primary/[0.04] border-l-[3px] border-primary'
-                    : 'border-l-[3px] border-transparent hover:bg-foreground/[0.02]'
+                    ? 'border-l-[2px] border-primary'
+                    : 'border-l-[2px] border-foreground/[0.08] hover:border-foreground/[0.2]'
                 }`}
+                style={{ background: activeTab === tab.id ? 'rgba(100,67,168,0.07)' : 'transparent' }}
               >
-                <h3 className={`font-body font-semibold text-base mb-1 ${
-                  activeTab === tab.id ? 'text-foreground' : 'text-text-secondary'
-                }`}>
-                  {tab.title}
-                </h3>
-                <p className="text-text-secondary text-sm leading-relaxed">{tab.sub}</p>
+                <span
+                  className="font-mono text-xs font-bold mt-0.5 flex-shrink-0 w-6 transition-colors duration-200"
+                  style={{ color: activeTab === tab.id ? '#8159d4' : 'rgba(255,255,255,0.25)' }}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h3 className={`font-body font-semibold text-base mb-1 transition-colors duration-200 ${
+                    activeTab === tab.id ? 'text-foreground' : 'text-text-secondary'
+                  }`}>
+                    {tab.title}
+                  </h3>
+                  <p className="text-text-secondary text-sm leading-relaxed">{tab.sub}</p>
+                </div>
               </button>
             ))}
           </div>

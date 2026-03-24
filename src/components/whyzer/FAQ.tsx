@@ -4,7 +4,7 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const faqs = [
   {
-    q: 'How is Whyzer different from ChatGPT or Perplexity?',
+    q: 'How is Whyzer different from ChatGPT or other major LLMs?',
     a: "Whyzer is purpose-built for B2B sellers, using expert-crafted prompts written by reps who've closed 7- and 8-figure deals. While ChatGPT requires manual prompting and can't monitor accounts continuously, Whyzer delivers instant, accurate POVs from SEC filings, earnings calls, and financial data — with the precision only elite enterprise sellers can engineer.",
   },
   {
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'Does Whyzer cover international companies?',
-    a: 'Currently, Whyzer covers publicly traded companies on U.S. exchanges. International exchange coverage is planned for the next phase.',
+    a: 'Yes. Starting February 2026, Whyzer covers major public and private companies across 150+ worldwide markets in Europe, APAC, LatAm, as well as private companies in the US. If the company you want to add isn\'t on Whyzer yet, you can manually add it just by typing the name.',
   },
   {
     q: 'Can Whyzer integrate with my CRM?',
@@ -26,10 +26,6 @@ const faqs = [
   {
     q: "What's included in The Vault?",
     a: "The Vault is Jamal Reimer's complete playbook for elite enterprise selling — frameworks, templates, and strategies used by reps closing 7- and 8-figure deals, including the Pipeline Flywheel, Executive Outreach Course, and MDA Masterclass. It's included with every Elite subscription.",
-  },
-  {
-    q: 'Why is there a free tier?',
-    a: 'We give you 100% access to all Whyzer features for 3 of your top accounts. No credit card required. We want you to experience the value before you commit.',
   },
 ];
 
@@ -42,7 +38,7 @@ const FAQ = () => {
       <div className="max-w-[720px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">FAQs</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-12 tracking-[-0.02em] uppercase">
-          Questions, Answered.
+          Questions, <span className="text-primary">Answered.</span>
         </h2>
 
         <div className="space-y-0">
@@ -53,11 +49,11 @@ const FAQ = () => {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 aria-expanded={openIndex === i}
               >
-                <span className="text-foreground text-[17px] font-medium pr-4">{faq.q}</span>
+                <span className={`text-[17px] font-medium pr-4 transition-colors duration-200 ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>{faq.q}</span>
                 <ChevronDown
                   size={18}
-                  className={`text-text-secondary flex-shrink-0 transition-transform duration-200 ${
-                    openIndex === i ? 'rotate-180' : ''
+                  className={`flex-shrink-0 transition-all duration-200 ${
+                    openIndex === i ? 'rotate-180 text-primary' : 'text-text-secondary'
                   }`}
                 />
               </button>

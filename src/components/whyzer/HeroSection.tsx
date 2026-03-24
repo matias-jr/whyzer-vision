@@ -48,6 +48,9 @@ const HeroSection = () => {
         <HeroCanvas />
       </div>
 
+      {/* Purple ambient glow */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 60% 45%, rgba(100,67,168,0.28) 0%, transparent 70%)', zIndex: 1 }} />
+
       <div className="relative z-10 text-center px-6 max-w-[800px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-6">
           AI Point of View Platform for Enterprise Sellers
@@ -56,26 +59,26 @@ const HeroSection = () => {
         <h1 className="font-display text-[40px] md:text-[56px] lg:text-[72px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
           Read the Financial Story.
           <br />
-          <span className="bg-gradient-to-br from-[#C8C8C8] to-[#4A4A4A] bg-clip-text text-transparent">Write the Sales Story.</span>
+          <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">Write the Sales Story.</span>
         </h1>
 
-        <p className="font-body text-lg md:text-xl text-text-secondary max-w-[540px] mx-auto leading-[1.7] mb-10">
-          Whyzer turns thousands of financial data points from SEC filings, earnings calls,
-          and board-level sources into boardroom-ready Points of View — instantly.
+        <p className="font-body text-lg md:text-xl text-text-secondary max-w-[560px] mx-auto leading-[1.7] mb-10">
+          Whyzer is the AI Point of View platform for enterprise sellers. It turns SEC filings, earnings calls, and financial data into boardroom-ready POVs — in minutes. Now with global coverage across 50,000+ companies.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <a
             href="#pricing"
-            className="inline-flex items-center justify-center bg-primary text-primary-foreground font-bold text-base px-6 h-12 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_20px_rgba(200,200,200,0.2)] active:scale-[0.98]"
+            className="inline-flex items-center justify-center text-white font-bold text-base px-6 h-12 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_28px_rgba(129,89,212,0.6)] active:scale-[0.98]"
+            style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
           >
-            Start Free — 3 Accounts
+            Start Using Whyzer Today
           </a>
           <a
-            href="#"
-            className="inline-flex items-center justify-center border border-foreground/[0.06] text-foreground font-medium text-base px-6 h-12 rounded-lg hover:border-foreground/[0.12] transition-all duration-200"
+            href="#how-it-works"
+            className="inline-flex items-center justify-center border border-foreground/[0.12] text-foreground font-medium text-base px-6 h-12 rounded-lg hover:border-foreground/[0.2] transition-all duration-200"
           >
-            Watch 90-Second Demo →
+            See How Whyzer Works →
           </a>
         </div>
 
