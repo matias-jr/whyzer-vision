@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Can Whyzer integrate with my CRM?',
-    a: 'Whyzer is being designed to integrate with CRMs, sales engagement tools, and Slack so insights appear exactly where your team works. If you have a specific integration in mind, we want to hear it.',
+    a: "Not yet, but we're designing Whyzer to integrate seamlessly with CRMs, sales engagement tools, and Slack so insights show up exactly where your team works. If you have a specific integration in mind, we'd love to hear it.",
   },
   {
     q: "What's included in The Vault?",

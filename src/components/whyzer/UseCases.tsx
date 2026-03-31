@@ -42,7 +42,7 @@ const UseCases = () => {
     <section
       ref={sectionRef}
       id="use-cases"
-      className="py-24 lg:py-32 px-6 lg:px-12 relative overflow-hidden"
+      className="py-24 lg:py-32 px-10 lg:px-24 relative overflow-hidden"
       style={{ background: '#080808' }}
     >
       {/* Subtle purple glow top-left */}
@@ -53,7 +53,7 @@ const UseCases = () => {
       <div className="max-w-[1200px] mx-auto relative">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-4">Use Cases</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4 tracking-[-0.02em] uppercase">
-          Built for Reps<br />Who Close <span className="text-primary">the Big Ones.</span>
+          Built for Reps<br />Who Sell <span className="text-primary">Strategically.</span>
         </h2>
         <p className="text-text-secondary text-base leading-relaxed max-w-[520px] mb-16">
           Purpose-built for enterprise selling — the complex cycles, the executive rooms, the financial conversations that separate 7-figure closers from everyone else.

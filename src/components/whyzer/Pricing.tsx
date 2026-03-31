@@ -21,6 +21,7 @@ const CURRENCIES: Record<string, Currency> = {
 const Pricing = () => {
   const [annual, setAnnual] = useState(true);
   const [currency, setCurrency] = useState<Currency>(CURRENCIES.USD);
+  const [regionSuffix, setRegionSuffix] = useState('');
   const sectionRef = useScrollReveal();
 
   useEffect(() => {
@@ -28,12 +29,19 @@ const Pricing = () => {
       .then((r) => r.json())
       .then((data) => {
         const code: string = data.country_code ?? '';
-        if (code === 'GB') setCurrency(CURRENCIES.GBP);
-        else if (EU_COUNTRIES.has(code)) setCurrency(CURRENCIES.EUR);
-        // else stays USD
+        if (code === 'GB') { setCurrency(CURRENCIES.GBP); setRegionSuffix('-uk'); }
+        else if (EU_COUNTRIES.has(code)) { setCurrency(CURRENCIES.EUR); setRegionSuffix('-eu'); }
+        // else stays USD with no suffix
       })
       .catch(() => {/* silently keep USD */});
   }, []);
+
+  const premiumLink = annual
+    ? `https://subscribe.whyzer.ai/premium-annually${regionSuffix}`
+    : `https://subscribe.whyzer.ai/premium-monthly${regionSuffix}`;
+  const eliteLink = annual
+    ? `https://subscribe.whyzer.ai/elite-annually${regionSuffix}`
+    : `https://subscribe.whyzer.ai/elite-monthly${regionSuffix}`;
 
   const s = currency.symbol;
 
@@ -120,7 +128,7 @@ const Pricing = () => {
               ))}
             </ul>
             <a
-              href="#"
+              href={premiumLink}
               className="block w-full py-3 rounded-lg border text-foreground font-semibold text-center transition-all duration-200 text-sm"
               style={{ borderColor: 'rgba(129,89,212,0.3)', background: 'rgba(129,89,212,0.08)' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.18)'; }}
@@ -178,7 +186,7 @@ const Pricing = () => {
                 ))}
               </ul>
               <a
-                href="https://subscribe.whyzer.ai/elite-monthly"
+                href={eliteLink}
                 className="block w-full py-3 rounded-lg text-white font-bold text-center hover:brightness-110 hover:shadow-[0_0_28px_rgba(129,89,212,0.5)] transition-all text-sm"
                 style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
               >
@@ -224,7 +232,7 @@ const Pricing = () => {
               ))}
             </ul>
             <a
-              href="mailto:sales@whyzer.ai"
+              href="https://api.leadconnectorhq.com/widget/bookings/whyzer-for-sales-leaders"
               className="block w-full py-3 rounded-lg border text-foreground font-semibold text-center transition-all duration-200 text-sm"
               style={{ borderColor: 'rgba(129,89,212,0.3)', background: 'rgba(129,89,212,0.08)' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.18)'; }}

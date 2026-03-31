@@ -17,7 +17,7 @@ const steps = [
   {
     num: '03',
     title: 'Deploy the Narrative',
-    body: '3–5 ready-to-use POVs with executive quotes, financial context, and next-step messaging. From research to outreach in under 2 minutes. Every time, on every account.',
+    body: '2–3 ready-to-use POVs with executive quotes, financial context, and next-step messaging. From research to outreach in under 2 minutes. Every time, on every account.',
   },
 ];
 

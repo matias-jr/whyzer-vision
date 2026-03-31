@@ -65,7 +65,7 @@ const ProductShowcase = () => {
       <div className="max-w-[1200px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">The Product</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
-          From Account to <span className="text-primary">Boardroom Narrative</span> — in Minutes
+          From Intel to <span className="text-primary">Boardroom Narrative</span> in Minutes.
         </h2>
 
         <div className="flex flex-col lg:flex-row gap-10">

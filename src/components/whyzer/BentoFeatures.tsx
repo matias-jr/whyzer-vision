@@ -1,17 +1,4 @@
 import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
-import { Area, AreaChart, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
-
-const revenueData = [
-  { q: 'Q1 23', v: 28 }, { q: 'Q2 23', v: 35 }, { q: 'Q3 23', v: 31 },
-  { q: 'Q4 23', v: 48 }, { q: 'Q1 24', v: 52 }, { q: 'Q2 24', v: 61 },
-  { q: 'Q3 24', v: 58 }, { q: 'Q4 24', v: 75 },
-];
-
-const marginData = [
-  { q: 'Q1', v: 52 }, { q: 'Q2', v: 55 }, { q: 'Q3', v: 51 },
-  { q: 'Q4', v: 59 }, { q: 'Q1', v: 63 }, { q: 'Q2', v: 67 },
-  { q: 'Q3', v: 64 }, { q: 'Q4', v: 71 },
-];
 
 const BentoFeatures = () => {
   const sectionRef = useScrollReveal();
@@ -91,7 +78,7 @@ const BentoFeatures = () => {
                 <div className="h-full rounded-full w-[84%]" style={{ background: 'linear-gradient(90deg, #8159d4, #6443A8)' }} />
               </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Earnings Call Podcasts</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Interactive Podcasts</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
               AI-generated audio summaries. Understand the account's narrative in 3 minutes — on the commute, before the call, no PDFs required.
             </p>
@@ -105,27 +92,38 @@ const BentoFeatures = () => {
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardStyle.boxShadow; }}
           >
-            <div className="h-36 mb-6 rounded-xl overflow-hidden p-3" style={{ background: 'rgba(0,0,0,0.35)' }}>
-              <div className="flex justify-between items-center mb-2 px-1">
-                <span className="text-[10px] font-mono text-text-tertiary uppercase tracking-wider">Revenue Growth</span>
-                <span className="text-[10px] font-mono text-primary">+22% YoY</span>
-              </div>
-              <ResponsiveContainer width="100%" height="80%">
-                <AreaChart data={revenueData} margin={{ top: 2, right: 0, left: 0, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#8159d4" stopOpacity={0.45} />
-                      <stop offset="100%" stopColor="#8159d4" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <XAxis dataKey="q" tick={{ fontSize: 8, fill: 'rgba(255,255,255,0.3)' }} axisLine={false} tickLine={false} />
-                  <Area type="monotone" dataKey="v" stroke="#8159d4" strokeWidth={2} fill="url(#revGrad)" dot={false} />
-                </AreaChart>
-              </ResponsiveContainer>
+            <div className="h-36 mb-6 rounded-xl overflow-hidden flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.35)' }}>
+              <svg viewBox="0 0 292 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                {/* Centre node */}
+                <rect x="109" y="48" width="74" height="24" rx="7" fill="rgba(129,89,212,0.3)" stroke="#8159d4" strokeWidth="1.4"/>
+                <text x="146" y="64" textAnchor="middle" fill="#C4A8FF" fontSize="9" fontFamily="monospace" fontWeight="600">NVIDIA Corp</text>
+                {/* Left branch lines */}
+                <line x1="109" y1="56" x2="76" y2="26" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                <line x1="109" y1="60" x2="76" y2="60" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                <line x1="109" y1="64" x2="76" y2="94" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                {/* Left nodes */}
+                <rect x="2" y="14" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="39" y="30" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6" fontFamily="monospace">Infrastructure</text>
+                <rect x="2" y="48" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="39" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6" fontFamily="monospace">Margin Pressure</text>
+                <rect x="2" y="82" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="39" y="98" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="9" fontFamily="monospace">Goals</text>
+                {/* Right branch lines */}
+                <line x1="183" y1="56" x2="216" y2="26" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                <line x1="183" y1="60" x2="216" y2="60" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                <line x1="183" y1="64" x2="216" y2="94" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                {/* Right nodes */}
+                <rect x="216" y="14" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="253" y="30" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6.5" fontFamily="monospace">Cost Structure</text>
+                <rect x="216" y="48" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="253" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="9" fontFamily="monospace">Strategy</text>
+                <rect x="216" y="82" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="253" y="98" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="7.5" fontFamily="monospace">Challenges</text>
+              </svg>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Interactive Financial Visualizations</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Deal Map</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              Pinpoint what customer executives care about with charts that make the financial data impossible to ignore — and easy to reference in the room.
+              An interactive mind map of everything the company cares about visualized as topics and subtopics so you can zero in on what matters before you write a single word.
             </p>
           </div>
 
