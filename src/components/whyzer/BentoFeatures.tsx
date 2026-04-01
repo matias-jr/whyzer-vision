@@ -176,10 +176,10 @@ const BentoFeatures = () => {
             <div className="h-36 mb-6 rounded-xl overflow-hidden p-5 flex flex-col justify-between" style={{ background: 'rgba(0,0,0,0.3)' }}>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { flag: '🇩🇪', label: 'Europe', sub: 'SAP, Nestlé, ASML', count: '18,400+' },
-                  { flag: '🇯🇵', label: 'Asia-Pac', sub: 'Samsung, Bosch, Sony', count: '14,200+' },
-                  { flag: '🇺🇸', label: 'Private US', sub: 'Bootstrapped & PE-backed', count: '11,000+' },
-                  { flag: '🌎', label: 'LatAm', sub: 'Petrobras, Mercado Libre', count: '6,400+' },
+                  { flag: '🇩🇪', label: 'Europe', sub: 'SAP, Nestlé, ASML', count: '3,200+' },
+                  { flag: '🇯🇵', label: 'Asia-Pac', sub: 'Samsung, Bosch, Sony', count: '1,000+' },
+                  { flag: '🇺🇸', label: 'Private US', sub: 'Bootstrapped & PE-backed', count: '6,000+' },
+                  { flag: '🌎', label: 'LatAm', sub: 'Petrobras, Mercado Libre', count: '400+' },
                 ].map(r => (
                   <div key={r.label} className="flex items-center gap-2 rounded-lg px-2 py-1.5" style={{ background: 'rgba(255,255,255,0.04)' }}>
                     <span className="text-lg">{r.flag}</span>
@@ -191,12 +191,12 @@ const BentoFeatures = () => {
                 ))}
               </div>
               <div className="text-center mt-1">
-                <span className="text-xs font-mono text-text-tertiary">50,000+ companies worldwide</span>
+                <span className="text-xs font-mono text-text-tertiary">7,000+ companies worldwide</span>
               </div>
             </div>
             <h3 className="font-body text-foreground font-semibold text-lg mb-2">Global Coverage</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              50,000+ public international and private US companies. SAP, Nestlé, Samsung, Bosch — the accounts other sellers can't research, now fully covered.
+              7,000+ public international and private US companies. HSBC, Revolut, Stripe, Monzo — the accounts other sellers can't research, now fully covered.
             </p>
           </div>
 

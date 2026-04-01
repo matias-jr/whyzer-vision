@@ -96,35 +96,35 @@ const workflows = [
   {
     num: '01',
     title: 'Deep Account Research in Minutes, Not Days',
-    body: "How to use AI to extract the financial story behind your target accounts — from earnings calls, SEC filings, and market signals — so you walk into every meeting more informed than your buyer's own team.",
+    body: "How to use AI to extract the financial story behind your target accounts, from earnings calls, SEC filings, and market signals, so you walk into every meeting more informed than your buyer's own team.",
   },
   {
     num: '02',
     title: 'Building a Boardroom-Ready Point of View',
-    body: 'How top strategic sellers use AI to transform raw account intel into a compelling POV that resonates with CFOs and executive buyers — not just operational stakeholders.',
+    body: 'How top strategic sellers use AI to transform raw account intel into a compelling POV that resonates with CFOs and executive buyers. Not just operational stakeholders.',
   },
   {
     num: '03',
     title: 'Sharpening Your Discovery with AI',
-    body: 'How to generate smarter, more strategic discovery questions tailored to each account — so you uncover the real blockers, budget dynamics, and urgency behind every deal.',
+    body: 'How to generate smarter, more strategic discovery questions tailored to each account, so you uncover the real blockers, budget dynamics, and urgency behind every deal.',
   },
   {
     num: '04',
     title: 'Role-Playing Your Way to Executive Conversations',
-    body: 'How to use AI as a sparring partner before high-stakes meetings — simulating executive objections, refining your narrative, and walking in confident.',
+    body: 'How to use AI as a sparring partner before high-stakes meetings: simulating executive objections, refining your narrative, and walking in confident.',
   },
   {
     num: '05',
     title: 'Creating Sales Assets at the Speed of the Deal',
-    body: 'How AI can help you build follow-up decks, leave-behinds, and proposals faster — without sacrificing the quality and financial precision that moves enterprise deals forward.',
+    body: 'How AI can help you build follow-up decks, leave-behinds, and proposals faster without sacrificing the quality and financial precision that moves enterprise deals forward.',
   },
 ];
 
 const walkAwayPoints = [
-  'A clear map of 5 AI workflows you can implement immediately in your current deals — no technical expertise required.',
+  'A clear map of 5 AI workflows you can implement immediately in your current deals. No technical expertise required.',
   'Live examples of each workflow in action, walked through in real time.',
   'A practical next step: one workflow you can apply to one of your top accounts within 24 hours of leaving this session.',
-  'A framework for using AI to systematically close larger deals — not a one-shot tactic that expires when the tool gets old.',
+  'A framework for using AI to systematically close larger deals. Not a one-shot tactic that expires when the tool gets old.',
 ];
 
 const whoItems = [
@@ -132,7 +132,7 @@ const whoItems = [
   'A Strategic Account Manager managing large, high-value accounts where depth of insight is your competitive edge.',
   'An independent seller or consultant who needs to punch above their weight in competitive enterprise deals without a large support team.',
   "Someone who already uses AI for basic tasks (email writing, research) but suspects there's a much deeper level you haven't tapped yet.",
-  'A seller who has heard "we went with someone else" one too many times — and is ready to show up differently.',
+  'A seller who has heard "we went with someone else" one too many times and is ready to show up differently.',
 ];
 
 const LiveSession = () => {
@@ -167,10 +167,6 @@ const LiveSession = () => {
               </span>
             </div>
 
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-secondary mb-6">
-              April 21 · 12PM EST · Live on Whyzer
-            </p>
-
             <h1 className="font-display text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
               The Strategic
               <br />
@@ -179,11 +175,7 @@ const LiveSession = () => {
               </span>
             </h1>
 
-            <p className="font-body text-lg text-text-secondary italic leading-relaxed mb-5 max-w-[500px]">
-              "Most sellers use AI for emails. Elite sellers use AI to engineer the deal."
-            </p>
-
-            <p className="font-body text-[15px] text-text-secondary leading-[1.8] mb-12 max-w-[500px]">
+            <p className="font-body text-[15px] text-foreground/75 leading-[1.8] mb-12 max-w-[500px]">
               Stop treating AI as a tactical tool for one task. Learn the five integrated workflows
               that separate elite sellers from the rest — the ones who systematically embed AI across
               all stages of the buying cycle to engineer bigger deals at scale.
@@ -261,31 +253,16 @@ const LiveSession = () => {
         className="py-20 relative overflow-hidden"
         style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
-        <div className="max-w-[680px] mx-auto px-6 text-center mb-14">
+        <div className="max-w-[680px] mx-auto px-6 text-center">
           <p className="font-body text-[15px] text-text-secondary leading-[1.85]">
             Most sellers are using AI to write emails. Elite sellers are using it to engineer deals.
-            In this free live session, Jamal Reimer —{' '}
+            In this free live session, Jamal Reimer,{' '}
             <span className="text-foreground font-semibold">
-              who has personally closed $160M as an individual contributor
+              who has personally closed $160M as an individual contributor,
             </span>{' '}
-            — breaks down the exact AI workflows that separate average reps from the ones closing
+            breaks down the exact AI workflows that separate average reps from the ones closing
             7- and 8-figure deals in 2026.
           </p>
-        </div>
-        <div className="overflow-hidden">
-          <div className="animate-marquee flex items-center gap-0 whitespace-nowrap">
-            {['AWS', 'IBM', 'ORACLE', 'SALESFORCE', 'SAP', 'MICROSOFT', 'AWS', 'IBM', 'ORACLE', 'SALESFORCE', 'SAP', 'MICROSOFT'].map(
-              (logo, i) => (
-                <span
-                  key={i}
-                  className="font-display text-xl uppercase tracking-[0.2em] flex-shrink-0 px-10"
-                  style={{ color: 'rgba(255,255,255,0.2)' }}
-                >
-                  {logo}
-                </span>
-              )
-            )}
-          </div>
         </div>
       </section>
 
@@ -333,37 +310,6 @@ const LiveSession = () => {
             ))}
           </div>
 
-          {/* Bonus */}
-          <div
-            className="rounded-2xl p-8 mb-12 relative overflow-hidden"
-            style={{ background: 'rgba(129,89,212,0.07)', border: '1px solid rgba(129,89,212,0.22)' }}
-          >
-            <div
-              className="absolute inset-x-0 top-0 h-px"
-              style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.65), transparent)' }}
-            />
-            <div className="flex flex-col sm:flex-row gap-5 sm:items-start">
-              <div className="flex-shrink-0">
-                <span
-                  className="inline-block font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-3"
-                  style={{ background: 'rgba(129,89,212,0.15)', border: '1px solid rgba(129,89,212,0.35)', color: '#C4A8FF' }}
-                >
-                  Exclusive Bonus
-                </span>
-              </div>
-              <div>
-                <h3 className="font-display text-[20px] text-foreground uppercase mb-3">
-                  The Tool Comparison: What Actually Works
-                </h3>
-                <p className="font-body text-sm text-text-secondary leading-[1.8]">
-                  A candid breakdown of what the market offers (ChatGPT, generic LLMs, enterprise
-                  platforms) vs. what strategic sellers actually need — and why most tools weren't
-                  built for the complexity of mid-to-large deals.
-                </p>
-              </div>
-            </div>
-          </div>
-
           <div className="text-center">
             <CtaButton>Secure My Free Seat →</CtaButton>
           </div>
@@ -407,6 +353,32 @@ const LiveSession = () => {
                 </div>
               ))}
             </div>
+
+            {/* Bonus */}
+            <div
+              className="rounded-2xl p-8 mb-10 relative overflow-hidden"
+              style={{ background: 'rgba(129,89,212,0.07)', border: '1px solid rgba(129,89,212,0.22)' }}
+            >
+              <div
+                className="absolute inset-x-0 top-0 h-px"
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.65), transparent)' }}
+              />
+              <span
+                className="inline-block font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4"
+                style={{ background: 'rgba(129,89,212,0.15)', border: '1px solid rgba(129,89,212,0.35)', color: '#C4A8FF' }}
+              >
+                Exclusive Bonus
+              </span>
+              <h3 className="font-display text-[20px] text-foreground uppercase mb-3">
+                The Tool Comparison: What Actually Works
+              </h3>
+              <p className="font-body text-sm text-text-secondary leading-[1.8]">
+                A candid breakdown of what the market offers (ChatGPT, generic LLMs, enterprise
+                platforms) vs. what strategic sellers actually need, and why most tools weren't
+                built for the complexity of mid-to-large deals.
+              </p>
+            </div>
+
             <CtaButton>Save My Free Seat →</CtaButton>
           </div>
         </div>
@@ -518,7 +490,7 @@ const LiveSession = () => {
 
             <div className="space-y-5 mb-10">
               {[
-                "Jamal Reimer is one of the few enterprise sales mentors who has actually done it at scale. As an individual contributor, he has closed over $160M in enterprise deals — including multiple transactions exceeding $50M. He is the author of Mega Deal Secrets, a playbook used by sellers at companies like Oracle, SAP, Salesforce, IBM, and AWS.",
+                "Jamal Reimer is one of the few enterprise sales mentors who has actually done it at scale. As an individual contributor, he has closed over $160M in enterprise deals, including multiple transactions exceeding $50M. He is the author of Mega Deal Secrets, a playbook used by sellers at companies like Oracle, SAP, Salesforce, IBM, and AWS.",
                 "After two decades in the field, Jamal built Whyzer — an AI platform designed from the ground up for the specific complexity of mid-to-large enterprise deals. Not for teams. Not for managers. For the individual seller who has to walk into a CFO's office and earn their trust in under 30 minutes.",
                 "His sessions aren't theory. Everything taught comes from deals he has personally run, lost, and closed at the highest levels of enterprise sales.",
               ].map((para, i) => (
@@ -574,12 +546,11 @@ const LiveSession = () => {
             <span className="text-primary">Don't Miss Out.</span>
           </h2>
           <p className="font-body text-[15px] text-text-secondary leading-[1.8] mb-12 max-w-[420px] mx-auto">
-            This session is capped to stay interactive. Seats lock when the room fills — be there
-            on time.
+            This session is capped to stay interactive. Seats lock when the room fills. Be there on time.
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
           <p className="font-mono text-[11px] text-text-tertiary mt-7 tracking-wide">
-            April 21 · 12PM EST · Hosted on Whyzer
+            April 21 · 12PM EST
           </p>
         </div>
       </section>

@@ -15,7 +15,7 @@ const tabs = [
   {
     id: 'povs',
     title: 'AI-Generated POVs',
-    sub: "3–5 strategic Points of View per account, each connecting the company's board-level priorities to your value proposition.",
+    sub: "2–3 strategic Points of View per account, each connecting the company's board-level priorities to your value proposition.",
   },
   {
     id: 'podcast',
