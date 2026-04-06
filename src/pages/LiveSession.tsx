@@ -462,19 +462,14 @@ const LiveSession = () => {
               className="relative rounded-2xl overflow-hidden"
               style={{
                 aspectRatio: '3/4',
-                background: 'linear-gradient(160deg, #1a1228 0%, #0d0b14 50%, #0a0a0a 100%)',
                 border: '1px solid rgba(129,89,212,0.14)',
               }}
             >
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <div
-                  className="w-24 h-24 rounded-full"
-                  style={{ background: 'rgba(129,89,212,0.18)', border: '2px solid rgba(129,89,212,0.28)' }}
-                />
-                <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-text-tertiary">
-                  Jamal Reimer
-                </p>
-              </div>
+              <img
+                src="/jr_headshot.webp"
+                alt="Jamal Reimer"
+                className="w-full h-full object-cover"
+              />
               <div
                 className="absolute inset-0"
                 style={{ background: 'linear-gradient(to top, rgba(8,8,8,0.65) 0%, transparent 55%)' }}
