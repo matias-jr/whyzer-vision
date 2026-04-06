@@ -69,7 +69,7 @@ const MinimalFooter = () => (
       alt="Whyzer"
       className="h-6 mx-auto mb-4 opacity-70"
     />
-    <p className="font-mono text-xs text-text-tertiary tracking-wide">
+    <p className="font-mono text-sm text-text-tertiary tracking-wide">
       © 2026 Whyzer · Founded by Jamal Reimer, strategic seller &amp; author of Mega Deal Secrets
     </p>
   </footer>
@@ -153,12 +153,12 @@ const LiveSessionConfirmed = () => {
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+            <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-primary font-semibold">
               You're In.
             </span>
           </div>
 
-          <h1 className="font-display text-[44px] sm:text-[60px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
+          <h1 className="font-display text-[52px] sm:text-[70px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
             You're officially
             <br />
             <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">
@@ -166,12 +166,12 @@ const LiveSessionConfirmed = () => {
             </span>
           </h1>
 
-          <p className="font-body text-[15px] text-text-secondary leading-[1.8] mb-5 max-w-[480px] mx-auto">
+          <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-5 max-w-[480px] mx-auto">
             Check your inbox — a confirmation with your session link is on its way. Complete the
             steps below before April 21 to get the most out of this session.
           </p>
 
-          <p className="font-mono text-[11px] text-text-tertiary tracking-wide">
+          <p className="font-mono text-[13px] text-text-tertiary tracking-wide">
             April 21 · 12PM EST · The Strategic Seller's AI Stack
           </p>
         </div>
@@ -187,7 +187,7 @@ const LiveSessionConfirmed = () => {
         className="py-14 px-6 text-center"
         style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)' }}
       >
-        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-text-tertiary mb-8">
+        <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-text-tertiary mb-8">
           Your Session Starts In
         </p>
         <div className="flex items-end justify-center gap-6 sm:gap-10">
@@ -199,18 +199,18 @@ const LiveSessionConfirmed = () => {
           ].map(({ val, label }, i) => (
             <div key={i} className="flex flex-col items-center">
               <span
-                className="font-mono text-[48px] sm:text-[60px] leading-none font-bold"
+                className="font-mono text-[56px] sm:text-[70px] leading-none font-bold"
                 style={{ color: '#C4A8FF' }}
               >
                 {pad(val)}
               </span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-text-tertiary mt-2">
+              <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-text-tertiary mt-2">
                 {label}
               </span>
             </div>
           ))}
         </div>
-        <p className="font-mono text-[11px] text-text-tertiary mt-8 tracking-wide">
+        <p className="font-mono text-[13px] text-text-tertiary mt-8 tracking-wide">
           April 21, 2026 · 12:00 PM EST
         </p>
       </div>
@@ -218,10 +218,10 @@ const LiveSessionConfirmed = () => {
       {/* ── NEXT STEPS ── */}
       <section className="py-28 px-6 lg:px-12" style={{ background: '#0A0A0A' }}>
         <div className="max-w-[800px] mx-auto">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary mb-4">
+          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
             Next Steps
           </p>
-          <h2 className="font-display text-[40px] md:text-[52px] text-foreground uppercase tracking-[-0.02em] mb-16">
+          <h2 className="font-display text-[46px] md:text-[58px] text-foreground uppercase tracking-[-0.02em] mb-16">
             Do These <span className="text-primary">Now.</span>
           </h2>
 
@@ -230,17 +230,17 @@ const LiveSessionConfirmed = () => {
             <div>
               <div className="flex items-center gap-4 mb-7">
                 <span
-                  className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold"
+                  className="font-mono text-[13px] uppercase tracking-[0.22em] font-semibold"
                   style={{ color: '#8159d4' }}
                 >
                   Step 1
                 </span>
                 <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.06)' }} />
               </div>
-              <h3 className="font-display text-[24px] text-foreground uppercase mb-5">
+              <h3 className="font-display text-[28px] text-foreground uppercase mb-5">
                 Check Your Inbox.
               </h3>
-              <p className="font-body text-[15px] text-text-secondary leading-[1.8] mb-6">
+              <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-6">
                 Your confirmation email with the session link has just been sent to the address you
                 registered with.
               </p>
@@ -250,7 +250,7 @@ const LiveSessionConfirmed = () => {
                   style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
                 >
                   <span
-                    className="font-mono text-[10px] uppercase tracking-wider flex-shrink-0 mt-0.5 px-2 py-0.5 rounded"
+                    className="font-mono text-[12px] uppercase tracking-wider flex-shrink-0 mt-0.5 px-2 py-0.5 rounded"
                     style={{ background: 'rgba(129,89,212,0.15)', color: '#C4A8FF' }}
                   >
                     Gmail
@@ -266,7 +266,7 @@ const LiveSessionConfirmed = () => {
                   style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
                 >
                   <span
-                    className="font-mono text-[10px] uppercase tracking-wider flex-shrink-0 mt-0.5 px-2 py-0.5 rounded"
+                    className="font-mono text-[12px] uppercase tracking-wider flex-shrink-0 mt-0.5 px-2 py-0.5 rounded"
                     style={{ background: 'rgba(129,89,212,0.15)', color: '#C4A8FF' }}
                   >
                     Spam
@@ -279,7 +279,7 @@ const LiveSessionConfirmed = () => {
                 </div>
               </div>
               <div>
-                <p className="font-mono text-[10px] text-text-tertiary uppercase tracking-wider mb-3">
+                <p className="font-mono text-[12px] text-text-tertiary uppercase tracking-wider mb-3">
                   Subject line to look for:
                 </p>
                 <div
@@ -300,17 +300,17 @@ const LiveSessionConfirmed = () => {
             <div>
               <div className="flex items-center gap-4 mb-7">
                 <span
-                  className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold"
+                  className="font-mono text-[13px] uppercase tracking-[0.22em] font-semibold"
                   style={{ color: '#8159d4' }}
                 >
                   Step 2
                 </span>
                 <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.06)' }} />
               </div>
-              <h3 className="font-display text-[24px] text-foreground uppercase mb-3">
+              <h3 className="font-display text-[28px] text-foreground uppercase mb-3">
                 Watch This First. Direct Message from Jamal.
               </h3>
-              <p className="font-body text-[15px] text-text-secondary leading-[1.8] mb-7">
+              <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-7">
                 Jamal walks you through how to prep, what to expect, and how to get the most out of
                 this session. There's a bonus inside — don't skip it.
               </p>
@@ -336,7 +336,7 @@ const LiveSessionConfirmed = () => {
                       <path d="M2 2l14 9-14 9V2z" fill="#8159d4" />
                     </svg>
                   </div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-text-tertiary">
+                  <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-tertiary">
                     Video message from Jamal — loading soon
                   </p>
                 </div>
@@ -347,17 +347,17 @@ const LiveSessionConfirmed = () => {
             <div>
               <div className="flex items-center gap-4 mb-7">
                 <span
-                  className="font-mono text-[11px] uppercase tracking-[0.22em] font-semibold"
+                  className="font-mono text-[13px] uppercase tracking-[0.22em] font-semibold"
                   style={{ color: '#8159d4' }}
                 >
                   Step 3
                 </span>
                 <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.06)' }} />
               </div>
-              <h3 className="font-display text-[24px] text-foreground uppercase mb-3">
+              <h3 className="font-display text-[28px] text-foreground uppercase mb-3">
                 Add It to Your Calendar and Be There Live.
               </h3>
-              <p className="font-body text-[15px] text-text-secondary leading-[1.8] mb-7">
+              <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-7">
                 Block April 21 at 12PM EST now, before you forget. We're going deep on the five AI
                 workflows that separate elite sellers from the rest. This isn't a recording you'll
                 catch up on later — the live session is where the value is.
@@ -374,10 +374,10 @@ const LiveSessionConfirmed = () => {
                   <div className="flex items-start gap-3">
                     <span className="text-lg mt-0.5">📅</span>
                     <div>
-                      <p className="font-mono text-[9px] uppercase tracking-wider text-text-tertiary mb-1">
+                      <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1">
                         Date
                       </p>
-                      <p className="font-display text-base text-foreground uppercase">
+                      <p className="font-display text-lg text-foreground uppercase">
                         Monday, April 21, 2026
                       </p>
                     </div>
@@ -388,10 +388,10 @@ const LiveSessionConfirmed = () => {
                   >
                     <span className="text-lg mt-0.5">🕛</span>
                     <div>
-                      <p className="font-mono text-[9px] uppercase tracking-wider text-text-tertiary mb-1">
+                      <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1">
                         Time
                       </p>
-                      <p className="font-display text-base text-foreground uppercase">
+                      <p className="font-display text-lg text-foreground uppercase">
                         12:00 PM EST · 9:00 AM PST · 5:00 PM UK
                       </p>
                     </div>
@@ -402,13 +402,13 @@ const LiveSessionConfirmed = () => {
                   >
                     <span className="text-lg mt-0.5">📍</span>
                     <div>
-                      <p className="font-mono text-[9px] uppercase tracking-wider text-text-tertiary mb-1">
+                      <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1">
                         Platform
                       </p>
-                      <p className="font-display text-base text-foreground uppercase">
+                      <p className="font-display text-lg text-foreground uppercase">
                         Live on Whyzer
                       </p>
-                      <p className="font-mono text-[10px] text-text-tertiary mt-0.5">
+                      <p className="font-mono text-[12px] text-text-tertiary mt-0.5">
                         Link in your confirmation email
                       </p>
                     </div>
@@ -426,7 +426,7 @@ const LiveSessionConfirmed = () => {
         style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div className="max-w-[480px] mx-auto">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-text-tertiary text-center mb-10">
+          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-text-tertiary text-center mb-10">
             Your Ticket
           </p>
 
@@ -448,7 +448,7 @@ const LiveSessionConfirmed = () => {
               />
               <div className="flex items-start justify-between mb-8">
                 <span
-                  className="font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1 rounded-full"
+                  className="font-mono text-[12px] uppercase tracking-[0.2em] px-3 py-1 rounded-full"
                   style={{ border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }}
                 >
                   Admit One
@@ -464,7 +464,7 @@ const LiveSessionConfirmed = () => {
                   </svg>
                 </div>
               </div>
-              <h2 className="font-display text-[30px] text-foreground uppercase leading-[1.1] mb-3">
+              <h2 className="font-display text-[36px] text-foreground uppercase leading-[1.1] mb-3">
                 The Strategic
                 <br />
                 <span className="text-primary">Seller's AI Stack</span>
@@ -495,23 +495,23 @@ const LiveSessionConfirmed = () => {
             <div className="p-8" style={{ background: '#111111' }}>
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div>
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-text-tertiary mb-1.5">
+                  <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1.5">
                     Date
                   </p>
-                  <p className="font-display text-[22px] text-foreground uppercase">April 21, 2026</p>
+                  <p className="font-display text-[25px] text-foreground uppercase">April 21, 2026</p>
                 </div>
                 <div>
-                  <p className="font-mono text-[9px] uppercase tracking-wider text-text-tertiary mb-1.5">
+                  <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1.5">
                     Time
                   </p>
-                  <p className="font-display text-base text-foreground uppercase">
+                  <p className="font-display text-lg text-foreground uppercase">
                     12PM EST · 9AM PST
                     <br />
                     5PM UK
                   </p>
                 </div>
               </div>
-              <p className="font-mono text-[10px] text-text-tertiary leading-relaxed mb-7">
+              <p className="font-mono text-[12px] text-text-tertiary leading-relaxed mb-7">
                 Enterprise Sales Mentor · Author of Mega Deal Secrets · $160M closed as IC
               </p>
               <a
@@ -537,7 +537,7 @@ const LiveSessionConfirmed = () => {
         style={{ background: '#0A0A0A', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div className="max-w-[620px] mx-auto">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-text-tertiary mb-5">
+          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-text-tertiary mb-5">
             Important
           </p>
           <div
@@ -556,11 +556,11 @@ const LiveSessionConfirmed = () => {
                   <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                 </svg>
               </div>
-              <h3 className="font-display text-[20px] text-foreground uppercase leading-tight">
+              <h3 className="font-display text-[23px] text-foreground uppercase leading-tight">
                 This session is capped to stay interactive.
               </h3>
             </div>
-            <p className="font-body text-[15px] text-text-secondary leading-[1.8]">
+            <p className="font-body text-[17px] text-text-secondary leading-[1.8]">
               Seats lock when the room fills — be there on time. If you miss the live session, the
               replay is available exclusively to{' '}
               <span className="text-foreground font-medium">Whyzer Elite members</span>.

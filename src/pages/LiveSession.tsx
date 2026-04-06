@@ -50,7 +50,7 @@ const UrgencyStrip = () => (
     <div style={{ transform: 'rotate(-1.2deg)', padding: '10px 0' }}>
       <div className="animate-marquee flex whitespace-nowrap">
         {Array(10).fill(null).map((_, i) => (
-          <span key={i} className="font-display text-white text-sm tracking-[0.28em] px-10 flex-shrink-0">
+          <span key={i} className="font-display text-white text-[16px]tracking-[0.28em] px-10 flex-shrink-0">
             MASTER THE NUMBERS. ENGINEER THE DEAL. CLOSE BIGGER. ✦
           </span>
         ))}
@@ -69,7 +69,7 @@ const MinimalFooter = () => (
       alt="Whyzer"
       className="h-6 mx-auto mb-4 opacity-70"
     />
-    <p className="font-mono text-xs text-text-tertiary tracking-wide">
+    <p className="font-mono text-sm text-text-tertiary tracking-wide">
       © 2026 Whyzer · Founded by Jamal Reimer, strategic seller &amp; author of Mega Deal Secrets
     </p>
   </footer>
@@ -194,12 +194,12 @@ const LiveSession = () => {
           <div>
             <div className="inline-flex items-center gap-2.5 mb-5">
               <span className="w-2 h-2 rounded-full bg-primary" style={{ animation: 'pulse 2s ease-in-out infinite' }} />
-              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary font-semibold">
+              <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-primary font-semibold">
                 Free Live Webinar
               </span>
             </div>
 
-            <h1 className="font-display text-[44px] sm:text-[56px] lg:text-[68px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
+            <h1 className="font-display text-[60px] sm:text-[64px] lg:text-[78px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
               The Strategic
               <br />
               <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">
@@ -207,7 +207,7 @@ const LiveSession = () => {
               </span>
             </h1>
 
-            <p className="font-body text-[15px] text-foreground/75 leading-[1.8] mb-12 max-w-[500px]">
+            <p className="font-body text-[17px] text-foreground/75 leading-[1.8] mb-12 max-w-[500px]">
               Stop treating AI as a tactical tool for one task. Learn the five integrated workflows
               that separate elite sellers from the rest — the ones who systematically embed AI across
               all stages of the buying cycle to engineer bigger deals at scale.
@@ -215,7 +215,7 @@ const LiveSession = () => {
 
             {/* Countdown */}
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-text-tertiary mb-5">
+              <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-text-tertiary mb-5">
                 Session Starts In
               </p>
               <div className="flex items-end gap-6">
@@ -227,12 +227,12 @@ const LiveSession = () => {
                 ].map(({ val, label }, i) => (
                   <div key={i} className="flex flex-col items-center">
                     <span
-                      className="font-mono text-[52px] sm:text-[60px] leading-none font-bold"
+                      className="font-mono text-[60px] sm:text-[70px] leading-none font-bold"
                       style={{ color: '#C4A8FF' }}
                     >
                       {pad(val)}
                     </span>
-                    <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-text-tertiary mt-2">
+                    <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-text-tertiary mt-2">
                       {label}
                     </span>
                   </div>
@@ -244,7 +244,7 @@ const LiveSession = () => {
           {/* Right — form */}
           <div className="flex flex-col gap-5">
             <WebinarKitRegistration />
-            <p className="text-center font-mono text-[11px] text-text-tertiary tracking-wide leading-relaxed">
+            <p className="text-center font-mono text-[13px] text-text-tertiary tracking-wide leading-relaxed">
               5 workflows. 60 minutes. One session that changes how you sell.
             </p>
           </div>
@@ -257,7 +257,7 @@ const LiveSession = () => {
         style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div className="max-w-[680px] mx-auto px-6 text-center">
-          <p className="font-body text-[15px] text-text-secondary leading-[1.85]">
+          <p className="font-body text-[17px] text-text-secondary leading-[1.85]">
             Most sellers are using AI to write emails. Elite sellers are using it to engineer deals.
             In this free live session, Jamal Reimer,{' '}
             <span className="text-foreground font-semibold">
@@ -279,14 +279,14 @@ const LiveSession = () => {
           style={{ background: 'radial-gradient(ellipse 60% 50% at 100% 50%, rgba(40,24,73,0.5) 0%, transparent 65%)' }}
         />
         <div className="max-w-[1000px] mx-auto relative">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary mb-4">
+          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
             What You'll Learn
           </p>
-          <h2 className="font-display text-[36px] md:text-[48px] text-foreground uppercase tracking-[-0.02em] mb-4">
+          <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-4">
             5 Workflows.{' '}
             <span className="text-primary">One Engineered Deal.</span>
           </h2>
-          <p className="font-body text-[15px] text-text-secondary max-w-[520px] leading-[1.8] mb-16">
+          <p className="font-body text-[17px] text-text-secondary max-w-[520px] leading-[1.8] mb-16">
             Each workflow builds on the last. By the end, you won't just know what elite sellers
             do — you'll understand the system behind it.
           </p>
@@ -298,16 +298,16 @@ const LiveSession = () => {
                 className="group flex gap-8 py-8 border-b border-foreground/[0.06] hover:border-primary/[0.18] transition-colors duration-300 cursor-default"
               >
                 <span
-                  className="font-mono text-2xl font-bold flex-shrink-0 leading-none mt-1"
+                  className="font-mono text-3xl font-bold flex-shrink-0 leading-none mt-1"
                   style={{ color: '#8159d4' }}
                 >
                   {w.num}
                 </span>
                 <div>
-                  <h3 className="font-display text-[19px] text-foreground uppercase tracking-wide mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-[22px] text-foreground uppercase tracking-wide mb-3 group-hover:text-primary transition-colors duration-300">
                     {w.title}
                   </h3>
-                  <p className="font-body text-sm text-text-secondary leading-[1.8]">{w.body}</p>
+                  <p className="font-body text-[16px] text-text-secondary leading-[1.8]">{w.body}</p>
                 </div>
               </div>
             ))}
@@ -326,15 +326,15 @@ const LiveSession = () => {
       >
         <div className="max-w-[1100px] mx-auto grid lg:grid-cols-2 gap-20 items-start">
           <div className="lg:sticky lg:top-24">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary mb-4">
+            <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
               What You'll Walk Away With
             </p>
-            <h2 className="font-display text-[36px] md:text-[48px] text-foreground uppercase tracking-[-0.02em] mb-5">
+            <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-5">
               Not Prompts.
               <br />
               <span className="text-primary">A Framework.</span>
             </h2>
-            <p className="font-body text-[15px] text-text-secondary leading-[1.8] max-w-[380px]">
+            <p className="font-body text-[17px] text-text-secondary leading-[1.8] max-w-[380px]">
               You won't leave this session with a list of tips. You'll leave with a repeatable system
               to use AI to engineer bigger deals over and over again.
             </p>
@@ -352,7 +352,7 @@ const LiveSession = () => {
                   >
                     →
                   </span>
-                  <p className="font-body text-[15px] text-text-secondary leading-[1.8]">{item}</p>
+                  <p className="font-body text-[17px] text-text-secondary leading-[1.8]">{item}</p>
                 </div>
               ))}
             </div>
@@ -367,15 +367,15 @@ const LiveSession = () => {
                 style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.65), transparent)' }}
               />
               <span
-                className="inline-block font-mono text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4"
+                className="inline-block font-mono text-[12px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4"
                 style={{ background: 'rgba(129,89,212,0.15)', border: '1px solid rgba(129,89,212,0.35)', color: '#C4A8FF' }}
               >
                 Exclusive Bonus
               </span>
-              <h3 className="font-display text-[20px] text-foreground uppercase mb-3">
+              <h3 className="font-display text-[23px] text-foreground uppercase mb-3">
                 The Tool Comparison: What Actually Works
               </h3>
-              <p className="font-body text-sm text-text-secondary leading-[1.8]">
+              <p className="font-body text-[16px] text-text-secondary leading-[1.8]">
                 A candid breakdown of what the market offers (ChatGPT, generic LLMs, enterprise
                 platforms) vs. what strategic sellers actually need, and why most tools weren't
                 built for the complexity of mid-to-large deals.
@@ -397,15 +397,15 @@ const LiveSession = () => {
           style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(40,24,73,0.55) 0%, transparent 60%)' }}
         />
         <div className="max-w-[800px] mx-auto relative">
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary mb-4">
+          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
             Who This Is For
           </p>
-          <h2 className="font-display text-[36px] md:text-[48px] text-foreground uppercase tracking-[-0.02em] mb-5">
+          <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-5">
             Built for Enterprise Sellers.
             <br />
             <span className="text-primary">Not Managers. Not Teams.</span>
           </h2>
-          <p className="font-body text-[15px] text-text-secondary leading-[1.8] mb-14 max-w-[540px]">
+          <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-14 max-w-[540px]">
             This session is built for individual enterprise sellers navigating complex, mid-to-large
             deals. You'll get the most out of this if you are:
           </p>
@@ -433,7 +433,7 @@ const LiveSession = () => {
                     />
                   </svg>
                 </div>
-                <p className="font-body text-[15px] text-text-secondary leading-[1.8] group-hover:text-foreground/80 transition-colors duration-300">
+                <p className="font-body text-[17px] text-text-secondary leading-[1.8] group-hover:text-foreground/80 transition-colors duration-300">
                   {item}
                 </p>
               </div>
@@ -471,7 +471,7 @@ const LiveSession = () => {
                   className="w-24 h-24 rounded-full"
                   style={{ background: 'rgba(129,89,212,0.18)', border: '2px solid rgba(129,89,212,0.28)' }}
                 />
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-text-tertiary">
+                <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-text-tertiary">
                   Jamal Reimer
                 </p>
               </div>
@@ -484,10 +484,10 @@ const LiveSession = () => {
 
           {/* Copy */}
           <div className="order-1 lg:order-2">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary mb-4">
+            <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
               Your Host
             </p>
-            <h2 className="font-display text-[52px] text-foreground uppercase tracking-[-0.02em] mb-8">
+            <h2 className="font-display text-[60px] text-foreground uppercase tracking-[-0.02em] mb-8">
               Jamal Reimer
             </h2>
 
@@ -497,7 +497,7 @@ const LiveSession = () => {
                 "After two decades in the field, Jamal built Whyzer — an AI platform designed from the ground up for the specific complexity of mid-to-large enterprise deals. Not for teams. Not for managers. For the individual seller who has to walk into a CFO's office and earn their trust in under 30 minutes.",
                 "His sessions aren't theory. Everything taught comes from deals he has personally run, lost, and closed at the highest levels of enterprise sales.",
               ].map((para, i) => (
-                <p key={i} className="font-body text-[15px] text-text-secondary leading-[1.85]">
+                <p key={i} className="font-body text-[17px] text-text-secondary leading-[1.85]">
                   {para}
                 </p>
               ))}
@@ -515,12 +515,12 @@ const LiveSession = () => {
               ].map((s, i) => (
                 <div key={i}>
                   <span
-                    className="font-mono text-2xl font-bold block mb-1.5"
+                    className="font-mono text-3xl font-bold block mb-1.5"
                     style={{ color: '#C4A8FF' }}
                   >
                     {s.val}
                   </span>
-                  <span className="font-body text-[11px] text-text-tertiary leading-tight">{s.label}</span>
+                  <span className="font-body text-[13px] text-text-tertiary leading-tight">{s.label}</span>
                 </div>
               ))}
             </div>
@@ -543,16 +543,16 @@ const LiveSession = () => {
           style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(100,67,168,0.14) 0%, transparent 70%)' }}
         />
         <div className="relative max-w-[640px] mx-auto">
-          <h2 className="font-display text-[48px] md:text-[60px] text-foreground uppercase tracking-[-0.02em] leading-[1.05] mb-6">
+          <h2 className="font-display text-[56px] md:text-[70px] text-foreground uppercase tracking-[-0.02em] leading-[1.05] mb-6">
             Seats Are Limited.
             <br />
             <span className="text-primary">Don't Miss Out.</span>
           </h2>
-          <p className="font-body text-[15px] text-text-secondary leading-[1.8] mb-12 max-w-[420px] mx-auto">
+          <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-12 max-w-[420px] mx-auto">
             This session is capped to stay interactive. Seats lock when the room fills. Be there on time.
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
-          <p className="font-mono text-[11px] text-text-tertiary mt-7 tracking-wide">
+          <p className="font-mono text-[13px] text-text-tertiary mt-7 tracking-wide">
             April 21 · 12PM EST
           </p>
         </div>
