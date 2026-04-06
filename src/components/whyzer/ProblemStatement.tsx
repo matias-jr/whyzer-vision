@@ -5,20 +5,20 @@ const painPoints = [
   {
     icon: Clock,
     iconColor: 'text-destructive',
-    title: '5-10 hours of manual research',
-    body: "Every AE cobbles together ChatGPT, browser tabs, and spreadsheets. There's no standard. No scale.",
+    title: 'Weeks of prep. Minutes of game time.',
+    body: "You spend weeks cobbling together ChatGPT, browser tabs, and earnings PDFs — to get 8 minutes with a CFO who already knows their own numbers better than you do.",
   },
   {
     icon: BarChart3,
     iconColor: 'text-text-secondary',
-    title: 'Generic pitches that lose deals',
-    body: "When you can't speak to executive financial priorities, you get delegated down — or ghosted entirely.",
+    title: 'Delegated down. Ghosted. Commoditized.',
+    body: "When your pitch sounds like everyone else's, executives send you to a procurement manager. That's not a sales cycle — it's a death march to a price war.",
   },
   {
     icon: Lock,
     iconColor: 'text-primary',
-    title: 'Intelligence locked in PDFs nobody reads',
-    body: '10-Ks, earnings calls, and investor letters contain the deal-winning narrative. Most sellers never open them.',
+    title: "The deal-winning narrative is already public. Nobody's reading it.",
+    body: "Every 10-K, earnings call, and investor letter tells you exactly what keeps the CFO up at night. It's all there. It just takes 6 hours to find — and another 2 to turn into something you can say in a meeting.",
   },
 ];
 
@@ -33,9 +33,7 @@ const ProblemStatement = () => {
       <div className="max-w-[900px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 relative">
         <div className="lg:w-[40%]">
           <p className="font-display text-2xl md:text-4xl text-foreground leading-[1.4] uppercase">
-            Most sellers pitch <span className="text-primary">operational benefits</span> to low-level stakeholders.
-            <br /><br />
-            Elite sellers craft <span className="text-primary">financial narratives for executives.</span>
+            Most sellers never make it to the boardroom. <span className="text-primary">The ones who do speak a different language.</span>
           </p>
         </div>
 
@@ -75,6 +73,12 @@ const ProblemStatement = () => {
             );
           })}
         </div>
+      </div>
+
+      <div className="max-w-[900px] mx-auto mt-16 relative text-center">
+        <p className="font-display text-xl md:text-2xl lg:text-3xl text-foreground leading-[1.4] uppercase">
+          Anyone can find the data. Whyzer tells you what it means — and gives you the story <span className="text-primary">99% of sellers could never construct on their own.</span>
+        </p>
       </div>
     </section>
   );

@@ -6,18 +6,18 @@ const TOTAL_FRAMES = 159;
 const steps = [
   {
     num: '01',
-    title: 'Follow the Money',
-    body: "Revenue growth, gross margin, R&D spend, capex priorities — all mapped to your solution's ROI angle. You pinpoint exactly where the account is investing and what they need to justify.",
+    title: 'Find the financial pressure',
+    body: "Search any account. Whyzer instantly surfaces where the money is going, where the pressure is building, and what the board is demanding. You see the financial reality before your first touchpoint.",
   },
   {
     num: '02',
-    title: 'Surface the Tension',
-    body: 'Every executive has a gap between their stated goal and the blocker preventing it. Whyzer finds that tension in the filings — and gives you the exact framing to open the conversation.',
+    title: 'Surface the tension',
+    body: "Every executive carries a private anxiety — the gap between where they are and where the board expects them to be. Whyzer finds it. When you name it in the room, the phone goes face-down. You're no longer a vendor. You're the person who gets it.",
   },
   {
     num: '03',
-    title: 'Deploy the Narrative',
-    body: '2–3 ready-to-use POVs with executive quotes, financial context, and next-step messaging. From research to outreach in under 2 minutes. Every time, on every account.',
+    title: 'Deploy the narrative',
+    body: "2–3 boardroom-ready POVs land in your hands — each one built around the executive's ambitions, not your product features. Copy to outreach. Walk into the meeting. Own the conversation.",
   },
 ];
 
@@ -150,7 +150,7 @@ const HowItWorks = () => {
               How It Works
             </p>
             <h2 className="font-display text-3xl md:text-5xl text-foreground mb-12 tracking-[-0.02em] uppercase leading-tight">
-              Three Steps to a<br /><span className="text-primary">Boardroom-Ready POV</span>
+              From zero to boardroom-ready.<br /><span className="text-primary">In under 2 minutes.</span>
             </h2>
 
             {/* Steps with progress track */}
@@ -226,18 +226,23 @@ const HowItWorks = () => {
           </div>
 
           {/* Step pill indicators — bottom center */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
-            {steps.map((_, i) => (
-              <div
-                key={i}
-                className="rounded-full transition-all duration-400"
-                style={{
-                  width: activeStep === i ? 24 : 6,
-                  height: 6,
-                  background: activeStep === i ? '#5EEAD4' : 'rgba(255,255,255,0.2)',
-                }}
-              />
-            ))}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+            <div className="flex items-center gap-3">
+              {steps.map((_, i) => (
+                <div
+                  key={i}
+                  className="rounded-full transition-all duration-400"
+                  style={{
+                    width: activeStep === i ? 24 : 6,
+                    height: 6,
+                    background: activeStep === i ? '#5EEAD4' : 'rgba(255,255,255,0.2)',
+                  }}
+                />
+              ))}
+            </div>
+            <p className="font-mono text-xs uppercase tracking-[0.15em] text-text-tertiary">
+              Every account. Every market. Every time.
+            </p>
           </div>
         </div>
       </div>

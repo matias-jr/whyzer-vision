@@ -27,14 +27,89 @@ const BentoFeatures = () => {
       <div className="max-w-[1200px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">Features</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
-          The Arsenal of an <span className="text-primary">Elite Seller</span>
+          Everything you need to <span className="text-primary">own the executive conversation.</span>
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-          {/* Card 1 — Earnings Call Podcasts (large, glass) */}
+          {/* Card 1 — Executive Intelligence */}
           <div
             ref={cardRef(0)}
+            className={`${cardBase} relative`}
+            style={cardStyle}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardStyle.boxShadow; }}
+          >
+            <div className="h-36 mb-6 rounded-xl overflow-hidden p-5 flex flex-col justify-between" style={{ background: 'rgba(0,0,0,0.35)' }}>
+              <div className="flex items-start gap-3">
+                <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style={{ background: 'rgba(129,89,212,0.2)', color: '#8159d4' }}>CFO</div>
+                <div>
+                  <p className="text-[11px] text-foreground leading-relaxed italic">"Our priority is margin recovery without sacrificing AI infrastructure investment."</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 mt-2">
+                <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
+                <span className="text-[9px] font-mono text-text-tertiary uppercase tracking-wider">Q3 Earnings Call · Board Member</span>
+                <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
+              </div>
+              <div className="flex gap-2">
+                {['NVIDIA', 'Investor Letter', 'Q3 Priority'].map(tag => (
+                  <span key={tag} className="text-[9px] font-mono px-2 py-0.5 rounded" style={{ background: 'rgba(129,89,212,0.15)', color: '#8159d4' }}>{tag}</span>
+                ))}
+              </div>
+            </div>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Executive Intelligence</h3>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              C-suite quotes, board priorities, investor communications. Know what keeps them up at night — and show up with a point of view on how to fix it. Before anyone else does.
+            </p>
+          </div>
+
+          {/* Card 2 — Deal Maps */}
+          <div
+            ref={cardRef(1)}
+            className={`${cardBase} relative`}
+            style={cardStyle}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardStyle.boxShadow; }}
+          >
+            <div className="h-36 mb-6 rounded-xl overflow-hidden flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.35)' }}>
+              <svg viewBox="0 0 292 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                {/* Centre node */}
+                <rect x="109" y="48" width="74" height="24" rx="7" fill="rgba(129,89,212,0.3)" stroke="#8159d4" strokeWidth="1.4"/>
+                <text x="146" y="64" textAnchor="middle" fill="#C4A8FF" fontSize="9" fontFamily="monospace" fontWeight="600">NVIDIA Corp</text>
+                {/* Left branch lines */}
+                <line x1="109" y1="56" x2="76" y2="26" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                <line x1="109" y1="60" x2="76" y2="60" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                <line x1="109" y1="64" x2="76" y2="94" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                {/* Left nodes */}
+                <rect x="2" y="14" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="39" y="30" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6" fontFamily="monospace">Infrastructure</text>
+                <rect x="2" y="48" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="39" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6" fontFamily="monospace">Margin Pressure</text>
+                <rect x="2" y="82" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="39" y="98" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="9" fontFamily="monospace">Goals</text>
+                {/* Right branch lines */}
+                <line x1="183" y1="56" x2="216" y2="26" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                <line x1="183" y1="60" x2="216" y2="60" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                <line x1="183" y1="64" x2="216" y2="94" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
+                {/* Right nodes */}
+                <rect x="216" y="14" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="253" y="30" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6.5" fontFamily="monospace">Cost Structure</text>
+                <rect x="216" y="48" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="253" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="9" fontFamily="monospace">Strategy</text>
+                <rect x="216" y="82" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
+                <text x="253" y="98" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="7.5" fontFamily="monospace">Challenges</text>
+              </svg>
+            </div>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Deal Maps</h3>
+            <p className="text-text-secondary text-sm leading-relaxed">
+              An interactive map of everything the account cares about — priorities, pressures, strategic bets — visualized so you can find your thesis before you write a single word. See the whole board before you make your move.
+            </p>
+          </div>
+
+          {/* Card 3 — Account Audio Briefings (glass) */}
+          <div
+            ref={cardRef(2)}
             className={`${cardBase} relative`}
             style={{
               background: 'rgba(255,255,255,0.05)',
@@ -78,88 +153,13 @@ const BentoFeatures = () => {
                 <div className="h-full rounded-full w-[84%]" style={{ background: 'linear-gradient(90deg, #8159d4, #6443A8)' }} />
               </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Interactive Podcasts</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Account Audio Briefings</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              AI-generated audio summaries. Understand the account's narrative in 3 minutes — on the commute, before the call, no PDFs required.
+              Every account, distilled into a 3-minute audio briefing — generated from earnings calls, investor days, and filings. Understand the financial narrative on your commute. Walk in knowing more than the room expects.
             </p>
           </div>
 
-          {/* Card 2 — Interactive Financial Visualizations */}
-          <div
-            ref={cardRef(1)}
-            className={`${cardBase} relative`}
-            style={cardStyle}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardStyle.boxShadow; }}
-          >
-            <div className="h-36 mb-6 rounded-xl overflow-hidden flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.35)' }}>
-              <svg viewBox="0 0 292 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                {/* Centre node */}
-                <rect x="109" y="48" width="74" height="24" rx="7" fill="rgba(129,89,212,0.3)" stroke="#8159d4" strokeWidth="1.4"/>
-                <text x="146" y="64" textAnchor="middle" fill="#C4A8FF" fontSize="9" fontFamily="monospace" fontWeight="600">NVIDIA Corp</text>
-                {/* Left branch lines */}
-                <line x1="109" y1="56" x2="76" y2="26" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
-                <line x1="109" y1="60" x2="76" y2="60" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
-                <line x1="109" y1="64" x2="76" y2="94" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
-                {/* Left nodes */}
-                <rect x="2" y="14" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
-                <text x="39" y="30" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6" fontFamily="monospace">Infrastructure</text>
-                <rect x="2" y="48" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
-                <text x="39" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6" fontFamily="monospace">Margin Pressure</text>
-                <rect x="2" y="82" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
-                <text x="39" y="98" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="9" fontFamily="monospace">Goals</text>
-                {/* Right branch lines */}
-                <line x1="183" y1="56" x2="216" y2="26" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
-                <line x1="183" y1="60" x2="216" y2="60" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
-                <line x1="183" y1="64" x2="216" y2="94" stroke="rgba(129,89,212,0.45)" strokeWidth="1"/>
-                {/* Right nodes */}
-                <rect x="216" y="14" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
-                <text x="253" y="30" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="6.5" fontFamily="monospace">Cost Structure</text>
-                <rect x="216" y="48" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
-                <text x="253" y="64" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="9" fontFamily="monospace">Strategy</text>
-                <rect x="216" y="82" width="74" height="24" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(129,89,212,0.35)" strokeWidth="1"/>
-                <text x="253" y="98" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="7.5" fontFamily="monospace">Challenges</text>
-              </svg>
-            </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Deal Map</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              An interactive mind map of everything the company cares about visualized as topics and subtopics so you can zero in on what matters before you write a single word.
-            </p>
-          </div>
-
-          {/* Card 3 — Executive Intelligence */}
-          <div
-            ref={cardRef(2)}
-            className={`${cardBase} relative`}
-            style={cardStyle}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardStyle.boxShadow; }}
-          >
-            <div className="h-36 mb-6 rounded-xl overflow-hidden p-5 flex flex-col justify-between" style={{ background: 'rgba(0,0,0,0.35)' }}>
-              <div className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style={{ background: 'rgba(129,89,212,0.2)', color: '#8159d4' }}>CFO</div>
-                <div>
-                  <p className="text-[11px] text-foreground leading-relaxed italic">"Our priority is margin recovery without sacrificing AI infrastructure investment."</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 mt-2">
-                <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
-                <span className="text-[9px] font-mono text-text-tertiary uppercase tracking-wider">Q3 Earnings Call · Board Member</span>
-                <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
-              </div>
-              <div className="flex gap-2">
-                {['NVIDIA', 'Investor Letter', 'Q3 Priority'].map(tag => (
-                  <span key={tag} className="text-[9px] font-mono px-2 py-0.5 rounded" style={{ background: 'rgba(129,89,212,0.15)', color: '#8159d4' }}>{tag}</span>
-                ))}
-              </div>
-            </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Executive Intelligence</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              C-suite quotes, board member priorities, investor communications. Know what they're already thinking — and say it back to them before anyone else does.
-            </p>
-          </div>
-
-          {/* Card 4 — Global Coverage (large, glass) */}
+          {/* Card 4 — Global Coverage (glass) */}
           <div
             ref={cardRef(3)}
             className={`${cardBase} relative`}
@@ -191,12 +191,12 @@ const BentoFeatures = () => {
                 ))}
               </div>
               <div className="text-center mt-1">
-                <span className="text-xs font-mono text-text-tertiary">7,000+ companies worldwide</span>
+                <span className="text-xs font-mono text-text-tertiary">7,500+ companies worldwide</span>
               </div>
             </div>
             <h3 className="font-body text-foreground font-semibold text-lg mb-2">Global Coverage</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              7,000+ public international and private US companies. HSBC, Revolut, Stripe, Monzo — the accounts other sellers can't research, now fully covered.
+              7,500+ public and private companies across every global market. The accounts your competitors can't research — HSBC, Revolut, Stripe, Monzo — now fully covered. Your territory just got a lot bigger.
             </p>
           </div>
 

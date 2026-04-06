@@ -64,11 +64,15 @@ const Pricing = () => {
     >
       <div className="max-w-[1100px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4 text-center">Pricing</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-10 tracking-[-0.02em] text-center uppercase">
-          Choose Your <span className="text-primary">Competitive Edge</span>
+        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-8 tracking-[-0.02em] text-center uppercase">
+          Less than one lost deal. <span className="text-primary">More than you'd expect.</span>
         </h2>
 
-        <div className="flex items-center justify-center gap-3 mb-12">
+        <p className="text-text-secondary text-base leading-relaxed text-center max-w-[700px] mx-auto mb-10">
+          Getting one executive meeting costs more in time, effort, and expense than Whyzer costs in a year. Comparable financial intelligence exists — AlphaSense, Gartner, Bloomberg — at $15,000–$50,000 per year. Not one of them knows what a POV is.
+        </p>
+
+        <div className="flex items-center justify-center gap-3 mb-2">
           <span className={`text-sm ${!annual ? 'text-foreground' : 'text-text-secondary'}`}>Monthly</span>
           <button
             onClick={() => setAnnual(!annual)}
@@ -85,6 +89,8 @@ const Pricing = () => {
             Annual — <span className="text-primary">Save up to 17%</span>
           </span>
         </div>
+
+        <p className="text-center text-[13px] text-text-tertiary mb-10">Prices shown in your local currency. Cancel anytime.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
           {/* PREMIUM */}
@@ -109,7 +115,7 @@ const Pricing = () => {
               <span className="text-sm text-text-secondary ml-1">per seat / month</span>
             </div>
             <p className="text-[13px] text-text-tertiary mb-4">{premiumNote}</p>
-            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">The full POV engine and global coverage. Everything you need to show up to executive meetings prepared — without the manual research.</p>
+            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">The full Whyzer platform — financial intelligence, executive profiles, Deal Maps, Account Audio Briefings, and AI-generated POVs across 7,500+ global companies. Show up prepared. Every time.</p>
             <div className="border-t border-foreground/[0.08] pt-6 mb-6" />
             <ul className="space-y-3 mb-8 text-[14px]">
               {[
@@ -164,7 +170,7 @@ const Pricing = () => {
                 <span className="text-sm text-text-secondary ml-1">per seat / month</span>
               </div>
               <p className="text-[13px] text-text-tertiary mb-4">{eliteNote}</p>
-              <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Everything in Premium, plus Jamal's complete methodology: the frameworks behind every 7- and 8-figure deal he's closed.</p>
+              <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Everything in Premium, plus full access to The Vault — Jamal Reimer's complete playbook for closing 7- and 8-figure deals. The frameworks, the methodology, the live sessions. Not just the tool. The thinking behind it.</p>
               <div className="border-t border-primary/[0.12] pt-6 mb-6" />
               <ul className="space-y-3 mb-8 text-[14px]">
                 {[
@@ -216,7 +222,7 @@ const Pricing = () => {
               <span className="text-5xl font-bold text-foreground">Custom</span>
             </div>
             <p className="text-[13px] text-text-tertiary mb-4">contact for team pricing</p>
-            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Bring Whyzer to your org. Volume pricing for sales teams, plus the founding coaching bonus — a 3-hour live session with Jamal for your entire team — for the first 5 qualifying purchases.</p>
+            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Bring Whyzer to your entire sales team. Volume pricing, dedicated onboarding, and a 3-hour live session with Jamal for your team. When your whole org shows up to executive meetings with a boardroom-ready POV, the playing field doesn't just tilt — it disappears.</p>
             <div className="border-t border-foreground/[0.08] pt-6 mb-6" />
             <ul className="space-y-3 mb-8 text-[14px]">
               {[

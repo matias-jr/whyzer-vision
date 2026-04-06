@@ -3,34 +3,34 @@ import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
 
 const cases = [
   {
-    icon: Target,
-    title: 'Executive Outreach',
-    body: 'Lead with a financially-grounded POV instead of a product pitch. Open conversations that sound like insider intelligence — because they are.',
-  },
-  {
     icon: Search,
     title: 'Account Research',
-    body: 'Deep financial profiles on every target account. Earnings trends, strategic priorities, investment signals — all mapped to your solution\'s ROI angle before the first touchpoint.',
+    body: "Everything about your target account — in one place. Financial performance, operational priorities, key executives and their own words, competitive pressures, headcount signals. All mapped to your solution's value story before your first touchpoint. Know the account better than they expect you to.",
   },
   {
-    icon: Globe,
-    title: 'Global Enterprise Deals',
-    body: 'Break into international accounts your competitors can\'t research. Surface the financial story of European, Asian, and private companies in minutes, not days.',
+    icon: Target,
+    title: 'Executive Outreach',
+    body: "Most sellers lead with their product. The ones who grab attention lead with the executive's business. A financially-grounded POV that names their priorities, their pressures, and the clearest path to their goals — before the first call. Outreach that sounds like insider intelligence. Because it is.",
   },
   {
     icon: MessageSquare,
     title: 'Discovery Conversations',
-    body: 'Insight-led questions — not generic discovery scripts. Walk in with a hypothesis. Walk out with a champion.',
+    body: "Walk in with a hypothesis about their business, not a list of questions about yours. Surface the tension early. Walk out with a champion who already believes you get it.",
+  },
+  {
+    icon: Globe,
+    title: 'Global Enterprise Deals',
+    body: "7,500+ public and private companies across every global market — fully researched, financially mapped, ready for your POV. The accounts your competitors gave up on are now your biggest opportunity.",
   },
   {
     icon: BarChart3,
     title: 'Business Case Development',
-    body: 'Financial signals become the backbone of your business case — margin pressure, cost targets, capex priorities tied directly to the value your solution delivers.',
+    body: "Build a business case rooted in their numbers, not yours. Margin pressure, cost targets, capex priorities — tied directly to the value your solution delivers. The kind of case that survives the CFO's first question.",
   },
   {
     icon: Zap,
     title: 'Close Bigger, Faster',
-    body: '"What used to take a rep a year, I can do in two weeks with Whyzer." Spend less time researching. Spend more time in executive rooms with a POV that moves deals forward.',
+    body: "Less time researching. More time in executive rooms with a POV that moves deals forward. What used to take hours now takes minutes — on every account, every time. That's not a time saver. That's how you make elite selling your default.",
   },
 ];
 
@@ -53,10 +53,10 @@ const UseCases = () => {
       <div className="max-w-[1200px] mx-auto relative">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-4">Use Cases</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4 tracking-[-0.02em] uppercase">
-          Built for Reps<br />Who Sell <span className="text-primary">Strategically.</span>
+          Your unfair advantage.<br /><span className="text-primary">From first conversation to closed won.</span>
         </h2>
         <p className="text-text-secondary text-base leading-relaxed max-w-[520px] mb-16">
-          Purpose-built for enterprise selling — the complex cycles, the executive rooms, the financial conversations that separate 7-figure closers from everyone else.
+          From your first touchpoint to your last negotiation — Whyzer gives you the financial narrative and executive intelligence to own every stage of the deal.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

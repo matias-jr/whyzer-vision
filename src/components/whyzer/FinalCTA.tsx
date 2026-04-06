@@ -14,17 +14,17 @@ const FinalCTA = () => {
     >
       <div className="max-w-[640px] mx-auto text-center">
         <h2 className="font-display text-4xl md:text-[52px] text-foreground leading-[1.15] tracking-[-0.02em] mb-6 uppercase">
-          Stop Researching. <span className="text-primary">Start Commanding.</span>
+          The next executive meeting you walk into — <span className="text-primary">walk in with a POV that changes the conversation.</span>
         </h2>
         <p className="text-text-secondary text-lg leading-relaxed mb-10">
-          Join the AEs who show up to executive meetings with a boardroom-ready Point of View — not a product pitch.
+          Join the Whyzer Community. Show up to every executive meeting with a financial narrative that moves the deal — not a product pitch that gets you delegated down.
         </p>
         <a
           href="#pricing"
           className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 hover:shadow-[0_0_36px_rgba(129,89,212,0.6)] active:scale-[0.98] transition-all duration-200"
           style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
         >
-          Start Closing Deals with Whyzer Today
+          Get Your First POV Free
         </a>
       </div>
     </section>

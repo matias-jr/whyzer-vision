@@ -5,22 +5,22 @@ const tabs = [
   {
     id: 'executive',
     title: 'Executive Intelligence',
-    sub: 'Key executives, board members, C-suite quotes, and LinkedIn profiles. Know who makes decisions.',
+    sub: "Their priorities. Their pressures. The gap between where they are and where the board expects them to be. The best deals aren't won by selling your product — they're won by showing an executive the clearest path to what they're already trying to achieve. Whyzer gives you that edge.",
   },
   {
     id: 'kpis',
     title: 'Financial KPIs',
-    sub: "Revenue growth, gross margin, R&D spend, capex priorities — all mapped to your solution's ROI angle.",
+    sub: "Every number that matters to the CFO — revenue growth, margin pressure, capex priorities — mapped directly to the ROI narrative your solution owns. Speak their language before they ask you to.",
   },
   {
     id: 'povs',
     title: 'AI-Generated POVs',
-    sub: "2–3 strategic Points of View per account, each connecting the company's board-level priorities to your value proposition.",
+    sub: "2–3 ready-to-use Points of View per account — each one connecting a board-level priority to your value proposition. Not a summary. A narrative that opens executive conversations.",
   },
   {
     id: 'podcast',
-    title: 'AI Podcast Summaries',
-    sub: "Understand your account's latest challenges and results better than their own employees.",
+    title: 'Account Audio Briefings',
+    sub: "Audio briefings on every account — generated from earnings calls, investor days, and filings. Understand the financial narrative on your commute. Walk in knowing more than the room expects.",
   },
 ];
 
@@ -65,7 +65,7 @@ const ProductShowcase = () => {
       <div className="max-w-[1200px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">The Product</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
-          From Intel to <span className="text-primary">Boardroom Narrative</span> in Minutes.
+          This is what Whyzer builds for you — <span className="text-primary">in under 2 minutes.</span>
         </h2>
 
         <div className="flex flex-col lg:flex-row gap-10">
@@ -152,7 +152,7 @@ const ProductShowcase = () => {
 
                       <div className="flex gap-3 mt-5">
                         <div className="px-4 py-2 bg-primary text-primary-foreground text-xs font-bold rounded-md cursor-default select-none">
-                          View Full POV
+                          Read the Full POV
                         </div>
                         <div className="px-4 py-2 border border-foreground/[0.08] text-foreground text-xs rounded-md cursor-default select-none">
                           Copy to Outreach

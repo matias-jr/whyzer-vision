@@ -3,10 +3,10 @@ import { Target, Trophy, BarChart3, Mail, Layers, Mic } from 'lucide-react';
 
 const vaultItems = [
   { icon: Target, label: 'The Pipeline Flywheel' },
-  { icon: Trophy, label: 'Elite Sellers Playbook' },
-  { icon: BarChart3, label: 'MDA Masterclass' },
-  { icon: Mail, label: 'Executive Outreach Course' },
-  { icon: Layers, label: 'Top, Middle & Bottom Funnel Playbooks' },
+  { icon: Trophy, label: 'The Enterprise Sellers Playbook' },
+  { icon: BarChart3, label: 'The MDA Masterclass' },
+  { icon: Mail, label: 'The Executive Outreach Course' },
+  { icon: Layers, label: 'Full Funnel Playbooks' },
   { icon: Mic, label: 'Live Monthly Sessions with Jamal' },
 ];
 
@@ -28,18 +28,18 @@ const TheVault = () => {
         <div className="lg:w-[55%]">
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">Do More With Elite</p>
           <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4 tracking-[-0.02em] uppercase">
-            It's Not Just a Tool.
+            The tool was built by the seller.
             <br />
-            It's a <span className="text-primary">Full Arsenal.</span>
+            <span className="text-primary">So was the playbook.</span>
           </h2>
           <p className="text-text-secondary text-base leading-relaxed mb-6">
-            Every Whyzer Elite subscription includes full access to <strong className="text-foreground">The Vault</strong> — Jamal Reimer's complete playbook for closing 7- and 8-figure deals.
+            Whyzer wasn't built by a product team that studied enterprise selling. It was built by Jamal Reimer — someone who spent decades doing it — and it's continuously sharpened by the Whyzer Community: elite sellers who use it to close deals every day. The Vault is where that collective experience lives. Every framework, every play, every lesson from $160M+ in closed SaaS deals — available to every Elite subscriber.
           </p>
 
           {/* Elite & Corporate badge */}
           <div className="inline-flex items-center gap-2 bg-foreground/[0.04] border border-foreground/[0.08] rounded-full px-5 py-2.5 mb-10">
-            <span className="text-sm font-semibold text-foreground">✦ Elite & Corporate only</span>
-            <span className="text-text-secondary text-sm">· Not included in Premium.</span>
+            <span className="text-sm font-semibold text-foreground">Included with Elite &amp; Corporate.</span>
+            <span className="text-text-secondary text-sm">The methodology behind the tool.</span>
           </div>
 
           {/* Vault items — tonal, no borders */}

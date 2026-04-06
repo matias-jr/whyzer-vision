@@ -4,28 +4,36 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const faqs = [
   {
-    q: 'How is Whyzer different from ChatGPT or other major LLMs?',
-    a: "Whyzer is purpose-built for B2B sellers, using expert-crafted prompts written by reps who've closed 7- and 8-figure deals. While ChatGPT requires manual prompting and can't monitor accounts continuously, Whyzer delivers instant, accurate POVs from SEC filings, earnings calls, and financial data — with the precision only elite enterprise sellers can engineer.",
+    q: 'How is Whyzer different from ChatGPT or other general AI tools?',
+    a: "General AI tools are built for everything, which means they're optimized for nothing. Whyzer is different in three specific ways. First, every POV Whyzer generates is grounded in real, recent financial data — SEC filings, earnings calls, investor letters — not the model's training memory. The output is auditable. You can defend every claim in front of a CFO because you know exactly where it came from. Second, Whyzer doesn't just surface data — it interprets it for sellers. The intelligence lives in the context, the prompts, and the methodology built by sellers who close 7- and 8-figure deals. Third, Whyzer's structured workflows remove the variability of a blank chat window — input the account, get a consistent, boardroom-ready POV every time.",
+  },
+  {
+    q: 'How is Whyzer different from Databook?',
+    a: "Databook is a strong product built for enterprise teams with enterprise budgets — contracts typically run $30,000–$60,000 per year and are sold top-down to large organisations. Whyzer is built for the individual seller who wants that same quality of financial intelligence without waiting for a procurement process. At $57/month, Whyzer puts boardroom-ready POVs in reach of every rep, not just the ones whose company can afford a six-figure vendor contract. Whyzer also covers 7,500+ public and private companies globally — including the private and international accounts that tools like Databook don't cover well.",
   },
   {
     q: 'How does Whyzer work?',
-    a: "You search for any publicly traded company. Whyzer pulls from SEC filings, earnings calls, and other data sources, then uses expert-crafted prompts to extract the insights most likely to drive demand for your solution — delivering POVs, KPIs, executive quotes, and next steps, all in one place.",
+    a: "Search any of 7,500+ global companies. Whyzer instantly pulls from SEC filings, earnings calls, investor letters, and other public financial data to surface the account's financial priorities, executive pressures, and strategic bets. It then generates 2–3 boardroom-ready Points of View — each one connecting the account's board-level priorities to your solution's value. From search to POV in under 2 minutes, every time.",
   },
   {
     q: 'Is my data secure?',
-    a: 'Whyzer only uses publicly available, permissioned data sources like SEC filings, earnings calls, and press releases. All data is processed with encrypted infrastructure. Your research stays private, secure, and compliant by design.',
+    a: "Whyzer only uses publicly available, permissioned data sources — SEC filings, earnings calls, press releases, and investor communications. No scraping of private systems, no confidential data. All data is processed using encrypted infrastructure and we never store sensitive personal information. Your research stays yours — private, secure, and compliant by design.",
   },
   {
-    q: 'Does Whyzer cover international companies?',
-    a: 'Yes. Starting February 2026, Whyzer covers major public and private companies across 150+ worldwide markets in Europe, APAC, LatAm, as well as private companies in the US. If the company you want to add isn\'t on Whyzer yet, you can manually add it just by typing the name.',
+    q: 'Does Whyzer cover international and private companies?',
+    a: "Yes — and this is one of Whyzer's most significant recent expansions. Whyzer now covers 7,500+ public and private companies across every global market, including European, Asian, Latin American, and private US companies. The accounts your competitors can't research — HSBC, Revolut, Stripe, Monzo — are now fully covered. Global coverage is included in all plans.",
   },
   {
     q: 'Can Whyzer integrate with my CRM?',
-    a: "Not yet, but we're designing Whyzer to integrate seamlessly with CRMs, sales engagement tools, and Slack so insights show up exactly where your team works. If you have a specific integration in mind, we'd love to hear it.",
+    a: "Whyzer is currently designing integrations with major CRMs, sales engagement tools, and Slack so insights show up exactly where your team works. If you have a specific integration in mind, we'd love to hear it — reach out directly and it goes straight to the product roadmap.",
   },
   {
     q: "What's included in The Vault?",
-    a: "The Vault is Jamal Reimer's complete playbook for elite enterprise selling — frameworks, templates, and strategies used by reps closing 7- and 8-figure deals, including the Pipeline Flywheel, Executive Outreach Course, and MDA Masterclass. It's included with every Elite subscription.",
+    a: "The Vault is Jamal Reimer's complete enterprise selling methodology — built from $160M+ in closed SaaS deals and continuously refined by the Whyzer Community. It includes The Pipeline Flywheel, The Enterprise Sellers Playbook, The MDA Masterclass, The Executive Outreach Course, Full Funnel Playbooks, and live monthly sessions with Jamal. The Vault is included with Whyzer Elite and Corporate plans.",
+  },
+  {
+    q: 'What is the Whyzer Community?',
+    a: "The Whyzer Community is a group of elite enterprise sellers — many of them Jamal's coaching clients — who use Whyzer to close complex, high-value deals. The community continuously shapes the product: enhancement requests, new use cases, and real-world feedback from sellers in the field flow directly into Whyzer's development. It's the reason Whyzer gets sharper every month.",
   },
 ];
 
