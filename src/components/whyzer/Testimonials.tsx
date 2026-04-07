@@ -1,28 +1,46 @@
 import { useState, useRef } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
+// title and company to be confirmed with Jamal before publishing
 const testimonials = [
-  { quote: "It's built for our specific needs. Way better than agents like Perplexity or Claude for strategic selling.", name: 'Brian Tripp' },
-  { quote: "Compared to tools like HockeyStack, Whyzer makes detailed info from 10Ks, 10Qs, and earnings reports actually usable for salespeople.", name: 'Lee Winer' },
-  { quote: "Whyzer flagged a cybersecurity breach that helped me book a CISO meeting on my first try using Jamal's technique — it worked immediately.", name: 'Paul Hammond' },
-  { quote: 'Feels like a business analyst is watching your back… all the context is laid out.', name: 'Matt Brown' },
-  { quote: 'Even though I try to stay on top of my ICP accounts, Whyzer consistently surfaces insights that make me think, "How come I didn\'t know that?"', name: 'Jeff Clarke' },
-  { quote: 'I played around with Whyzer yesterday… I was blown away. The podcast gave me a really good idea on how to structure not just the deal, but the talk prep.', name: 'Mo' },
-  { quote: "Amazing prompts. First tool I've found that resonates with the way I dig into clients.", name: 'Bill Neal' },
-  { quote: 'I feel like I have to really up my AI game.', name: 'Chris Carlton' },
-  { quote: "I need to be top of my game when speaking to executives — with data, with metrics. That's really what motivated me to use Whyzer and join this conversation.", name: 'Kent' },
-  { quote: 'I love the earnings call summaries and use chat constantly.', name: 'Michael Corvo' },
-  { quote: 'Absolutely necessary and needed in our profession.', name: 'Rob Sader' },
-  { quote: "What used to take a rep a year, I can do in two weeks with Whyzer. It helps us work on the right accounts.", name: 'David Inukpuk' },
+  { quote: "It's built for our specific needs. Way better than agents like Perplexity or Claude for strategic selling.", name: 'Brian Tripp', title: '', company: '' },
+  { quote: "Compared to tools like HockeyStack, Whyzer makes detailed info from 10Ks, 10Qs, and earnings reports actually usable for salespeople.", name: 'Lee Winer', title: '', company: '' },
+  { quote: "Whyzer flagged a cybersecurity breach that helped me book a CISO meeting on my first try using Jamal's technique — it worked immediately.", name: 'Paul Hammond', title: '', company: '' },
+  { quote: 'Feels like a business analyst is watching your back… all the context is laid out.', name: 'Matt Brown', title: '', company: '' },
+  { quote: 'Even though I try to stay on top of my ICP accounts, Whyzer consistently surfaces insights that make me think, "How come I didn\'t know that?"', name: 'Jeff Clarke', title: '', company: '' },
+  { quote: 'I played around with Whyzer yesterday… I was blown away. The podcast gave me a really good idea on how to structure not just the deal, but the talk prep.', name: 'Mo', title: '', company: '' },
+  { quote: "Amazing prompts. First tool I've found that resonates with the way I dig into clients.", name: 'Bill Neal', title: '', company: '' },
+  { quote: 'I feel like I have to really up my AI game.', name: 'Chris Carlton', title: '', company: '' },
+  { quote: "I need to be top of my game when speaking to executives — with data, with metrics. That's really what motivated me to use Whyzer and join this conversation.", name: 'Kent', title: '', company: '' },
+  { quote: 'I love the earnings call summaries and use chat constantly.', name: 'Michael Corvo', title: '', company: '' },
+  { quote: 'Absolutely necessary and needed in our profession.', name: 'Rob Sader', title: '', company: '' },
+  { quote: "What used to take a rep a year, I can do in two weeks with Whyzer. It helps us work on the right accounts.", name: 'David Inukpuk', title: '', company: '' },
 ];
 
-const MarqueeCard = ({ quote, name }: { quote: string; name: string }) => (
+type Testimonial = typeof testimonials[0];
+
+const MarqueeCard = ({ quote, name, title, company }: Testimonial) => (
   <div
-    className="bg-card border border-foreground/[0.06] rounded-xl px-8 py-7 min-w-[320px] max-w-[320px] flex-shrink-0 relative"
+    className="bg-card border border-foreground/[0.06] rounded-xl px-8 py-7 min-w-[320px] max-w-[320px] xl:min-w-[420px] xl:max-w-[420px] flex-shrink-0 relative flex flex-col"
   >
     <span className="text-primary/40 text-5xl font-display absolute top-4 left-6">"</span>
-    <p className="text-foreground text-base leading-relaxed mt-6 mb-4">{quote}</p>
-    <p className="text-text-secondary text-sm font-semibold">— {name}</p>
+    <p className="text-foreground text-base leading-relaxed mt-6 mb-5 flex-1">{quote}</p>
+    <div className="flex items-center gap-3">
+      <div
+        className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
+        style={{ background: 'rgba(129,89,212,0.2)', color: '#C4A8FF' }}
+      >
+        {name.charAt(0)}
+      </div>
+      <div>
+        <p className="text-foreground text-sm font-semibold leading-tight">{name}</p>
+        {(title || company) && (
+          <p className="text-text-secondary text-xs leading-tight mt-0.5">
+            {[title, company].filter(Boolean).join(' · ')}
+          </p>
+        )}
+      </div>
+    </div>
   </div>
 );
 
@@ -89,7 +107,14 @@ const MobileCarousel = () => {
                 >
                   {t.name.charAt(0)}
                 </div>
-                <span className="font-mono text-xs text-text-secondary tracking-wide">{t.name}</span>
+                <div>
+                  <span className="font-mono text-xs text-foreground font-semibold tracking-wide block">{t.name}</span>
+                  {(t.title || t.company) && (
+                    <span className="font-mono text-xs text-text-secondary tracking-wide block mt-0.5">
+                      {[t.title, t.company].filter(Boolean).join(' · ')}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -149,18 +174,28 @@ const Testimonials = () => {
           <p className="text-foreground text-lg md:text-xl leading-[1.7] mb-5">
             Awesome product. It's like OpenAI and Perplexity's deep research had a baby who gives a shit about enterprise selling.
           </p>
-          <span className="font-mono text-sm text-text-secondary tracking-wide">— Kyle G.</span>
+          <div className="flex items-center justify-center gap-3">
+            <div
+              className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
+              style={{ background: 'rgba(129,89,212,0.25)', color: '#C4A8FF' }}
+            >
+              K
+            </div>
+            <div className="text-left">
+              <p className="text-foreground text-sm font-semibold leading-tight">Kyle G.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Mobile: snap carousel */}
       <MobileCarousel />
 
-      {/* Desktop: marquee rows */}
+      {/* Desktop: marquee rows — 2x duplication keeps strip wide enough without repeating on-screen */}
       <div className="hidden md:block">
         <div className="mb-4 overflow-hidden">
           <div className="animate-marquee flex gap-4 hover:[animation-play-state:paused]">
-            {[...row1, ...row1, ...row1, ...row1].map((t, i) => (
+            {[...row1, ...row1].map((t, i) => (
               <MarqueeCard key={i} {...t} />
             ))}
           </div>
@@ -168,7 +203,7 @@ const Testimonials = () => {
 
         <div className="overflow-hidden">
           <div className="animate-marquee-reverse flex gap-4 hover:[animation-play-state:paused]">
-            {[...row2, ...row2, ...row2, ...row2].map((t, i) => (
+            {[...row2, ...row2].map((t, i) => (
               <MarqueeCard key={i} {...t} />
             ))}
           </div>

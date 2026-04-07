@@ -60,7 +60,7 @@ const BentoFeatures = () => {
             </div>
             <h3 className="font-body text-foreground font-semibold text-lg mb-2">Executive Intelligence</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              C-suite quotes, board priorities, investor communications. Know what keeps them up at night — and show up with a point of view on how to fix it. Before anyone else does.
+              C-suite quotes, board priorities, investor communications. Know what keeps them up at night, and show up with a point of view on how to fix it. Before anyone else does.
             </p>
           </div>
 
@@ -103,7 +103,7 @@ const BentoFeatures = () => {
             </div>
             <h3 className="font-body text-foreground font-semibold text-lg mb-2">Deal Maps</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              An interactive map of everything the account cares about — priorities, pressures, strategic bets — visualized so you can find your thesis before you write a single word. See the whole board before you make your move.
+              An interactive map of everything the account cares about: priorities, pressures, strategic bets, visualized so you can find your thesis before you write a single word. See the whole board before you make your move.
             </p>
           </div>
 
@@ -129,7 +129,7 @@ const BentoFeatures = () => {
                   <svg width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M2 1l9 6-9 6V1z" fill="#8159d4"/></svg>
                 </div>
                 <div>
-                  <div className="text-[11px] text-foreground font-semibold font-mono">Q4 Earnings — NVIDIA Corp</div>
+                  <div className="text-[11px] text-foreground font-semibold font-mono">Q4 Earnings: NVIDIA Corp</div>
                   <div className="text-[10px] text-text-tertiary font-mono">3:12 / 3:47</div>
                 </div>
                 <div className="ml-auto text-[10px] font-mono px-2 py-0.5 rounded" style={{ background: 'rgba(129,89,212,0.2)', color: '#8159d4' }}>AI Summary</div>
@@ -155,7 +155,7 @@ const BentoFeatures = () => {
             </div>
             <h3 className="font-body text-foreground font-semibold text-lg mb-2">Account Audio Briefings</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              Every account, distilled into a 3-minute audio briefing — generated from earnings calls, investor days, and filings. Understand the financial narrative on your commute. Walk in knowing more than the room expects.
+              Every account, distilled into a 3-minute audio briefing generated from earnings calls, investor days, and filings. Understand the financial narrative on your commute. Walk in knowing more than the room expects.
             </p>
           </div>
 
@@ -196,7 +196,7 @@ const BentoFeatures = () => {
             </div>
             <h3 className="font-body text-foreground font-semibold text-lg mb-2">Global Coverage</h3>
             <p className="text-text-secondary text-sm leading-relaxed">
-              7,500+ public and private companies across every global market. The accounts your competitors can't research — HSBC, Revolut, Stripe, Monzo — now fully covered. Your territory just got a lot bigger.
+              7,500+ public and private companies across every global market. The accounts your competitors can't research: HSBC, Revolut, Stripe, Monzo. Now fully covered. Your territory just got a lot bigger.
             </p>
           </div>
 

@@ -65,11 +65,11 @@ const Pricing = () => {
       <div className="max-w-[1100px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4 text-center">Pricing</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-8 tracking-[-0.02em] text-center uppercase">
-          Less than one lost deal. <span className="text-primary">More than you'd expect.</span>
+          Less than one lost deal. <span className="text-primary">Worth more than you know.</span>
         </h2>
 
         <p className="text-text-secondary text-base leading-relaxed text-center max-w-[700px] mx-auto mb-10">
-          Getting one executive meeting costs more in time, effort, and expense than Whyzer costs in a year. Comparable financial intelligence exists — AlphaSense, Gartner, Bloomberg — at $15,000–$50,000 per year. Not one of them knows what a POV is.
+          Getting one executive meeting costs more in time, effort, and expense than Whyzer costs in a year. Comparable financial intelligence exists (AlphaSense, Gartner, Bloomberg) at $15,000–$50,000 per year. Not one of them knows what a POV is.
         </p>
 
         <div className="flex items-center justify-center gap-3 mb-2">
@@ -86,7 +86,7 @@ const Pricing = () => {
             />
           </button>
           <span className={`text-sm ${annual ? 'text-foreground' : 'text-text-secondary'}`}>
-            Annual — <span className="text-primary">Save up to 17%</span>
+            Annual: <span className="text-primary">Save up to 17%</span>
           </span>
         </div>
 
@@ -115,13 +115,13 @@ const Pricing = () => {
               <span className="text-sm text-text-secondary ml-1">per seat / month</span>
             </div>
             <p className="text-[13px] text-text-tertiary mb-4">{premiumNote}</p>
-            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">The full Whyzer platform — financial intelligence, executive profiles, Deal Maps, Account Audio Briefings, and AI-generated POVs across 7,500+ global companies. Show up prepared. Every time.</p>
+            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">The full Whyzer platform: financial intelligence, executive profiles, Deal Maps, Account Audio Briefings, and AI-generated POVs across 7,500+ global companies. Show up prepared. Every time.</p>
             <div className="border-t border-foreground/[0.08] pt-6 mb-6" />
             <ul className="space-y-3 mb-8 text-[14px]">
               {[
                 'Unlimited Company reports',
                 'Add up to 30 new companies each month',
-                'Unlimited DealMap',
+                'Unlimited deal maps',
                 '2 Whyzer & Jamal podcasts per month',
                 '2 Executive POV Dossiers',
                 'Email Campaign Generator',
@@ -170,7 +170,7 @@ const Pricing = () => {
                 <span className="text-sm text-text-secondary ml-1">per seat / month</span>
               </div>
               <p className="text-[13px] text-text-tertiary mb-4">{eliteNote}</p>
-              <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Everything in Premium, plus full access to The Vault — Jamal Reimer's complete playbook for closing 7- and 8-figure deals. The frameworks, the methodology, the live sessions. Not just the tool. The thinking behind it.</p>
+              <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Everything in Premium, plus full access to The Vault: Jamal Reimer's complete playbook for closing 7- and 8-figure deals. The frameworks, the methodology, the live sessions. Not just the tool. The thinking behind it.</p>
               <div className="border-t border-primary/[0.12] pt-6 mb-6" />
               <ul className="space-y-3 mb-8 text-[14px]">
                 {[
@@ -178,7 +178,7 @@ const Pricing = () => {
                   'Add unlimited new companies each month',
                   'Unlimited podcast generation',
                   'Unlimited Executive POV Dossiers',
-                  'The Vault — Jamal\'s full enterprise selling playbook',
+                  'The Vault: Jamal\'s full enterprise selling playbook',
                   'Coach Jamal AI, your sales co-pilot',
                   'Pipeline Flywheel & MDA Masterclass',
                   'Executive Outreach Course',
@@ -222,7 +222,7 @@ const Pricing = () => {
               <span className="text-5xl font-bold text-foreground">Custom</span>
             </div>
             <p className="text-[13px] text-text-tertiary mb-4">contact for team pricing</p>
-            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Bring Whyzer to your entire sales team. Volume pricing, dedicated onboarding, and a 3-hour live session with Jamal for your team. When your whole org shows up to executive meetings with a boardroom-ready POV, the playing field doesn't just tilt — it disappears.</p>
+            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">Bring Whyzer to your entire sales team. Volume pricing, dedicated onboarding, and a 3-hour live session with Jamal for your team. When your whole org shows up to executive meetings with a boardroom-ready POV, the playing field doesn't just tilt. It disappears.</p>
             <div className="border-t border-foreground/[0.08] pt-6 mb-6" />
             <ul className="space-y-3 mb-8 text-[14px]">
               {[

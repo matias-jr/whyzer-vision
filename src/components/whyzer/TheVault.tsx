@@ -26,14 +26,12 @@ const TheVault = () => {
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
         {/* Left */}
         <div className="lg:w-[55%]">
-          <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">Do More With Elite</p>
+          <p className="font-mono text-base uppercase tracking-[0.15em] text-primary mb-4 font-semibold">Do more with Whyzer Elite</p>
           <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4 tracking-[-0.02em] uppercase">
-            The tool was built by the seller.
-            <br />
-            <span className="text-primary">So was the playbook.</span>
+            Built by sellers, not by people who studied them.
           </h2>
           <p className="text-text-secondary text-base leading-relaxed mb-6">
-            Whyzer wasn't built by a product team that studied enterprise selling. It was built by Jamal Reimer — someone who spent decades doing it — and it's continuously sharpened by the Whyzer Community: elite sellers who use it to close deals every day. The Vault is where that collective experience lives. Every framework, every play, every lesson from $160M+ in closed SaaS deals — available to every Elite subscriber.
+            Whyzer wasn't built by a product team that studied enterprise selling. It was built by Jamal Reimer, someone who spent decades doing it, and it's continuously sharpened by the Whyzer Community: elite sellers who use it to close deals every day. The Vault is where that collective experience lives. Every framework, every play, every lesson from $160M+ in closed SaaS deals, available to every Elite subscriber.
           </p>
 
           {/* Elite & Corporate badge */}
@@ -93,31 +91,26 @@ const TheVault = () => {
             <p className="text-text-secondary text-sm mb-6">Your AI Sales Co-Pilot</p>
 
             <div className="space-y-0">
-              {[
-                { label: 'RANKING', value: 'Top 0.1% Oracle Seller Globally' },
-                { label: 'REVENUE CLOSED', value: '$160M+ SaaS' },
-                { label: 'RECOGNITION', value: "President's Club — Multiple Years" },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-between py-4"
-                  style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+              <div className="flex items-center justify-between py-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                <p className="text-text-secondary text-xs font-mono uppercase tracking-wider">RANKING</p>
+                <p className="text-foreground text-sm font-semibold text-right">Top 0.1% Oracle Seller Globally</p>
+              </div>
+              <div className="flex items-center justify-between py-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                <p className="text-text-secondary text-xs font-mono uppercase tracking-wider">REVENUE CLOSED</p>
+                <p className="text-foreground text-sm font-semibold text-right">$160M+ SaaS</p>
+              </div>
+              <div className="flex items-center justify-between py-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                <p className="text-text-secondary text-xs font-mono uppercase tracking-wider">AUTHOR</p>
+                <a
+                  href="https://megadealsecretsbook.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary text-sm font-semibold text-right hover:underline transition-opacity hover:opacity-80"
                 >
-                  <p className="text-text-secondary text-xs font-mono uppercase tracking-wider">{item.label}</p>
-                  <p className="text-foreground text-sm font-semibold text-right">{item.value}</p>
-                </div>
-              ))}
+                  Mega Deal Secrets
+                </a>
+              </div>
             </div>
-
-            <a
-              href="mailto:sales@whyzer.ai"
-              className="block w-full mt-6 py-3 rounded-lg text-center text-sm font-semibold text-foreground transition-all duration-200 hover:brightness-110"
-              style={{ background: 'rgba(129,89,212,0.15)', border: '1px solid rgba(129,89,212,0.3)' }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(129,89,212,0.25)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(129,89,212,0.15)')}
-            >
-              Contact Sales →
-            </a>
           </div>
         </div>
       </div>

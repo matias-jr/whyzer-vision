@@ -12,12 +12,12 @@ const steps = [
   {
     num: '02',
     title: 'Surface the tension',
-    body: "Every executive carries a private anxiety — the gap between where they are and where the board expects them to be. Whyzer finds it. When you name it in the room, the phone goes face-down. You're no longer a vendor. You're the person who gets it.",
+    body: "Every executive carries a private anxiety: the gap between where they are and where the board expects them to be. Whyzer finds it. When you name it in the room, the phone goes face-down. You're no longer a vendor. You're the person who gets it.",
   },
   {
     num: '03',
     title: 'Deploy the narrative',
-    body: "2–3 boardroom-ready POVs land in your hands — each one built around the executive's ambitions, not your product features. Copy to outreach. Walk into the meeting. Own the conversation.",
+    body: "2–3 boardroom-ready POVs land in your hands, each one built around the executive's ambitions, not your product features. Copy to outreach. Walk into the meeting. Own the conversation.",
   },
 ];
 

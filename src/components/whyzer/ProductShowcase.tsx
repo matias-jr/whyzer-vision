@@ -5,43 +5,43 @@ const tabs = [
   {
     id: 'executive',
     title: 'Executive Intelligence',
-    sub: "Their priorities. Their pressures. The gap between where they are and where the board expects them to be. The best deals aren't won by selling your product — they're won by showing an executive the clearest path to what they're already trying to achieve. Whyzer gives you that edge.",
+    sub: "Their priorities. Their pressures. The gap between where they are and where the board expects them to be. The best deals aren't won by selling your product; they're won by showing an executive the clearest path to what they're already trying to achieve. Whyzer gives you that edge.",
   },
   {
     id: 'kpis',
     title: 'Financial KPIs',
-    sub: "Every number that matters to the CFO — revenue growth, margin pressure, capex priorities — mapped directly to the ROI narrative your solution owns. Speak their language before they ask you to.",
+    sub: "Every number that matters to the CFO: revenue growth, margin pressure, capex priorities, all mapped directly to the ROI narrative your solution owns. Speak their language before they ask you to.",
   },
   {
     id: 'povs',
     title: 'AI-Generated POVs',
-    sub: "2–3 ready-to-use Points of View per account — each one connecting a board-level priority to your value proposition. Not a summary. A narrative that opens executive conversations.",
+    sub: "2–3 ready-to-use Points of View per account, each one connecting a board-level priority to your value proposition. Not a summary. A narrative that opens executive conversations.",
   },
   {
     id: 'podcast',
     title: 'Account Audio Briefings',
-    sub: "Audio briefings on every account — generated from earnings calls, investor days, and filings. Understand the financial narrative on your commute. Walk in knowing more than the room expects.",
+    sub: "Audio briefings on every account, generated from earnings calls, investor days, and filings. Understand the financial narrative on your commute. Walk in knowing more than the room expects.",
   },
 ];
 
 const mockupContent: Record<string, { title: string; tags: string[]; body: string }> = {
   executive: {
-    title: 'C-Suite Intelligence — Jensen Huang',
+    title: 'C-Suite Intelligence: Jensen Huang',
     tags: ['NVIDIA', 'CEO Profile', 'Board Intel'],
     body: 'Strategic priorities mapped from latest earnings call and investor communications...',
   },
   kpis: {
-    title: 'Financial KPI Dashboard — NVIDIA',
+    title: 'Financial KPI Dashboard: NVIDIA',
     tags: ['NVIDIA', 'Revenue Growth', 'Capex Analysis'],
     body: 'Revenue $60.9B (+122% YoY) · Gross Margin 73.0% · R&D Spend $8.7B...',
   },
   povs: {
-    title: 'The AI Factory Paradox — Scale Without Visibility',
+    title: 'The AI Factory Paradox: Scale Without Visibility',
     tags: ['NVIDIA', 'Financial Risk', 'Q1 Priority'],
     body: 'As NVIDIA scales its data center revenue past $47B, the company faces an emerging tension...',
   },
   podcast: {
-    title: 'Earnings Call Summary — Q4 FY2025',
+    title: 'Earnings Call Summary: Q4 FY2025',
     tags: ['NVIDIA', 'Audio Brief', 'AI Generated'],
     body: 'Key themes: sovereign AI infrastructure demand, Blackwell architecture ramp, enterprise adoption...',
   },
@@ -65,7 +65,7 @@ const ProductShowcase = () => {
       <div className="max-w-[1200px] mx-auto">
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">The Product</p>
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
-          This is what Whyzer builds for you — <span className="text-primary">in under 2 minutes.</span>
+          This is what Whyzer builds for you, <span className="text-primary">in under 2 minutes.</span>
         </h2>
 
         <div className="flex flex-col lg:flex-row gap-10">

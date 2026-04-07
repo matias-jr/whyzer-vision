@@ -5,12 +5,12 @@ const cases = [
   {
     icon: Search,
     title: 'Account Research',
-    body: "Everything about your target account — in one place. Financial performance, operational priorities, key executives and their own words, competitive pressures, headcount signals. All mapped to your solution's value story before your first touchpoint. Know the account better than they expect you to.",
+    body: "Everything about your target account, all in one place. Financial performance, operational priorities, key executives and their own words, competitive pressures, headcount signals. All mapped to your solution's value story before your first touchpoint. Know the account better than they expect you to.",
   },
   {
     icon: Target,
     title: 'Executive Outreach',
-    body: "Most sellers lead with their product. The ones who grab attention lead with the executive's business. A financially-grounded POV that names their priorities, their pressures, and the clearest path to their goals — before the first call. Outreach that sounds like insider intelligence. Because it is.",
+    body: "Most sellers lead with their product. The ones who grab attention lead with the executive's business. A financially-grounded POV that names their priorities, their pressures, and the clearest path to their goals, before the first call. Outreach that sounds like insider intelligence. Because it is.",
   },
   {
     icon: MessageSquare,
@@ -20,17 +20,17 @@ const cases = [
   {
     icon: Globe,
     title: 'Global Enterprise Deals',
-    body: "7,500+ public and private companies across every global market — fully researched, financially mapped, ready for your POV. The accounts your competitors gave up on are now your biggest opportunity.",
+    body: "7,500+ public and private companies across every global market, fully researched, financially mapped, ready for your POV. The accounts your competitors gave up on are now your biggest opportunity.",
   },
   {
     icon: BarChart3,
     title: 'Business Case Development',
-    body: "Build a business case rooted in their numbers, not yours. Margin pressure, cost targets, capex priorities — tied directly to the value your solution delivers. The kind of case that survives the CFO's first question.",
+    body: "Build a business case rooted in their numbers, not yours. Margin pressure, cost targets, capex priorities, all tied directly to the value your solution delivers. The kind of case that survives the CFO's first question.",
   },
   {
     icon: Zap,
     title: 'Close Bigger, Faster',
-    body: "Less time researching. More time in executive rooms with a POV that moves deals forward. What used to take hours now takes minutes — on every account, every time. That's not a time saver. That's how you make elite selling your default.",
+    body: "Less time researching. More time in executive rooms with a POV that moves deals forward. What used to take hours now takes minutes, on every account, every time. That's not a time saver. That's how you make elite selling your default.",
   },
 ];
 
@@ -56,7 +56,7 @@ const UseCases = () => {
           Your unfair advantage.<br /><span className="text-primary">From first conversation to closed won.</span>
         </h2>
         <p className="text-text-secondary text-base leading-relaxed max-w-[520px] mb-16">
-          From your first touchpoint to your last negotiation — Whyzer gives you the financial narrative and executive intelligence to own every stage of the deal.
+          From your first touchpoint to your last negotiation. Whyzer gives you the financial narrative and executive intelligence to own every stage of the deal.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

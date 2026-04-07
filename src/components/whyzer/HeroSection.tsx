@@ -63,7 +63,7 @@ const HeroSection = () => {
         </h1>
 
         <p className="font-body text-base md:text-lg lg:text-xl text-text-secondary max-w-[680px] mx-auto leading-[1.7] mb-10">
-          Whyzer turns SEC filings, earnings calls, and financial data into boardroom-ready Points of View — in minutes. Now covering 7,500+ public and private companies across every global market, so you can walk into any executive room in the world with a financial narrative they didn't expect.
+          Whyzer turns SEC filings, earnings calls, and financial data into boardroom-ready Points of View in minutes. Now covering 7,500+ public and private companies across every global market, so you can walk into any executive room in the world with a financial narrative they didn't expect.
         </p>
         <p style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>
           Whyzer is a financial narrative platform that turns SEC filings, earnings calls, and financial data into executive-ready Points of View for B2B sales reps.
@@ -93,7 +93,7 @@ const HeroSection = () => {
           </div>
           <span>Rated 4.9 by enterprise AEs</span>
           <span className="hidden sm:inline text-text-tertiary">|</span>
-          <span className="hidden sm:inline">Built by Jamal Reimer — $160M+ SaaS closed · Top 0.1% Oracle Seller Globally</span>
+          <span className="hidden sm:inline">Built by Jamal Reimer, $160M+ SaaS closed · Top 0.1% Oracle Seller Globally</span>
           <span className="hidden sm:inline text-text-tertiary">|</span>
           <span className="hidden sm:inline">Used by reps closing 7- &amp; 8-figure deals</span>
         </div>

@@ -6,19 +6,19 @@ const painPoints = [
     icon: Clock,
     iconColor: 'text-destructive',
     title: 'Weeks of prep. Minutes of game time.',
-    body: "You spend weeks cobbling together ChatGPT, browser tabs, and earnings PDFs — to get 8 minutes with a CFO who already knows their own numbers better than you do.",
+    body: "You spend weeks cobbling together ChatGPT, browser tabs, and earnings PDFs, only to get 8 minutes with a CFO who already knows their own numbers better than you do.",
   },
   {
     icon: BarChart3,
     iconColor: 'text-text-secondary',
     title: 'Delegated down. Ghosted. Commoditized.',
-    body: "When your pitch sounds like everyone else's, executives send you to a procurement manager. That's not a sales cycle — it's a death march to a price war.",
+    body: "When your pitch sounds like everyone else's, executives send you to a procurement manager. That's not a sales cycle. It's a death march to a price war.",
   },
   {
     icon: Lock,
     iconColor: 'text-primary',
     title: "The deal-winning narrative is already public. Nobody's reading it.",
-    body: "Every 10-K, earnings call, and investor letter tells you exactly what keeps the CFO up at night. It's all there. It just takes 6 hours to find — and another 2 to turn into something you can say in a meeting.",
+    body: "Every 10-K, earnings call, and investor letter tells you exactly what keeps the CFO up at night. It's all there. It just takes 6 hours to find, and another 2 to turn into something you can say in a meeting.",
   },
 ];
 
@@ -77,7 +77,7 @@ const ProblemStatement = () => {
 
       <div className="max-w-[900px] mx-auto mt-16 relative text-center">
         <p className="font-display text-xl md:text-2xl lg:text-3xl text-foreground leading-[1.4] uppercase">
-          Anyone can find the data. Whyzer tells you what it means — and gives you the story <span className="text-primary">99% of sellers could never construct on their own.</span>
+          Anyone can find the data. Whyzer tells you what it means, and gives you the story <span className="text-primary">99% of sellers could never construct on their own.</span>
         </p>
       </div>
     </section>
