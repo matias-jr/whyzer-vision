@@ -56,13 +56,13 @@ const HeroSection = () => {
           The Financial Narrative Platform for B2B Sales
         </p>
 
-        <h1 className="font-display text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] leading-[1.08] tracking-[-0.02em] text-foreground mb-6 uppercase">
+        <h1 className="font-display text-[34px] sm:text-[44px] md:text-[58px] lg:text-[74px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
           <span className="md:whitespace-nowrap">Read the Financial Story.</span>
           <br />
           <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">Write the Sales Story.</span>
         </h1>
 
-        <p className="font-body text-lg md:text-xl lg:text-2xl text-text-secondary max-w-[720px] mx-auto leading-[1.65] mb-10">
+        <p className="font-body text-base md:text-lg lg:text-xl text-text-secondary max-w-[680px] mx-auto leading-[1.7] mb-10">
           Whyzer turns SEC filings, earnings calls, and financial data into boardroom-ready Points of View in minutes. Now covering 7,500+ public and private companies across every global market, so you can walk into any executive room in the world with a financial narrative they didn't expect.
         </p>
         <p style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>

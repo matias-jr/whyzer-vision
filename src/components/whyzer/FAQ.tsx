@@ -45,7 +45,7 @@ const FAQ = () => {
     <section ref={sectionRef} id="faq" className="py-24 lg:py-32 px-6 lg:px-12 bg-background">
       <div className="max-w-[720px] mx-auto">
         <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4">FAQs</p>
-        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-12 tracking-[-0.02em] uppercase">
+        <h2 className="font-display text-3xl md:text-[2.75rem] text-foreground mb-12 tracking-[-0.02em] leading-[1.25] uppercase">
           Questions, <span className="text-primary">Answered.</span>
         </h2>
 
@@ -57,7 +57,7 @@ const FAQ = () => {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 aria-expanded={openIndex === i}
               >
-                <span className={`text-xl font-medium pr-4 transition-colors duration-200 ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>{faq.q}</span>
+                <span className={`text-[18px] font-medium pr-4 transition-colors duration-200 ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>{faq.q}</span>
                 <ChevronDown
                   size={18}
                   className={`flex-shrink-0 transition-all duration-200 ${

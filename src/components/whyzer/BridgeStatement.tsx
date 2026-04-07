@@ -18,7 +18,7 @@ const BridgeStatement = () => {
       <div className="absolute inset-x-0 bottom-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.3), transparent)' }} />
 
       <div className="max-w-[980px] mx-auto text-center relative">
-        <p className="font-display text-[2rem] sm:text-[2.6rem] md:text-[3.4rem] lg:text-[4.2rem] text-foreground leading-[1.2] tracking-[-0.02em] uppercase">
+        <p className="font-display text-[1.75rem] sm:text-[2.25rem] md:text-[2.9rem] lg:text-[3.5rem] text-foreground leading-[1.3] tracking-[-0.02em] uppercase">
           Anyone can find the data.{' '}
           <span className="text-primary">Whyzer tells you what it means</span>
           {' '}— and gives you the story{' '}

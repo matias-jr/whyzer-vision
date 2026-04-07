@@ -64,7 +64,7 @@ const ProductShowcase = () => {
     >
       <div className="max-w-[1200px] mx-auto">
         <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4">The Product</p>
-        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-16 tracking-[-0.02em] uppercase">
+        <h2 className="font-display text-3xl md:text-[2.75rem] text-foreground mb-16 tracking-[-0.02em] leading-[1.25] uppercase">
           This is what Whyzer builds for you, <span className="text-primary">in under 2 minutes.</span>
         </h2>
 

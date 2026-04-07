@@ -27,10 +27,10 @@ const TheVault = () => {
         {/* Left */}
         <div className="lg:w-[55%]">
           <p className="font-mono text-base uppercase tracking-[0.15em] text-primary mb-4 font-semibold">Do more with Whyzer Elite</p>
-          <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-4 tracking-[-0.02em] uppercase">
+          <h2 className="font-display text-3xl md:text-[2.75rem] text-foreground mb-4 tracking-[-0.02em] leading-[1.25] uppercase">
             Built by sellers, not by people who studied them.
           </h2>
-          <p className="text-text-secondary text-lg leading-relaxed mb-6">
+          <p className="text-text-secondary text-base leading-relaxed mb-6">
             Whyzer wasn't built by a product team that studied enterprise selling. It was built by Jamal Reimer, someone who spent decades doing it, and it's continuously sharpened by the Whyzer Community: elite sellers who use it to close deals every day. The Vault is where that collective experience lives. Every framework, every play, every lesson from $160M+ in closed SaaS deals, available to every Elite subscriber.
           </p>
 

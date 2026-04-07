@@ -26,7 +26,7 @@ const BentoFeatures = () => {
     >
       <div className="max-w-[1200px] mx-auto">
         <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4">Features</p>
-        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-16 tracking-[-0.02em] uppercase">
+        <h2 className="font-display text-3xl md:text-[2.75rem] text-foreground mb-16 tracking-[-0.02em] leading-[1.25] uppercase">
           Everything you need to <span className="text-primary">own the executive conversation.</span>
         </h2>
 
@@ -67,7 +67,7 @@ const BentoFeatures = () => {
                 ))}
               </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-xl mb-2">Executive Intelligence</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Executive Intelligence</h3>
             <p className="text-text-secondary text-base leading-relaxed">
               C-suite quotes, board priorities, investor communications. Know what keeps them up at night, and show up with a point of view on how to fix it. Before anyone else does.
             </p>
@@ -110,7 +110,7 @@ const BentoFeatures = () => {
                 <text x="253" y="98" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="7.5" fontFamily="monospace">Challenges</text>
               </svg>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-xl mb-2">Deal Maps</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Deal Maps</h3>
             <p className="text-text-secondary text-base leading-relaxed">
               An interactive map of everything the account cares about: priorities, pressures, strategic bets, visualized so you can find your thesis before you write a single word. See the whole board before you make your move.
             </p>
@@ -162,7 +162,7 @@ const BentoFeatures = () => {
                 <div className="h-full rounded-full w-[84%]" style={{ background: 'linear-gradient(90deg, #8159d4, #6443A8)' }} />
               </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-xl mb-2">Account Audio Briefings</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Account Audio Briefings</h3>
             <p className="text-text-secondary text-base leading-relaxed">
               Every account, distilled into a 3-minute audio briefing generated from earnings calls, investor days, and filings. Understand the financial narrative on your commute. Walk in knowing more than the room expects.
             </p>
@@ -203,7 +203,7 @@ const BentoFeatures = () => {
                 <span className="text-xs font-mono text-text-tertiary">7,500+ companies worldwide</span>
               </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-xl mb-2">Global Coverage</h3>
+            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Global Coverage</h3>
             <p className="text-text-secondary text-base leading-relaxed">
               7,500+ public and private companies across every global market. The accounts your competitors can't research: HSBC, Revolut, Stripe, Monzo. Now fully covered. Your territory just got a lot bigger.
             </p>

@@ -52,10 +52,10 @@ const UseCases = () => {
 
       <div className="max-w-[1200px] mx-auto relative">
         <p className="font-mono text-sm uppercase tracking-[0.2em] text-primary mb-4">Use Cases</p>
-        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-4 tracking-[-0.02em] uppercase">
+        <h2 className="font-display text-3xl md:text-[2.75rem] text-foreground mb-4 tracking-[-0.02em] leading-[1.25] uppercase">
           Your unfair advantage.<br /><span className="text-primary">From first conversation to closed won.</span>
         </h2>
-        <p className="text-text-secondary text-lg leading-relaxed max-w-[560px] mb-16">
+        <p className="text-text-secondary text-base leading-relaxed max-w-[560px] mb-16">
           From your first touchpoint to your last negotiation. Whyzer gives you the financial narrative and executive intelligence to own every stage of the deal.
         </p>
 
