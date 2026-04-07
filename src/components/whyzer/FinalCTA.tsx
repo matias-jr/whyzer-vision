@@ -13,10 +13,10 @@ const FinalCTA = () => {
       }}
     >
       <div className="max-w-[640px] mx-auto text-center">
-        <h2 className="font-display text-4xl md:text-[52px] text-foreground leading-[1.15] tracking-[-0.02em] mb-6 uppercase">
+        <h2 className="font-display text-[2.8rem] md:text-[4rem] text-foreground leading-[1.12] tracking-[-0.02em] mb-6 uppercase">
           Someone's getting to your CFO this week. <span className="text-primary">Make it you.</span>
         </h2>
-        <p className="text-text-secondary text-lg leading-relaxed mb-10">
+        <p className="text-text-secondary text-xl leading-relaxed mb-10">
           Join the Whyzer Community. Show up to every executive meeting with a financial narrative that moves the deal, not a product pitch that gets you delegated down.
         </p>
         <a
@@ -24,7 +24,7 @@ const FinalCTA = () => {
           className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 hover:shadow-[0_0_36px_rgba(129,89,212,0.6)] active:scale-[0.98] transition-all duration-200"
           style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
         >
-          Get Wiser
+          Get Whyzer
         </a>
       </div>
     </section>

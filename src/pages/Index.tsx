@@ -2,6 +2,7 @@ import Navigation from '@/components/whyzer/Navigation';
 import HeroSection from '@/components/whyzer/HeroSection';
 import LogoBar from '@/components/whyzer/LogoBar';
 import ProblemStatement from '@/components/whyzer/ProblemStatement';
+import BridgeStatement from '@/components/whyzer/BridgeStatement';
 import ProductShowcase from '@/components/whyzer/ProductShowcase';
 import HowItWorks from '@/components/whyzer/HowItWorks';
 import BentoFeatures from '@/components/whyzer/BentoFeatures';
@@ -22,6 +23,7 @@ const Index = () => {
       <HeroSection />
       <LogoBar />
       <ProblemStatement />
+      <BridgeStatement />
       <ProductShowcase />
       <HowItWorks />
       <BentoFeatures />

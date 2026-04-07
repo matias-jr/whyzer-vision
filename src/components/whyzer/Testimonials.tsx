@@ -21,21 +21,21 @@ type Testimonial = typeof testimonials[0];
 
 const MarqueeCard = ({ quote, name, title, company }: Testimonial) => (
   <div
-    className="bg-card border border-foreground/[0.06] rounded-xl px-8 py-7 min-w-[320px] max-w-[320px] xl:min-w-[420px] xl:max-w-[420px] flex-shrink-0 relative flex flex-col"
+    className="bg-card border border-foreground/[0.06] rounded-xl px-8 py-7 min-w-[340px] max-w-[340px] lg:min-w-[460px] lg:max-w-[460px] xl:min-w-[540px] xl:max-w-[540px] 2xl:min-w-[620px] 2xl:max-w-[620px] flex-shrink-0 relative flex flex-col"
   >
     <span className="text-primary/40 text-5xl font-display absolute top-4 left-6">"</span>
-    <p className="text-foreground text-base leading-relaxed mt-6 mb-5 flex-1">{quote}</p>
+    <p className="text-foreground text-lg leading-relaxed mt-6 mb-5 flex-1">{quote}</p>
     <div className="flex items-center gap-3">
       <div
-        className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
+        className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
         style={{ background: 'rgba(129,89,212,0.2)', color: '#C4A8FF' }}
       >
         {name.charAt(0)}
       </div>
       <div>
-        <p className="text-foreground text-sm font-semibold leading-tight">{name}</p>
+        <p className="text-foreground text-base font-semibold leading-tight">{name}</p>
         {(title || company) && (
-          <p className="text-text-secondary text-xs leading-tight mt-0.5">
+          <p className="text-text-secondary text-sm leading-tight mt-0.5">
             {[title, company].filter(Boolean).join(' · ')}
           </p>
         )}
@@ -149,40 +149,40 @@ const Testimonials = () => {
   return (
     <section ref={sectionRef} className="py-24 lg:py-32 overflow-hidden bg-background-secondary">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12 mb-12">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">What Elite Sellers Say</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground tracking-[-0.02em] uppercase">
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4">What Elite Sellers Say</p>
+        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground tracking-[-0.02em] uppercase">
           Don't take our word for it.
         </h2>
       </div>
 
       {/* Kyle G. hero testimonial */}
-      <div className="max-w-[700px] mx-auto px-6 lg:px-12 mb-12">
+      <div className="max-w-[900px] mx-auto px-6 lg:px-12 mb-14">
         <div
-          className="rounded-2xl px-8 py-8 text-center relative"
+          className="rounded-2xl px-10 py-12 md:px-16 md:py-16 text-center relative"
           style={{
             background: 'rgba(20,14,40,0.7)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
             border: '1px solid rgba(129,89,212,0.3)',
-            boxShadow: '0 8px 40px rgba(0,0,0,0.5), 0 0 40px rgba(100,67,168,0.12)',
+            boxShadow: '0 8px 60px rgba(0,0,0,0.5), 0 0 60px rgba(100,67,168,0.15)',
           }}
         >
           <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl" style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.7), transparent)' }} />
-          <svg width="28" height="22" viewBox="0 0 28 22" fill="none" className="mb-4 opacity-40 mx-auto">
+          <svg width="40" height="32" viewBox="0 0 28 22" fill="none" className="mb-6 opacity-40 mx-auto">
             <path d="M0 22V13.2C0 5.9 4.5 1.5 13.4 0l1.2 2.2C9.3 3.4 6.8 6 6.5 10H11V22H0zm17 0V13.2C17 5.9 21.5 1.5 30.4 0l1.2 2.2C26.3 3.4 23.8 6 23.5 10H28V22H17z" fill="#8159d4"/>
           </svg>
-          <p className="text-foreground text-lg md:text-xl leading-[1.7] mb-5">
-            Awesome product. It's like OpenAI and Perplexity's deep research had a baby who gives a shit about enterprise selling.
+          <p className="text-foreground text-2xl md:text-3xl lg:text-4xl leading-[1.5] mb-8 font-display">
+            "Awesome product. It's like OpenAI and Perplexity's deep research had a baby who gives a shit about enterprise selling."
           </p>
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-4">
             <div
-              className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
+              className="w-12 h-12 rounded-full flex items-center justify-center text-base font-bold flex-shrink-0"
               style={{ background: 'rgba(129,89,212,0.25)', color: '#C4A8FF' }}
             >
               K
             </div>
             <div className="text-left">
-              <p className="text-foreground text-sm font-semibold leading-tight">Kyle G.</p>
+              <p className="text-foreground text-base font-semibold leading-tight">Kyle G.</p>
             </div>
           </div>
         </div>

@@ -63,8 +63,8 @@ const ProductShowcase = () => {
       }}
     >
       <div className="max-w-[1200px] mx-auto">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">The Product</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4">The Product</p>
+        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-16 tracking-[-0.02em] uppercase">
           This is what Whyzer builds for you, <span className="text-primary">in under 2 minutes.</span>
         </h2>
 
@@ -88,12 +88,12 @@ const ProductShowcase = () => {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div>
-                  <h3 className={`font-body font-semibold text-base mb-1 transition-colors duration-200 ${
+                  <h3 className={`font-body font-semibold text-lg mb-1 transition-colors duration-200 ${
                     activeTab === tab.id ? 'text-foreground' : 'text-text-secondary'
                   }`}>
                     {tab.title}
                   </h3>
-                  <p className="text-text-secondary text-sm leading-relaxed">{tab.sub}</p>
+                  <p className="text-text-secondary text-base leading-relaxed">{tab.sub}</p>
                 </div>
               </button>
             ))}

@@ -63,12 +63,12 @@ const Pricing = () => {
       }}
     >
       <div className="max-w-[1100px] mx-auto">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4 text-center">Pricing</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-8 tracking-[-0.02em] text-center uppercase">
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4 text-center">Pricing</p>
+        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-8 tracking-[-0.02em] text-center uppercase">
           Less than one lost deal. <span className="text-primary">Worth more than you know.</span>
         </h2>
 
-        <p className="text-text-secondary text-base leading-relaxed text-center max-w-[700px] mx-auto mb-10">
+        <p className="text-text-secondary text-lg leading-relaxed text-center max-w-[700px] mx-auto mb-10">
           Getting one executive meeting costs more in time, effort, and expense than Whyzer costs in a year. Comparable financial intelligence exists (AlphaSense, Gartner, Bloomberg) at $15,000–$50,000 per year. Not one of them knows what a POV is.
         </p>
 

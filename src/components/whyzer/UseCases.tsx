@@ -51,11 +51,11 @@ const UseCases = () => {
       }} />
 
       <div className="max-w-[1200px] mx-auto relative">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-4">Use Cases</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4 tracking-[-0.02em] uppercase">
+        <p className="font-mono text-sm uppercase tracking-[0.2em] text-primary mb-4">Use Cases</p>
+        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-4 tracking-[-0.02em] uppercase">
           Your unfair advantage.<br /><span className="text-primary">From first conversation to closed won.</span>
         </h2>
-        <p className="text-text-secondary text-base leading-relaxed max-w-[520px] mb-16">
+        <p className="text-text-secondary text-lg leading-relaxed max-w-[560px] mb-16">
           From your first touchpoint to your last negotiation. Whyzer gives you the financial narrative and executive intelligence to own every stage of the deal.
         </p>
 
@@ -89,8 +89,8 @@ const UseCases = () => {
               >
                 <Icon size={18} className="text-primary" />
               </div>
-              <h3 className="font-body text-foreground font-semibold text-base mb-3">{c.title}</h3>
-              <p className="text-text-secondary text-sm leading-[1.7]">{c.body}</p>
+              <h3 className="font-body text-foreground font-semibold text-lg mb-3">{c.title}</h3>
+              <p className="text-text-secondary text-base leading-[1.75]">{c.body}</p>
             </div>
             );
           })}

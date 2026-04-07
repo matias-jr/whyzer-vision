@@ -32,8 +32,10 @@ const ProblemStatement = () => {
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 85% 50%, rgba(40,24,73,0.85) 0%, rgba(100,67,168,0.12) 45%, transparent 70%)' }} />
       <div className="max-w-[900px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 relative">
         <div className="lg:w-[40%]">
-          <p className="font-display text-2xl md:text-4xl text-foreground leading-[1.4] uppercase">
-            Most sellers never make it to the boardroom. <span className="text-primary">The ones who do speak a different language.</span>
+          <p className="font-display text-3xl md:text-[2.6rem] text-foreground leading-[1.35] uppercase">
+            Most sellers never make it to the boardroom.
+            <br /><br />
+            <span className="text-primary">The ones who do speak a different language.</span>
           </p>
         </div>
 
@@ -44,7 +46,7 @@ const ProblemStatement = () => {
               <div
                 key={i}
                 ref={cardRef(i)}
-                className="rounded-xl p-6 transition-all duration-300 shadow-diffuse-hover"
+                className="rounded-xl p-7 transition-all duration-300 shadow-diffuse-hover"
                 style={{
                   background: '#171717',
                   boxShadow: '0px 4px 20px rgba(0,0,0,0.5)',
@@ -62,23 +64,17 @@ const ProblemStatement = () => {
                 }}
               >
                 <div
-                  className="w-8 h-8 rounded-md flex items-center justify-center mb-4"
+                  className="w-9 h-9 rounded-md flex items-center justify-center mb-4"
                   style={{ background: 'rgba(255,255,255,0.06)' }}
                 >
-                  <Icon size={16} className={point.iconColor} />
+                  <Icon size={18} className={point.iconColor} />
                 </div>
-                <h3 className="font-body text-foreground font-semibold text-base mb-2">{point.title}</h3>
-                <p className="text-text-secondary text-sm leading-relaxed">{point.body}</p>
+                <h3 className="font-body text-foreground font-semibold text-lg mb-2">{point.title}</h3>
+                <p className="text-text-secondary text-base leading-relaxed">{point.body}</p>
               </div>
             );
           })}
         </div>
-      </div>
-
-      <div className="max-w-[900px] mx-auto mt-16 relative text-center">
-        <p className="font-display text-xl md:text-2xl lg:text-3xl text-foreground leading-[1.4] uppercase">
-          Anyone can find the data. Whyzer tells you what it means, and gives you the story <span className="text-primary">99% of sellers could never construct on their own.</span>
-        </p>
       </div>
     </section>
   );

@@ -44,8 +44,8 @@ const FAQ = () => {
   return (
     <section ref={sectionRef} id="faq" className="py-24 lg:py-32 px-6 lg:px-12 bg-background">
       <div className="max-w-[720px] mx-auto">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">FAQs</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-12 tracking-[-0.02em] uppercase">
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4">FAQs</p>
+        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-12 tracking-[-0.02em] uppercase">
           Questions, <span className="text-primary">Answered.</span>
         </h2>
 
@@ -53,11 +53,11 @@ const FAQ = () => {
           {faqs.map((faq, i) => (
             <div key={i} className="border-b border-foreground/[0.06]">
               <button
-                className="w-full flex items-center justify-between py-5 text-left group"
+                className="w-full flex items-center justify-between py-6 text-left group"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 aria-expanded={openIndex === i}
               >
-                <span className={`text-[17px] font-medium pr-4 transition-colors duration-200 ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>{faq.q}</span>
+                <span className={`text-xl font-medium pr-4 transition-colors duration-200 ${openIndex === i ? 'text-primary' : 'text-foreground'}`}>{faq.q}</span>
                 <ChevronDown
                   size={18}
                   className={`flex-shrink-0 transition-all duration-200 ${
@@ -72,7 +72,7 @@ const FAQ = () => {
                   opacity: openIndex === i ? 1 : 0,
                 }}
               >
-                <p className="text-text-secondary text-[15px] leading-[1.7] pb-5">{faq.a}</p>
+                <p className="text-text-secondary text-base leading-[1.75] pb-6">{faq.a}</p>
               </div>
             </div>
           ))}

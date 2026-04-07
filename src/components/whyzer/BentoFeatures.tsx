@@ -25,8 +25,8 @@ const BentoFeatures = () => {
       }}
     >
       <div className="max-w-[1200px] mx-auto">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">Features</p>
-        <h2 className="font-display text-3xl md:text-5xl text-foreground mb-16 tracking-[-0.02em] uppercase">
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4">Features</p>
+        <h2 className="font-display text-4xl md:text-[3.5rem] text-foreground mb-16 tracking-[-0.02em] uppercase">
           Everything you need to <span className="text-primary">own the executive conversation.</span>
         </h2>
 
@@ -40,26 +40,35 @@ const BentoFeatures = () => {
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardHoverStyle; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = cardStyle.boxShadow; }}
           >
-            <div className="h-36 mb-6 rounded-xl overflow-hidden p-5 flex flex-col justify-between" style={{ background: 'rgba(0,0,0,0.35)' }}>
+            <div className="h-44 mb-6 rounded-xl overflow-hidden p-5 flex flex-col gap-3" style={{ background: 'rgba(0,0,0,0.35)' }}>
+              {/* Quote row */}
               <div className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold" style={{ background: 'rgba(129,89,212,0.2)', color: '#8159d4' }}>CFO</div>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold" style={{ background: 'rgba(129,89,212,0.2)', color: '#8159d4' }}>CFO</div>
+                <p className="text-[11px] text-foreground leading-relaxed italic pt-1">"Our priority is margin recovery without sacrificing AI infrastructure investment."</p>
+              </div>
+              {/* Attribution */}
+              <div className="flex items-center gap-2.5 pl-11">
+                <div className="w-5 h-5 rounded-full flex items-center justify-center text-[8px] font-bold flex-shrink-0" style={{ background: 'rgba(129,89,212,0.15)', color: '#C4A8FF' }}>JS</div>
                 <div>
-                  <p className="text-[11px] text-foreground leading-relaxed italic">"Our priority is margin recovery without sacrificing AI infrastructure investment."</p>
+                  <p className="text-[11px] text-foreground font-semibold leading-none">John Smith</p>
+                  <p className="text-[10px] text-text-tertiary leading-none mt-0.5">CFO · Company Inc.</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 mt-2">
+              {/* Divider */}
+              <div className="flex items-center gap-2">
                 <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
                 <span className="text-[9px] font-mono text-text-tertiary uppercase tracking-wider">Q3 Earnings Call · Board Member</span>
                 <div className="h-px flex-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
               </div>
+              {/* Tags */}
               <div className="flex gap-2">
                 {['NVIDIA', 'Investor Letter', 'Q3 Priority'].map(tag => (
                   <span key={tag} className="text-[9px] font-mono px-2 py-0.5 rounded" style={{ background: 'rgba(129,89,212,0.15)', color: '#8159d4' }}>{tag}</span>
                 ))}
               </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Executive Intelligence</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
+            <h3 className="font-body text-foreground font-semibold text-xl mb-2">Executive Intelligence</h3>
+            <p className="text-text-secondary text-base leading-relaxed">
               C-suite quotes, board priorities, investor communications. Know what keeps them up at night, and show up with a point of view on how to fix it. Before anyone else does.
             </p>
           </div>
@@ -101,8 +110,8 @@ const BentoFeatures = () => {
                 <text x="253" y="98" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="7.5" fontFamily="monospace">Challenges</text>
               </svg>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Deal Maps</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
+            <h3 className="font-body text-foreground font-semibold text-xl mb-2">Deal Maps</h3>
+            <p className="text-text-secondary text-base leading-relaxed">
               An interactive map of everything the account cares about: priorities, pressures, strategic bets, visualized so you can find your thesis before you write a single word. See the whole board before you make your move.
             </p>
           </div>
@@ -153,8 +162,8 @@ const BentoFeatures = () => {
                 <div className="h-full rounded-full w-[84%]" style={{ background: 'linear-gradient(90deg, #8159d4, #6443A8)' }} />
               </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Account Audio Briefings</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
+            <h3 className="font-body text-foreground font-semibold text-xl mb-2">Account Audio Briefings</h3>
+            <p className="text-text-secondary text-base leading-relaxed">
               Every account, distilled into a 3-minute audio briefing generated from earnings calls, investor days, and filings. Understand the financial narrative on your commute. Walk in knowing more than the room expects.
             </p>
           </div>
@@ -194,8 +203,8 @@ const BentoFeatures = () => {
                 <span className="text-xs font-mono text-text-tertiary">7,500+ companies worldwide</span>
               </div>
             </div>
-            <h3 className="font-body text-foreground font-semibold text-lg mb-2">Global Coverage</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">
+            <h3 className="font-body text-foreground font-semibold text-xl mb-2">Global Coverage</h3>
+            <p className="text-text-secondary text-base leading-relaxed">
               7,500+ public and private companies across every global market. The accounts your competitors can't research: HSBC, Revolut, Stripe, Monzo. Now fully covered. Your territory just got a lot bigger.
             </p>
           </div>

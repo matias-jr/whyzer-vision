@@ -52,17 +52,17 @@ const HeroSection = () => {
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 60% 45%, rgba(100,67,168,0.28) 0%, transparent 70%)', zIndex: 1 }} />
 
       <div className="relative z-10 text-center px-6 max-w-[800px] mx-auto pb-28">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-6">
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-6">
           The Financial Narrative Platform for B2B Sales
         </p>
 
-        <h1 className="font-display text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
+        <h1 className="font-display text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] leading-[1.08] tracking-[-0.02em] text-foreground mb-6 uppercase">
           <span className="md:whitespace-nowrap">Read the Financial Story.</span>
           <br />
           <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">Write the Sales Story.</span>
         </h1>
 
-        <p className="font-body text-base md:text-lg lg:text-xl text-text-secondary max-w-[680px] mx-auto leading-[1.7] mb-10">
+        <p className="font-body text-lg md:text-xl lg:text-2xl text-text-secondary max-w-[720px] mx-auto leading-[1.65] mb-10">
           Whyzer turns SEC filings, earnings calls, and financial data into boardroom-ready Points of View in minutes. Now covering 7,500+ public and private companies across every global market, so you can walk into any executive room in the world with a financial narrative they didn't expect.
         </p>
         <p style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>
@@ -72,20 +72,20 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <a
             href="#pricing"
-            className="inline-flex items-center justify-center text-white font-bold text-base px-6 h-12 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_28px_rgba(129,89,212,0.6)] active:scale-[0.98]"
+            className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_28px_rgba(129,89,212,0.6)] active:scale-[0.98]"
             style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
           >
-            Get Your First POV Free
+            Get Whyzer
           </a>
           <a
             href="#how-it-works"
-            className="inline-flex items-center justify-center border border-foreground/[0.12] text-foreground font-medium text-base px-6 h-12 rounded-lg hover:border-foreground/[0.2] transition-all duration-200"
+            className="inline-flex items-center justify-center border border-foreground/[0.12] text-foreground font-medium text-lg px-8 h-14 rounded-lg hover:border-foreground/[0.2] transition-all duration-200"
           >
             See How Whyzer Works →
           </a>
         </div>
 
-        <div className="flex items-center justify-center gap-2 text-text-secondary text-[13px]">
+        <div className="flex items-center justify-center gap-2 text-text-secondary text-[15px]">
           <div className="flex">
             {[...Array(5)].map((_, i) => (
               <Star key={i} size={14} className="fill-primary text-primary" />
