@@ -63,8 +63,21 @@ const Newsletter = () => {
         payload?.action === 'submit' ||
         (typeof payload?.message === 'string' && payload.message.toLowerCase().includes('submit'));
 
-      if (isSubmit && typeof (window as any).lintrk === 'function') {
-        (window as any).lintrk('track', { conversion_id: 27310609 });
+      if (isSubmit) {
+        // Client-side Insight Tag event
+        if (typeof (window as any).lintrk === 'function') {
+          (window as any).lintrk('track', { conversion_id: 27310609 });
+        }
+        // Server-side CAPI event (newsletter subscription)
+        const match = document.cookie.split('; ').find(row => row.startsWith('li_fat_id='));
+        const li_fat_id = match ? match.split('=')[1] : null;
+        if (li_fat_id) {
+          fetch('/api/track-newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ li_fat_id }),
+          }).catch(() => {});
+        }
       }
     };
 
