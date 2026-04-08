@@ -35,6 +35,43 @@ const Newsletter = () => {
     };
   }, []);
 
+  // LinkedIn conversion tracking for the GHL-embedded newsletter form.
+  // Because the submit button lives inside a cross-origin iframe we can't
+  // attach a click handler directly. GHL's embed script broadcasts a
+  // postMessage to the parent window when the form is submitted — we listen
+  // for that here and fire the LinkedIn event tracker.
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      // Only process messages that originate from GHL / msgsndr domains.
+      if (
+        typeof event.origin === 'string' &&
+        !event.origin.includes('msgsndr.com') &&
+        !event.origin.includes('gohighlevel.com') &&
+        !event.origin.includes('leadconnectorhq.com')
+      ) return;
+
+      const data = event.data;
+      if (!data) return;
+
+      // GHL can send the payload as a string or object depending on version.
+      const payload = typeof data === 'string' ? (() => { try { return JSON.parse(data); } catch { return {}; } })() : data;
+
+      const isSubmit =
+        payload?.type === 'form_submitted' ||
+        payload?.event === 'form_submitted' ||
+        payload?.type === 'submit' ||
+        payload?.action === 'submit' ||
+        (typeof payload?.message === 'string' && payload.message.toLowerCase().includes('submit'));
+
+      if (isSubmit && typeof (window as any).lintrk === 'function') {
+        (window as any).lintrk('track', { conversion_id: 27310609 });
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
 
