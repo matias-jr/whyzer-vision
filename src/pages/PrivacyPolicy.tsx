@@ -46,13 +46,13 @@ const PrivacyPolicy = () => (
         <h1 className="font-display text-[2rem] md:text-[2.6rem] text-foreground leading-[1.2] tracking-[-0.02em] uppercase mb-4">
           Privacy Policy
         </h1>
-        <p className="text-text-secondary text-sm">Whyzer, Inc. · Last Updated: April 2026</p>
+        <p className="text-text-secondary text-sm">Whyzer · Last Updated: April 2026</p>
       </div>
 
       <Section title="What This Is">
         <P>
           This Privacy Policy explains what information Whyzer collects, how it's used, and what your rights are. If you have questions, contact us at{' '}
-          <a href="mailto:privacy@whyzer.ai" className="text-primary hover:underline">privacy@whyzer.ai</a>.
+          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
         </P>
         <P>By using whyzer.ai or any Whyzer product, you agree to this policy.</P>
       </Section>
@@ -115,7 +115,7 @@ const PrivacyPolicy = () => (
         ]} />
         <P>
           To exercise any of these rights, email{' '}
-          <a href="mailto:privacy@whyzer.ai" className="text-primary hover:underline">privacy@whyzer.ai</a>.
+          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
           {' '}We will respond within 30 days.
         </P>
         <P><span className="text-foreground font-semibold">For EU/UK residents:</span> Whyzer processes data under legitimate interest and contract performance as the primary legal bases. You have rights under GDPR including the right to lodge a complaint with your local supervisory authority.</P>
@@ -133,8 +133,8 @@ const PrivacyPolicy = () => (
 
       <Section title="Children">
         <P>
-          Whyzer is not directed at anyone under 16. We do not knowingly collect data from minors. If you believe a minor has provided us with personal data, contact us at{' '}
-          <a href="mailto:privacy@whyzer.ai" className="text-primary hover:underline">privacy@whyzer.ai</a>
+          Whyzer is not directed at anyone under 18. We do not knowingly collect data from minors. If you believe a minor has provided us with personal data, contact us at{' '}
+          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>
           {' '}and we will delete it.
         </P>
       </Section>
