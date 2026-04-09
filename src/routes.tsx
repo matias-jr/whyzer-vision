@@ -1,0 +1,21 @@
+import type { RouteObject } from 'react-router-dom';
+import App from './App';
+import Index from './pages/Index';
+import Newsletter from './pages/Newsletter';
+import LiveSession from './pages/LiveSession';
+import LiveSessionConfirmed from './pages/LiveSessionConfirmed';
+import NotFound from './pages/NotFound';
+
+export const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      { index: true, element: <Index /> },
+      { path: 'newsletter', element: <Newsletter /> },
+      { path: 'live-session', element: <LiveSession /> },
+      { path: 'live-session-confirmed', element: <LiveSessionConfirmed /> },
+      { path: '*', element: <NotFound /> },
+    ],
+  },
+];
