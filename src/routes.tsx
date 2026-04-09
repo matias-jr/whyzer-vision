@@ -5,6 +5,7 @@ import Newsletter from './pages/Newsletter';
 import LiveSession from './pages/LiveSession';
 import LiveSessionConfirmed from './pages/LiveSessionConfirmed';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 import NotFound from './pages/NotFound';
 
 export const routes: RouteObject[] = [
@@ -17,6 +18,7 @@ export const routes: RouteObject[] = [
       { path: 'live-session', element: <LiveSession /> },
       { path: 'live-session-confirmed', element: <LiveSessionConfirmed /> },
       { path: 'privacy-policy', element: <PrivacyPolicy /> },
+      { path: 'terms-and-conditions', element: <TermsAndConditions /> },
       { path: '*', element: <NotFound /> },
     ],
   },

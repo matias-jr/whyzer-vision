@@ -12,9 +12,9 @@ const footerLinks = {
     { label: 'Newsletter', href: '/newsletter' },
   ],
   Company: [
-    { label: 'Contact', href: 'mailto:sales@whyzer.ai' },
+    { label: 'Contact', href: 'mailto:info@whyzer.ai' },
     { label: 'Privacy Policy', href: '/privacy-policy' },
-    { label: 'Terms of Service', href: '#' },
+    { label: 'Terms of Service', href: '/terms-and-conditions' },
     { label: 'Members Area', href: 'https://members.whyzer.ai/login' },
   ],
 };
