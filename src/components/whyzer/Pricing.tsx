@@ -15,6 +15,8 @@ type Currency = { symbol: string; yearSuffix: string };
 const CURRENCIES: Record<string, Currency> = {
   GBP: { symbol: '£', yearSuffix: '/year' },
   EUR: { symbol: '€', yearSuffix: '/year' },
+  CAD: { symbol: 'CA$', yearSuffix: '/year' },
+  AUD: { symbol: 'AU$', yearSuffix: '/year' },
   USD: { symbol: '$', yearSuffix: '/year' },
 };
 
@@ -31,6 +33,8 @@ const Pricing = () => {
         const code: string = data.country_code ?? '';
         if (code === 'GB') { setCurrency(CURRENCIES.GBP); setRegionSuffix('-uk'); }
         else if (EU_COUNTRIES.has(code)) { setCurrency(CURRENCIES.EUR); setRegionSuffix('-eu'); }
+        else if (code === 'CA') { setCurrency(CURRENCIES.CAD); setRegionSuffix('-ca'); }
+        else if (code === 'AU') { setCurrency(CURRENCIES.AUD); setRegionSuffix('-au'); }
         // else stays USD with no suffix
       })
       .catch(() => {/* silently keep USD */});
