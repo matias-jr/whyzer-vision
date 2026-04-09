@@ -56,7 +56,7 @@ const HeroSection = () => {
           The Financial Narrative Platform for B2B Sales
         </p>
 
-        <h1 className="font-display text-[34px] sm:text-[44px] md:text-[58px] lg:text-[74px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
+        <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
           <span className="md:whitespace-nowrap">Read the Financial Story.</span>
           <br />
           <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">Write the Sales Story.</span>

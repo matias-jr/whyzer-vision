@@ -150,7 +150,7 @@ const Testimonials = () => {
     <section ref={sectionRef} className="py-24 lg:py-32 overflow-hidden bg-background-secondary">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-12 mb-12">
         <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4">What Elite Sellers Say</p>
-        <h2 className="font-display text-3xl md:text-[2.75rem] text-foreground tracking-[-0.02em] leading-[1.25] uppercase">
+        <h2 className="font-display text-[1.6rem] md:text-[2.35rem] text-foreground tracking-[-0.02em] leading-[1.25] uppercase">
           Don't take our word for it.
         </h2>
       </div>
