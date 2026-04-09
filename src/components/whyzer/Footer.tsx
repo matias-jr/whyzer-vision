@@ -16,6 +16,7 @@ const footerLinks = {
     { label: 'Contact', href: 'mailto:sales@whyzer.ai' },
     { label: 'Privacy Policy', href: '#' },
     { label: 'Terms of Service', href: '#' },
+    { label: 'Members Area', href: 'https://members.whyzer.ai/login' },
   ],
 };
 
