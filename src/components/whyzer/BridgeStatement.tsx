@@ -20,8 +20,6 @@ const BridgeStatement = () => {
       <div className="max-w-[980px] mx-auto text-center relative">
         <p className="font-display text-[1.5rem] sm:text-[1.9rem] md:text-[2.4rem] lg:text-[3rem] text-foreground leading-[1.35] tracking-[-0.02em] uppercase">
           Anyone can find the data.<br />
-          Whyzer tells you what it means -<br />
-          and gives you the story that<br />
           <span
             style={{
               backgroundImage: 'linear-gradient(135deg, #C4A8FF, #8159d4)',
@@ -30,7 +28,7 @@ const BridgeStatement = () => {
               backgroundClip: 'text',
             }}
           >
-            99% of sellers could never construct on their own
+            Whyzer turns it into a conversation no other seller is having.
           </span>
         </p>
       </div>

@@ -69,7 +69,7 @@ const Pricing = () => {
       <div className="max-w-[1100px] mx-auto">
         <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-4 text-center">Pricing</p>
         <h2 className="font-display text-[1.6rem] md:text-[2.35rem] text-foreground mb-8 tracking-[-0.02em] leading-[1.25] text-center uppercase">
-          Less than one lost deal. <span className="text-primary">More than what you're spending to get ghosted.</span>
+          Less than one lost deal. <br></><span className="text-primary">More than what you're spending to get ghosted.</span>
         </h2>
 
         <p className="text-text-secondary text-base leading-relaxed text-center max-w-[700px] mx-auto mb-10">
