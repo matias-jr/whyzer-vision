@@ -51,13 +51,13 @@ const HeroSection = () => {
       {/* Purple ambient glow */}
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 60% 45%, rgba(100,67,168,0.28) 0%, transparent 70%)', zIndex: 1 }} />
 
-      <div className="relative z-10 text-center px-6 max-w-[800px] mx-auto pb-28">
+      <div className="relative z-10 text-center px-6 max-w-[1000px] mx-auto pb-28">
         <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-6">
           Read the Financial Story. Write the Sales Story.
         </p>
 
         <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
-          The Financial Narrative Platform<br /><span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">for B2B Sellers</span>
+          <span className="md:whitespace-nowrap">The Financial Narrative Platform</span><br /><span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">for B2B Sellers</span>
         </h1>
 
         <p className="font-body text-base md:text-lg lg:text-xl text-text-secondary max-w-[680px] mx-auto leading-[1.7] mb-10">
