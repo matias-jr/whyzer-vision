@@ -57,9 +57,9 @@ const HeroSection = () => {
         </p>
 
         <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.2] tracking-[-0.02em] mb-8 uppercase">
-          <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent md:whitespace-nowrap">Walk into any executive room</span>
+          <span className="text-foreground md:whitespace-nowrap">Walk into any executive room</span>
           <br />
-          <span className="text-foreground md:whitespace-nowrap">with a narrative they didn't expect.</span>
+          <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent md:whitespace-nowrap">with a narrative they didn't expect. </span>
         </h1>
 
         <p className="font-display text-lg md:text-xl lg:text-2xl text-foreground mb-8">
@@ -96,6 +96,7 @@ const HeroSection = () => {
             See How Whyzer Works →
           </a>
         </div>
+      </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
         <ChevronDown size={20} className="text-text-tertiary animate-pulse-down" />
