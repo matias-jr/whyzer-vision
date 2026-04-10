@@ -11,6 +11,14 @@ const HeroSection = () => {
   const [transform, setTransform] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://player.vimeo.com/api/player.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => { if (document.body.contains(script)) document.body.removeChild(script); };
+  }, []);
+
+  useEffect(() => {
     const smooth = { x: 0, y: 0 };
     let target = { x: 0, y: 0 };
     let raf: number;
@@ -52,21 +60,35 @@ const HeroSection = () => {
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 60% 45%, rgba(100,67,168,0.28) 0%, transparent 70%)', zIndex: 1 }} />
 
       <div className="relative z-10 text-center px-6 max-w-[1000px] mx-auto pb-28">
-        <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-8">
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-5">
           Read the Financial Story. Write the Sales Story.
         </p>
 
-        <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.2] tracking-[-0.02em] mb-8 uppercase">
+        <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.2] tracking-[-0.02em] mb-5 uppercase">
           <span className="text-foreground md:whitespace-nowrap">Walk into any executive room</span>
           <br />
           <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent md:whitespace-nowrap">with a narrative they didn't expect. </span>
         </h1>
 
-        <p className="font-display text-lg md:text-xl lg:text-2xl text-foreground mb-8">
+        <p className="font-display text-lg md:text-xl lg:text-2xl text-foreground mb-6">
           Boardroom-ready Points of View in under 2 minutes.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+        {/* Vimeo VSL */}
+        <div className="w-full max-w-[560px] mx-auto mb-6 rounded-xl overflow-hidden" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.5)', border: '1px solid rgba(129,89,212,0.15)' }}>
+          <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+            <iframe
+              src="https://player.vimeo.com/video/1171372316?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+              title="Whyzer – VSL"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
           {['SEC filings + earnings calls', '7,500+ companies', '150+ markets worldwide'].map((pill) => (
             <span key={pill} className="px-4 py-1.5 rounded-full text-sm font-mono text-primary" style={{ background: 'rgba(129,89,212,0.12)', border: '1px solid rgba(129,89,212,0.2)' }}>
               {pill}
@@ -74,7 +96,7 @@ const HeroSection = () => {
           ))}
         </div>
 
-        <p className="font-body text-base md:text-lg text-text-secondary max-w-[580px] mx-auto leading-[1.7] mb-12">
+        <p className="font-body text-base md:text-lg text-text-secondary max-w-[580px] mx-auto leading-[1.7] mb-8">
           Whyzer turns public financial data into structured, executive-grade POVs so you can sell from insight, not instinct.
         </p>
         <p style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>
