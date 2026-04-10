@@ -253,6 +253,7 @@ const Pricing = () => {
             </ul>
             <a
               href="https://api.leadconnectorhq.com/widget/bookings/whyzer-for-sales-leaders"
+              target="_top"
               className="block w-full py-3 rounded-lg border text-foreground font-semibold text-center transition-all duration-200 text-sm"
               style={{ borderColor: 'rgba(129,89,212,0.3)', background: 'rgba(129,89,212,0.08)' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.18)'; }}

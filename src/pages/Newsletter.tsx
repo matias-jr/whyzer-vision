@@ -201,7 +201,7 @@ const Newsletter = () => {
 
       {/* ── Logo ── */}
       <header className="nl-logo relative flex justify-center pt-10 pb-4" style={{ zIndex: 1 }}>
-        <a href="https://www.whyzer.ai" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
+        <a href="/" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
           <img
             src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
             alt="Whyzer"

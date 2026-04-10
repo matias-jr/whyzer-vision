@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Features', href: 'https://www.whyzer.ai/#features' },
-  { label: 'How It Works', href: 'https://www.whyzer.ai/#how-it-works' },
-  { label: 'Pricing', href: 'https://www.whyzer.ai/#pricing' },
-  { label: 'The Vault', href: 'https://www.whyzer.ai/#vault' },
-  { label: 'Newsletter', href: 'https://www.whyzer.ai/newsletter' },
+  { label: 'Features', href: '#features' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'The Vault', href: '#vault' },
+  { label: 'Newsletter', href: '/newsletter' },
 ];
 
 const Navigation = () => {
@@ -30,7 +30,7 @@ const Navigation = () => {
           boxShadow: scrolled ? '0 1px 0 rgba(255,255,255,0.05), 0 4px 20px rgba(0,0,0,0.4)' : 'none',
         }}
       >
-        <a href="https://www.whyzer.ai" className="flex items-center">
+        <a href="https://www.whyzer.ai" target="_top" className="flex items-center">
           <img
             src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
             alt="Whyzer"
@@ -58,11 +58,11 @@ const Navigation = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-4">
-          <a href="https://app.whyzer.ai/login" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
+          <a href="https://app.whyzer.ai/login" target="_top" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
             Log In
           </a>
           <a
-            href="https://www.whyzer.ai/#pricing"
+            href="#pricing"
             className="text-sm font-bold text-white px-4 py-2 rounded-md hover:brightness-110 transition-all duration-200"
             style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
           >
@@ -96,13 +96,14 @@ const Navigation = () => {
           ))}
           <a
             href="https://app.whyzer.ai/login"
+            target="_top"
             className="text-lg text-text-secondary hover:text-foreground transition-colors"
             onClick={() => setMobileOpen(false)}
           >
             Log In
           </a>
           <a
-            href="https://www.whyzer.ai/#pricing"
+            href="#pricing"
             className="text-lg font-bold text-white px-8 py-3 rounded-md"
             style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
             onClick={() => setMobileOpen(false)}

@@ -52,7 +52,7 @@ const NotFound = () => {
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
         <a
-          href="https://www.whyzer.ai"
+          href="/"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 hover:brightness-110"
           style={{ background: 'rgba(129,89,212,0.85)', color: '#fff' }}
         >
@@ -60,6 +60,7 @@ const NotFound = () => {
         </a>
         <a
           href="https://app.whyzer.ai/"
+          target="_top"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200"
           style={{ color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.1)' }}
         >
@@ -67,6 +68,7 @@ const NotFound = () => {
         </a>
         <a
           href="https://members.whyzer.ai/login"
+          target="_top"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200"
           style={{ color: 'rgba(255,255,255,0.7)', border: '1px solid rgba(255,255,255,0.1)' }}
         >

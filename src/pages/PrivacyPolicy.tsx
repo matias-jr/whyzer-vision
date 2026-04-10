@@ -25,14 +25,14 @@ const PrivacyPolicy = () => (
 
     {/* Header */}
     <header className="border-b border-foreground/[0.06] px-6 lg:px-12 py-5 flex items-center justify-between">
-      <a href="https://www.whyzer.ai" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
+      <a href="/" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
         <img
           src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
           alt="Whyzer"
           className="h-7"
         />
       </a>
-      <a href="https://www.whyzer.ai" className="text-sm text-text-secondary hover:text-foreground transition-colors duration-200">
+      <a href="/" className="text-sm text-text-secondary hover:text-foreground transition-colors duration-200">
         ← Back to Whyzer
       </a>
     </header>
