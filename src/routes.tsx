@@ -19,6 +19,7 @@ export const routes: RouteObject[] = [
       { path: 'live-session-confirmed', element: <LiveSessionConfirmed /> },
       { path: 'privacy-policy', element: <PrivacyPolicy /> },
       { path: 'terms-and-conditions', element: <TermsAndConditions /> },
+      { path: '404', element: <NotFound /> },
       { path: '*', element: <NotFound /> },
     ],
   },
