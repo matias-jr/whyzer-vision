@@ -53,13 +53,11 @@ const HeroSection = () => {
 
       <div className="relative z-10 text-center px-6 max-w-[800px] mx-auto pb-28">
         <p className="font-mono text-sm uppercase tracking-[0.15em] text-primary mb-6">
-          The Financial Narrative Platform for B2B Sales
+          Read the Financial Story. Write the Sales Story.
         </p>
 
         <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
-          <span className="md:whitespace-nowrap">Read the Financial Story.</span>
-          <br />
-          <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">Write the Sales Story.</span>
+          The Financial Narrative Platform <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">for B2B Sales</span>
         </h1>
 
         <p className="font-body text-base md:text-lg lg:text-xl text-text-secondary max-w-[680px] mx-auto leading-[1.7] mb-10">
