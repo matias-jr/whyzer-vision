@@ -71,14 +71,14 @@ const HeroSection = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <a
-            href="#pricing"
+            href="https://www.whyzer.ai/#pricing"
             className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_28px_rgba(129,89,212,0.6)] active:scale-[0.98]"
             style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
           >
             Get Whyzer
           </a>
           <a
-            href="#how-it-works"
+            href="https://www.whyzer.ai/#how-it-works"
             className="inline-flex items-center justify-center border border-foreground/[0.12] text-foreground font-medium text-lg px-8 h-14 rounded-lg hover:border-foreground/[0.2] transition-all duration-200"
           >
             See How Whyzer Works →

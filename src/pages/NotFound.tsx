@@ -52,7 +52,7 @@ const NotFound = () => {
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
         <a
-          href="/"
+          href="https://www.whyzer.ai"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 hover:brightness-110"
           style={{ background: 'rgba(129,89,212,0.85)', color: '#fff' }}
         >

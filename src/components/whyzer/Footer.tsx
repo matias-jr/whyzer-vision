@@ -1,20 +1,20 @@
 const footerLinks = {
   Product: [
-    { label: 'Features', href: '#features' },
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'The Vault', href: '#vault' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'Features', href: 'https://www.whyzer.ai/#features' },
+    { label: 'How It Works', href: 'https://www.whyzer.ai/#how-it-works' },
+    { label: 'The Vault', href: 'https://www.whyzer.ai/#vault' },
+    { label: 'Pricing', href: 'https://www.whyzer.ai/#pricing' },
   ],
   Resources: [
     { label: 'Whyzer Academy', href: 'https://subscribe.whyzer.ai/academy-registration' },
     { label: 'Help Center', href: 'http://intercom.help/whyzerai/en' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Newsletter', href: '/newsletter' },
+    { label: 'FAQ', href: 'https://www.whyzer.ai/#faq' },
+    { label: 'Newsletter', href: 'https://www.whyzer.ai/newsletter' },
   ],
   Company: [
     { label: 'Contact', href: 'mailto:info@whyzer.ai' },
-    { label: 'Privacy Policy', href: '/privacy-policy' },
-    { label: 'Terms of Service', href: '/terms-and-conditions' },
+    { label: 'Privacy Policy', href: 'https://www.whyzer.ai/privacy-policy' },
+    { label: 'Terms of Service', href: 'https://www.whyzer.ai/terms-and-conditions' },
     { label: 'Members Area', href: 'https://members.whyzer.ai/login' },
   ],
 };
@@ -23,7 +23,7 @@ const Footer = () => (
   <footer className="border-t border-foreground/[0.06] py-16 px-6 lg:px-12 bg-background">
     <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
       <div className="col-span-2 md:col-span-1">
-        <a href="#" className="inline-block mb-4">
+        <a href="https://www.whyzer.ai" className="inline-block mb-4">
           <img
             src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
             alt="Whyzer"
