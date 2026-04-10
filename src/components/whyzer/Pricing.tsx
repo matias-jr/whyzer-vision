@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Check, Diamond } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const EU_COUNTRIES = new Set([
