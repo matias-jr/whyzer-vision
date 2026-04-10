@@ -14,7 +14,7 @@ const FinalCTA = () => {
     >
       <div className="max-w-[640px] mx-auto text-center">
         <h2 className="font-display text-[1.9rem] md:text-[2.5rem] text-foreground leading-[1.2] tracking-[-0.02em] mb-6 uppercase">
-          Someone's getting to your CFO this week. <span className="text-primary">Make it you.</span>
+          Someone's getting to your customer's CFO this week. <span className="text-primary">Make it you.</span>
         </h2>
         <p className="text-text-secondary text-lg leading-relaxed mb-10">
           Join the Whyzer Community. Show up to every executive meeting with a financial narrative that moves the deal, not a product pitch that gets you delegated down.
