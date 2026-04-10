@@ -56,12 +56,26 @@ const HeroSection = () => {
           Read the Financial Story. Write the Sales Story.
         </p>
 
-        <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.1] tracking-[-0.02em] text-foreground mb-6 uppercase">
-          <span className="md:whitespace-nowrap">The Financial Narrative Platform</span><br /><span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">for B2B Sellers</span>
+        <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.1] tracking-[-0.02em] mb-6 uppercase">
+          <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent md:whitespace-nowrap">Walk into any executive room</span>
+          <br />
+          <span className="text-foreground md:whitespace-nowrap">with a narrative they didn't expect.</span>
         </h1>
 
-        <p className="font-body text-base md:text-lg lg:text-xl text-text-secondary max-w-[680px] mx-auto leading-[1.7] mb-10">
-          Whyzer turns SEC filings, earnings calls, and financial data into boardroom-ready Points of View in minutes. Now covering 7,500+ public and private companies across every global market, so you can walk into any executive room in the world with a financial narrative they didn't expect.
+        <p className="font-display text-lg md:text-xl lg:text-2xl text-foreground mb-6">
+          Boardroom-ready Points of View — in under 2 minutes.
+        </p>
+
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+          {['SEC filings + earnings calls', '7,500+ companies', '150+ markets worldwide'].map((pill) => (
+            <span key={pill} className="px-4 py-1.5 rounded-full text-sm font-mono text-primary" style={{ background: 'rgba(129,89,212,0.12)', border: '1px solid rgba(129,89,212,0.2)' }}>
+              {pill}
+            </span>
+          ))}
+        </div>
+
+        <p className="font-body text-base md:text-lg text-text-secondary max-w-[580px] mx-auto leading-[1.7] mb-10">
+          Whyzer turns public financial data into structured, executive-grade POVs — so you can sell from insight, not instinct.
         </p>
         <p style={{ position: 'absolute', width: '1px', height: '1px', overflow: 'hidden', clip: 'rect(0,0,0,0)' }}>
           Whyzer is a financial narrative platform that turns SEC filings, earnings calls, and financial data into executive-ready Points of View for B2B sales reps.

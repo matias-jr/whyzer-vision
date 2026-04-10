@@ -20,7 +20,7 @@ const BridgeStatement = () => {
       <div className="max-w-[980px] mx-auto text-center relative">
         <p className="font-display text-[1.5rem] sm:text-[1.9rem] md:text-[2.4rem] lg:text-[3rem] text-foreground leading-[1.35] tracking-[-0.02em] uppercase">
           Anyone can find the data.<br />
-          <span className="text-primary">Whyzer tells you what it means -</span><br />
+          Whyzer tells you what it means -<br />
           and gives you the story that<br />
           <span
             style={{
