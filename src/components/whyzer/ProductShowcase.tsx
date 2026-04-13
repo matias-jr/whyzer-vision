@@ -79,11 +79,11 @@ const ProductShowcase = () => {
                     ? 'border-l-[2px] border-primary'
                     : 'border-l-[2px] border-foreground/[0.08] hover:border-foreground/[0.2]'
                 }`}
-                style={{ background: activeTab === tab.id ? 'rgba(100,67,168,0.07)' : 'transparent' }}
+                style={{ background: activeTab === tab.id ? 'rgba(67,67,168,0.07)' : 'transparent' }}
               >
                 <span
                   className="font-mono text-xs font-bold mt-0.5 flex-shrink-0 w-6 transition-colors duration-200"
-                  style={{ color: activeTab === tab.id ? '#8159d4' : 'rgba(255,255,255,0.25)' }}
+                  style={{ color: activeTab === tab.id ? '#5959D4' : 'rgba(255,255,255,0.25)' }}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>

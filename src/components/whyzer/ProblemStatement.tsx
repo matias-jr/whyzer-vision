@@ -29,7 +29,7 @@ const ProblemStatement = () => {
   return (
     <section ref={sectionRef} className="py-24 lg:py-32 px-6 lg:px-12 relative overflow-hidden" style={{ background: '#0A0A0A' }}>
       {/* Purple radial glow */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 85% 50%, rgba(40,24,73,0.85) 0%, rgba(100,67,168,0.12) 45%, transparent 70%)' }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 85% 50%, rgba(40,24,73,0.85) 0%, rgba(67,67,168,0.12) 45%, transparent 70%)' }} />
       <div className="max-w-[900px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 relative">
         <div className="lg:w-[40%]">
           <p className="font-display text-[1.6rem] md:text-[2.2rem] text-foreground leading-[1.35] uppercase">

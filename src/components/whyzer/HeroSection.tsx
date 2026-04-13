@@ -57,13 +57,13 @@ const HeroSection = () => {
       </div>
 
       {/* Purple ambient glow */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 60% 45%, rgba(100,67,168,0.28) 0%, transparent 70%)', zIndex: 1 }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 70% at 60% 45%, rgba(67,67,168,0.28) 0%, transparent 70%)', zIndex: 1 }} />
 
       <div className="relative z-10 text-center px-6 max-w-[1000px] mx-auto pb-28">
         <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.2] tracking-[-0.02em] mb-5 uppercase">
           <span className="text-foreground md:whitespace-nowrap">Walk into any executive room</span>
           <br />
-          <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent md:whitespace-nowrap">with a narrative they didn't expect. </span>
+          <span className="bg-gradient-to-br from-[#A8A8FF] to-[#4343A8] bg-clip-text text-transparent md:whitespace-nowrap">with a narrative they didn't expect. </span>
         </h1>
 
         <p className="font-display text-lg md:text-xl lg:text-2xl text-foreground mb-6">
@@ -71,7 +71,7 @@ const HeroSection = () => {
         </p>
 
         {/* Vimeo VSL */}
-        <div className="w-full max-w-[560px] mx-auto mb-6 rounded-xl overflow-hidden" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.5)', border: '1px solid rgba(129,89,212,0.15)' }}>
+        <div className="w-full max-w-[560px] mx-auto mb-6 rounded-xl overflow-hidden" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.5)', border: '1px solid rgba(89,89,212,0.15)' }}>
           <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
             <iframe
               src="https://player.vimeo.com/video/1171372316?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1"
@@ -86,7 +86,7 @@ const HeroSection = () => {
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
           {['SEC filings + earnings calls', '7,500+ companies', '150+ markets worldwide'].map((pill) => (
-            <span key={pill} className="px-4 py-1.5 rounded-full text-sm font-mono text-primary" style={{ background: 'rgba(129,89,212,0.12)', border: '1px solid rgba(129,89,212,0.2)' }}>
+            <span key={pill} className="px-4 py-1.5 rounded-full text-sm font-mono text-primary" style={{ background: 'rgba(89,89,212,0.12)', border: '1px solid rgba(89,89,212,0.2)' }}>
               {pill}
             </span>
           ))}
@@ -102,8 +102,8 @@ const HeroSection = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <a
             href="#pricing"
-            className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_28px_rgba(129,89,212,0.6)] active:scale-[0.98]"
-            style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
+            className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_28px_rgba(89,89,212,0.6)] active:scale-[0.98]"
+            style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
           >
             Get Whyzer
           </a>

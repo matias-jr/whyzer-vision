@@ -28,7 +28,7 @@ const MarqueeCard = ({ quote, name, title, company }: Testimonial) => (
     <div className="flex items-center gap-3">
       <div
         className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
-        style={{ background: 'rgba(129,89,212,0.2)', color: '#C4A8FF' }}
+        style={{ background: 'rgba(89,89,212,0.2)', color: '#A8A8FF' }}
       >
         {name.charAt(0)}
       </div>
@@ -88,22 +88,22 @@ const MobileCarousel = () => {
               background: 'rgba(20,14,40,0.7)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
-              border: '1px solid rgba(129,89,212,0.18)',
+              border: '1px solid rgba(89,89,212,0.18)',
               boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
             }}
           >
             {/* Top accent line */}
-            <div className="absolute inset-x-0 top-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.6), transparent)' }} />
+            <div className="absolute inset-x-0 top-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(89,89,212,0.6), transparent)' }} />
             <div className="px-6 pt-8 pb-6">
               {/* Decorative quote */}
               <svg width="28" height="22" viewBox="0 0 28 22" fill="none" className="mb-4 opacity-40">
-                <path d="M0 22V13.2C0 5.9 4.5 1.5 13.4 0l1.2 2.2C9.3 3.4 6.8 6 6.5 10H11V22H0zm17 0V13.2C17 5.9 21.5 1.5 30.4 0l1.2 2.2C26.3 3.4 23.8 6 23.5 10H28V22H17z" fill="#8159d4"/>
+                <path d="M0 22V13.2C0 5.9 4.5 1.5 13.4 0l1.2 2.2C9.3 3.4 6.8 6 6.5 10H11V22H0zm17 0V13.2C17 5.9 21.5 1.5 30.4 0l1.2 2.2C26.3 3.4 23.8 6 23.5 10H28V22H17z" fill="#5959D4"/>
               </svg>
               <p className="text-foreground text-[15px] leading-[1.75] mb-6">{t.quote}</p>
               <div className="flex items-center gap-3">
                 <div
                   className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0"
-                  style={{ background: 'rgba(129,89,212,0.25)', color: '#C4A8FF' }}
+                  style={{ background: 'rgba(89,89,212,0.25)', color: '#A8A8FF' }}
                 >
                   {t.name.charAt(0)}
                 </div>
@@ -131,7 +131,7 @@ const MobileCarousel = () => {
             style={{
               width: active === i ? 20 : 6,
               height: 6,
-              background: active === i ? '#8159d4' : 'rgba(255,255,255,0.18)',
+              background: active === i ? '#5959D4' : 'rgba(255,255,255,0.18)',
             }}
             aria-label={`Go to testimonial ${i + 1}`}
           />
@@ -163,13 +163,13 @@ const Testimonials = () => {
             background: 'rgba(20,14,40,0.7)',
             backdropFilter: 'blur(16px)',
             WebkitBackdropFilter: 'blur(16px)',
-            border: '1px solid rgba(129,89,212,0.3)',
-            boxShadow: '0 8px 60px rgba(0,0,0,0.5), 0 0 60px rgba(100,67,168,0.15)',
+            border: '1px solid rgba(89,89,212,0.3)',
+            boxShadow: '0 8px 60px rgba(0,0,0,0.5), 0 0 60px rgba(67,67,168,0.15)',
           }}
         >
-          <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl" style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.7), transparent)' }} />
+          <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl" style={{ background: 'linear-gradient(90deg, transparent, rgba(89,89,212,0.7), transparent)' }} />
           <svg width="40" height="32" viewBox="0 0 28 22" fill="none" className="mb-6 opacity-40 mx-auto">
-            <path d="M0 22V13.2C0 5.9 4.5 1.5 13.4 0l1.2 2.2C9.3 3.4 6.8 6 6.5 10H11V22H0zm17 0V13.2C17 5.9 21.5 1.5 30.4 0l1.2 2.2C26.3 3.4 23.8 6 23.5 10H28V22H17z" fill="#8159d4"/>
+            <path d="M0 22V13.2C0 5.9 4.5 1.5 13.4 0l1.2 2.2C9.3 3.4 6.8 6 6.5 10H11V22H0zm17 0V13.2C17 5.9 21.5 1.5 30.4 0l1.2 2.2C26.3 3.4 23.8 6 23.5 10H28V22H17z" fill="#5959D4"/>
           </svg>
           <p className="text-foreground text-2xl md:text-3xl lg:text-4xl leading-[1.5] mb-8 font-display">
             "Awesome product. It's like OpenAI and Perplexity's deep research had a baby who gives a shit about enterprise selling."
@@ -177,7 +177,7 @@ const Testimonials = () => {
           <div className="flex items-center justify-center gap-4">
             <div
               className="w-12 h-12 rounded-full flex items-center justify-center text-base font-bold flex-shrink-0"
-              style={{ background: 'rgba(129,89,212,0.25)', color: '#C4A8FF' }}
+              style={{ background: 'rgba(89,89,212,0.25)', color: '#A8A8FF' }}
             >
               K
             </div>

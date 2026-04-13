@@ -165,7 +165,7 @@ const HowItWorks = () => {
                   className="absolute top-0 w-full rounded-full"
                   style={{
                     height: `${progress * 100}%`,
-                    background: 'linear-gradient(to bottom, #8159d4, #6443A8)',
+                    background: 'linear-gradient(to bottom, #5959D4, #4343A8)',
                     transition: 'height 0.05s linear',
                   }}
                 />
@@ -184,7 +184,7 @@ const HowItWorks = () => {
                     <div className="flex items-baseline gap-4 mb-2">
                       <span
                         className="font-mono text-sm font-bold"
-                        style={{ color: activeStep === i ? '#8159d4' : 'rgba(255,255,255,0.3)' }}
+                        style={{ color: activeStep === i ? '#5959D4' : 'rgba(255,255,255,0.3)' }}
                       >
                         {step.num}
                       </span>

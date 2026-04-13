@@ -64,7 +64,7 @@ const Navigation = () => {
           <a
             href="#pricing"
             className="text-sm font-bold text-white px-4 py-2 rounded-md hover:brightness-110 transition-all duration-200"
-            style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
+            style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
           >
             Start Now
           </a>
@@ -105,7 +105,7 @@ const Navigation = () => {
           <a
             href="#pricing"
             className="text-lg font-bold text-white px-8 py-3 rounded-md"
-            style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
+            style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
             onClick={() => setMobileOpen(false)}
           >
             Start Now

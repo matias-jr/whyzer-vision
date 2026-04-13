@@ -20,7 +20,7 @@ const TheVault = () => {
       className="py-24 lg:py-32 px-6 lg:px-12 relative overflow-hidden"
       style={{
         background: '#0A0A0A',
-        backgroundImage: 'radial-gradient(ellipse 70% 70% at 100% 100%, rgba(40,24,73,0.95) 0%, rgba(100,67,168,0.2) 40%, transparent 65%)',
+        backgroundImage: 'radial-gradient(ellipse 70% 70% at 100% 100%, rgba(40,24,73,0.95) 0%, rgba(67,67,168,0.2) 40%, transparent 65%)',
       }}
     >
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
@@ -51,14 +51,14 @@ const TheVault = () => {
                   style={{ background: '#171717', cursor: 'default', boxShadow: '0px 4px 16px rgba(0,0,0,0.5)', transition: 'background 0.25s, box-shadow 0.25s' }}
                   onMouseEnter={e => {
                     (e.currentTarget as HTMLElement).style.background = '#1a1a1a';
-                    (e.currentTarget as HTMLElement).style.boxShadow = '0px 12px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(129,89,212,0.3)';
+                    (e.currentTarget as HTMLElement).style.boxShadow = '0px 12px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(89,89,212,0.3)';
                   }}
                   onMouseLeave={e => {
                     (e.currentTarget as HTMLElement).style.background = '#171717';
                     (e.currentTarget as HTMLElement).style.boxShadow = '0px 4px 16px rgba(0,0,0,0.5)';
                   }}
                 >
-                  <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(129,89,212,0.15)' }}>
+                  <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(89,89,212,0.15)' }}>
                     <Icon size={14} className="text-primary" />
                   </div>
                   <span className="text-foreground text-base font-medium">{item.label}</span>
@@ -76,14 +76,14 @@ const TheVault = () => {
               background: 'rgba(255,255,255,0.04)',
               backdropFilter: 'blur(24px)',
               WebkitBackdropFilter: 'blur(24px)',
-              border: '1px solid rgba(129,89,212,0.25)',
-              boxShadow: '0px 32px 64px rgba(0,0,0,0.5), 0 0 40px rgba(100,67,168,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
+              border: '1px solid rgba(89,89,212,0.25)',
+              boxShadow: '0px 32px 64px rgba(0,0,0,0.5), 0 0 40px rgba(67,67,168,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
             }}
           >
             {/* Avatar */}
             <div
               className="w-20 h-20 rounded-full overflow-hidden mb-5 flex-shrink-0"
-              style={{ border: '1px solid rgba(129,89,212,0.3)' }}
+              style={{ border: '1px solid rgba(89,89,212,0.3)' }}
             >
               <img src="/jr_headshot.webp" alt="Jamal Reimer" className="w-full h-full object-cover" />
             </div>

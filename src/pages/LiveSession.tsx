@@ -46,7 +46,7 @@ const MinimalNav = () => (
 );
 
 const UrgencyStrip = () => (
-  <div className="relative overflow-hidden" style={{ background: '#8159d4', padding: '6px 0' }}>
+  <div className="relative overflow-hidden" style={{ background: '#5959D4', padding: '6px 0' }}>
     <div style={{ transform: 'rotate(-1.2deg)', padding: '10px 0' }}>
       <div className="animate-marquee flex whitespace-nowrap">
         {Array(10).fill(null).map((_, i) => (
@@ -80,13 +80,13 @@ const CtaButton = ({ children, large = false }: { children: React.ReactNode; lar
     href="#hero"
     className={`inline-flex items-center justify-center text-white font-display font-semibold uppercase tracking-[0.14em] rounded-lg hover:brightness-110 transition-all duration-200 active:scale-[0.98] ${large ? 'px-12 h-16 text-base' : 'px-8 h-13 text-sm'}`}
     style={{
-      background: 'linear-gradient(135deg, #8159d4, #6443A8)',
-      boxShadow: '0 4px 24px rgba(100,67,168,0.3)',
+      background: 'linear-gradient(135deg, #5959D4, #4343A8)',
+      boxShadow: '0 4px 24px rgba(67,67,168,0.3)',
       height: large ? '64px' : '52px',
       lineHeight: 1,
     }}
-    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 28px rgba(129,89,212,0.55), 0 4px 24px rgba(100,67,168,0.4)'; }}
-    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(100,67,168,0.3)'; }}
+    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 28px rgba(89,89,212,0.55), 0 4px 24px rgba(67,67,168,0.4)'; }}
+    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(67,67,168,0.3)'; }}
   >
     {children}
   </a>
@@ -182,11 +182,11 @@ const LiveSession = () => {
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 80% 70% at 25% 55%, rgba(100,67,168,0.24) 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(ellipse 80% 70% at 25% 55%, rgba(67,67,168,0.24) 0%, transparent 65%)' }}
         />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 50% 45% at 80% 75%, rgba(100,67,168,0.1) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse 50% 45% at 80% 75%, rgba(67,67,168,0.1) 0%, transparent 60%)' }}
         />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 py-24 grid lg:grid-cols-2 gap-16 items-center w-full">
@@ -202,7 +202,7 @@ const LiveSession = () => {
             <h1 className="font-display text-[60px] sm:text-[64px] lg:text-[78px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
               The Strategic
               <br />
-              <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-br from-[#A8A8FF] to-[#4343A8] bg-clip-text text-transparent">
                 Seller's AI Stack
               </span>
             </h1>
@@ -228,7 +228,7 @@ const LiveSession = () => {
                   <div key={i} className="flex flex-col items-center">
                     <span
                       className="font-mono text-[60px] sm:text-[70px] leading-none font-bold"
-                      style={{ color: '#C4A8FF' }}
+                      style={{ color: '#A8A8FF' }}
                     >
                       {pad(val)}
                     </span>
@@ -299,7 +299,7 @@ const LiveSession = () => {
               >
                 <span
                   className="font-mono text-3xl font-bold flex-shrink-0 leading-none mt-1"
-                  style={{ color: '#8159d4' }}
+                  style={{ color: '#5959D4' }}
                 >
                   {w.num}
                 </span>
@@ -348,7 +348,7 @@ const LiveSession = () => {
                 >
                   <span
                     className="font-display text-xl flex-shrink-0 mt-0.5"
-                    style={{ color: '#8159d4' }}
+                    style={{ color: '#5959D4' }}
                   >
                     →
                   </span>
@@ -360,15 +360,15 @@ const LiveSession = () => {
             {/* Bonus */}
             <div
               className="rounded-2xl p-8 mb-10 relative overflow-hidden"
-              style={{ background: 'rgba(129,89,212,0.07)', border: '1px solid rgba(129,89,212,0.22)' }}
+              style={{ background: 'rgba(89,89,212,0.07)', border: '1px solid rgba(89,89,212,0.22)' }}
             >
               <div
                 className="absolute inset-x-0 top-0 h-px"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(129,89,212,0.65), transparent)' }}
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(89,89,212,0.65), transparent)' }}
               />
               <span
                 className="inline-block font-mono text-[12px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4"
-                style={{ background: 'rgba(129,89,212,0.15)', border: '1px solid rgba(129,89,212,0.35)', color: '#C4A8FF' }}
+                style={{ background: 'rgba(89,89,212,0.15)', border: '1px solid rgba(89,89,212,0.35)', color: '#A8A8FF' }}
               >
                 Exclusive Bonus
               </span>
@@ -419,14 +419,14 @@ const LiveSession = () => {
                 <div
                   className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors duration-300"
                   style={{
-                    background: 'rgba(129,89,212,0.12)',
-                    border: '1px solid rgba(129,89,212,0.28)',
+                    background: 'rgba(89,89,212,0.12)',
+                    border: '1px solid rgba(89,89,212,0.28)',
                   }}
                 >
                   <svg width="10" height="8" viewBox="0 0 12 10" fill="none">
                     <path
                       d="M1 5l3.5 3.5L11 1"
-                      stroke="#8159d4"
+                      stroke="#5959D4"
                       strokeWidth="1.8"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -456,13 +456,13 @@ const LiveSession = () => {
           <div className="relative order-2 lg:order-1">
             <div
               className="absolute inset-0 scale-110"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(100,67,168,0.3) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(ellipse at center, rgba(67,67,168,0.3) 0%, transparent 70%)' }}
             />
             <div
               className="relative rounded-2xl overflow-hidden"
               style={{
                 aspectRatio: '3/4',
-                border: '1px solid rgba(129,89,212,0.14)',
+                border: '1px solid rgba(89,89,212,0.14)',
               }}
             >
               <img
@@ -511,7 +511,7 @@ const LiveSession = () => {
                 <div key={i}>
                   <span
                     className="font-mono text-3xl font-bold block mb-1.5"
-                    style={{ color: '#C4A8FF' }}
+                    style={{ color: '#A8A8FF' }}
                   >
                     {s.val}
                   </span>
@@ -535,7 +535,7 @@ const LiveSession = () => {
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(100,67,168,0.14) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(67,67,168,0.14) 0%, transparent 70%)' }}
         />
         <div className="relative max-w-[640px] mx-auto">
           <h2 className="font-display text-[56px] md:text-[70px] text-foreground uppercase tracking-[-0.02em] leading-[1.05] mb-6">

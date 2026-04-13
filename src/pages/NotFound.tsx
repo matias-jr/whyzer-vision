@@ -19,7 +19,7 @@ const NotFound = () => {
       </p>
 
       {/* Error label */}
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] mb-4" style={{ color: '#8159d4' }}>
+      <p className="font-mono text-[11px] uppercase tracking-[0.2em] mb-4" style={{ color: '#5959D4' }}>
         Error 404
       </p>
 
@@ -54,7 +54,7 @@ const NotFound = () => {
         <a
           href="/"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 hover:brightness-110"
-          style={{ background: 'rgba(129,89,212,0.85)', color: '#fff' }}
+          style={{ background: 'rgba(89,89,212,0.85)', color: '#fff' }}
         >
           Back to home →
         </a>

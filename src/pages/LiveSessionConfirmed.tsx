@@ -46,7 +46,7 @@ const MinimalNav = () => (
 );
 
 const UrgencyStrip = () => (
-  <div className="relative overflow-hidden" style={{ background: '#8159d4', padding: '6px 0' }}>
+  <div className="relative overflow-hidden" style={{ background: '#5959D4', padding: '6px 0' }}>
     <div style={{ transform: 'rotate(-1.2deg)', padding: '10px 0' }}>
       <div className="animate-marquee flex whitespace-nowrap">
         {Array(10).fill(null).map((_, i) => (
@@ -119,7 +119,7 @@ const LiveSessionConfirmed = () => {
       <section className="relative pt-32 pb-20 text-center overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 75% 60% at 50% 30%, rgba(100,67,168,0.22) 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(ellipse 75% 60% at 50% 30%, rgba(67,67,168,0.22) 0%, transparent 65%)' }}
         />
         <div className="relative z-10 max-w-[600px] mx-auto px-6">
           {/* Check icon */}
@@ -127,15 +127,15 @@ const LiveSessionConfirmed = () => {
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center"
               style={{
-                background: 'rgba(129,89,212,0.14)',
-                border: '2px solid rgba(129,89,212,0.38)',
-                boxShadow: '0 0 32px rgba(129,89,212,0.2)',
+                background: 'rgba(89,89,212,0.14)',
+                border: '2px solid rgba(89,89,212,0.38)',
+                boxShadow: '0 0 32px rgba(89,89,212,0.2)',
               }}
             >
               <svg width="26" height="20" viewBox="0 0 26 20" fill="none">
                 <path
                   d="M2 10l7 7L24 2"
-                  stroke="#8159d4"
+                  stroke="#5959D4"
                   strokeWidth="2.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -148,8 +148,8 @@ const LiveSessionConfirmed = () => {
           <div
             className="inline-flex items-center gap-2 mb-7 px-4 py-1.5 rounded-full"
             style={{
-              background: 'rgba(129,89,212,0.12)',
-              border: '1px solid rgba(129,89,212,0.28)',
+              background: 'rgba(89,89,212,0.12)',
+              border: '1px solid rgba(89,89,212,0.28)',
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -161,7 +161,7 @@ const LiveSessionConfirmed = () => {
           <h1 className="font-display text-[52px] sm:text-[70px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
             You're officially
             <br />
-            <span className="bg-gradient-to-br from-[#C4A8FF] to-[#6443A8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-br from-[#A8A8FF] to-[#4343A8] bg-clip-text text-transparent">
               registered.
             </span>
           </h1>
@@ -200,7 +200,7 @@ const LiveSessionConfirmed = () => {
             <div key={i} className="flex flex-col items-center">
               <span
                 className="font-mono text-[56px] sm:text-[70px] leading-none font-bold"
-                style={{ color: '#C4A8FF' }}
+                style={{ color: '#A8A8FF' }}
               >
                 {pad(val)}
               </span>
@@ -231,7 +231,7 @@ const LiveSessionConfirmed = () => {
               <div className="flex items-center gap-4 mb-7">
                 <span
                   className="font-mono text-[13px] uppercase tracking-[0.22em] font-semibold"
-                  style={{ color: '#8159d4' }}
+                  style={{ color: '#5959D4' }}
                 >
                   Step 1
                 </span>
@@ -251,7 +251,7 @@ const LiveSessionConfirmed = () => {
                 >
                   <span
                     className="font-mono text-[12px] uppercase tracking-wider flex-shrink-0 mt-0.5 px-2 py-0.5 rounded"
-                    style={{ background: 'rgba(129,89,212,0.15)', color: '#C4A8FF' }}
+                    style={{ background: 'rgba(89,89,212,0.15)', color: '#A8A8FF' }}
                   >
                     Gmail
                   </span>
@@ -267,7 +267,7 @@ const LiveSessionConfirmed = () => {
                 >
                   <span
                     className="font-mono text-[12px] uppercase tracking-wider flex-shrink-0 mt-0.5 px-2 py-0.5 rounded"
-                    style={{ background: 'rgba(129,89,212,0.15)', color: '#C4A8FF' }}
+                    style={{ background: 'rgba(89,89,212,0.15)', color: '#A8A8FF' }}
                   >
                     Spam
                   </span>
@@ -285,8 +285,8 @@ const LiveSessionConfirmed = () => {
                 <div
                   className="inline-block px-5 py-2.5 rounded-lg"
                   style={{
-                    background: 'rgba(129,89,212,0.1)',
-                    border: '1px solid rgba(129,89,212,0.25)',
+                    background: 'rgba(89,89,212,0.1)',
+                    border: '1px solid rgba(89,89,212,0.25)',
                   }}
                 >
                   <span className="font-mono text-sm text-primary">
@@ -301,7 +301,7 @@ const LiveSessionConfirmed = () => {
               <div className="flex items-center gap-4 mb-7">
                 <span
                   className="font-mono text-[13px] uppercase tracking-[0.22em] font-semibold"
-                  style={{ color: '#8159d4' }}
+                  style={{ color: '#5959D4' }}
                 >
                   Step 2
                 </span>
@@ -327,13 +327,13 @@ const LiveSessionConfirmed = () => {
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
                     style={{
-                      background: 'rgba(129,89,212,0.28)',
-                      border: '2px solid rgba(129,89,212,0.5)',
-                      boxShadow: '0 0 28px rgba(129,89,212,0.3)',
+                      background: 'rgba(89,89,212,0.28)',
+                      border: '2px solid rgba(89,89,212,0.5)',
+                      boxShadow: '0 0 28px rgba(89,89,212,0.3)',
                     }}
                   >
                     <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
-                      <path d="M2 2l14 9-14 9V2z" fill="#8159d4" />
+                      <path d="M2 2l14 9-14 9V2z" fill="#5959D4" />
                     </svg>
                   </div>
                   <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-tertiary">
@@ -348,7 +348,7 @@ const LiveSessionConfirmed = () => {
               <div className="flex items-center gap-4 mb-7">
                 <span
                   className="font-mono text-[13px] uppercase tracking-[0.22em] font-semibold"
-                  style={{ color: '#8159d4' }}
+                  style={{ color: '#5959D4' }}
                 >
                   Step 3
                 </span>
@@ -433,14 +433,14 @@ const LiveSessionConfirmed = () => {
           <div
             className="rounded-2xl overflow-hidden"
             style={{
-              border: '1px solid rgba(129,89,212,0.22)',
-              boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(100,67,168,0.12)',
+              border: '1px solid rgba(89,89,212,0.22)',
+              boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(67,67,168,0.12)',
             }}
           >
             {/* Top strip */}
             <div
               className="p-8 relative"
-              style={{ background: 'linear-gradient(160deg, rgba(129,89,212,0.1) 0%, rgba(129,89,212,0.05) 100%)' }}
+              style={{ background: 'linear-gradient(160deg, rgba(89,89,212,0.1) 0%, rgba(89,89,212,0.05) 100%)' }}
             >
               <div
                 className="absolute inset-x-0 top-0 h-px"
@@ -455,12 +455,12 @@ const LiveSessionConfirmed = () => {
                 </span>
                 <div className="opacity-15">
                   <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                    <rect x="1" y="1" width="10" height="10" stroke="#8159d4" strokeWidth="1.5"/>
-                    <rect x="17" y="1" width="10" height="10" stroke="#8159d4" strokeWidth="1.5"/>
-                    <rect x="1" y="17" width="10" height="10" stroke="#8159d4" strokeWidth="1.5"/>
-                    <rect x="19" y="19" width="4" height="4" fill="#8159d4"/>
-                    <rect x="24" y="19" width="4" height="4" fill="#8159d4"/>
-                    <rect x="19" y="24" width="4" height="4" fill="#8159d4"/>
+                    <rect x="1" y="1" width="10" height="10" stroke="#5959D4" strokeWidth="1.5"/>
+                    <rect x="17" y="1" width="10" height="10" stroke="#5959D4" strokeWidth="1.5"/>
+                    <rect x="1" y="17" width="10" height="10" stroke="#5959D4" strokeWidth="1.5"/>
+                    <rect x="19" y="19" width="4" height="4" fill="#5959D4"/>
+                    <rect x="24" y="19" width="4" height="4" fill="#5959D4"/>
+                    <rect x="19" y="24" width="4" height="4" fill="#5959D4"/>
                   </svg>
                 </div>
               </div>
@@ -479,15 +479,15 @@ const LiveSessionConfirmed = () => {
             >
               <div
                 className="absolute -left-3 w-6 h-6 rounded-full"
-                style={{ background: '#0A0A0A', border: '1px solid rgba(129,89,212,0.22)' }}
+                style={{ background: '#0A0A0A', border: '1px solid rgba(89,89,212,0.22)' }}
               />
               <div
                 className="flex-1 border-t-2 border-dashed mx-5"
-                style={{ borderColor: 'rgba(129,89,212,0.22)' }}
+                style={{ borderColor: 'rgba(89,89,212,0.22)' }}
               />
               <div
                 className="absolute -right-3 w-6 h-6 rounded-full"
-                style={{ background: '#0A0A0A', border: '1px solid rgba(129,89,212,0.22)' }}
+                style={{ background: '#0A0A0A', border: '1px solid rgba(89,89,212,0.22)' }}
               />
             </div>
 
@@ -518,11 +518,11 @@ const LiveSessionConfirmed = () => {
                 href="#"
                 className="block w-full py-4 text-center text-white font-display uppercase tracking-[0.14em] text-sm rounded-xl transition-all duration-200 hover:brightness-110"
                 style={{
-                  background: 'linear-gradient(135deg, #8159d4, #6443A8)',
-                  boxShadow: '0 4px 20px rgba(100,67,168,0.3)',
+                  background: 'linear-gradient(135deg, #5959D4, #4343A8)',
+                  boxShadow: '0 4px 20px rgba(67,67,168,0.3)',
                 }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 28px rgba(129,89,212,0.5)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(100,67,168,0.3)'; }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 28px rgba(89,89,212,0.5)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(67,67,168,0.3)'; }}
               >
                 Access the Live Event Here →
               </a>
@@ -552,7 +552,7 @@ const LiveSessionConfirmed = () => {
                 className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
                 style={{ background: 'rgba(196,168,255,0.1)' }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C4A8FF" strokeWidth="2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A8A8FF" strokeWidth="2">
                   <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                 </svg>
               </div>

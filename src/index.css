@@ -19,9 +19,9 @@
     --popover: 0 0% 11%;
     --popover-foreground: 20 5% 91%;
 
-    --primary: 261 58% 58%;        /* #8159d4 — Whyzer purple (readable on dark) */
+    --primary: 240 58% 58%;        /* #5959D4 — Whyzer purple (readable on dark) */
     --primary-foreground: 0 0% 100%; /* white text on purple */
-    --primary-deep: 260 42% 46%;   /* #6443A8 — deep brand purple for button fills */
+    --primary-deep: 240 42% 46%;   /* #4343A8 — deep brand purple for button fills */
 
     --secondary: 0 0% 13%;
     --secondary-foreground: 20 5% 91%;

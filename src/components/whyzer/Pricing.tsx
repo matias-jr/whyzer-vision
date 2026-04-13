@@ -104,10 +104,10 @@ const Pricing = () => {
               background: 'rgba(20,14,40,0.6)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
-              border: '1px solid rgba(129,89,212,0.15)',
+              border: '1px solid rgba(89,89,212,0.15)',
               boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(129,89,212,0.25)'; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(89,89,212,0.25)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 40px rgba(0,0,0,0.5)'; }}
           >
             <div className="flex items-start justify-between mb-4">
@@ -140,9 +140,9 @@ const Pricing = () => {
             <a
               href={premiumLink}
               className="block w-full py-3 rounded-lg border text-foreground font-semibold text-center transition-all duration-200 text-sm"
-              style={{ borderColor: 'rgba(129,89,212,0.3)', background: 'rgba(129,89,212,0.08)' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.18)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.08)'; }}
+              style={{ borderColor: 'rgba(89,89,212,0.3)', background: 'rgba(89,89,212,0.08)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(89,89,212,0.18)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(89,89,212,0.08)'; }}
               onClick={() => {
                 const match = document.cookie.split('; ').find(row => row.startsWith('li_fat_id='));
                 const li_fat_id = match ? match.split('=')[1] : null;
@@ -156,7 +156,7 @@ const Pricing = () => {
           {/* ELITE */}
           <div className="relative lg:scale-[1.04] z-10">
             <div className="flex justify-center -mb-px">
-              <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase text-white" style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}>
+              <span className="px-4 py-1.5 rounded-full text-xs font-bold uppercase text-white" style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}>
                 ✦ Most Popular
               </span>
             </div>
@@ -166,8 +166,8 @@ const Pricing = () => {
                 background: 'rgba(30,18,60,0.7)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(129,89,212,0.4)',
-                boxShadow: '0 0 60px rgba(100,67,168,0.2), 0 20px 60px rgba(0,0,0,0.6)',
+                border: '1px solid rgba(89,89,212,0.4)',
+                boxShadow: '0 0 60px rgba(67,67,168,0.2), 0 20px 60px rgba(0,0,0,0.6)',
               }}
             >
               <div className="flex items-start justify-between mb-4">
@@ -202,8 +202,8 @@ const Pricing = () => {
               </ul>
               <a
                 href={eliteLink}
-                className="block w-full py-3 rounded-lg text-white font-bold text-center hover:brightness-110 hover:shadow-[0_0_28px_rgba(129,89,212,0.5)] transition-all text-sm"
-                style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
+                className="block w-full py-3 rounded-lg text-white font-bold text-center hover:brightness-110 hover:shadow-[0_0_28px_rgba(89,89,212,0.5)] transition-all text-sm"
+                style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
                 onClick={() => {
                   const match = document.cookie.split('; ').find(row => row.startsWith('li_fat_id='));
                   const li_fat_id = match ? match.split('=')[1] : null;
@@ -222,10 +222,10 @@ const Pricing = () => {
               background: 'rgba(20,14,40,0.6)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',
-              border: '1px solid rgba(129,89,212,0.15)',
+              border: '1px solid rgba(89,89,212,0.15)',
               boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(129,89,212,0.25)'; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(89,89,212,0.25)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 40px rgba(0,0,0,0.5)'; }}
           >
             <div className="flex items-start justify-between mb-4">
@@ -255,9 +255,9 @@ const Pricing = () => {
               href="https://api.leadconnectorhq.com/widget/bookings/whyzer-for-sales-leaders"
               target="_top"
               className="block w-full py-3 rounded-lg border text-foreground font-semibold text-center transition-all duration-200 text-sm"
-              style={{ borderColor: 'rgba(129,89,212,0.3)', background: 'rgba(129,89,212,0.08)' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.18)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(129,89,212,0.08)'; }}
+              style={{ borderColor: 'rgba(89,89,212,0.3)', background: 'rgba(89,89,212,0.08)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(89,89,212,0.18)'; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(89,89,212,0.08)'; }}
             >
               Talk to Jamal Directly →
             </a>

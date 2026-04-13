@@ -74,7 +74,7 @@ const UseCases = () => {
               }}
               onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.background = '#181818';
-                (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(129,89,212,0.25), 0 0 24px rgba(100,67,168,0.1)';
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(89,89,212,0.25), 0 0 24px rgba(67,67,168,0.1)';
                 (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={e => {
@@ -85,7 +85,7 @@ const UseCases = () => {
             >
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: 'rgba(129,89,212,0.12)' }}
+                style={{ background: 'rgba(89,89,212,0.12)' }}
               >
                 <Icon size={18} className="text-primary" />
               </div>

@@ -9,7 +9,7 @@ const FinalCTA = () => {
       className="py-24 lg:py-32 px-6 lg:px-12"
       style={{
         background: '#0A0A0A',
-        backgroundImage: 'radial-gradient(ellipse 90% 90% at 100% 100%, rgba(40,24,73,1) 0%, rgba(100,67,168,0.35) 40%, transparent 65%)',
+        backgroundImage: 'radial-gradient(ellipse 90% 90% at 100% 100%, rgba(40,24,73,1) 0%, rgba(67,67,168,0.35) 40%, transparent 65%)',
       }}
     >
       <div className="max-w-[640px] mx-auto text-center">
@@ -21,8 +21,8 @@ const FinalCTA = () => {
         </p>
         <a
           href="#pricing"
-          className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 hover:shadow-[0_0_36px_rgba(129,89,212,0.6)] active:scale-[0.98] transition-all duration-200"
-          style={{ background: 'linear-gradient(135deg, #8159d4, #6443A8)' }}
+          className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 hover:shadow-[0_0_36px_rgba(89,89,212,0.6)] active:scale-[0.98] transition-all duration-200"
+          style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
         >
           Get Whyzer
         </a>
