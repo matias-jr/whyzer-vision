@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/elite",       "destination": "/", "permanent": true },
+    { "source": "/get-started", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
