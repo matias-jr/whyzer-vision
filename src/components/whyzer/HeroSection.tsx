@@ -74,12 +74,12 @@ const HeroSection = () => {
         <div className="w-full max-w-[560px] mx-auto mb-6 rounded-xl overflow-hidden" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.5)', border: '1px solid rgba(89,89,212,0.15)' }}>
           <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
             <iframe
-              src="https://player.vimeo.com/video/1171372316?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1"
+              src="https://player.vimeo.com/video/1183165456?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1"
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-              title="Whyzer – VSL"
+              title="Whyzer VSL 2.0"
             />
           </div>
         </div>
