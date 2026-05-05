@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
-// April 21, 2026 12:00 PM EST = 17:00 UTC
-const SESSION_DATE = new Date('2026-04-21T17:00:00Z');
+// May 12, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
+const SESSION_DATE = new Date('2026-05-12T16:00:00Z');
 
 function useCountdown() {
   const [t, setT] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -94,7 +94,7 @@ function loadScript(src: string): Promise<void> {
   });
 }
 
-const CONFIRMATION_HTML = `<style>@media (max-width: 1e+09px) {  #wk_element_5593219dd237183413d27d0e5acd74ac { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_5593219dd237183413d27d0e5acd74ac_calendar { background: rgb(51, 94, 234); }  #wk_element_45f8e93c3ca45229d03dbfdfd50fb418 { width: 540px; max-width: 100%; min-height: 16px; padding: 0px 16px 16px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_d1217a9bd4050e903e6ed0eb69757d18 { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.35; letter-spacing: 0px; }  #wk_element_d1217a9bd4050e903e6ed0eb69757d18 :not(:last-child) { margin-bottom: 0px; }  #wk_element_3faa4a3b321e808bea1bb2a1728b1a2b { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto 16px; border-style: none; background: rgba(0, 0, 0, 0); color: rgb(255, 255, 255); }  #wk_element_ef686ab4d9d28244630f2a52414694f4 { max-width: 540px; min-height: 16px; padding: 16px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(26, 26, 26); }  #wk_element_c6dd61bac74fea356fdc37879dfce67d { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.5; letter-spacing: 0px; display: flex; color: rgb(255, 255, 255); }  #wk_element_c6dd61bac74fea356fdc37879dfce67d :not(:last-child) { margin-bottom: 0px; }  #wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto; border-style: none; color: rgb(255, 255, 255); background: rgba(0, 0, 0, 0); }  #wk_element_3faa4a3b321e808bea1bb2a1728b1a2b_calendar { background: rgb(51, 94, 234); }}@media (max-width: 992px) {  #wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba { }}@media (max-width: 768px) {  #wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba { }}</style><div class="wk_root" style="width: 100%; z-index: 100000;"><div class="wk_ascend_tree wk_editor_hide_tooltips col-12 col-md my-auto shadow wk_column" id="wk_element_ef686ab4d9d28244630f2a52414694f4" data-custom-css-classes="shadow" data-wk-background-type="solid" data-wk-border-style="solid" data-wk-border-style-desktop="solid" data-wk-background-type-desktop="solid"> <div class="wk_editor_hide_tooltips wk_thank_you_timer" calendar="hide" data-classes="wk_thank_you_timer" data-wk-date-format-type="en-US" data-wk-days-label="days" data-wk-entering-label="Entering event watch room..." data-wk-expired-label="Sorry, this event session has ended!" data-wk-hours-label="hours" data-wk-minutes-label="minutes" data-wk-seconds-label="seconds" data-wk-starts-in-label="Webinar starts in:" data-wk-webinar-id="69cd784be33fea470cc6fcab" id="wk_element_3faa4a3b321e808bea1bb2a1728b1a2b" timer_size="small" data-wk-border-style-desktop="default" data-wk-background-type-desktop="default"> <div class="wk_row_internal mx-0"> <div class="wk_timer px-0 col"> <div class="rounded-2 mx-auto shadow wk_calendar" style="max-width:170px; background: #fff; display: none"> <div class="wk_calendar_color" style="border-top-left-radius: .375rem; border-top-right-radius: .375rem" id="wk_element_3faa4a3b321e808bea1bb2a1728b1a2b_calendar"> <h5 class="text-center fw-bold py-2 text-uppercase text-white wk_calendar_month">April</h5> </div> <h1 class="text-center fw-bold mb-2 pb-2 wk_calendar_day">8</h1> </div> <h5 class="text-center mb-4 mt-5 wk_calendar_header" style="display:none"><i class="fa-clock fa-regular"></i><span class="wk_calendar_time"> 5:00 PM GMT-3</span></h5> <h6 class="text-center fw-bold wk_timer_header">Webinar starts in:</h6> <div class="wk_row_internal mx-auto wk_timer_row"> <div class="px-0 col-3"> <h5 class="text-center mb-0 wk_timer_days">0</h5> <h6 class="text-center mb-0 wk_timer_days_label">days</h6> </div> <div class="px-0 col-3"> <h5 class="text-center mb-0 wk_timer_hours">0</h5> <h6 class="text-center mb-0 wk_timer_hours_label">hours</h6> </div> <div class="px-0 col-3"> <h5 class="text-center mb-0 wk_timer_minutes">0</h5> <h6 class="text-center mb-0 wk_timer_minutes_label">minutes</h6> </div> <div class="px-0 col-3"> <h5 class="text-center mb-0 wk_timer_seconds">0</h5> <h6 class="text-center mb-0 wk_timer_seconds_label">seconds</h6> </div> </div> </div> </div> </div> <div class="wk_thank_you_session_link" id="wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba" data-classes="wk_thank_you_session_link" data-wk-webinar-id="69cd784be33fea470cc6fcab" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div class="wk_ascend_tree wk_row_internal mx-0"> <div class="text-center col mx-auto px-0 wk_ascend_tree"> <div class="wk_ascend_tree wk_editor_hide_tooltips wk_text" id="wk_element_c6dd61bac74fea356fdc37879dfce67d" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <h6><b>Your webinar session link:</b></h6> </div> </div> <div class="input-group input-group-lg mt-1"><input class="form-control wk_webinar_session_link" style="background-color: #f1f4f8; border-color: #f1f4f8;" readonly=""><button class="btn wk_copy_link_button" data-bs-container="body" data-bs-content="Link copied to clipboard!" data-bs-original-title="" data-bs-placement="top" data-bs-toggle="popover" style="color: inherit; background-color: rgba(80,102,144,.1)" type="button"><i class="far fa-copy" style="width: 19.125px"></i></button></div> </div> </div> </div> </div></div>`;
+const CONFIRMATION_HTML = `<style>@media (max-width: 1e+09px) {  #wk_element_5593219dd237183413d27d0e5acd74ac { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_5593219dd237183413d27d0e5acd74ac_calendar { background: rgb(51, 94, 234); }  #wk_element_45f8e93c3ca45229d03dbfdfd50fb418 { width: 540px; max-width: 100%; min-height: 16px; padding: 0px 16px 16px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_d1217a9bd4050e903e6ed0eb69757d18 { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.35; letter-spacing: 0px; }  #wk_element_d1217a9bd4050e903e6ed0eb69757d18 :not(:last-child) { margin-bottom: 0px; }  #wk_element_3faa4a3b321e808bea1bb2a1728b1a2b { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto 16px; border-style: none; background: rgba(0, 0, 0, 0); color: rgb(255, 255, 255); }  #wk_element_ef686ab4d9d28244630f2a52414694f4 { max-width: 540px; min-height: 16px; padding: 16px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(26, 26, 26); }  #wk_element_c6dd61bac74fea356fdc37879dfce67d { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.5; letter-spacing: 0px; display: flex; color: rgb(255, 255, 255); }  #wk_element_c6dd61bac74fea356fdc37879dfce67d :not(:last-child) { margin-bottom: 0px; }  #wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto; border-style: none; color: rgb(255, 255, 255); background: rgba(0, 0, 0, 0); }  #wk_element_3faa4a3b321e808bea1bb2a1728b1a2b_calendar { background: rgb(51, 94, 234); }}@media (max-width: 992px) {  #wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba { }}@media (max-width: 768px) {  #wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba { }}</style><div class="wk_root" style="width: 100%; z-index: 100000;"><div class="wk_ascend_tree wk_editor_hide_tooltips col-12 col-md my-auto shadow wk_column" id="wk_element_ef686ab4d9d28244630f2a52414694f4" data-custom-css-classes="shadow" data-wk-background-type="solid" data-wk-border-style="solid" data-wk-border-style-desktop="solid" data-wk-background-type-desktop="solid"> <div class="wk_editor_hide_tooltips wk_thank_you_timer" calendar="hide" data-classes="wk_thank_you_timer" data-wk-date-format-type="en-US" data-wk-days-label="days" data-wk-entering-label="Entering event watch room..." data-wk-expired-label="Sorry, this event session has ended!" data-wk-hours-label="hours" data-wk-minutes-label="minutes" data-wk-seconds-label="seconds" data-wk-starts-in-label="Webinar starts in:" data-wk-webinar-id="69cd784be33fea470cc6fcab" id="wk_element_3faa4a3b321e808bea1bb2a1728b1a2b" timer_size="small" data-wk-border-style-desktop="default" data-wk-background-type-desktop="default"> <div class="wk_row_internal mx-0"> <div class="wk_timer px-0 col"> <div class="rounded-2 mx-auto shadow wk_calendar" style="max-width:170px; background: #fff; display: none"> <div class="wk_calendar_color" style="border-top-left-radius: .375rem; border-top-right-radius: .375rem" id="wk_element_3faa4a3b321e808bea1bb2a1728b1a2b_calendar"> <h5 class="text-center fw-bold py-2 text-uppercase text-white wk_calendar_month">May</h5> </div> <h1 class="text-center fw-bold mb-2 pb-2 wk_calendar_day">12</h1> </div> <h5 class="text-center mb-4 mt-5 wk_calendar_header" style="display:none"><i class="fa-clock fa-regular"></i><span class="wk_calendar_time"> 5:00 PM GMT-3</span></h5> <h6 class="text-center fw-bold wk_timer_header">Webinar starts in:</h6> <div class="wk_row_internal mx-auto wk_timer_row"> <div class="px-0 col-3"> <h5 class="text-center mb-0 wk_timer_days">0</h5> <h6 class="text-center mb-0 wk_timer_days_label">days</h6> </div> <div class="px-0 col-3"> <h5 class="text-center mb-0 wk_timer_hours">0</h5> <h6 class="text-center mb-0 wk_timer_hours_label">hours</h6> </div> <div class="px-0 col-3"> <h5 class="text-center mb-0 wk_timer_minutes">0</h5> <h6 class="text-center mb-0 wk_timer_minutes_label">minutes</h6> </div> <div class="px-0 col-3"> <h5 class="text-center mb-0 wk_timer_seconds">0</h5> <h6 class="text-center mb-0 wk_timer_seconds_label">seconds</h6> </div> </div> </div> </div> </div> <div class="wk_thank_you_session_link" id="wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba" data-classes="wk_thank_you_session_link" data-wk-webinar-id="69cd784be33fea470cc6fcab" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div class="wk_ascend_tree wk_row_internal mx-0"> <div class="text-center col mx-auto px-0 wk_ascend_tree"> <div class="wk_ascend_tree wk_editor_hide_tooltips wk_text" id="wk_element_c6dd61bac74fea356fdc37879dfce67d" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <h6><b>Your webinar session link:</b></h6> </div> </div> <div class="input-group input-group-lg mt-1"><input class="form-control wk_webinar_session_link" style="background-color: #f1f4f8; border-color: #f1f4f8;" readonly=""><button class="btn wk_copy_link_button" data-bs-container="body" data-bs-content="Link copied to clipboard!" data-bs-original-title="" data-bs-placement="top" data-bs-toggle="popover" style="color: inherit; background-color: rgba(80,102,144,.1)" type="button"><i class="far fa-copy" style="width: 19.125px"></i></button></div> </div> </div> </div> </div></div>`;
 
 const WebinarKitConfirmation = () => {
   useEffect(() => {
@@ -168,11 +168,11 @@ const LiveSessionConfirmed = () => {
 
           <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-5 max-w-[480px] mx-auto">
             Check your inbox — a confirmation with your session link is on its way. Complete the
-            steps below before April 21 to get the most out of this session.
+            steps below before May 12 to get the most out of this session.
           </p>
 
           <p className="font-mono text-[13px] text-text-tertiary tracking-wide">
-            April 21 · 12PM EST · The Strategic Seller's AI Stack
+            May 12 · 12PM ET · The Strategic Seller's AI Stack
           </p>
         </div>
       </section>
@@ -211,7 +211,7 @@ const LiveSessionConfirmed = () => {
           ))}
         </div>
         <p className="font-mono text-[13px] text-text-tertiary mt-8 tracking-wide">
-          April 21, 2026 · 12:00 PM EST
+          May 12, 2026 · 12:00 PM ET
         </p>
       </div>
 
@@ -358,7 +358,7 @@ const LiveSessionConfirmed = () => {
                 Add It to Your Calendar and Be There Live.
               </h3>
               <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-7">
-                Block April 21 at 12PM EST now, before you forget. We're going deep on the five AI
+                Block May 12 at 12PM ET now, before you forget. We're going deep on the five AI
                 workflows that separate elite sellers from the rest. This isn't a recording you'll
                 catch up on later — the live session is where the value is.
               </p>
@@ -378,7 +378,7 @@ const LiveSessionConfirmed = () => {
                         Date
                       </p>
                       <p className="font-display text-lg text-foreground uppercase">
-                        Monday, April 21, 2026
+                        Tuesday, May 12, 2026
                       </p>
                     </div>
                   </div>
@@ -392,7 +392,7 @@ const LiveSessionConfirmed = () => {
                         Time
                       </p>
                       <p className="font-display text-lg text-foreground uppercase">
-                        12:00 PM EST · 9:00 AM PST · 5:00 PM UK
+                        12:00 PM ET · 9:00 AM PT · 5:00 PM UK
                       </p>
                     </div>
                   </div>
@@ -498,14 +498,14 @@ const LiveSessionConfirmed = () => {
                   <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1.5">
                     Date
                   </p>
-                  <p className="font-display text-[25px] text-foreground uppercase">April 21, 2026</p>
+                  <p className="font-display text-[25px] text-foreground uppercase">May 12, 2026</p>
                 </div>
                 <div>
                   <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1.5">
                     Time
                   </p>
                   <p className="font-display text-lg text-foreground uppercase">
-                    12PM EST · 9AM PST
+                    12PM ET · 9AM PT
                     <br />
                     5PM UK
                   </p>

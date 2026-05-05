@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
-// April 21, 2026 12:00 PM EST = 17:00 UTC
-const SESSION_DATE = new Date('2026-04-21T17:00:00Z');
+// May 12, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
+const SESSION_DATE = new Date('2026-05-12T16:00:00Z');
 
 function useCountdown() {
   const [t, setT] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -548,7 +548,7 @@ const LiveSession = () => {
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
           <p className="font-mono text-[13px] text-text-tertiary mt-7 tracking-wide">
-            April 21 · 12PM EST
+            May 12 · 12PM ET
           </p>
         </div>
       </section>
