@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI-Era Proposal Checklist — Jamal Reimer · Whyzer.ai</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --dark: #080812; --dark-2: #0F0F20; --dark-3: #1A1A35;
+  --ink: #0D0D1F; --mid: #4A4A6A; --muted: #8888AA; --rule: #E4E4F0;
+  --bg: #FFFFFF; --purple: #6B72F5; --purple-deep: #2D2890;
+  --purple-lite: #A8A8F8; --white: #FFFFFF;
+  --grad-start: #C4C4FF; --grad-end: #3A35C0;
+}
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.hero { background: var(--dark); position: relative; overflow: hidden; padding-bottom: 80px; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 55% at 15% 50%, #1E1A8C55 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 85% 20%, #3B28CC44 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 80% 80%, #1A1060 0%, transparent 60%); pointer-events: none; }
+.topbar { position: relative; z-index: 2; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; }
+.brand { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 0.02em; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--purple-lite); }
+.topbar-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.hero-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; padding: 72px 48px 0; text-align: center; }
+.hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple-lite); margin-bottom: 28px; }
+.hero h1 { font-size: clamp(36px,5.5vw,58px); font-weight: 800; line-height: 1.1; color: var(--white); letter-spacing: -0.03em; margin-bottom: 12px; }
+.hero-sub-head { font-size: clamp(22px,3.5vw,34px); font-weight: 500; color: rgba(255,255,255,0.5); line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 28px; }
+.hero-desc { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 580px; margin: 0 auto 44px; }
+.byline { display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 10px 20px 10px 10px; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--purple-lite), var(--purple-deep)); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: white; flex-shrink: 0; }
+.byline-text { text-align: left; }
+.byline-text strong { display: block; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.9); }
+.byline-text span { font-size: 11px; color: rgba(255,255,255,0.4); }
+.stats { display: grid; grid-template-columns: repeat(3,1fr); max-width: 800px; margin: 56px auto 0; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 2; padding: 0 48px; }
+.stat { padding: 40px 24px 0; text-align: center; border-right: 1px solid rgba(255,255,255,0.07); }
+.stat:last-child { border-right: none; }
+.stat-num { font-size: clamp(44px,7vw,72px); font-weight: 900; line-height: 1; letter-spacing: -0.04em; background: linear-gradient(90deg, var(--grad-start) 0%, var(--grad-end) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 10px; }
+.stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.35); line-height: 1.5; }
+.page { max-width: 720px; margin: 0 auto; padding: 0 32px; }
+.section { padding: 64px 0 56px; border-bottom: 1px solid var(--rule); }
+.sec-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 20px; }
+.section h2 { font-size: clamp(26px,4vw,38px); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 18px; }
+.accent { background: linear-gradient(90deg, var(--purple-deep) 0%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section p { font-size: 15px; color: var(--mid); line-height: 1.75; margin-bottom: 14px; }
+.pull-quote { border-left: 3px solid var(--purple); background: #F5F4FF; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 28px 0; }
+.pull-quote p { font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.55; margin: 0; letter-spacing: -0.01em; }
+.cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
+@media(max-width:580px){ .cards-grid { grid-template-columns: 1fr; } }
+.card { background: #FAFAFF; border: 1px solid #EAEAF8; border-radius: 12px; padding: 22px 20px; }
+.card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+.card p { font-size: 14px; color: var(--mid); line-height: 1.6; margin: 0; }
+.card p strong { color: var(--ink); font-weight: 700; }
+.checklist-wrap { padding: 56px 0 0; }
+.checklist-intro h2 { font-size: clamp(26px,4vw,38px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); margin-bottom: 8px; }
+.checklist-intro p { font-size: 14px; color: var(--muted); margin: 0; }
+.progress-wrap { margin: 28px 0 40px; }
+.progress-meta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px; }
+.progress-track { height: 3px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 3px; background: linear-gradient(90deg, var(--purple-lite), var(--purple)); border-radius: 2px; width: 0%; transition: width 0.3s ease; }
+.phase-hd { display: flex; align-items: center; justify-content: space-between; margin: 36px 0 10px; }
+.badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
+.badge-before { background: #EAF0FF; color: #1A4AAA; }
+.badge-build  { background: #EAF5EC; color: #1A6030; }
+.badge-test   { background: #FFF5E6; color: #8A4E00; }
+.badge-after  { background: #F0EEFF; color: #3A28AA; }
+.phase-count  { font-size: 12px; font-weight: 600; color: var(--muted); }
+.item { display: flex; align-items: flex-start; gap: 13px; background: #FFFFFF; border: 1px solid #EAEAF0; border-radius: 10px; padding: 14px 16px; margin-bottom: 7px; cursor: pointer; transition: border-color 0.12s, background 0.12s; user-select: none; }
+.item:hover { border-color: #C8C8E8; background: #FAFAFF; }
+.item.done { opacity: 0.45; }
+.item.done .item-title { text-decoration: line-through; color: var(--muted); }
+.cb { flex-shrink: 0; width: 20px; height: 20px; border: 1.5px solid #C0C0DC; border-radius: 5px; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: background 0.12s, border-color 0.12s; }
+.cb svg { display: none; }
+.item.done .cb { background: var(--purple); border-color: var(--purple); }
+.item.done .cb svg { display: block; }
+.item-body { flex: 1; min-width: 0; }
+.item-title { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.4; margin-bottom: 3px; letter-spacing: -0.01em; }
+.item-sub { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.prompt-box { margin-top: 10px; background: #F5F4FF; border-left: 2.5px solid var(--purple); border-radius: 0 8px 8px 0; padding: 10px 14px; }
+.prompt-box p { font-size: 12px; color: var(--mid); font-style: italic; line-height: 1.6; }
+.cta-block { background: var(--dark); border-radius: 16px; padding: 56px 52px; margin: 64px 0; position: relative; overflow: hidden; text-align: center; }
+.cta-block::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 20% 60%, #1E1A8C50 0%, transparent 65%), radial-gradient(ellipse 50% 50% at 85% 20%, #3B28CC38 0%, transparent 60%); pointer-events: none; }
+.cta-inner { position: relative; z-index: 2; }
+.cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple-lite); margin-bottom: 20px; }
+.cta-block h3 { font-size: clamp(24px,4vw,36px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; color: var(--white); margin-bottom: 16px; }
+.cta-block p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 500px; margin: 0 auto 32px; }
+.cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(90deg, var(--purple-lite) 0%, var(--purple) 100%); color: var(--white); font-size: 14px; font-weight: 700; letter-spacing: 0.01em; padding: 14px 28px; border-radius: 100px; text-decoration: none; transition: opacity 0.15s, transform 0.12s; }
+.cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.cta-sub { margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.28); font-weight: 500; letter-spacing: 0.03em; }
+.footer { border-top: 1px solid var(--rule); padding: 28px 0 52px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-brand { font-size: 13px; color: var(--muted); }
+.footer-brand strong { color: var(--mid); font-weight: 700; }
+.reset-btn { font-size: 12px; font-weight: 600; color: var(--muted); background: none; border: 1px solid var(--rule); padding: 6px 14px; border-radius: 100px; cursor: pointer; letter-spacing: 0.02em; transition: border-color 0.12s, color 0.12s; }
+.reset-btn:hover { border-color: var(--purple); color: var(--purple); }
+@media(max-width:640px){
+  .topbar, .hero-inner { padding-left: 24px; padding-right: 24px; }
+  .stats { grid-template-columns: 1fr; padding: 0 24px; }
+  .stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 32px; }
+  .cta-block { padding: 40px 24px; }
+  .page { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="topbar">
+    <a href="https://www.whyzer.ai/" class="brand"><span class="brand-dot"></span>Jamal Reimer · Whyzer.ai</a>
+    <span class="topbar-tag">Free Guide · 2026</span>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">The Strategic Seller's Playbook</div>
+    <h1>Your buyer's AI just scored your proposal.</h1>
+    <div class="hero-sub-head">You weren't in the room.</div>
+    <p class="hero-desc">Anthropic's "Project Deal" proved it: AI agents are already evaluating proposals before a human sees them — and the losing side never knew they lost. This checklist makes sure you pass both reviews before you hit send.</p>
+    <div class="byline">
+      <div class="avatar">JR</div>
+      <div class="byline-text">
+        <strong>Jamal Reimer</strong>
+        <span>$160M+ career enterprise sales · Founder, Whyzer.ai</span>
+      </div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">45%</div><div class="stat-label">Less deal value captured with weaker AI-scored proposals</div></div>
+    <div class="stat"><div class="stat-num">94%</div><div class="stat-label">Of B2B buyers use AI to research vendors before taking a call</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Participants who knew they were losing — until it was over</div></div>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="section">
+    <div class="sec-label">01 — The experiment</div>
+    <h2>The loser never knew <span class="accent">they were losing.</span></h2>
+    <p>Anthropic ran "Project Deal" — 69 employees, Claude AI agents negotiating on both sides, 186 deals closed with zero human intervention. Then they secretly ran two versions: one where everyone had the frontier model (Opus), one where some got a weaker model (Haiku) without knowing it.</p>
+    <p>Opus fetched $65 for a ruby. Haiku got $35. Same bicycle: $65 vs $38. Satisfaction scores were identical. The losing side had no idea they were losing.</p>
+    <div class="pull-quote"><p>"Now scale that to your $500K deal. Procurement teams are already using AI agents to score, rank, and filter vendors — before a committee ever convenes."</p></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">02 — What sellers need to expect</div>
+    <h2>Four things that are <span class="accent">already changing.</span></h2>
+    <p>The experiment used small purchases. The mechanism is not small. Here's how this plays out at enterprise scale — and what to do about each.</p>
+    <div class="cards-grid">
+      <div class="card"><div class="card-label">Shortlists form before you call</div><p>Procurement AI scores vendors before a human opens your proposal. The RFP in your inbox may <strong>already have a preferred winner.</strong></p></div>
+      <div class="card"><div class="card-label">The surprise loss gets more common</div><p>Your champion says everything is great. You lose. An AI ranked your business case third on financial rigor. <strong>Nobody told your champion.</strong></p></div>
+      <div class="card"><div class="card-label">Your first number is your anchor</div><p>AI agents don't get charmed over three rounds. <strong>Opening value framing sets the outcome.</strong> Your champion can't recover a weak first impression.</p></div>
+      <div class="card"><div class="card-label">Your digital footprint is reviewed</div><p>Agents pull your G2 reviews, case studies, LinkedIn. <strong>The buyer's AI knows more about your company</strong> than most sellers know about their own product.</p></div>
+    </div>
+  </div>
+
+  <div class="checklist-wrap">
+    <div class="sec-label">03 — The checklist</div>
+    <div class="checklist-intro">
+      <h2>20 things to do before <span class="accent">you hit send.</span></h2>
+      <p>Four stages. Use it the day before every major submission.</p>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-meta"><span>Progress</span><span id="total-count">0 of 20 complete</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <div class="phase-hd"><span class="badge badge-before">Before you write</span><span class="phase-count" id="sc-1">0 / 4</span></div>
+    <div id="sec-1">
+      <div class="item" onclick="toggle(this,1)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Ask your champion if they use AI-assisted vendor scoring</div><div class="item-sub">"What does your evaluation process look like at this stage — is there a formal scoring system your team uses?"</div></div></div>
+      <div class="item" onclick="toggle(this,1)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Map every stakeholder whose concerns an AI will flag</div><div class="item-sub">CFO = ROI and cost certainty. Legal = data and compliance. IT = security and integration. Procurement = price benchmarking.</div></div></div>
+      <div class="item" onclick="toggle(this,1)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Define your specific business outcome — with a number</div><div class="item-sub">"Improve efficiency" fails. "Reduce contract review from 14 to 4 days, recovering $240K in annual deal velocity" passes.</div></div></div>
+      <div class="item" onclick="toggle(this,1)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Know how your top competitor is positioning in this account</div><div class="item-sub">An AI scoring system will compare you. Compare yourself first — then pre-empt the gaps.</div></div></div>
+    </div>
+
+    <div class="phase-hd"><span class="badge badge-build">Building the proposal</span><span class="phase-count" id="sc-2">0 / 8</span></div>
+    <div id="sec-2">
+      <div class="item" onclick="toggle(this,2)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Every claimed benefit has a number attached</div><div class="item-sub">Time saved, revenue protected, cost avoided, risk reduced — all quantified.</div></div></div>
+      <div class="item" onclick="toggle(this,2)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Every number has a source or methodology</div><div class="item-sub">"Based on average across 12 similar deployments" beats a naked statistic every time.</div></div></div>
+      <div class="item" onclick="toggle(this,2)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Cost of inaction is quantified — not just the upside</div><div class="item-sub">AI scoring looks for risk framing. The cost of doing nothing needs a number too.</div></div></div>
+      <div class="item" onclick="toggle(this,2)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Implementation risk is addressed directly</div><div class="item-sub">Timeline, resources, dependencies, mitigation. Don't make the AI hunt for what it will flag anyway.</div></div></div>
+      <div class="item" onclick="toggle(this,2)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Data handling, security, and compliance are addressed</div><div class="item-sub">If you sell anything that touches sensitive data or autonomous decisions — answer before they ask.</div></div></div>
+      <div class="item" onclick="toggle(this,2)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Differentiation is stated in outcome terms, not feature terms</div><div class="item-sub">"The only platform that does X" means nothing. "Clients in your industry reduced Y by Z% within 90 days" passes.</div></div></div>
+      <div class="item" onclick="toggle(this,2)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">At least one specific reference to their industry, goals, or public commitments</div><div class="item-sub">This signals the proposal was built for them — not templated. AI flags generic proposals.</div></div></div>
+      <div class="item" onclick="toggle(this,2)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Top two competitor alternatives are named and pre-empted</div><div class="item-sub">An AI evaluator will surface them anyway. Better to control that comparison than let the system do it.</div></div></div>
+    </div>
+
+    <div class="phase-hd"><span class="badge badge-test">Pressure test before sending</span><span class="phase-count" id="sc-3">0 / 5</span></div>
+    <div id="sec-3">
+      <div class="item" onclick="toggle(this,3)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Run the procurement AI simulation</div><div class="item-sub">Paste your full proposal into Claude or GPT-4 with this prompt:</div><div class="prompt-box"><p>"You are an AI procurement assistant evaluating this vendor proposal for a [purchase type, company size]. Score it on: financial rigor, implementation risk mitigation, competitive differentiation, compliance posture, and specificity. List the three weakest sections and what is missing from each."</p></div></div></div>
+      <div class="item" onclick="toggle(this,3)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Run the CFO test</div><div class="item-sub">Read only your executive summary and ROI section. If a CFO reading only these two would not approve budget — rewrite until they would.</div></div></div>
+      <div class="item" onclick="toggle(this,3)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Run the legal test</div><div class="item-sub">Find every place data, AI, compliance, or security should be addressed — and isn't. Fill every gap with your answer already in place.</div></div></div>
+      <div class="item" onclick="toggle(this,3)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Run the blank page test</div><div class="item-sub">Ask a colleague: "What do we do, who for, what's the outcome, what's the number?" If they can't answer in 30 seconds — rewrite.</div></div></div>
+      <div class="item" onclick="toggle(this,3)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Run the competitor comparison test</div><div class="item-sub">Ask the AI: "Comparing this to a typical [competitor] proposal — what are this vendor's three weakest points?" Fix what it finds.</div><div class="prompt-box"><p>"Comparing this proposal to a typical [competitor name] proposal — what are this vendor's three weakest points relative to a standard competitor in this space?"</p></div></div></div>
+    </div>
+
+    <div class="phase-hd"><span class="badge badge-after">After you send</span><span class="phase-count" id="sc-4">0 / 3</span></div>
+    <div id="sec-4">
+      <div class="item" onclick="toggle(this,4)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Brief your champion on the three strongest points — verbally</div><div class="item-sub">Don't assume they read it. They need to advocate in rooms you're not in.</div></div></div>
+      <div class="item" onclick="toggle(this,4)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">Ask your champion about unstated objections</div><div class="item-sub">"Is there anyone in legal, finance, or IT who might raise a concern we haven't addressed? I'd rather solve it now."</div></div></div>
+      <div class="item" onclick="toggle(this,4)"><div class="cb"><svg width="11" height="8" viewBox="0 0 11 8" fill="none"><path d="M1 4L4 7L10 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="item-body"><div class="item-title">If you lose — ask for the scoring breakdown</div><div class="item-sub">Most teams won't share it. Some will. The ones who do tell you exactly what the AI flagged. That intel is worth more than the deal you just lost.</div></div></div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">Built for strategic sellers</div>
+      <h3>The checklist helps you pass the filter.<br><span class="accent">Whyzer</span> helps you build the case that wins.</h3>
+      <p>Whyzer gives enterprise AEs a purpose-built workspace to research accounts, build executive-grade POVs, and construct business cases that hold up under AI-assisted procurement scrutiny — before the scoring starts.</p>
+      <a href="https://www.whyzer.ai/" class="cta-btn">See how Whyzer works <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <div class="cta-sub">Used by enterprise AEs closing 6 and 7-figure deals</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand"><strong>AI Secrets for Strategic Sellers</strong> · Jamal Reimer · Whyzer.ai · May 2026</div>
+    <button class="reset-btn" onclick="resetAll()">Reset checklist</button>
+  </div>
+
+</div>
+
+<script>
+  const totals={1:4,2:8,3:5,4:3}, counts={1:0,2:0,3:0,4:0}, TOTAL=20;
+  function toggle(el,sec){const was=el.classList.contains('done');el.classList.toggle('done');counts[sec]+=was?-1:1;update();}
+  function update(){const done=counts[1]+counts[2]+counts[3]+counts[4];document.getElementById('total-count').textContent=done+' of '+TOTAL+' complete';document.getElementById('progress-fill').style.width=Math.round(done/TOTAL*100)+'%';for(let s=1;s<=4;s++)document.getElementById('sc-'+s).textContent=counts[s]+' / '+totals[s];}
+  function resetAll(){document.querySelectorAll('.item').forEach(el=>el.classList.remove('done'));for(let s=1;s<=4;s++)counts[s]=0;update();}
+</script>
+</body>
+</html>
