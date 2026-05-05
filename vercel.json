@@ -2,7 +2,8 @@
   "redirects": [
     { "source": "/elite",              "destination": "/",                        "permanent": true },
     { "source": "/get-started",        "destination": "/",                        "permanent": true },
-    { "source": "/email-filter-guide", "destination": "/email-filter-guide.html", "permanent": false }
+    { "source": "/email-filter-guide", "destination": "/email-filter-guide.html", "permanent": false },
+    { "source": "/proposal-checklist", "destination": "/proposal-checklist.html", "permanent": false }
   ],
   "rewrites": [
     { "source": "/((?!api/)(?!.*\\.[^/]+$).*)", "destination": "/index.html" }
