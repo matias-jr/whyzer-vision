@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The "Value Beyond Seats" Narrative — A Worked Example</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0B0B22',
+            inkCard: '#1A1A33',
+            inkRule: 'rgba(255, 255, 255, 0.08)',
+            paper: '#FFFFFF',
+            paperRule: '#E5E7EB',
+            mute: '#6B7280',
+            violet: '#6366F1',
+            violetBright: '#8983F5',
+            violetSoft: '#EEF2FF',
+            violetText: '#4338CA',
+            mintSoft: '#DCFCE7',
+            mintText: '#047857',
+            roseSoft: '#FCE7F3',
+            roseText: '#BE185D'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: #FFFFFF;
+      color: #0B0B22;
+      line-height: 1.6;
+    }
+    .hero-bg {
+      background: #0B0B22;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139, 131, 245, 0.18), transparent 60%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(99, 102, 241, 0.10), transparent 60%);
+    }
+    .stat-number {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      background: linear-gradient(180deg, #B5B0FF 0%, #6366F1 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .display {
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+    }
+    .display-md {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .kicker {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .pill-group {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .pill-violet { background: #EEF2FF; color: #4338CA; }
+    .pill-mint   { background: #DCFCE7; color: #047857; }
+    .pill-rose   { background: #FCE7F3; color: #BE185D; }
+    .pill-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #1A1A33;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 8px 18px 8px 8px;
+      border-radius: 999px;
+    }
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: #6366F1;
+      color: white;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .writing-card {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 14px;
+      padding: 28px 32px;
+      font-size: 16.5px;
+      line-height: 1.75;
+      color: #0B0B22;
+      box-shadow: 0 1px 0 rgba(11, 11, 34, 0.02), 0 12px 30px -22px rgba(99, 102, 241, 0.15);
+    }
+    .writing-card p + p { margin-top: 14px; }
+    .writing-card .source-tag {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #6366F1;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .annotation {
+      padding: 14px 0 0 0;
+      font-size: 15.5px;
+      line-height: 1.7;
+      color: #6B7280;
+    }
+    .annotation p + p { margin-top: 12px; }
+    .annotation .anno-tag {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #9CA3AF;
+      display: block;
+      margin-bottom: 14px;
+    }
+    .section-num {
+      font-weight: 800;
+      font-size: 14px;
+      color: #6366F1;
+      letter-spacing: 0.04em;
+    }
+    .cta-btn {
+      transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .cta-btn:hover { transform: translateY(-1px); }
+    .cta-btn:active { transform: translateY(0); }
+    .cta-btn:focus-visible {
+      outline: 2px solid #8983F5;
+      outline-offset: 3px;
+    }
+    .link-hover {
+      transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .stat-divider {
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    @media (max-width: 768px) {
+      .stat-divider { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+      .writing-card { padding: 22px 22px; font-size: 15.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <header class="bg-ink hero-bg">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="https://www.whyzer.ai" class="flex items-center gap-2">
+        <span class="text-white font-bold text-xl tracking-tight">Whyzer<span class="text-violet">.</span></span>
+      </a>
+      <a href="https://www.whyzer.ai/#pricing" class="text-sm font-medium text-white/80 hover:text-white link-hover">Get Whyzer →</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-bg text-white px-6 pt-20 md:pt-24 pb-20 md:pb-28">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="kicker text-violet mb-7">The Strategic Seller's Playbook · Edition 6</p>
+      <h1 class="display text-white text-5xl md:text-7xl mb-7">
+        Your buyer's CFO has a new objection.
+      </h1>
+      <p class="text-white/60 text-2xl md:text-3xl font-medium mb-10" style="letter-spacing: -0.02em;">
+        And it has your name on it.
+      </p>
+      <div class="max-w-2xl mx-auto text-white/55 text-base md:text-lg leading-relaxed mb-12">
+        <p>
+          Seat-based pricing just got called dead on stage at Knowledge 2026. By the time your next renewal lands, procurement will have a new opening line. The page below is the answer that survives it — modeled on a fictional but realistic SaaS deal so you can see the moves before you write your own.
+        </p>
+      </div>
+
+      <!-- Jamal credential pill -->
+      <div class="flex justify-center">
+        <div class="pill-dark">
+          <div class="avatar">JR</div>
+          <div class="text-left pr-2">
+            <div class="text-white font-semibold text-sm">Jamal Reimer</div>
+            <div class="text-white/50 text-xs">$160M+ career enterprise sales · Founder, Whyzer.ai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content section header -->
+  <section class="bg-paper px-6 pt-24 md:pt-32 pb-12">
+    <div class="max-w-4xl mx-auto">
+      <p class="kicker text-violet mb-6">The example</p>
+      <h2 class="display text-ink text-4xl md:text-6xl mb-6">
+        The "value beyond seats" narrative. <span class="text-violet italic font-light">Modeled.</span>
+      </h2>
+      <p class="text-mute text-lg md:text-xl mb-2 max-w-2xl">
+        Five sections. Built for the page that survives procurement's first question. Left column is the narrative. Right column is what each paragraph is doing strategically.
+      </p>
+      <p class="text-mute text-base md:text-lg max-w-2xl">
+        Treat it as a template, not a script. The fictional company is "Atlas" — a customer support platform defending its renewal at "Acme Co."
+      </p>
+    </div>
+  </section>
+
+  <!-- The example sections -->
+  <section class="bg-paper px-6 pb-20">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- GROUP 1 — TAKE SEATS OFF THE TABLE -->
+      <div class="flex items-center justify-between mb-8 mt-8">
+        <span class="pill-group pill-violet">Take seats off the table</span>
+        <span class="text-sm text-mute font-medium">1 of 5</span>
+      </div>
+
+      <!-- SECTION 1 -->
+      <article class="mb-16">
+        <header class="mb-6">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="section-num">01</span>
+            <span class="text-mute text-sm">·</span>
+            <span class="kicker text-mute">Opening frame</span>
+          </div>
+          <h3 class="display-md text-ink text-2xl md:text-3xl">
+            Redraw the line before procurement does.
+          </h3>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
+          <div class="md:col-span-7">
+            <div class="writing-card">
+              <span class="source-tag">— the narrative</span>
+              <p>
+                Acme Co. is paying for Atlas to do something specific: keep your support tickets resolved fast enough that your customer satisfaction stays above 90% and your renewal rate stays above 95%. The math on seats doesn't measure either one. The math on outcomes does.
+              </p>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <div class="annotation">
+              <span class="anno-tag">What this paragraph is doing</span>
+              <p>
+                Opening move: take the seat conversation off the table before it starts. Sellers who let procurement open with seat count have already lost the meeting.
+              </p>
+              <p>
+                This sentence redraws the line — the buyer is paying for an outcome, not a login count. Everything that follows is built on that ground.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- GROUP 2 — BUILD THE CASE -->
+      <div class="flex items-center justify-between mb-8 mt-20 pt-8 border-t border-paperRule">
+        <span class="pill-group pill-mint">Build the case</span>
+        <span class="text-sm text-mute font-medium">3 of 5</span>
+      </div>
+
+      <!-- SECTION 2 -->
+      <article class="mb-16">
+        <header class="mb-6">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="section-num">02</span>
+            <span class="text-mute text-sm">·</span>
+            <span class="kicker text-mute">What we deliver</span>
+          </div>
+          <h3 class="display-md text-ink text-2xl md:text-3xl">
+            Three things no seat count can measure.
+          </h3>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
+          <div class="md:col-span-7">
+            <div class="writing-card">
+              <span class="source-tag">— the narrative</span>
+              <p>Atlas delivers three things no per-seat math can capture.</p>
+              <p>
+                Fourteen prebuilt integrations across Salesforce, Zendesk, Slack, and Snowflake — each one a multi-month engineering project before we showed up.
+              </p>
+              <p>
+                The escalation playbooks built around your top 20 enterprise accounts, with the SLA logic your operations team designed into the product. That logic is your institutional memory, now running automatically.
+              </p>
+              <p>
+                The named CSM hours and quarterly business reviews that drove the playbook updates that lifted your CSAT by six points over the last 18 months.
+              </p>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <div class="annotation">
+              <span class="anno-tag">What this paragraph is doing</span>
+              <p>
+                Three concrete deliverables that have nothing to do with login count.
+              </p>
+              <p>
+                The CFO can argue with seat counts all day. They can't argue with integrations they don't have time to rebuild, or with a CSAT lift they can verify on their own dashboard.
+              </p>
+              <p>
+                Specificity is the work here. "Workflows and integrations" is air. "Fourteen prebuilt integrations across [named systems]" is leverage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SECTION 3 -->
+      <article class="mb-16">
+        <header class="mb-6">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="section-num">03</span>
+            <span class="text-mute text-sm">·</span>
+            <span class="kicker text-mute">The AI question, answered first</span>
+          </div>
+          <h3 class="display-md text-ink text-2xl md:text-3xl">
+            Bring the displacement question forward.
+          </h3>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
+          <div class="md:col-span-7">
+            <div class="writing-card">
+              <span class="source-tag">— the narrative</span>
+              <p>
+                You will hear this quarter that AI agents can replace the work your support reps are doing — and that Atlas's value goes down as your headcount goes down.
+              </p>
+              <p>
+                The honest answer: your headcount may decrease. The work doesn't disappear. The integrations, the playbooks, and the data layer Atlas maintains don't get cheaper when your team gets smaller. They get more important. The fewer humans on your team, the more your tooling has to work without supervision.
+              </p>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <div class="annotation">
+              <span class="anno-tag">What this paragraph is doing</span>
+              <p>
+                Don't wait for the CFO to ask. Bring the question forward and answer it before procurement does.
+              </p>
+              <p>
+                This paragraph turns the AI displacement story from a threat into a reason your product matters more, not less. It also signals to the buyer that you've already thought through the risk they were about to raise — which is the move that earns trust.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SECTION 4 -->
+      <article class="mb-16">
+        <header class="mb-6">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="section-num">04</span>
+            <span class="text-mute text-sm">·</span>
+            <span class="kicker text-mute">The switching cost, in real numbers</span>
+          </div>
+          <h3 class="display-md text-ink text-2xl md:text-3xl">
+            Give procurement a number, not a theory.
+          </h3>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
+          <div class="md:col-span-7">
+            <div class="writing-card">
+              <span class="source-tag">— the narrative</span>
+              <p>
+                The cost of replacing Atlas isn't the contract price. It's the four to six months of rebuild time, the data migration risk, the loss of integration history, and the team retraining while your customer SLAs continue uninterrupted.
+              </p>
+              <p>
+                Conservative estimate, based on the last switch a comparable customer ran: $1.4M over 12 months. The seat-count savings from leaving Atlas would have to clear that bar before they're a real win.
+              </p>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <div class="annotation">
+              <span class="anno-tag">What this paragraph is doing</span>
+              <p>
+                Don't give the CFO "switching cost" as theory. Give them a number — sourced, defensible, specific.
+              </p>
+              <p>
+                This is also where you preempt the cheaper-vendor pitch before it lands. If procurement has already gotten a quote from a competitor, this paragraph is the wall that quote runs into.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- GROUP 3 — CLOSE THE LOOP -->
+      <div class="flex items-center justify-between mb-8 mt-20 pt-8 border-t border-paperRule">
+        <span class="pill-group pill-rose">Close the loop</span>
+        <span class="text-sm text-mute font-medium">1 of 5</span>
+      </div>
+
+      <!-- SECTION 5 -->
+      <article>
+        <header class="mb-6">
+          <div class="flex items-baseline gap-3 mb-3">
+            <span class="section-num">05</span>
+            <span class="text-mute text-sm">·</span>
+            <span class="kicker text-mute">The forward commitment</span>
+          </div>
+          <h3 class="display-md text-ink text-2xl md:text-3xl">
+            Close on confidence. Put the CFO in the room.
+          </h3>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10">
+          <div class="md:col-span-7">
+            <div class="writing-card">
+              <span class="source-tag">— the narrative</span>
+              <p>For the renewal, we are proposing two changes.</p>
+              <p>
+                First, a value structure that ties our pricing to outcomes your team already tracks — ticket resolution time, CSAT, renewal rate. Second, a quarterly review with your COO and CFO where we walk through those numbers together.
+              </p>
+              <p>
+                The seat count becomes a footnote. The conversation becomes about what Atlas is doing for the metrics that move your business.
+              </p>
+            </div>
+          </div>
+          <div class="md:col-span-5">
+            <div class="annotation">
+              <span class="anno-tag">What this paragraph is doing</span>
+              <p>
+                Close on confidence. Don't leave the buyer thinking "maybe." Tell them what the next 12 months looks like, and put the COO and CFO in the room.
+              </p>
+              <p>
+                Getting higher in the account before procurement reorganizes it is the Mega Deal Secrets move. This is where the writing earns its keep.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="hero-bg text-white px-6 py-24 md:py-32">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="kicker text-violet mb-7">Want this writing done in two minutes, not two hours?</p>
+      <h2 class="display text-white text-4xl md:text-6xl mb-8">
+        Whyzer pulls the financial pressure your buyer's CFO is already chewing on, <span class="text-violetBright italic font-light">before you sit down to write.</span>
+      </h2>
+      <div class="max-w-2xl mx-auto space-y-4 text-base md:text-lg text-white/60 mb-12">
+        <p>
+          The page above took 25 minutes of thinking to put together. Whyzer does the same kind of work for 8,000+ public and private companies, in under two minutes a head.
+        </p>
+        <p>
+          It pulls from SEC filings, earnings calls, and investor letters — the actual numbers your buyer's CFO is already looking at — and generates two to three executive-grade points of view for every account. The writing part disappears. The thinking part is done before the renewal conversation starts.
+        </p>
+        <p class="text-white/45 text-sm pt-2">
+          Built by Jamal Reimer. Used by AEs at Microsoft, Oracle, SAP, Salesforce, Databricks, and Snowflake.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://www.whyzer.ai/#pricing"
+           class="cta-btn inline-flex items-center justify-center bg-violet text-white text-base font-semibold px-8 py-4 rounded-lg hover:bg-violet/90"
+           style="background-color: #6366F1;">
+          Get Whyzer →
+        </a>
+        <a href="https://www.whyzer.ai"
+           class="cta-btn inline-flex items-center justify-center border border-white/20 text-white text-base font-medium px-8 py-4 rounded-lg hover:bg-white/5">
+          See how it works
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/55 border-t border-inkRule">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="text-white font-bold text-lg tracking-tight">Whyzer<span class="text-violet">.</span></span>
+        <span class="text-sm">AI-powered Point of View platform for elite B2B sellers.</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="https://www.whyzer.ai" class="link-hover hover:text-white">whyzer.ai</a>
+        <a href="https://www.whyzer.ai/newsletter" class="link-hover hover:text-white">Newsletter</a>
+        <a href="https://www.linkedin.com/company/whyzer-ai" class="link-hover hover:text-white">LinkedIn</a>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 pb-8 text-xs text-white/35">
+      © 2026 Whyzer.ai · A companion piece to AI Secrets for Strategic Sellers
+    </div>
+  </footer>
+
+</body>
+</html>
