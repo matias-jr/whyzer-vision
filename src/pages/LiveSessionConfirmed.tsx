@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
-// May 12, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
-const SESSION_DATE = new Date('2026-05-12T16:00:00Z');
+// May 27, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
+const SESSION_DATE = new Date('2026-05-27T16:00:00Z');
 
 function useCountdown() {
   const [t, setT] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -168,11 +168,11 @@ const LiveSessionConfirmed = () => {
 
           <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-5 max-w-[480px] mx-auto">
             Check your inbox — a confirmation with your session link is on its way. Complete the
-            steps below before May 12 to get the most out of this session.
+            steps below before May 27 to get the most out of this session.
           </p>
 
           <p className="font-mono text-[13px] text-text-tertiary tracking-wide">
-            May 12 · 12PM ET · The Strategic Seller's AI Stack
+            May 27 · 12PM ET · The Strategic Seller's AI Stack
           </p>
         </div>
       </section>
@@ -211,7 +211,7 @@ const LiveSessionConfirmed = () => {
           ))}
         </div>
         <p className="font-mono text-[13px] text-text-tertiary mt-8 tracking-wide">
-          May 12, 2026 · 12:00 PM ET
+          May 27, 2026 · 12:00 PM ET
         </p>
       </div>
 
@@ -358,7 +358,7 @@ const LiveSessionConfirmed = () => {
                 Add It to Your Calendar and Be There Live.
               </h3>
               <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-7">
-                Block May 12 at 12PM ET now, before you forget. We're going deep on the five AI
+                Block May 27 at 12PM ET now, before you forget. We're going deep on the five AI
                 workflows that separate elite sellers from the rest. This isn't a recording you'll
                 catch up on later — the live session is where the value is.
               </p>
@@ -378,7 +378,7 @@ const LiveSessionConfirmed = () => {
                         Date
                       </p>
                       <p className="font-display text-lg text-foreground uppercase">
-                        Tuesday, May 12, 2026
+                        Wednesday, May 27, 2026
                       </p>
                     </div>
                   </div>
@@ -498,7 +498,7 @@ const LiveSessionConfirmed = () => {
                   <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1.5">
                     Date
                   </p>
-                  <p className="font-display text-[25px] text-foreground uppercase">May 12, 2026</p>
+                  <p className="font-display text-[25px] text-foreground uppercase">May 27, 2026</p>
                 </div>
                 <div>
                   <p className="font-mono text-[13px] uppercase tracking-wider text-text-tertiary mb-1.5">
