@@ -428,16 +428,6 @@ export default function ColdEmailLP({ direction, offer }: Props) {
         }}
       >
         <Wordmark dark={isDark} />
-        <div
-          style={{
-            fontFamily: fontStack.mono,
-            fontSize: 10,
-            color: isDark ? palette.text4 : palette.text4,
-            letterSpacing: '0.12em',
-          }}
-        >
-          PRIVACY · HELP
-        </div>
       </header>
 
       {/* Hero */}
