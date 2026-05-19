@@ -240,3 +240,75 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Newsletter article body typography (renders Tiptap output + admin editor preview) */
+.article-body > * + * { margin-top: 1.25em; }
+.article-body h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+.article-body h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.35rem;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+}
+.article-body p { margin: 0; }
+.article-body a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.article-body a:hover { text-decoration-thickness: 2px; }
+.article-body ul, .article-body ol {
+  padding-left: 1.5em;
+}
+.article-body ul li, .article-body ol li {
+  margin-bottom: 0.5em;
+}
+.article-body ul { list-style: disc; }
+.article-body ol { list-style: decimal; }
+.article-body blockquote {
+  border-left: 3px solid hsl(var(--primary));
+  padding: 0.25em 0 0.25em 1.25em;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+.article-body img {
+  width: 100%;
+  border-radius: 8px;
+}
+.article-body code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255,255,255,0.06);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.article-body pre {
+  background: rgba(0,0,0,0.4);
+  padding: 1em 1.25em;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+}
+.article-body pre code {
+  background: transparent;
+  padding: 0;
+}
+.article-body hr {
+  border: 0;
+  border-top: 1px solid hsl(var(--border));
+  margin: 2.5em auto;
+  width: 60px;
+}
