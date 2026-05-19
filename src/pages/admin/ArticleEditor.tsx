@@ -19,6 +19,22 @@ function slugify(input: string): string {
     .slice(0, 80);
 }
 
+// <input type="datetime-local"> uses local-time strings like "2026-05-27T16:00".
+// DB stores ISO UTC. These helpers bridge the two without timezone surprises.
+function isoToLocalInput(iso: string | null): string {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
+function localInputToIso(local: string): string | null {
+  if (!local) return null;
+  const d = new Date(local);
+  return Number.isNaN(d.getTime()) ? null : d.toISOString();
+}
+
 const emptyDraft: ArticleDraft = {
   slug: '',
   title: '',
@@ -89,7 +105,11 @@ export default function ArticleEditor() {
       ...draft,
       slug: draft.slug || slugify(draft.title),
       status: publish ? 'published' : draft.status,
-      published_at: publish && !draft.published_at ? new Date().toISOString() : draft.published_at,
+      // Default to "now" only when publishing without an explicit date picked.
+      published_at:
+        publish && !draft.published_at
+          ? new Date().toISOString()
+          : draft.published_at,
     };
     try {
       if (isNew) {
@@ -169,7 +189,7 @@ export default function ArticleEditor() {
           />
         </label>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <label className="block md:col-span-2">
             <span className="font-mono text-xs uppercase tracking-wider text-text-secondary block mb-2">
               Slug (URL)
@@ -199,6 +219,22 @@ export default function ArticleEditor() {
               className="w-full bg-background border border-foreground/15 rounded px-3 py-2 font-body text-sm focus:outline-none focus:border-primary"
               placeholder="Jamal Reimer"
             />
+          </label>
+          <label className="block">
+            <span className="font-mono text-xs uppercase tracking-wider text-text-secondary block mb-2">
+              Publish date
+            </span>
+            <input
+              type="datetime-local"
+              value={isoToLocalInput(draft.published_at)}
+              onChange={(e) => update('published_at', localInputToIso(e.target.value))}
+              className="w-full bg-background border border-foreground/15 rounded px-3 py-2 font-mono text-sm focus:outline-none focus:border-primary"
+            />
+            <span className="font-mono text-[10px] text-text-secondary block mt-1">
+              {draft.published_at && new Date(draft.published_at) > new Date()
+                ? 'Scheduled — hidden until this time'
+                : 'Leave empty to auto-set when you publish'}
+            </span>
           </label>
         </div>
 
