@@ -34,23 +34,17 @@ function PulseMotif({ dark }: { dark: boolean }) {
 }
 
 function Wordmark({ dark }: { dark: boolean }) {
-  if (dark) {
-    return <img src={WORDMARK_SRC} alt="Whyzer" className="h-7" />;
-  }
-  // Light direction: typeset wordmark in violet, since the production logo is light-on-dark
   return (
-    <span
-      className="font-display"
-      style={{
-        fontFamily: 'Fraunces, Oswald, serif',
-        fontWeight: 800,
-        fontSize: 20,
-        letterSpacing: '-0.01em',
-        color: '#1c1b1a',
-      }}
-    >
-      whyzer<span style={{ color: '#5b3df5' }}>.</span>
-    </span>
+    <img
+      src={WORDMARK_SRC}
+      alt="Whyzer"
+      className="h-7"
+      style={
+        dark
+          ? undefined
+          : { filter: 'invert(1) hue-rotate(180deg)' }
+      }
+    />
   );
 }
 
