@@ -61,6 +61,9 @@ const Navigation = () => {
           <a href="https://app.whyzer.ai/login" target="_top" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
             Log In
           </a>
+          <a href="https://members.whyzer.ai/login" target="_top" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
+            Members Area
+          </a>
           <a
             href="#pricing"
             className="text-sm font-bold text-white px-4 py-2 rounded-md hover:brightness-110 transition-all duration-200"
@@ -101,6 +104,14 @@ const Navigation = () => {
             onClick={() => setMobileOpen(false)}
           >
             Log In
+          </a>
+          <a
+            href="https://members.whyzer.ai/login"
+            target="_top"
+            className="text-lg text-text-secondary hover:text-foreground transition-colors"
+            onClick={() => setMobileOpen(false)}
+          >
+            Members Area
           </a>
           <a
             href="#pricing"

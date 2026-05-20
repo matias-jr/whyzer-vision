@@ -85,7 +85,7 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-          {['SEC filings + earnings calls', '7,500+ companies', '150+ markets worldwide'].map((pill) => (
+          {['SEC filings + earnings calls', '8,000+ companies', '150+ markets worldwide'].map((pill) => (
             <span key={pill} className="px-4 py-1.5 rounded-full text-sm font-mono text-primary" style={{ background: 'rgba(89,89,212,0.12)', border: '1px solid rgba(89,89,212,0.2)' }}>
               {pill}
             </span>

@@ -119,7 +119,7 @@ const Pricing = () => {
               <span className="text-sm text-text-secondary ml-1">per seat / month</span>
             </div>
             <p className="text-[13px] text-text-tertiary mb-4">{premiumNote}</p>
-            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">The full Whyzer platform: financial intelligence, executive profiles, Deal Maps, Account Audio Briefings, and AI-generated POVs across 7,500+ global companies. Show up prepared. Every time.</p>
+            <p className="text-[13px] text-text-secondary leading-relaxed mb-6">The full Whyzer platform: financial intelligence, executive profiles, Deal Maps, Account Audio Briefings, and AI-generated POVs across 8,000+ global companies. Show up prepared. Every time.</p>
             <div className="border-t border-foreground/[0.08] pt-6 mb-6" />
             <ul className="space-y-3 mb-8 text-[14px]">
               {[

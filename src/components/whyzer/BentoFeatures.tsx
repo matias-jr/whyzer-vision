@@ -200,12 +200,12 @@ const BentoFeatures = () => {
                 ))}
               </div>
               <div className="text-center mt-1">
-                <span className="text-xs font-mono text-text-tertiary">7,500+ companies worldwide</span>
+                <span className="text-xs font-mono text-text-tertiary">8,000+ companies worldwide</span>
               </div>
             </div>
             <h3 className="font-body text-foreground font-semibold text-lg mb-2">Global Coverage</h3>
             <p className="text-text-secondary text-base leading-relaxed">
-              7,500+ public and private companies across every global market. The accounts your competitors can't research: HSBC, Revolut, Stripe, Monzo. Now fully covered. Your territory just got a lot bigger.
+              8,000+ public and private companies across every global market. The accounts your competitors can't research: HSBC, Revolut, Stripe, Monzo. Now fully covered. Your territory just got a lot bigger.
             </p>
           </div>
 
