@@ -113,10 +113,10 @@ const NewsletterPost = () => {
               Article not found
             </h1>
             <Link
-              to="/newsletter"
+              to="/newsletter/archive"
               className="font-mono text-sm uppercase tracking-wider text-primary hover:underline"
             >
-              ← Back to newsletter
+              ← Browse all issues
             </Link>
           </div>
         )}

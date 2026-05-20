@@ -11,6 +11,7 @@ import ColdEmailD1B from './pages/ColdEmailD1B';
 import ColdEmailD2A from './pages/ColdEmailD2A';
 import ColdEmailD2B from './pages/ColdEmailD2B';
 import NewsletterPost from './pages/NewsletterPost';
+import NewsletterArchive from './pages/NewsletterArchive';
 import AdminLogin from './pages/admin/Login';
 import AdminArticlesList from './pages/admin/ArticlesList';
 import AdminArticleEditor from './pages/admin/ArticleEditor';
@@ -32,6 +33,7 @@ export const routes: RouteObject[] = [
       { path: 'd1/offer-b', element: <ColdEmailD1B /> },
       { path: 'd2/offer-a', element: <ColdEmailD2A /> },
       { path: 'd2/offer-b', element: <ColdEmailD2B /> },
+      { path: 'newsletter/archive', element: <NewsletterArchive /> },
       { path: 'newsletter/:slug', element: <NewsletterPost /> },
       { path: 'admin', element: <AdminLogin /> },
       {

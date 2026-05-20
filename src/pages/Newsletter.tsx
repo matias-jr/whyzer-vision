@@ -1,6 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
+import ArticleCard from '@/components/whyzer/ArticleCard';
 import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
+import { listPublishedArticles } from '@/lib/articles';
+import type { ArticleSummary } from '@/types/article';
 import { Zap, Eye, BookOpen } from 'lucide-react';
 
 const valueProps = [
@@ -24,6 +28,21 @@ const valueProps = [
 const Newsletter = () => {
   const cardsRef = useStaggerReveal(valueProps.length, 120);
   const proofRef = useScrollReveal(0.2);
+  const [recentIssues, setRecentIssues] = useState<ArticleSummary[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    listPublishedArticles()
+      .then((articles) => {
+        if (!cancelled) setRecentIssues(articles.slice(0, 3));
+      })
+      .catch(() => {
+        // archive section just stays hidden if the fetch fails
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -321,6 +340,38 @@ const Newsletter = () => {
           })}
         </div>
       </section>
+
+      {/* ── Recent Issues ── */}
+      {recentIssues.length > 0 && (
+        <section
+          className="py-20 px-6 lg:px-12 border-t border-foreground/[0.06]"
+          style={{ zIndex: 1, position: 'relative' }}
+        >
+          <div className="max-w-[1200px] mx-auto">
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <p className="font-mono-brand text-xs uppercase tracking-[0.2em] text-primary mb-3">
+                  Recent Issues
+                </p>
+                <h2 className="font-display text-2xl md:text-3xl text-foreground">
+                  Catch up on past editions
+                </h2>
+              </div>
+              <Link
+                to="/newsletter/archive"
+                className="font-mono-brand text-xs uppercase tracking-wider text-primary hover:underline whitespace-nowrap"
+              >
+                View all →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {recentIssues.map((a) => (
+                <ArticleCard key={a.id} article={a} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Social proof ── */}
       <section className="pb-20 px-6 lg:px-12" style={{ zIndex: 1, position: 'relative' }}>
