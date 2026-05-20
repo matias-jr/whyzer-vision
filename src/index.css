@@ -242,7 +242,6 @@ html {
 }
 
 /* Newsletter article body typography (renders Tiptap output + admin editor preview) */
-.article-body > * + * { margin-top: 1.25em; }
 .article-body h2 {
   font-family: 'Oswald', sans-serif;
   font-size: 1.75rem;
@@ -261,7 +260,12 @@ html {
   margin-top: 1.6em;
   margin-bottom: 0.4em;
 }
-.article-body p { margin: 0; }
+.article-body p { margin: 0 0 1.25em; }
+.article-body > *:last-child { margin-bottom: 0; }
+/* Tiptap stores an empty <p></p> for an intentional blank line — give it height
+   so the paragraph break the writer pressed Enter for actually renders. */
+.article-body p:empty::before { content: ''; display: inline-block; }
+.article-body p:empty { min-height: 1.25em; }
 .article-body a {
   color: hsl(var(--primary));
   text-decoration: underline;
@@ -271,6 +275,7 @@ html {
 .article-body a:hover { text-decoration-thickness: 2px; }
 .article-body ul, .article-body ol {
   padding-left: 1.5em;
+  margin: 0 0 1.25em;
 }
 .article-body ul li, .article-body ol li {
   margin-bottom: 0.5em;
@@ -280,12 +285,14 @@ html {
 .article-body blockquote {
   border-left: 3px solid hsl(var(--primary));
   padding: 0.25em 0 0.25em 1.25em;
+  margin: 0 0 1.25em;
   color: hsl(var(--muted-foreground));
   font-style: italic;
 }
 .article-body img {
   width: 100%;
   border-radius: 8px;
+  margin: 0 0 1.25em;
 }
 .article-body code {
   font-family: 'JetBrains Mono', monospace;
@@ -299,6 +306,7 @@ html {
   padding: 1em 1.25em;
   border-radius: 8px;
   overflow-x: auto;
+  margin: 0 0 1.25em;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9em;
 }
