@@ -190,7 +190,7 @@ const LiveSession = () => {
         />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 py-24 grid lg:grid-cols-2 gap-16 items-center w-full">
-          {/* Left — copy + countdown */}
+          {/* Left — copy */}
           <div>
             <div className="inline-flex items-center gap-2.5 mb-5">
               <span className="w-2 h-2 rounded-full bg-primary" style={{ animation: 'pulse 2s ease-in-out infinite' }} />
@@ -207,12 +207,15 @@ const LiveSession = () => {
               </span>
             </h1>
 
-            <p className="font-body text-[17px] text-foreground/75 leading-[1.8] mb-12 max-w-[500px]">
+            <p className="font-body text-[17px] text-foreground/75 leading-[1.8] max-w-[500px]">
               Stop treating AI as a tactical tool for one task. Learn the five integrated workflows
               that separate elite sellers from the rest — the ones who systematically embed AI across
               all stages of the buying cycle to engineer bigger deals at scale.
             </p>
+          </div>
 
+          {/* Right — countdown + form */}
+          <div className="flex flex-col gap-8">
             {/* Countdown */}
             <div>
               <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-text-tertiary mb-5">
@@ -239,14 +242,13 @@ const LiveSession = () => {
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* Right — form */}
-          <div className="flex flex-col gap-5">
-            <WebinarKitRegistration />
-            <p className="text-center font-mono text-[13px] text-text-tertiary tracking-wide leading-relaxed">
-              5 workflows. 60 minutes. One session that changes how you sell.
-            </p>
+            <div className="flex flex-col gap-5">
+              <WebinarKitRegistration />
+              <p className="text-center font-mono text-[13px] text-text-tertiary tracking-wide leading-relaxed">
+                5 workflows. 60 minutes. One session that changes how you sell.
+              </p>
+            </div>
           </div>
         </div>
       </section>
