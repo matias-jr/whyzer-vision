@@ -3,7 +3,11 @@
     { "source": "/elite",              "destination": "/",                        "permanent": true },
     { "source": "/get-started",        "destination": "/",                        "permanent": true },
     { "source": "/email-filter-guide", "destination": "/email-filter-guide.html", "permanent": false },
-    { "source": "/proposal-checklist", "destination": "/proposal-checklist.html", "permanent": false }
+    { "source": "/proposal-checklist", "destination": "/proposal-checklist.html", "permanent": false },
+    { "source": "/d1/offer-a",         "destination": "/d1a",                     "permanent": true },
+    { "source": "/d1/offer-b",         "destination": "/d1b",                     "permanent": true },
+    { "source": "/d2/offer-a",         "destination": "/d2a",                     "permanent": true },
+    { "source": "/d2/offer-b",         "destination": "/d2b",                     "permanent": true }
   ],
   "rewrites": [
     { "source": "/((?!api/)(?!.*\\.[^/]+$).*)", "destination": "/index.html" }
