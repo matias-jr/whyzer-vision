@@ -1,14 +1,30 @@
 import { useState, useEffect } from 'react';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
+import { getNextSessionAt } from '@/lib/siteConfig';
 
+// Fast initial paint; replaced by the value from site_config once it loads.
 // June 9, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
-const SESSION_DATE = new Date('2026-06-09T16:00:00Z');
+const FALLBACK_SESSION_DATE = new Date('2026-06-09T16:00:00Z');
 
 function useCountdown() {
+  const [target, setTarget] = useState<Date>(FALLBACK_SESSION_DATE);
   const [t, setT] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    getNextSessionAt()
+      .then((iso) => {
+        if (!iso) return;
+        const d = new Date(iso);
+        if (!Number.isNaN(d.getTime())) setTarget(d);
+      })
+      .catch(() => {
+        // keep the fallback if the fetch fails
+      });
+  }, []);
+
   useEffect(() => {
     const tick = () => {
-      const diff = Math.max(0, SESSION_DATE.getTime() - Date.now());
+      const diff = Math.max(0, target.getTime() - Date.now());
       setT({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff % 86400000) / 3600000),
@@ -19,7 +35,8 @@ function useCountdown() {
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [target]);
+
   return t;
 }
 

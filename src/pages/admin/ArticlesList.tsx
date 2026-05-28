@@ -49,6 +49,12 @@ export default function ArticlesList() {
         </div>
         <div className="flex items-center gap-3">
           <Link
+            to="/admin/live-session"
+            className="border border-foreground/15 font-mono text-xs uppercase tracking-wider px-4 py-2 rounded hover:bg-foreground/5 transition-colors"
+          >
+            Live Session
+          </Link>
+          <Link
             to="/admin/articles/new"
             className="bg-primary text-primary-foreground font-mono text-xs uppercase tracking-wider px-4 py-2 rounded hover:brightness-110 transition-all"
           >
