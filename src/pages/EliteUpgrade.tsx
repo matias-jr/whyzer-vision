@@ -53,15 +53,19 @@ const STYLES = `
 .eu-root .nav.stuck{background:rgba(10,11,30,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:10px 0}
 .eu-root .nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between}
 .eu-root .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.eu-root .brand-mark{width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#6366F1,#4F46E5);box-shadow:0 0 16px rgba(99,102,241,.6)}
-.eu-root .brand-word{font-weight:800;letter-spacing:.18em;font-size:15px;color:var(--text)}
+.eu-root .brand-logo{height:26px;width:auto;display:block}
+.eu-root .foot .brand-logo{height:22px}
 .eu-root .nav-cta{opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .25s, transform .25s}
 .eu-root .nav.stuck .nav-cta{opacity:1;transform:none;pointer-events:auto}
-.eu-root .hero{position:relative;padding:160px 0 110px;overflow:hidden}
-.eu-root .hero-glow{position:absolute;top:-220px;right:-180px;width:780px;height:780px;border-radius:50%;background:radial-gradient(circle, rgba(99,102,241,.42), rgba(79,70,229,.10) 45%, transparent 70%);filter:blur(20px);pointer-events:none}
-.eu-root .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.eu-root .hero-title{font-weight:800;font-size:clamp(34px,4.4vw,58px);line-height:1.04;letter-spacing:-.03em;text-wrap:balance;margin-bottom:26px}
-.eu-root .hero-sub{font-size:18px;color:var(--muted);max-width:560px;margin-bottom:34px}
+.eu-root .hero{position:relative;padding:118px 0 60px;overflow:hidden;min-height:660px;display:flex;align-items:center}
+.eu-root .hero-glow{position:absolute;top:40%;right:14%;width:620px;height:620px;border-radius:50%;transform:translateY(-50%);background:radial-gradient(circle, rgba(124,108,255,.6), rgba(79,70,229,.18) 42%, transparent 66%);filter:blur(16px);pointer-events:none;z-index:1}
+.eu-root .hero-photo{position:absolute;bottom:0;right:0;z-index:2;height:84%;width:auto;max-width:none;object-fit:contain;object-position:bottom right;pointer-events:none}
+.eu-root .hero-grid{position:relative;z-index:3;display:block;width:100%}
+.eu-root .hero-copy{max-width:500px}
+.eu-root .hero .eyebrow{position:relative;padding-bottom:18px;margin-bottom:26px}
+.eu-root .hero .eyebrow::after{content:"";position:absolute;left:0;bottom:0;width:118px;height:1px;background:rgba(124,108,255,.5)}
+.eu-root .hero-title{font-weight:800;font-size:clamp(36px,4.6vw,62px);line-height:1.02;letter-spacing:-.03em;text-wrap:balance;margin-bottom:26px}
+.eu-root .hero-sub{font-size:18px;color:var(--muted);max-width:430px;margin-bottom:30px}
 .eu-root .hero-cta .btn{box-shadow:0 10px 38px -6px rgba(99,102,241,.6), inset 0 1px 0 rgba(255,255,255,.2)}
 .eu-root .hero-sign{display:flex;align-items:center;gap:13px;margin:-6px 0 30px}
 .eu-root .sign-face{width:46px;height:46px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--indigo-soft);background:linear-gradient(135deg,rgba(99,102,241,.24),rgba(79,70,229,.12));border:1px solid rgba(99,102,241,.4)}
@@ -89,30 +93,6 @@ const STYLES = `
 .eu-root .bub.typing span:nth-child(2){animation-delay:.2s}
 .eu-root .bub.typing span:nth-child(3){animation-delay:.4s}
 @keyframes euBlink{0%,60%,100%{opacity:.25}30%{opacity:1}}
-.eu-root .hero-mock{position:relative}
-.eu-root .mock-window{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.7), 0 0 60px -20px rgba(99,102,241,.3);transform:perspective(1600px) rotateY(-7deg) rotateX(2deg);transform-origin:center}
-.eu-root .mock-chrome{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#0e1024;border-bottom:1px solid var(--line)}
-.eu-root .mock-chrome .dot{width:9px;height:9px;border-radius:50%;background:#2c2f5e}
-.eu-root .mock-url{margin-left:12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim)}
-.eu-root .mock-body{display:grid;grid-template-columns:130px 1fr}
-.eu-root .mock-side{padding:14px 10px;border-right:1px solid var(--line);background:#0f1126}
-.eu-root .mock-side-label{font-size:9.5px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted-dim);margin:2px 6px 10px}
-.eu-root .mock-acct{font-size:11.5px;color:var(--muted);padding:8px 9px;border-radius:7px;margin-bottom:3px;line-height:1.25}
-.eu-root .mock-acct span{display:block;font-size:10px;color:var(--muted-dim)}
-.eu-root .mock-acct.active{background:linear-gradient(135deg,rgba(99,102,241,.22),rgba(79,70,229,.12));color:#fff;border:1px solid rgba(99,102,241,.4)}
-.eu-root .mock-acct.active span{color:var(--indigo-soft)}
-.eu-root .mock-main{padding:16px 18px}
-.eu-root .mock-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px}
-.eu-root .mock-kicker{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--indigo-soft);text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
-.eu-root .mock-h{font-size:16px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
-.eu-root .mock-badge{flex-shrink:0;font-size:9.5px;font-weight:600;color:#b9f5cf;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);padding:4px 9px;border-radius:999px;white-space:nowrap}
-.eu-root .mock-signal{background:#0f1126;border:1px solid var(--line);border-left:2px solid var(--indigo);border-radius:8px;padding:11px 13px;margin-bottom:14px}
-.eu-root .sig-tag{display:inline-block;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--indigo-soft);font-weight:600;margin-bottom:6px}
-.eu-root .mock-signal p{font-size:11.5px;line-height:1.5;color:var(--muted)}
-.eu-root .mock-line{display:flex;gap:10px;font-size:11.5px;color:var(--text);padding:7px 0;border-top:1px solid rgba(31,33,71,.6);line-height:1.45}
-.eu-root .mock-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-dim);flex-shrink:0;padding-top:1px}
-.eu-root .mock-foot{display:flex;gap:8px;margin-top:14px}
-.eu-root .mock-pill{font-size:10px;color:var(--muted);background:#0f1126;border:1px solid var(--line);border-radius:999px;padding:5px 11px}
 .eu-root .sec-head{max-width:760px;margin:0 auto 56px;text-align:center}
 .eu-root .sec-head.left{text-align:left;margin-left:0}
 .eu-root .sec-title{font-weight:800;font-size:clamp(26px,3vw,38px);line-height:1.12;letter-spacing:-.025em;text-wrap:balance}
@@ -189,11 +169,12 @@ const STYLES = `
 .eu-root .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
 .eu-root .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.eu-root .reveal{opacity:1;transform:none;transition:none}}
-@media(max-width:980px){
-  .eu-root .hero-grid{grid-template-columns:1fr;gap:48px}
-  .eu-root .hero{padding:140px 0 80px}
-  .eu-root .hero-mock{max-width:520px}
-  .eu-root .mock-window{transform:none}
+@media(max-width:860px){
+  .eu-root .hero{padding:128px 0 0;min-height:0;flex-direction:column;align-items:stretch}
+  .eu-root .hero-copy{max-width:none}
+  .eu-root .hero-photo{position:relative;order:2;right:auto;bottom:auto;width:min(78%,420px);margin:24px auto 0;display:block;height:auto}
+  .eu-root .hero-grid{order:1}
+  .eu-root .hero-glow{top:auto;bottom:-80px;right:50%;transform:translateX(50%);width:560px;height:560px}
   .eu-root .coach-grid{grid-template-columns:1fr;gap:36px}
   .eu-root .quotes{column-count:2}
 }
@@ -303,8 +284,11 @@ export default function EliteUpgrade() {
       <header className={`nav${stuck ? ' stuck' : ''}`}>
         <div className="nav-inner">
           <a href="#top" className="brand">
-            <span className="brand-mark" />
-            <span className="brand-word">WHYZER</span>
+            <img
+              className="brand-logo"
+              src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
+              alt="Whyzer"
+            />
           </a>
           <a href={annualHref} className="btn btn-sm nav-cta">Get Elite — {s}97/mo</a>
         </div>
@@ -315,9 +299,10 @@ export default function EliteUpgrade() {
       <section className="hero">
         <div className="grid-texture" />
         <div className="hero-glow" />
+        <img className="hero-photo" src="/jamal-hero.png" alt="Jamal Reimer, Founder of Whyzer" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">A note from Jamal Reimer</p>
+            <p className="eyebrow">A note from the founder</p>
             <h1 className="hero-title">
               You've learned how to read an account. <span className="grad">Now let me show you how to win it.</span>
             </h1>
@@ -331,44 +316,6 @@ export default function EliteUpgrade() {
             <div className="hero-cta">
               <a href={annualHref} className="btn btn-lg">Step into Elite — {s}97/mo</a>
               <p className="cta-micro">Cancel anytime. One closed deal pays for years of Elite.</p>
-            </div>
-          </div>
-
-          <div className="hero-mock">
-            <div className="mock-window">
-              <div className="mock-chrome">
-                <span className="dot" /><span className="dot" /><span className="dot" />
-                <span className="mock-url">whyzer.ai / pov-studio</span>
-              </div>
-              <div className="mock-body">
-                <aside className="mock-side">
-                  <p className="mock-side-label">Accounts</p>
-                  <div className="mock-acct active">Vera / Blackwell<span>Fulfillment</span></div>
-                  <div className="mock-acct">Northwind Logistics</div>
-                  <div className="mock-acct">Cobalt Health</div>
-                  <div className="mock-acct">Sterling Capital</div>
-                </aside>
-                <div className="mock-main">
-                  <div className="mock-head">
-                    <div>
-                      <p className="mock-kicker">POV · Generated in 1m 48s</p>
-                      <h3 className="mock-h">Prioritize Vera / Blackwell Fulfillment</h3>
-                    </div>
-                    <span className="mock-badge">Boardroom-ready</span>
-                  </div>
-                  <div className="mock-signal">
-                    <span className="sig-tag">Financial signal</span>
-                    <p>Gross margin down 340bps YoY. Guidance cut on Q3 fulfillment costs. CFO flagged "operational drag" twice on the last earnings call.</p>
-                  </div>
-                  <p className="mock-line"><span className="mock-num">01</span>Landmine: the failed 2024 WMS rollout. Do not open with software.</p>
-                  <p className="mock-line"><span className="mock-num">02</span>Strategic opener: tie to the margin story, not the feature list.</p>
-                  <p className="mock-line"><span className="mock-num">03</span>Exec language: "fulfillment density," "cost-to-serve," "labor leverage."</p>
-                  <div className="mock-foot">
-                    <span className="mock-pill">7,500+ companies</span>
-                    <span className="mock-pill">Coach Jamal ready</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -541,7 +488,11 @@ export default function EliteUpgrade() {
 
       <footer className="foot">
         <div className="wrap foot-inner">
-          <span className="brand-word">WHYZER</span>
+          <img
+            className="brand-logo"
+            src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
+            alt="Whyzer"
+          />
           <span className="foot-copy">The system behind the framework.</span>
         </div>
       </footer>
