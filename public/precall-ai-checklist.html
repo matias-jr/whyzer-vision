@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pre-Call AI Checklist · Whyzer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg:#0a0a16;
+    --bg-2:#0d0d1e;
+    --ink:#0e0e1a;
+    --body:#5e6470;
+    --body-2:#4a4f5c;
+    --lav:#a6a7c0;
+    --lav-soft:#8688a3;
+    --indigo:#6366f1;
+    --indigo-bright:#7c80fb;
+    --indigo-300:#a5a8ff;
+    --indigo-bg:#ecedfd;
+    --indigo-bg-2:#f5f5fe;
+    --line:#e7e7ef;
+    --line-soft:#f0f0f6;
+    --card-dark:rgba(255,255,255,.05);
+    --line-dark:rgba(255,255,255,.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:#05050d;font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;}
+  .sheet{width:880px;margin:24px auto;background:#fff;box-shadow:0 18px 60px rgba(0,0,0,.4);overflow:hidden;}
+
+  /* ===== DARK HEADER ===== */
+  .hero{
+    position:relative;background:var(--bg);color:#fff;padding:22px 54px 32px;
+    background-image:radial-gradient(120% 90% at 50% -10%, rgba(99,102,241,.28) 0%, rgba(99,102,241,.06) 38%, rgba(10,10,22,0) 70%);
+    overflow:hidden;
+  }
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;}
+  .wordmark{font-weight:800;font-size:21px;letter-spacing:-.6px;color:#fff;}
+  .wordmark .dot{color:var(--indigo);}
+  .navlink{font-size:13.5px;font-weight:600;color:#d6d7e6;text-decoration:none;}
+  .navlink:hover{color:#fff;}
+
+  .kicker{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--indigo-bright);margin:0 0 14px;}
+  .hero h1{font-weight:800;font-size:44px;line-height:1.02;letter-spacing:-1.1px;margin:0 0 14px;color:#fff;max-width:16ch;}
+  .hero .sub{font-size:17px;line-height:1.55;color:var(--lav);margin:0 0 18px;max-width:62ch;}
+  .hero .sub em{color:var(--indigo-300);font-style:italic;font-weight:600;}
+
+  .author{display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,.06);border:1px solid var(--line-dark);border-radius:50px;padding:11px 22px 11px 12px;}
+  .avatar{width:42px;height:42px;border-radius:50%;background:var(--indigo);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;letter-spacing:.5px;}
+  .author .name{font-weight:700;font-size:14.5px;color:#fff;}
+  .author .meta{font-size:12.5px;color:var(--lav);margin-top:1px;}
+
+  /* ===== LIGHT BODY ===== */
+  .body{padding:34px 54px 30px;background:#fff;}
+
+  .intro{font-size:14.5px;line-height:1.55;color:var(--body-2);margin:0 0 8px;}
+  .intro b{color:var(--ink);font-weight:700;}
+
+  .vars{background:var(--indigo-bg-2);border:1px solid var(--indigo-bg);border-radius:10px;padding:14px 18px;margin:18px 0 32px;}
+  .vars h4{margin:0 0 9px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--indigo);font-weight:700;}
+  .vargrid{display:grid;grid-template-columns:1fr 1fr;gap:7px 26px;}
+  .varitem{font-size:13px;color:#4a4f5c;display:flex;align-items:center;gap:8px;}
+  .tok{font-family:'IBM Plex Mono',monospace;font-size:11px;background:#fff;border:1px solid #d6d8f3;border-radius:4px;padding:2px 7px;color:var(--indigo);white-space:nowrap;font-weight:500;}
+
+  .step{margin:0 0 38px;padding:0 0 32px;border-bottom:1px solid var(--line-soft);}
+  .step:last-of-type{border-bottom:0;}
+
+  .steplabel{font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--body);margin:0 0 8px;}
+  .steplabel .n{color:var(--indigo);}
+  .step h3{font-size:24px;font-weight:800;letter-spacing:-.5px;line-height:1.12;margin:0 0 10px;color:var(--ink);}
+  .why{margin:0 0 18px;font-size:14.5px;color:var(--body);line-height:1.55;max-width:72ch;}
+  .why b{color:var(--ink);font-weight:700;}
+
+  .how{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--indigo);margin:18px 0 10px;}
+
+  /* prompt cards (used in step 1) */
+  .promptwrap{position:relative;margin:0 0 12px;}
+  .ptag{font-size:11px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.8px;margin:0 0 5px;}
+  .prompt{
+    background:#fafaff;border:1px solid var(--line);border-left:3px solid var(--indigo);
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.6;
+    padding:13px 16px;border-radius:0 8px 8px 0;color:#33353f;white-space:pre-wrap;
+  }
+  .prompt .v{color:var(--indigo);font-weight:500;}
+  .copybtn{
+    position:absolute;top:7px;right:7px;border:1px solid #d8d9f0;background:#fff;
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;color:var(--indigo);
+    padding:5px 12px;border-radius:7px;cursor:pointer;letter-spacing:.2px;
+  }
+  .copybtn:active{transform:translateY(1px);}
+
+  /* "where to look" / sources lists */
+  .sources{margin:0 0 16px;padding:0;list-style:none;}
+  .sources li{font-size:14px;line-height:1.5;color:var(--body-2);padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line-soft);}
+  .sources li:last-child{border-bottom:0;}
+  .sources li::before{content:"";position:absolute;left:6px;top:14px;width:9px;height:9px;border-radius:50%;background:var(--indigo-bg);border:2px solid var(--indigo);}
+  .sources li b{color:var(--ink);font-weight:700;}
+  .sources li .hint{color:var(--body);font-style:italic;}
+
+  /* "be specific" / formula cards */
+  .formula{background:var(--indigo-bg-2);border:1px solid var(--indigo-bg);border-radius:10px;padding:14px 18px;margin:0 0 16px;}
+  .formula p{margin:0 0 6px;font-size:13.5px;color:var(--body-2);line-height:1.45;}
+  .formula p:last-child{margin-bottom:0;}
+  .formula b{color:var(--ink);font-weight:700;}
+  .formula em{color:var(--indigo);font-style:normal;font-weight:600;}
+
+  /* talk track quote */
+  .tt{position:relative;background:var(--ink);color:#eef0fb;border-radius:10px;padding:16px 18px;margin:6px 0 0;font-size:14px;line-height:1.55;font-style:italic;}
+  .tt::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;background:var(--indigo);border-radius:2px;}
+  .tt .v{font-style:normal;font-weight:600;color:var(--indigo-300);}
+  .tt .copybtn{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);color:var(--indigo-300);}
+
+  /* competitor table */
+  table.lev{width:100%;border-collapse:collapse;margin:0 0 16px;font-size:13.5px;}
+  table.lev th{text-align:left;font-size:11px;letter-spacing:.9px;text-transform:uppercase;color:var(--body);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--line);background:var(--indigo-bg-2);}
+  table.lev th:first-child{border-radius:8px 0 0 0;}
+  table.lev th:last-child{border-radius:0 8px 0 0;}
+  table.lev td{padding:14px 10px;border-bottom:1px solid var(--line-soft);color:var(--body-2);vertical-align:top;height:54px;}
+  table.lev td:first-child{font-weight:700;color:var(--ink);width:24%;}
+  .leverage{color:var(--indigo) !important;font-weight:600;}
+
+  /* outcome pill */
+  .outcome{
+    display:flex;align-items:flex-start;gap:12px;background:var(--indigo-bg);
+    border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;
+    padding:12px 16px;margin:18px 0 0;
+  }
+  .outcome .check{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--indigo);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;line-height:1;}
+  .outcome .text{font-size:13.5px;line-height:1.45;color:var(--ink);}
+  .outcome .text b{font-weight:800;color:var(--indigo);text-transform:uppercase;font-size:11px;letter-spacing:1px;display:block;margin-bottom:2px;}
+
+  /* final script section */
+  .scriptcard{background:var(--bg);color:#fff;padding:28px 32px;border-radius:14px;margin:18px 0 6px;background-image:radial-gradient(130% 120% at 100% 0%, rgba(99,102,241,.22) 0%, rgba(10,10,22,0) 55%);}
+  .scriptcard .kbadge{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;color:var(--indigo-bright);display:block;margin-bottom:8px;}
+  .scriptcard h3{color:#fff;font-size:22px;font-weight:800;letter-spacing:-.4px;margin:0 0 8px;}
+  .scriptcard .lead{font-size:13.5px;color:var(--lav);margin:0 0 18px;line-height:1.55;}
+  .scriptcard .seg{margin:0 0 16px;}
+  .scriptcard .seg:last-of-type{margin-bottom:8px;}
+  .scriptcard .seglabel{font-size:11px;font-weight:700;color:var(--indigo-300);text-transform:uppercase;letter-spacing:1.1px;margin:0 0 6px;}
+  .scriptcard .tt{background:rgba(255,255,255,.06);border:1px solid var(--line-dark);color:#e9eaf6;margin:0;}
+  .scriptcard .tt::before{background:var(--indigo-300);}
+  .scriptcard .close{font-size:13.5px;line-height:1.55;color:var(--lav);margin:18px 0 0;font-style:italic;}
+  .scriptcard .close b{color:#fff;font-style:normal;font-weight:700;}
+
+  /* ===== DARK CTA ===== */
+  .cta{background:var(--bg);color:#fff;padding:36px 54px 26px;text-align:center;background-image:radial-gradient(120% 110% at 50% 0%, rgba(99,102,241,.22) 0%, rgba(10,10,22,0) 60%);border-top:1px solid var(--line-dark);}
+  .cta .ck{font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--indigo-bright);margin:0 0 14px;}
+  .cta h2{font-weight:800;font-size:27px;line-height:1.18;letter-spacing:-.5px;margin:0 auto 14px;max-width:24ch;color:#fff;}
+  .cta h2 em{color:var(--indigo-300);font-style:italic;}
+  .cta p{font-size:14px;line-height:1.55;color:var(--lav);margin:0 auto 22px;max-width:60ch;}
+  .btns{display:flex;gap:12px;justify-content:center;margin-bottom:6px;}
+  .btn-primary{background:var(--indigo);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;}
+  .btn-ghost{border:1px solid var(--line-dark);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:13px 24px;border-radius:11px;}
+
+  footer{background:var(--bg-2);color:var(--lav-soft);padding:18px 54px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line-dark);}
+  footer .tagline{font-size:12.5px;}
+  footer .tagline b{color:#fff;font-weight:800;}
+  footer .links a{color:var(--indigo-300);text-decoration:none;margin-left:14px;font-weight:600;font-size:12.5px;}
+  footer .copy{font-size:11.5px;color:#6b6d86;width:100%;margin-top:4px;}
+
+  @media print{
+    html,body{background:#fff;}
+    .sheet{box-shadow:none;margin:0;width:100%;}
+    .copybtn,.navlink{display:none;}
+    .hero,.scriptcard,.cta,footer,.tt{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    @page{margin:0;}
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+
+    <!-- DARK HEADER -->
+    <div class="hero">
+      <div class="topbar">
+        <div class="wordmark">Whyzer<span class="dot">.</span></div>
+        <a class="navlink" href="https://www.whyzer.ai/#pricing">Get Whyzer &rarr;</a>
+      </div>
+      <p class="kicker">The Strategic Seller&rsquo;s Playbook &middot; Freebie</p>
+      <h1>The Pre-Call AI Checklist</h1>
+      <p class="sub">Four moves. Ten minutes the morning of any first meeting. You walk in as <em>the verifier</em> &mdash; holding the same picture your buyer holds of you, plus the moves to redraw it on your terms.</p>
+      <div class="author">
+        <div class="avatar">JR</div>
+        <div>
+          <div class="name">Jamal Reimer</div>
+          <div class="meta">$160M+ career enterprise sales &middot; Founder, Whyzer.ai</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHT BODY -->
+    <div class="body">
+      <p class="intro"><b>How to use this.</b> Each step has the <i>how</i>, the words to say, and the specific outcome you should walk out with. Steps 1&ndash;3 happen before the meeting. Step 4 is what you do mid-meeting when a competitor comes up. The full script lives at the bottom.</p>
+
+      <div class="vars">
+        <h4>Fill these in once &mdash; the steps reuse them</h4>
+        <div class="vargrid">
+          <div class="varitem"><span class="tok">[COMPANY]</span> your company</div>
+          <div class="varitem"><span class="tok">[PROBLEM]</span> the business problem you solve</div>
+          <div class="varitem"><span class="tok">[BUYER TITLE]</span> e.g. CFO, VP Ops, CRO</div>
+          <div class="varitem"><span class="tok">[INDUSTRY]</span> e.g. regional banking</div>
+        </div>
+      </div>
+
+      <!-- STEP 01 -->
+      <div class="step">
+        <p class="steplabel"><span class="n">01</span> &middot; Ask AI what they&rsquo;re asking</p>
+        <h3>Get their words. Not your guesses.</h3>
+        <p class="why">Your buyer searched you with AI before they ever met you &mdash; in their language, not yours. These prompts are written as the executive would write them. Paste each one, in order, into ChatGPT, Claude, or Perplexity.</p>
+
+        <p class="how">How to do it</p>
+
+        <div class="promptwrap">
+          <p class="ptag">1. The category scan</p>
+          <button class="copybtn" data-target="p1">Copy</button>
+          <div class="prompt" id="p1">I'm a <span class="v">[BUYER TITLE]</span> at a <span class="v">[INDUSTRY]</span> company looking to solve <span class="v">[PROBLEM]</span>. Who are the three vendors I should evaluate first, and what is each one best at?</div>
+        </div>
+
+        <div class="promptwrap">
+          <p class="ptag">2. The price reality check</p>
+          <button class="copybtn" data-target="p2">Copy</button>
+          <div class="prompt" id="p2">What's the realistic all-in cost of solving <span class="v">[PROBLEM]</span> at a company my size? Include subscription, implementation, and ongoing &mdash; and tell me where vendors typically hide costs.</div>
+        </div>
+
+        <div class="promptwrap">
+          <p class="ptag">3. The shortlist verdict</p>
+          <button class="copybtn" data-target="p3">Copy</button>
+          <div class="prompt" id="p3">If you had to pick between <span class="v">[COMPANY]</span> and its top two competitors for a <span class="v">[INDUSTRY]</span> company solving <span class="v">[PROBLEM]</span>, who would you recommend &mdash; and what would push you away from <span class="v">[COMPANY]</span>?</div>
+        </div>
+
+        <div class="promptwrap">
+          <p class="ptag">4. The hidden risk</p>
+          <button class="copybtn" data-target="p4">Copy</button>
+          <div class="prompt" id="p4">What&rsquo;s the most common reason projects in this category fail at companies my size, even when the vendor is good?</div>
+        </div>
+
+        <div class="promptwrap">
+          <p class="ptag">5. The market signal</p>
+          <button class="copybtn" data-target="p5">Copy</button>
+          <div class="prompt" id="p5">What are <span class="v">[BUYER TITLE]</span>s in <span class="v">[INDUSTRY]</span> saying about <span class="v">[COMPANY]</span> right now &mdash; in LinkedIn posts, podcasts, or recent interviews?</div>
+        </div>
+
+        <div class="outcome">
+          <div class="check">&check;</div>
+          <div class="text"><b>After step 01</b>You know what the AI already told your buyer about you, your price, your competitors, and your market &mdash; in your buyer&rsquo;s own words.</div>
+        </div>
+      </div>
+
+      <!-- STEP 02 -->
+      <div class="step">
+        <p class="steplabel"><span class="n">02</span> &middot; Find their main priority</p>
+        <h3>The number on their scorecard.</h3>
+        <p class="why">The AI can describe what you do. It can&rsquo;t tie it to the goal this executive is personally graded on. So you do that. Find the number, then confirm it in the first five minutes of the meeting.</p>
+
+        <p class="how">Where to look (in this order)</p>
+        <ul class="sources">
+          <li><b>Earnings calls.</b> <span class="hint">Search &ldquo;[Company] earnings call transcript&rdquo; &mdash; read the CEO&rsquo;s prepared remarks and any Q&amp;A about your buyer&rsquo;s function.</span></li>
+          <li><b>Shareholder / investor letter.</b> <span class="hint">Annual or quarterly. The CEO writes about the year&rsquo;s priorities in their own language.</span></li>
+          <li><b>10-K or annual report.</b> <span class="hint">Go straight to the &ldquo;Strategic Priorities&rdquo; or MD&amp;A section.</span></li>
+          <li><b>The executive&rsquo;s LinkedIn.</b> <span class="hint">Their last 90 days of posts and reactions tell you what they&rsquo;re thinking about.</span></li>
+          <li><b>Recent press releases.</b> <span class="hint">What has the company committed to publicly this year?</span></li>
+        </ul>
+
+        <p class="how">Be specific</p>
+        <div class="formula">
+          <p><b>Bad:</b> &ldquo;They want to improve efficiency.&rdquo;</p>
+          <p><b>Good:</b> &ldquo;They want to cut time-to-close from 90 days to 45 by end of FY.&rdquo;</p>
+          <p style="margin-top:8px;">Write down the exact metric, in their language &mdash; with a number and a deadline if you can find one.</p>
+        </div>
+
+        <p class="how">Verify it in the first five minutes of the meeting</p>
+        <div class="promptwrap">
+          <button class="copybtn" data-target="tt2">Copy</button>
+          <div class="tt" id="tt2">&ldquo;Before we get into our side of it, I&rsquo;d guess you&rsquo;ve already seen what we do online. So let me skip that and go straight to the part the internet can&rsquo;t tell you: how this connects to the goal I imagine you&rsquo;re being measured on this year. Mind if I check whether I&rsquo;ve got that goal right?&rdquo;</div>
+        </div>
+
+        <div class="outcome">
+          <div class="check">&check;</div>
+          <div class="text"><b>After step 02</b>You walk in knowing the specific number on the executive&rsquo;s scorecard &mdash; and you confirm it in the room before you pitch anything.</div>
+        </div>
+      </div>
+
+      <!-- STEP 03 -->
+      <div class="step">
+        <p class="steplabel"><span class="n">03</span> &middot; Introduce your approach (with the reframe)</p>
+        <h3>Make your approach the obvious next step.</h3>
+        <p class="why">You don&rsquo;t introduce your product. You introduce an <i>approach</i> &mdash; framed as the path to the goal they just confirmed. Done right, you change what&rsquo;s being evaluated: from &ldquo;is this vendor any good&rdquo; to &ldquo;is this the right approach for my goal.&rdquo;</p>
+
+        <p class="how">Research what they&rsquo;ve already tried</p>
+        <p class="why" style="margin-bottom:8px;">You don&rsquo;t want to suggest something they tried two years ago and it bombed. Find out:</p>
+        <ul class="sources">
+          <li><b>Press releases.</b> <span class="hint">Past initiatives related to the same problem &mdash; especially ones that quietly disappeared.</span></li>
+          <li><b>Job postings &mdash; current and last 18 months.</b> <span class="hint">Tells you which teams they&rsquo;ve built around this problem.</span></li>
+          <li><b>The buyer&rsquo;s team on LinkedIn.</b> <span class="hint">What have their direct reports been working on?</span></li>
+          <li><b>Earnings calls.</b> <span class="hint">Listen for &ldquo;we&rsquo;ve been working on&hellip;&rdquo; or &ldquo;we&rsquo;re still working through&hellip;&rdquo; on this topic.</span></li>
+        </ul>
+
+        <p class="how">Build the reframe</p>
+        <div class="formula">
+          <p><b>The conventional frame:</b> Most teams frame this problem as <em>A, B, and C</em> &mdash; the obvious dimensions.</p>
+          <p><b>The contrarian truth:</b> The real driver is actually <em>X</em>, and it sits inside one of those (usually <em>C</em>).</p>
+          <p><b>The approach that helps:</b> <em>Y</em> &mdash; your solution, framed as the answer to X.</p>
+          <p style="margin-top:10px;">Write your three lines now, in plain executive language. If you can&rsquo;t name X without your product on the page, your reframe isn&rsquo;t sharp yet.</p>
+        </div>
+
+        <p class="how">Use it in the meeting (right after they share the goal)</p>
+        <div class="promptwrap">
+          <button class="copybtn" data-target="tt3">Copy</button>
+          <div class="tt" id="tt3">&ldquo;Got it. From what you&rsquo;ve told me, and from what we&rsquo;ve seen with previous customers, you might be framing this problem as <span class="v">[A, B, and C]</span>. What we&rsquo;ve actually found is the opposite &mdash; the real driver is <span class="v">[X]</span>, sitting inside <span class="v">[C]</span>. And the approach that helps is <span class="v">[Y, your solution]</span>.&rdquo;</div>
+        </div>
+
+        <div class="outcome">
+          <div class="check">&check;</div>
+          <div class="text"><b>After step 03</b>You walk in with a fresh frame on their problem &mdash; one that turns your approach into the natural next step instead of one option among three.</div>
+        </div>
+      </div>
+
+      <!-- STEP 04 -->
+      <div class="step">
+        <p class="steplabel"><span class="n">04</span> &middot; Surface competitors and find your leverage</p>
+        <h3>Where they&rsquo;re strong. Where the goal isn&rsquo;t.</h3>
+        <p class="why">When the competitor comes up &mdash; and they will &mdash; you don&rsquo;t fight on features. You name what they&rsquo;re strong at honestly, and then point to the part of the buyer&rsquo;s goal they don&rsquo;t move. That&rsquo;s your leverage.</p>
+
+        <p class="how">Map your top two competitors</p>
+        <p class="why" style="margin-bottom:8px;">From the shortlist that came up in Step 01, prompt 3. Fill this in.</p>
+
+        <table class="lev">
+          <thead>
+            <tr>
+              <th>Competitor</th>
+              <th>What they&rsquo;re strong at <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--body);">(acknowledge honestly)</span></th>
+              <th>What it doesn&rsquo;t get them on the goal <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--indigo);">(your leverage)</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td class="leverage">&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td class="leverage">&nbsp;</td></tr>
+          </tbody>
+        </table>
+
+        <p class="how">Tie the leverage to a time-bound outcome</p>
+        <div class="formula">
+          <p style="margin-bottom:4px;">Finish this sentence in one line:</p>
+          <p><b>&ldquo;Our approach helps you hit <em>[the goal from step 02]</em> by <em>[time]</em> &mdash; which is the piece <em>[competitor]</em> doesn&rsquo;t move.&rdquo;</b></p>
+        </div>
+
+        <p class="how">Use it in the meeting (when the competitor surfaces)</p>
+        <div class="promptwrap">
+          <button class="copybtn" data-target="tt4">Copy</button>
+          <div class="tt" id="tt4">&ldquo;Yes, they&rsquo;re strong on that. But based on the goal we just discussed, here&rsquo;s an approach we&rsquo;ve used before &mdash; one that solves <span class="v">[Y]</span> and helps you hit your goal by <span class="v">[time]</span>.&rdquo;</div>
+        </div>
+
+        <div class="outcome">
+          <div class="check">&check;</div>
+          <div class="text"><b>After step 04</b>When the competitor comes up in the room, you don&rsquo;t fight on features. You redraw success around the part of the goal only you can move.</div>
+        </div>
+      </div>
+
+      <!-- FINAL SCRIPT -->
+      <div class="scriptcard">
+        <span class="kbadge">Put it together</span>
+        <h3>The full script.</h3>
+        <p class="lead">Strung together in a real meeting, the moves fire in this order:</p>
+
+        <div class="seg">
+          <p class="seglabel">Opening &mdash; frame the conversation about them</p>
+          <div class="tt">&ldquo;Before we get into our side of it, I&rsquo;d guess you&rsquo;ve already seen what we do online. So let me skip that and go straight to the part the internet can&rsquo;t tell you: how this connects to the goal I imagine you&rsquo;re being measured on this year. Mind if I check whether I&rsquo;ve got that goal right?&rdquo;</div>
+        </div>
+
+        <div class="seg">
+          <p class="seglabel">The reframe &mdash; right after they share the goal</p>
+          <div class="tt">&ldquo;Got it. From what you&rsquo;ve told me, and from what we&rsquo;ve seen with previous customers, you might be framing this problem as <span class="v">[A, B, and C]</span>. What we&rsquo;ve actually found is the opposite &mdash; the real driver is <span class="v">[X]</span>, sitting inside <span class="v">[C]</span>. And the approach that helps is <span class="v">[Y, your solution]</span>.&rdquo;</div>
+        </div>
+
+        <div class="seg">
+          <p class="seglabel">When the competitor surfaces &mdash; usually mid-meeting</p>
+          <div class="tt">&ldquo;Yes, they&rsquo;re strong on that. But based on the goal we just discussed, here&rsquo;s an approach we&rsquo;ve used before &mdash; one that solves <span class="v">[Y]</span> and helps you hit your goal by <span class="v">[time]</span>.&rdquo;</div>
+        </div>
+
+        <p class="close">By the end, the goal is the center of the room, your approach is the lens, and the comparison question is behind you. <b>That&rsquo;s the verifier in action.</b></p>
+      </div>
+
+    </div>
+
+    <!-- DARK CTA -->
+    <div class="cta">
+      <p class="ck">Want step 02 done in two minutes, not two hours?</p>
+      <h2>Whyzer pulls the number your buyer&rsquo;s CFO is already chewing on, <em>before you dial.</em></h2>
+      <p>Step 02 by hand is the slow part. Whyzer pulls it from SEC filings, earnings calls, and investor letters for 8,000+ public and private companies in under two minutes a head &mdash; and hands you two to three executive-grade points of view for every account.</p>
+      <div class="btns">
+        <a class="btn-primary" href="https://www.whyzer.ai/#pricing">Get Whyzer &rarr;</a>
+        <a class="btn-ghost" href="https://www.whyzer.ai">See how it works</a>
+      </div>
+    </div>
+
+    <footer>
+      <div class="tagline"><b>Whyzer.</b> AI-powered Point of View platform for elite B2B sellers.</div>
+      <div class="links"><a href="https://www.whyzer.ai">whyzer.ai</a><a href="https://www.whyzer.ai/newsletter">Newsletter</a><a href="https://www.linkedin.com/company/whyzer-ai">LinkedIn</a></div>
+      <div class="copy">&copy; 2026 Whyzer.ai &middot; A companion piece to AI Secrets for Strategic Sellers</div>
+    </footer>
+
+  </div>
+
+<script>
+  document.querySelectorAll('.copybtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.dataset.target);
+      var text = el.innerText.replace(/[ \t]+\n/g,'\n').trim();
+      navigator.clipboard.writeText(text).then(function(){
+        var old = btn.textContent; btn.textContent = 'Copied';
+        setTimeout(function(){ btn.textContent = old; }, 1400);
+      });
+    });
+  });
+</script>
+</body>
+</html>
