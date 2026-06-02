@@ -170,9 +170,9 @@ const STYLES = `
 .eu-root .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.eu-root .reveal{opacity:1;transform:none;transition:none}}
 @media(max-width:860px){
-  .eu-root .hero{padding:128px 0 0;min-height:0;flex-direction:column;align-items:stretch}
+  .eu-root .hero{padding:128px 0 0;min-height:0;flex-direction:column;align-items:stretch;display:flex}
   .eu-root .hero-copy{max-width:none}
-  .eu-root .hero-photo{position:relative;order:2;right:auto;bottom:auto;width:min(78%,420px);margin:24px auto 0;display:block;height:auto}
+  .eu-root .hero-photo{position:relative;order:2;right:auto;bottom:auto;width:min(78%,420px);margin:36px auto 0;display:block;height:auto;vertical-align:bottom}
   .eu-root .hero-grid{order:1}
   .eu-root .hero-glow{top:auto;bottom:-80px;right:50%;transform:translateX(50%);width:560px;height:560px}
   .eu-root .coach-grid{grid-template-columns:1fr;gap:36px}
@@ -183,7 +183,8 @@ const STYLES = `
   .eu-root .quotes{column-count:1}
   .eu-root .price-card{padding:26px 22px 30px}
   .eu-root .price-num{font-size:46px}
-  .eu-root .hero{padding:124px 0 64px}
+  .eu-root .hero{padding:108px 0 0}
+  .eu-root .hero-photo{width:min(85%,360px);margin:28px auto 0}
   .eu-root .bridge,.eu-root .vault,.eu-root .proof,.eu-root .pricing,.eu-root .coach{padding:78px 0}
   .eu-root .close{padding:96px 0}
   .eu-root .bridge-body{font-size:18px}
