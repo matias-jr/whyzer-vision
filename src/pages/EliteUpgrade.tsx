@@ -57,17 +57,17 @@ const STYLES = `
 .eu-root .foot .brand-logo{height:22px}
 .eu-root .nav-cta{opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .25s, transform .25s}
 .eu-root .nav.stuck .nav-cta{opacity:1;transform:none;pointer-events:auto}
-.eu-root .hero{position:relative;padding:118px 0 60px;overflow:hidden;min-height:660px;display:flex;align-items:center}
-.eu-root .hero-glow{position:absolute;top:40%;right:14%;width:620px;height:620px;border-radius:50%;transform:translateY(-50%);background:radial-gradient(circle, rgba(124,108,255,.6), rgba(79,70,229,.18) 42%, transparent 66%);filter:blur(16px);pointer-events:none;z-index:1}
-.eu-root .hero-photo{position:absolute;bottom:0;right:0;z-index:2;height:84%;width:auto;max-width:none;object-fit:contain;object-position:bottom right;pointer-events:none}
+.eu-root .hero{position:relative;padding:96px 0 36px;overflow:hidden;min-height:100vh;display:flex;align-items:center}
+.eu-root .hero-glow{position:absolute;top:50%;right:14%;width:620px;height:620px;border-radius:50%;transform:translateY(-50%);background:radial-gradient(circle, rgba(124,108,255,.6), rgba(79,70,229,.18) 42%, transparent 66%);filter:blur(16px);pointer-events:none;z-index:1}
+.eu-root .hero-photo{position:absolute;bottom:0;right:0;z-index:2;height:88%;width:auto;max-width:none;object-fit:contain;object-position:bottom right;pointer-events:none}
 .eu-root .hero-grid{position:relative;z-index:3;display:block;width:100%}
 .eu-root .hero-copy{max-width:500px}
-.eu-root .hero .eyebrow{position:relative;padding-bottom:18px;margin-bottom:26px}
+.eu-root .hero .eyebrow{position:relative;padding-bottom:14px;margin-bottom:20px}
 .eu-root .hero .eyebrow::after{content:"";position:absolute;left:0;bottom:0;width:118px;height:1px;background:rgba(124,108,255,.5)}
-.eu-root .hero-title{font-weight:800;font-size:clamp(36px,4.6vw,62px);line-height:1.02;letter-spacing:-.03em;text-wrap:balance;margin-bottom:26px}
-.eu-root .hero-sub{font-size:18px;color:var(--muted);max-width:430px;margin-bottom:30px}
+.eu-root .hero-title{font-weight:800;font-size:clamp(32px,4.2vw,56px);line-height:1.04;letter-spacing:-.03em;text-wrap:balance;margin-bottom:20px}
+.eu-root .hero-sub{font-size:17px;line-height:1.55;color:var(--muted);max-width:430px;margin-bottom:22px}
 .eu-root .hero-cta .btn{box-shadow:0 10px 38px -6px rgba(99,102,241,.6), inset 0 1px 0 rgba(255,255,255,.2)}
-.eu-root .hero-sign{display:flex;align-items:center;gap:13px;margin:-6px 0 30px}
+.eu-root .hero-sign{display:flex;align-items:center;gap:13px;margin:0 0 22px}
 .eu-root .sign-face{width:46px;height:46px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--indigo-soft);background:linear-gradient(135deg,rgba(99,102,241,.24),rgba(79,70,229,.12));border:1px solid rgba(99,102,241,.4)}
 .eu-root .sign-who{display:flex;flex-direction:column;line-height:1.35}
 .eu-root .sign-who b{font-size:15px;font-weight:600;color:var(--text)}
@@ -169,6 +169,16 @@ const STYLES = `
 .eu-root .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)}
 .eu-root .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.eu-root .reveal{opacity:1;transform:none;transition:none}}
+@media(min-width:861px) and (max-height:820px){
+  .eu-root .hero{padding:84px 0 28px}
+  .eu-root .hero-title{font-size:clamp(28px,3.6vw,44px);margin-bottom:16px}
+  .eu-root .hero-sub{font-size:15.5px;margin-bottom:18px;max-width:420px}
+  .eu-root .hero .eyebrow{margin-bottom:14px;padding-bottom:10px;font-size:11.5px}
+  .eu-root .hero-sign{margin-bottom:18px}
+  .eu-root .sign-face{width:40px;height:40px;font-size:13px}
+  .eu-root .btn-lg{padding:13px 28px;font-size:15px}
+  .eu-root .hero-photo{height:92%}
+}
 @media(max-width:860px){
   .eu-root .hero{padding:128px 0 0;min-height:0;flex-direction:column;align-items:stretch;display:flex}
   .eu-root .hero-copy{max-width:none}
@@ -300,7 +310,7 @@ export default function EliteUpgrade() {
       <section className="hero">
         <div className="grid-texture" />
         <div className="hero-glow" />
-        <img className="hero-photo" src="/jamal-hero.png" alt="Jamal Reimer, Founder of Whyzer" />
+        <img className="hero-photo" src="/jamal-hero-1.png" alt="Jamal Reimer, Founder of Whyzer" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">A note from the founder</p>
