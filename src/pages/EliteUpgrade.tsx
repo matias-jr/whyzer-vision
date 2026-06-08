@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useUtmParams } from '@/hooks/useUtmParams';
 
 const EU_COUNTRIES = new Set([
   'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE',
@@ -228,6 +229,7 @@ export default function EliteUpgrade() {
   const [currency, setCurrency] = useState<Currency>(CURRENCIES.USD);
   const [regionSuffix, setRegionSuffix] = useState('');
   const rootRef = useRef<HTMLDivElement>(null);
+  const appendUtm = useUtmParams();
 
   useEffect(() => {
     document.title = 'Whyzer Elite — The system behind the framework.';
@@ -259,7 +261,7 @@ export default function EliteUpgrade() {
       .catch(() => {});
   }, []);
 
-  const annualHref = useMemo(() => eliteUrl('annual', regionSuffix), [regionSuffix]);
+  const annualHref = useMemo(() => appendUtm(eliteUrl('annual', regionSuffix)), [regionSuffix, appendUtm]);
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -286,7 +288,7 @@ export default function EliteUpgrade() {
     plan === 'annual'
       ? `Billed annually at ${s}997. Two months free versus monthly.`
       : `Billed monthly. Or switch to annual for ${s}997/year, two months free.`;
-  const priceHref = eliteUrl(plan, regionSuffix);
+  const priceHref = appendUtm(eliteUrl(plan, regionSuffix));
 
   return (
     <div ref={rootRef} className="eu-root">

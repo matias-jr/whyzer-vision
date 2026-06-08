@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Check } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useUtmParams } from '@/hooks/useUtmParams';
 
 const EU_COUNTRIES = new Set([
   'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE',
@@ -25,6 +26,7 @@ const Pricing = () => {
   const [currency, setCurrency] = useState<Currency>(CURRENCIES.USD);
   const [regionSuffix, setRegionSuffix] = useState('');
   const sectionRef = useScrollReveal();
+  const appendUtm = useUtmParams();
 
   useEffect(() => {
     fetch('https://ipapi.co/json/')
@@ -40,12 +42,12 @@ const Pricing = () => {
       .catch(() => {/* silently keep USD */});
   }, []);
 
-  const premiumLink = annual
+  const premiumLink = appendUtm(annual
     ? `https://subscribe.whyzer.ai/premium-annually${regionSuffix}`
-    : `https://subscribe.whyzer.ai/premium-monthly${regionSuffix}`;
-  const eliteLink = annual
+    : `https://subscribe.whyzer.ai/premium-monthly${regionSuffix}`);
+  const eliteLink = appendUtm(annual
     ? `https://subscribe.whyzer.ai/elite-annually${regionSuffix}`
-    : `https://subscribe.whyzer.ai/elite-monthly${regionSuffix}`;
+    : `https://subscribe.whyzer.ai/elite-monthly${regionSuffix}`);
 
   const s = currency.symbol;
 
