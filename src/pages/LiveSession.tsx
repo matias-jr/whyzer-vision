@@ -3,8 +3,8 @@ import GrainOverlay from '@/components/whyzer/GrainOverlay';
 import { getNextSessionAt } from '@/lib/siteConfig';
 
 // Fast initial paint; replaced by the value from site_config once it loads.
-// June 9, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
-const FALLBACK_SESSION_DATE = new Date('2026-06-09T16:00:00Z');
+// June 24, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
+const FALLBACK_SESSION_DATE = new Date('2026-06-24T16:00:00Z');
 
 function useCountdown() {
   const [target, setTarget] = useState<Date>(FALLBACK_SESSION_DATE);
@@ -568,7 +568,7 @@ const LiveSession = () => {
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
           <p className="font-mono text-[13px] text-text-tertiary mt-7 tracking-wide">
-            June 9 · 12PM ET
+            June 24 · 12PM ET
           </p>
         </div>
       </section>
