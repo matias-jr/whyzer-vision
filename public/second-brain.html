@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/favicon.png" />
+<title>The Second Brain Setup - AI Secrets for Strategic Sellers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#090D22;--card:#111929;--card2:#0D1528;
+  --border:rgba(255,255,255,0.07);
+  --accent:#7C8CFF;--accent2:#A99BFF;--mint:#5EEAD4;--amber:#FBD26A;
+  --text:#F0F2FF;--muted:#9AA0BC;--faint:#4E566E;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse at center,rgba(124,140,255,0.11) 0%,transparent 70%);pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.45}
+.wrap{position:relative;z-index:1}
+.container{max-width:860px;margin:0 auto;padding:0 28px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.a1{animation:fadeUp .65s cubic-bezier(.22,1,.36,1) both}
+.a2{animation:fadeUp .65s .08s cubic-bezier(.22,1,.36,1) both}
+.a3{animation:fadeUp .65s .16s cubic-bezier(.22,1,.36,1) both}
+.a4{animation:fadeUp .65s .24s cubic-bezier(.22,1,.36,1) both}
+.a5{animation:fadeUp .65s .32s cubic-bezier(.22,1,.36,1) both}
+.gt{background:linear-gradient(135deg,#8FA2FF 0%,#B09AFF 55%,#CBA8FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* topbar */
+.topbar{border-bottom:1px solid var(--border);padding:18px 0}
+.topbar-in{display:flex;justify-content:space-between;align-items:center}
+.tb-label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.tb-logo{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--text)}
+.tb-dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+/* hero */
+.hero{padding:88px 0 68px;text-align:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:28px}
+.htag-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+h1{font-size:clamp(44px,9vw,72px);font-weight:900;letter-spacing:-.04em;line-height:1.0;margin-bottom:22px}
+.hero-sub{font-size:18px;font-weight:400;color:var(--muted);max-width:540px;margin:0 auto 38px;line-height:1.75}
+.chips{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:42px}
+.chip{padding:6px 14px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;font-size:15px;font-weight:700;color:#fff;text-decoration:none;border:none;cursor:pointer;transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s;box-shadow:0 0 40px rgba(124,140,255,.22);font-family:var(--font)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 52px rgba(124,140,255,.38)}
+.btn-primary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary:active{transform:translateY(0)}
+
+/* dividers */
+.div{height:1px;background:var(--border)}
+
+/* sections */
+.sec{padding:68px 0}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.sec-title{font-size:30px;font-weight:800;letter-spacing:-.025em;margin-bottom:10px}
+.sec-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.7}
+
+/* what you get cards */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:38px}
+@media(max-width:640px){.g3,.pcards{grid-template-columns:1fr}}
+.fcard{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px 22px;transition:border-color .2s}
+.fcard:hover{border-color:rgba(124,140,255,.25)}
+.fcard-icon{width:40px;height:40px;border-radius:12px;background:rgba(124,140,255,.1);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+.fcard-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.fcard-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* outcomes */
+.outcomes{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:18px;overflow:hidden;margin-top:44px}
+.oc{display:flex;gap:20px;align-items:flex-start;background:var(--card);padding:22px 28px;transition:background .2s}
+.oc:hover{background:#131C34}
+.oc-dot{width:8px;height:8px;border-radius:50%;background:var(--mint);flex-shrink:0;margin-top:6px}
+.oc-title{font-size:15px;font-weight:700;margin-bottom:5px}
+.oc-desc{font-size:13.5px;color:var(--muted);line-height:1.65}
+
+/* steps */
+.step-list{display:flex;flex-direction:column;gap:14px;margin-top:38px;overflow:visible}
+.step{display:flex;gap:24px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px 30px;transition:border-color .2s;overflow:visible}
+.step:hover{border-color:rgba(124,140,255,.25)}
+.step-n{font-size:44px;font-weight:900;letter-spacing:-.04em;background:linear-gradient(135deg,#8FA2FF,#C9A8FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;flex-shrink:0;min-width:62px;line-height:1;padding-top:2px}
+.step-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.step-desc{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* prompt section */
+.psec{padding:68px 0;background:linear-gradient(180deg,transparent,rgba(124,140,255,.04) 50%,transparent)}
+.psec-head{margin-bottom:28px}
+.pbox{background:#07091A;border:1px solid rgba(124,140,255,.22);border-radius:20px;overflow:hidden;box-shadow:0 0 80px rgba(124,140,255,.06)}
+.pbox-head{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
+.pdots{display:flex;gap:6px}
+.pdot{width:10px;height:10px;border-radius:50%}
+.pbox-label{font-size:11px;color:var(--faint);font-family:'SF Mono','Courier New',monospace;letter-spacing:.08em}
+.pbody{padding:28px 30px;font-family:'SF Mono','Fira Code','Courier New',monospace;font-size:12.5px;line-height:1.85;color:#C3CBE6;white-space:pre-wrap;word-break:break-word}
+.fi{color:var(--amber);font-weight:600}
+.ph{color:var(--accent);font-weight:700;letter-spacing:.05em}
+.btn-copy{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:rgba(124,140,255,.08);border:1px solid rgba(124,140,255,.22);border-radius:10px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;transition:all .2s;font-family:var(--font)}
+.btn-copy:hover{background:rgba(124,140,255,.18);border-color:rgba(124,140,255,.4)}
+.btn-copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-copy.ok{color:var(--mint);border-color:rgba(94,234,212,.35);background:rgba(94,234,212,.08)}
+
+/* session prompts */
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
+.pcard:hover{border-color:rgba(124,140,255,.2)}
+.plabel{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.ptext{font-size:12.5px;color:var(--muted);line-height:1.75;font-family:'SF Mono','Courier New',monospace;flex:1}
+.fi-sm{color:var(--amber)}
+
+/* Whyzer CTA */
+.cta-sec{padding:68px 0}
+.cta-inner{background:var(--card);border:1px solid rgba(124,140,255,.18);border-radius:24px;padding:52px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-inner::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(124,140,255,.1) 0%,transparent 70%);pointer-events:none}
+.cta-eyebrow{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.cta-title{font-size:28px;font-weight:800;letter-spacing:-.025em;margin-bottom:14px;line-height:1.2}
+.cta-sub{font-size:16px;color:var(--muted);max-width:500px;margin:0 auto 32px;line-height:1.7}
+.btn-whyzer{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:12px;font-size:15px;font-weight:700;color:#fff;text-decoration:none;transition:transform .2s cubic-bezier(.22,1,.36,1),box-shadow .2s;box-shadow:0 0 40px rgba(124,140,255,.22)}
+.btn-whyzer:hover{transform:translateY(-2px);box-shadow:0 6px 52px rgba(124,140,255,.38)}
+.btn-whyzer:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.cta-note{font-size:12px;color:var(--faint);margin-top:16px}
+
+/* footer */
+.footer{border-top:1px solid var(--border);padding:36px 0}
+.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.foot-l{font-size:12px;color:var(--faint)}
+.foot-r{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--text)}
+.fdot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- topbar -->
+<div class="topbar">
+  <div class="container topbar-in">
+    <span class="tb-label">AI Secrets for Strategic Sellers</span>
+    <div class="tb-logo"><div class="tb-dot"></div>Whyzer</div>
+  </div>
+</div>
+
+<!-- hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag a1"><span class="htag-dot"></span>THIS WEEK'S FREEBIE</div>
+    <h1 class="a2">The <span class="gt">Second Brain</span><br>Setup</h1>
+    <p class="hero-sub a3">The exact prompt that turns Claude into a strategic thinking partner trained on your deals, wired to spot patterns, and built to help you win on purpose.</p>
+    <div class="chips a4">
+      <span class="chip">Claude Projects</span>
+      <span class="chip">Enterprise B2B</span>
+      <span class="chip">One-Time Setup</span>
+    </div>
+    <div class="a5"><a href="#prompt" class="btn-primary">Copy the Prompt</a></div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- what you get -->
+<section class="sec">
+  <div class="container">
+    <div class="eyebrow">What you get</div>
+    <h2 class="sec-title">A brain trained only on you.</h2>
+    <div class="g3">
+      <div class="fcard">
+        <div class="fcard-icon">&#129504;</div>
+        <div class="fcard-title">It responds like you</div>
+        <div class="fcard-desc">Built on your deals, your language, and your judgment. Not a database of generic sales tips that your competitors already have.</div>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon">&#9889;</div>
+        <div class="fcard-title">Patterns and moves from your real field</div>
+        <div class="fcard-desc">Every recommendation comes from your actual wins and losses. Not internet theory, not random playbook data. Your evidence.</div>
+      </div>
+      <div class="fcard">
+        <div class="fcard-icon">&#128203;</div>
+        <div class="fcard-title">Predictable motions while you handle the selling</div>
+        <div class="fcard-desc">Session briefings, call prep, weekly review. The brain runs the system in the background. You show up for the judgment calls that matter.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- setup -->
+<section class="sec">
+  <div class="container">
+    <div class="eyebrow">The setup</div>
+    <h2 class="sec-title">Three steps. Under five minutes.</h2>
+    <p class="sec-sub">Do this once. After this, your only job is to dump. The brain does the rest.</p>
+    <div class="step-list">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div>
+          <div class="step-title">Create the project</div>
+          <div class="step-desc">In Claude, open a new Project and call it "My Second Brain." Click Project Instructions and paste in the system prompt below. Fill in the three bracketed lines about who you are and what you sell. Done once, runs forever.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div>
+          <div class="step-title">Start one conversation</div>
+          <div class="step-desc">Open one chat inside that project and always return to that same conversation. Do not start a fresh one each session. That thread is the brain. The full history stays in context, and that continuity is the whole point.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div>
+          <div class="step-title">Dump everything there</div>
+          <div class="step-desc">After a call, open the chat and talk. A deal that stalled? Tell it. A win worth repeating? Tell it. Messy is fine. Every time you come back, the brain opens with the pattern it is tracking, a thread worth revisiting, and a question it wants you to sit with today.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- system prompt -->
+<section class="psec" id="prompt">
+  <div class="container">
+    <div class="psec-head">
+      <div class="eyebrow">The system prompt</div>
+      <h2 class="sec-title">Copy this once. Paste into Project Instructions.</h2>
+      <p class="sec-sub" style="margin-top:8px">Fill in the three <span style="color:var(--amber);font-weight:600">amber fields</span> with your context. Everything else works as-is.</p>
+    </div>
+    <div class="pbox">
+      <div class="pbox-head">
+        <div class="pdots">
+          <div class="pdot" style="background:#FF5F57"></div>
+          <div class="pdot" style="background:#FEBC2E"></div>
+          <div class="pdot" style="background:#28C840"></div>
+        </div>
+        <span class="pbox-label">CLAUDE - PROJECT INSTRUCTIONS</span>
+        <button class="btn-copy" id="mainCopyBtn" onclick="copyEl('mainPromptText','mainCopyBtn')">&#10034; Copy prompt</button>
+      </div>
+      <div class="pbody" id="mainPromptText">You are my second brain and strategic thinking partner for enterprise B2B sales.
+
+Your job is not to organize my notes. It is to hold everything I tell you, find the patterns I cannot see because I am inside my own deals, and help me build a way to win on purpose. Not by instinct.
+
+<span class="ph">ABOUT ME (fill in once):</span>
+- I sell: <span class="fi">[what you sell]</span>
+- I sell to: <span class="fi">[industry, company size, buyer roles]</span>
+- My typical deal: <span class="fi">[approximate ACV, cycle length, number of stakeholders]</span>
+
+<span class="ph">HOW YOU BEHAVE:</span>
+
+AT THE START OF EVERY SESSION, before I say anything new, give me a 3-line briefing:
+  - The most interesting pattern you are currently tracking in my deals
+  - One open thread from our previous conversations worth revisiting today
+  - One sharp question you want me to think about today
+
+This happens every time I open the chat. Do not wait for me to ask.
+
+WHEN I DUMP ANYTHING (a call, a win, a loss, a stalled deal, a random thought):
+  - Look for what connects to something I have told you before
+  - Ask 2-3 questions that pull out the real lesson, especially the part I am not saying
+  - Give me the insight, not the transcript
+
+CONTINUOUSLY TRACK AND NAME:
+  - Patterns in what accelerates my deals vs. what stalls them
+  - Recurring buyer behaviors that signal real intent vs. noise
+  - The thinking path I run in my best deals and how it breaks down in my worst
+  - Moments where a specific behavior of mine changed an outcome
+
+When a pattern is strong enough to name, give it a name I can reuse. "The CFO anchor move." "The procurement bypass." Label it so we can reference and run it deliberately.
+
+BUILD MY SUCCESS PLAY:
+As you accumulate enough data across my deals, identify the specific sequence of moves that produces my best results. When you have enough evidence, tell me: here is what you consistently do when you win a deal like this. That becomes the playbook. Update it as the evidence grows.
+
+MINE PREVIOUS CONVERSATIONS FIRST:
+When I bring you a new deal challenge, search our full conversation history before suggesting anything. Surface the directly relevant precedent from my own experience: what I did, what worked, what did not. Do this before offering anything new.
+
+BE HONEST, NOT AGREEABLE:
+Push back when my reasoning is weak. Tell me when I am taking credit for a win that happened for a different reason. Flag my blind spots even when I am confident. I do not want a mirror. I want a sharper version of my own judgment.
+
+TONE AND LENS:
+Complex enterprise selling: multi-stakeholder, long cycles, large ACV. Everything fits that world. Skip generic or transactional thinking unless I ask.</div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- session prompts -->
+<section class="sec">
+  <div class="container">
+    <div class="eyebrow">Session prompts</div>
+    <h2 class="sec-title">Three prompts. Your entire operating system.</h2>
+    <p class="sec-sub">Use these inside your project chat. Replace <span style="color:var(--amber);font-weight:600">amber text</span> with your specifics each time.</p>
+    <div class="pcards">
+      <div class="pcard">
+        <div class="plabel" style="color:var(--mint)">Capture a note</div>
+        <div class="ptext" id="p1">Here is a messy note from a call: <span class="fi-sm">[paste or speak it]</span>. Ask me what you need, then give me the real insight: what actually moved, what I would do differently, and what this connects to from before.</div>
+        <button class="btn-copy" onclick="copyEl('p1',this)">&#10034; Copy</button>
+      </div>
+      <div class="pcard">
+        <div class="plabel" style="color:var(--accent2)">Weekly review</div>
+        <div class="ptext" id="p2">Weekly review. Go through everything I have shared this week. Find the real reasons I won or lost. Separate repeatable moves from one-offs. Give me the one thing I should do differently next week.</div>
+        <button class="btn-copy" onclick="copyEl('p2',this)">&#10034; Copy</button>
+      </div>
+      <div class="pcard">
+        <div class="plabel" style="color:var(--accent)">Prep a call</div>
+        <div class="ptext" id="p3">Call with <span class="fi-sm">[account / role]</span> tomorrow. Using my patterns, prep me: their likely priority right now, the angle that has worked for me in this situation before, and the objection to expect.</div>
+        <button class="btn-copy" onclick="copyEl('p3',this)">&#10034; Copy</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- Whyzer CTA -->
+<section class="cta-sec">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">Take it further</div>
+      <h2 class="cta-title">Your second brain holds your judgment.<br>Whyzer adds the account intelligence.</h2>
+      <p class="cta-sub">Whyzer gives enterprise sellers AI-powered account research so every call is built on real buyer signals, not guesswork. The second brain and Whyzer together are the full picture.</p>
+      <a href="https://whyzer.com" class="btn-whyzer">Explore Whyzer</a>
+      <div class="cta-note">AI-powered account research for enterprise sellers</div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="container foot-in">
+    <div class="foot-l">AI Secrets for Strategic Sellers · Published by Whyzer · Every Tuesday</div>
+    <div class="foot-r"><div class="fdot"></div>Whyzer</div>
+  </div>
+</footer>
+
+</div>
+<script>
+function copyEl(idOrEl, btn) {
+  const el = typeof idOrEl === 'string' ? document.getElementById(idOrEl) : idOrEl;
+  const button = typeof btn === 'string' ? document.getElementById(btn) : btn;
+  const text = el.innerText;
+  const orig = button.innerHTML;
+  const ok = () => { button.classList.add('ok'); button.innerHTML = '&#10003; Copied!'; setTimeout(()=>{ button.classList.remove('ok'); button.innerHTML=orig; }, 2500); };
+  if (navigator.clipboard) { navigator.clipboard.writeText(text).then(ok).catch(()=>{ fallback(el); ok(); }); }
+  else { fallback(el); ok(); }
+}
+function fallback(el) {
+  const r = document.createRange(); r.selectNode(el); window.getSelection().removeAllRanges(); window.getSelection().addRange(r);
+  try { document.execCommand('copy'); } catch(e) {}
+  window.getSelection().removeAllRanges();
+}
+</script>
+</body>
+</html>
