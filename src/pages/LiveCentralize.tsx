@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
 function loadCss(href: string) {
