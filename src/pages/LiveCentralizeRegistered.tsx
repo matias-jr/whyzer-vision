@@ -67,9 +67,8 @@ const LiveCentralizeRegistered = () => (
     <GrainOverlay />
 
     {/* NAV */}
-    <header style={{ maxWidth: 1180, margin: '0 auto', padding: '22px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative', zIndex: 5 }}>
+    <header style={{ maxWidth: 1180, margin: '0 auto', padding: '22px 32px', display: 'flex', alignItems: 'center', position: 'relative', zIndex: 5 }}>
       <img src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png" alt="Whyzer" style={{ height: 30, width: 'auto' }} />
-      <span style={{ fontSize: 13, fontWeight: 500, color: MUTED, letterSpacing: '0.04em' }}>Whyzer × Centralize</span>
     </header>
 
     {/* CONFIRMATION HERO */}
@@ -199,7 +198,7 @@ const LiveCentralizeRegistered = () => (
           {/* Jamal */}
           <SpeakerCard role="Speaker" name="Jamal Reimer" title="Co-founder & CEO" photo="/jamal-hero.png" brand="WHYZER" brandVariant="whyzer" />
           {/* Mike (host) */}
-          <SpeakerCard role="Host" name="Mike Fiascone" title="Sales Accelerator · Ex-DocuSign · Ex-Oracle" photo="/mike.png" isHost />
+          <SpeakerCard role="Host" name="Mike Fiascone" title="Sales Accelerator · Ex-DocuSign · Ex-Oracle" photo="/mike.png" photoScale={1.15} isHost />
           {/* Rachit */}
           <SpeakerCard role="Speaker" name="Rachit Kataria" title="Co-founder & CEO" photo="/rachit.png" brand="centralize" brandVariant="centralize" />
         </div>
@@ -231,16 +230,17 @@ interface SpeakerCardProps {
   name: string;
   title: string;
   photo?: string;
+  photoScale?: number;
   brand?: string;
   brandVariant?: 'whyzer' | 'centralize';
   isHost?: boolean;
 }
 
-const SpeakerCard = ({ role, name, title, photo, brand, brandVariant, isHost = false }: SpeakerCardProps) => (
+const SpeakerCard = ({ role, name, title, photo, photoScale = 1, brand, brandVariant, isHost = false }: SpeakerCardProps) => (
   <div style={{ position: 'relative', zIndex: 1 }}>
     <div style={{ position: 'relative', width: '100%', aspectRatio: isHost ? '280/410' : '280/360', background: '#1F2937', border: `1px solid ${BORDER_2}`, borderRadius: 16, overflow: 'hidden' }}>
       {photo
-        ? <img src={photo} alt={name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+        ? <img src={photo} alt={name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', transform: `scale(${photoScale})`, transformOrigin: 'center top' }} />
         : <span style={{ position: 'absolute', top: 18, left: '50%', transform: 'translateX(-50%)', fontSize: 11, letterSpacing: '0.22em', color: '#3a455c', fontWeight: 600 }}>PHOTO</span>
       }
       <div style={{ position: 'absolute', left: 14, bottom: 14, right: 14, background: 'rgba(11,16,28,0.74)', backdropFilter: 'blur(10px)', border: '1px solid rgba(99,102,241,0.4)', borderRadius: 12, padding: '14px 16px', textAlign: 'left' }}>
@@ -249,10 +249,10 @@ const SpeakerCard = ({ role, name, title, photo, brand, brandVariant, isHost = f
         <div style={{ height: 2, width: 38, background: ACCENT, borderRadius: 2, margin: '9px 0' }} />
         <p style={{ fontSize: 13, color: MUTED, margin: '0 0 10px', lineHeight: 1.4 }}>{title}</p>
         {brand && brandVariant === 'whyzer' && (
-          <span style={{ fontSize: 14, fontWeight: 800, letterSpacing: '0.14em', color: '#fff' }}>{brand}</span>
+          <img src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png" alt="Whyzer" style={{ height: 18, width: 'auto' }} />
         )}
         {brand && brandVariant === 'centralize' && (
-          <img src="/centralize-logo.png" alt="Centralize" style={{ height: 16, width: 'auto', opacity: 0.9 }} />
+          <img src="/centralize-full-logo.png" alt="Centralize" style={{ height: 16, width: 'auto', opacity: 0.9 }} />
         )}
       </div>
     </div>
