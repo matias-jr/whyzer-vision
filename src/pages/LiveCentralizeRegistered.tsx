@@ -196,7 +196,7 @@ const LiveCentralizeRegistered = () => (
           <div aria-hidden="true" style={{ content: '', position: 'absolute', zIndex: 0, left: '50%', top: -46, transform: 'translateX(-50%)', width: 560, height: 560, borderRadius: '50%', background: 'conic-gradient(from 200deg, transparent 0deg, rgba(139,92,246,0.0) 40deg, #8B5CF6 130deg, #6366F1 230deg, transparent 320deg)', WebkitMask: 'radial-gradient(circle, transparent 68%, #000 69%, #000 70%, transparent 71%)', mask: 'radial-gradient(circle, transparent 68%, #000 69%, #000 70%, transparent 71%)', filter: 'blur(1px) drop-shadow(0 0 14px rgba(139,92,246,0.55))', pointerEvents: 'none' }} />
 
           {/* Jamal */}
-          <SpeakerCard role="Speaker" name="Jamal Reimer" title="Co-founder & CEO" photo="/jamal-hero.png" brand="WHYZER" brandVariant="whyzer" />
+          <SpeakerCard role="Speaker" name="Jamal Reimer" title="Co-founder & CEO" photo="/jamal-centralize.png" brand="WHYZER" brandVariant="whyzer" />
           {/* Mike (host) */}
           <SpeakerCard role="Host" name="Mike Fiascone" title="Sales Accelerator · Ex-DocuSign · Ex-Oracle" photo="/mike.png" photoScale={1.15} isHost />
           {/* Rachit */}
