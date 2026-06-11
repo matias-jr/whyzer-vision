@@ -293,7 +293,7 @@ const LiveCentralize = () => (
           {/* CENTRALIZE */}
           <div style={{ background: CARD, border: `1px solid ${BORDER}`, borderRadius: 14, padding: '38px 36px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 22 }}>
-              <img src="/centralize-full-logo.png" alt="Centralize" style={{ height: 48, width: 'auto' }} />
+              <img src="/centralize-small.png" alt="Centralize" style={{ height: 48, width: 'auto' }} />
             </div>
             <p style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.45, margin: '0 0 14px' }}>Centralize helps sellers understand the people inside an account.</p>
             <p style={{ fontSize: 15.5, color: MUTED, lineHeight: 1.62, margin: '0 0 28px' }}>By mapping reporting structures, stakeholder relationships, and buying committees, Centralize provides the visibility needed to navigate complex sales opportunities.</p>
@@ -368,7 +368,7 @@ const SpeakerCard = ({ role, name, title, photo, photoScale = 1, brand, brandVar
           <img src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png" alt="Whyzer" style={{ height: 18, width: 'auto' }} />
         )}
         {brand && brandVariant === 'centralize' && (
-          <img src="/centralize-full-logo.png" alt="Centralize" style={{ height: 48, width: 'auto', opacity: 0.9 }} />
+          <img src="/centralize-small.png" alt="Centralize" style={{ height: 18, width: 'auto', opacity: 0.9 }} />
         )}
       </div>
     </div>
