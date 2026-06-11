@@ -198,9 +198,9 @@ const LiveCentralizeRegistered = () => (
           {/* Jamal */}
           <SpeakerCard role="Speaker" name="Jamal Reimer" title="Co-founder & CEO" photo="/jamal-centralize.png" brand="WHYZER" brandVariant="whyzer" />
           {/* Mike (host) */}
-          <SpeakerCard role="Host" name="Mike Fiascone" title="Sales Accelerator · Ex-DocuSign · Ex-Oracle" photo="/mike.png" photoScale={1.15} isHost />
+          <SpeakerCard role="Host" name="Mike Fiascone" title="Sales Accelerator · Ex-DocuSign · Ex-Oracle" photo="/mike-1.png" photoScale={1.15} isHost />
           {/* Rachit */}
-          <SpeakerCard role="Speaker" name="Rachit Kataria" title="Co-founder & CEO" photo="/rachit.png" brand="centralize" brandVariant="centralize" />
+          <SpeakerCard role="Speaker" name="Rachit Kataria" title="Co-founder & CEO" photo="/rachit-1.png" brand="centralize" brandVariant="centralize" />
         </div>
       </div>
     </section>
