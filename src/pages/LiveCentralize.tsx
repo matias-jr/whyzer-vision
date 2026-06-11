@@ -74,7 +74,7 @@ const CheckIcon = () => (
 
 const learnItems = [
   {
-    title: 'Read the account's financials',
+    title: "Read the account's financials",
     body: 'Surface what the executive cares about before your first call.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 24, height: 24 }}>
@@ -105,7 +105,7 @@ const learnItems = [
 const whoItems = [
   {
     title: 'Enterprise AEs & SAMs',
-    body: 'You're working 6–18 month deals and you know the CFO conversation is where they close or stall.',
+    body: "You're working 6–18 month deals and you know the CFO conversation is where they close or stall.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22 }}>
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
@@ -114,7 +114,7 @@ const whoItems = [
   },
   {
     title: 'SDRs & BDRs targeting senior buyers',
-    body: 'You need a reason for an executive to respond. Generic personalization isn't it.',
+    body: "You need a reason for an executive to respond. Generic personalization isn't it.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22 }}>
         <path d="M22 2 11 13" /><path d="M22 2 15 22l-4-9-9-4 20-7z" />
