@@ -197,11 +197,11 @@ const LiveCentralizeRegistered = () => (
           <div aria-hidden="true" style={{ content: '', position: 'absolute', zIndex: 0, left: '50%', top: -46, transform: 'translateX(-50%)', width: 560, height: 560, borderRadius: '50%', background: 'conic-gradient(from 200deg, transparent 0deg, rgba(139,92,246,0.0) 40deg, #8B5CF6 130deg, #6366F1 230deg, transparent 320deg)', WebkitMask: 'radial-gradient(circle, transparent 68%, #000 69%, #000 70%, transparent 71%)', mask: 'radial-gradient(circle, transparent 68%, #000 69%, #000 70%, transparent 71%)', filter: 'blur(1px) drop-shadow(0 0 14px rgba(139,92,246,0.55))', pointerEvents: 'none' }} />
 
           {/* Jamal */}
-          <SpeakerCard role="Speaker" name="Jamal Reimer" title="Co-founder & CEO" brand="WHYZER" brandVariant="whyzer" />
+          <SpeakerCard role="Speaker" name="Jamal Reimer" title="Co-founder & CEO" photo="/jamal-hero.png" brand="WHYZER" brandVariant="whyzer" />
           {/* Mike (host) */}
-          <SpeakerCard role="Host" name="Mike Fiascone" title="Sales Accelerator · Ex-DocuSign · Ex-Oracle" isHost />
+          <SpeakerCard role="Host" name="Mike Fiascone" title="Sales Accelerator · Ex-DocuSign · Ex-Oracle" photo="/mike.png" isHost />
           {/* Rachit */}
-          <SpeakerCard role="Speaker" name="Rachit Kataria" title="Co-founder & CEO" brand="centralize" brandVariant="centralize" />
+          <SpeakerCard role="Speaker" name="Rachit Kataria" title="Co-founder & CEO" photo="/rachit.png" brand="centralize" brandVariant="centralize" />
         </div>
       </div>
     </section>
@@ -230,16 +230,19 @@ interface SpeakerCardProps {
   role: string;
   name: string;
   title: string;
+  photo?: string;
   brand?: string;
   brandVariant?: 'whyzer' | 'centralize';
   isHost?: boolean;
 }
 
-const SpeakerCard = ({ role, name, title, brand, brandVariant, isHost = false }: SpeakerCardProps) => (
+const SpeakerCard = ({ role, name, title, photo, brand, brandVariant, isHost = false }: SpeakerCardProps) => (
   <div style={{ position: 'relative', zIndex: 1 }}>
     <div style={{ position: 'relative', width: '100%', aspectRatio: isHost ? '280/410' : '280/360', background: '#1F2937', border: `1px solid ${BORDER_2}`, borderRadius: 16, overflow: 'hidden' }}>
-      {/* REPLACE WITH PHOTO */}
-      <span style={{ position: 'absolute', top: 18, left: '50%', transform: 'translateX(-50%)', fontSize: 11, letterSpacing: '0.22em', color: '#3a455c', fontWeight: 600 }}>PHOTO</span>
+      {photo
+        ? <img src={photo} alt={name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
+        : <span style={{ position: 'absolute', top: 18, left: '50%', transform: 'translateX(-50%)', fontSize: 11, letterSpacing: '0.22em', color: '#3a455c', fontWeight: 600 }}>PHOTO</span>
+      }
       <div style={{ position: 'absolute', left: 14, bottom: 14, right: 14, background: 'rgba(11,16,28,0.74)', backdropFilter: 'blur(10px)', border: '1px solid rgba(99,102,241,0.4)', borderRadius: 12, padding: '14px 16px', textAlign: 'left' }}>
         <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', color: ACCENT_2, textTransform: 'uppercase', margin: '0 0 5px' }}>{role}</p>
         <p style={{ fontSize: 18, fontWeight: 800, letterSpacing: '0.01em', color: '#fff', margin: 0, textTransform: 'uppercase' }}>{name}</p>
@@ -249,10 +252,7 @@ const SpeakerCard = ({ role, name, title, brand, brandVariant, isHost = false }:
           <span style={{ fontSize: 14, fontWeight: 800, letterSpacing: '0.14em', color: '#fff' }}>{brand}</span>
         )}
         {brand && brandVariant === 'centralize' && (
-          <span style={{ fontSize: 14, fontWeight: 600, color: '#cbd5e1', textTransform: 'lowercase', letterSpacing: '0.01em', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-            <span style={{ width: 15, height: 15, borderRadius: '50%', border: `1.5px solid ${ACCENT_2}`, flexShrink: 0, opacity: 0.9 }} aria-hidden="true" />
-            {brand}
-          </span>
+          <img src="/centralize-logo.png" alt="Centralize" style={{ height: 16, width: 'auto', opacity: 0.9 }} />
         )}
       </div>
     </div>
