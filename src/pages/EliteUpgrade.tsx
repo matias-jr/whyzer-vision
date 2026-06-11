@@ -303,7 +303,7 @@ export default function EliteUpgrade() {
               alt="Whyzer"
             />
           </a>
-          <a href={annualHref} className="btn btn-sm nav-cta">Get Elite — {s}97/mo</a>
+          <a href="#pricing" className="btn btn-sm nav-cta">Get Elite — {s}97/mo</a>
         </div>
       </header>
 
@@ -327,7 +327,7 @@ export default function EliteUpgrade() {
               <span className="sign-who"><b>Jamal Reimer</b><i>Founder, Whyzer · ex-enterprise seller</i></span>
             </div>
             <div className="hero-cta">
-              <a href={annualHref} className="btn btn-lg">Step into Elite — {s}97/mo</a>
+              <a href="#pricing" className="btn btn-lg">Step into Elite — {s}97/mo</a>
               <p className="cta-micro">Cancel anytime. One closed deal pays for years of Elite.</p>
             </div>
           </div>
@@ -495,7 +495,7 @@ export default function EliteUpgrade() {
         <div className="wrap-narrow close-inner">
           <h2 className="close-h">Someone's getting to your CFO this week. <span className="grad">Make it you.</span></h2>
           <p className="close-sub">Eleven courses, weekly live coaching, and the Whyzer product underneath all of it. Included with Elite.</p>
-          <a href={annualHref} className="btn btn-lg">Get Whyzer Elite — {s}97/mo</a>
+          <a href="#pricing" className="btn btn-lg">Get Whyzer Elite — {s}97/mo</a>
         </div>
       </section>
 
