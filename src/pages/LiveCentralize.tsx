@@ -233,7 +233,7 @@ const LiveCentralize = () => (
           <div aria-hidden="true" style={{ position: 'absolute', zIndex: 0, pointerEvents: 'none', left: '50%', top: -100, transform: 'translateX(-50%)', width: 940, height: 300, background: 'radial-gradient(ellipse 50% 100% at 50% 100%, transparent 0 79%, rgba(196,181,253,0.45) 79.6%, rgba(139,92,246,0.8) 80.1%, rgba(139,92,246,0) 81.8%)', filter: 'blur(0.5px) drop-shadow(0 0 5px rgba(139,92,246,0.5)) drop-shadow(0 0 18px rgba(124,92,246,0.28))' }} />
 
           {/* Speaker 1 — Jamal */}
-          <SpeakerCard role="Speaker" name="Jamal Reimer" title="Co-founder & CEO" photo="/jamal-centralize.png" brand="WHYZER" brandVariant="whyzer" />
+          <SpeakerCard role="Speaker" name="Jamal Reimer" title="Co-founder & CEO" photo="/jamal-centralize.png" photoScale={0.9} brand="WHYZER" brandVariant="whyzer" />
 
           {/* Host — Mike (center, taller) */}
           <SpeakerCard role="Host" name="Mike Fiascone" title="Sales Accelerator · Ex-DocuSign · Ex-Oracle" photo="/mike-1.png" photoScale={1.15} isHost />
@@ -293,7 +293,7 @@ const LiveCentralize = () => (
           {/* CENTRALIZE */}
           <div style={{ background: CARD, border: `1px solid ${BORDER}`, borderRadius: 14, padding: '38px 36px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 9, marginBottom: 22 }}>
-              <img src="/centralize-small.png" alt="Centralize" style={{ height: 48, width: 'auto' }} />
+              <img src="/centralize-small.png" alt="Centralize" style={{ height: 26, width: 'auto' }} />
             </div>
             <p style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.45, margin: '0 0 14px' }}>Centralize helps sellers understand the people inside an account.</p>
             <p style={{ fontSize: 15.5, color: MUTED, lineHeight: 1.62, margin: '0 0 28px' }}>By mapping reporting structures, stakeholder relationships, and buying committees, Centralize provides the visibility needed to navigate complex sales opportunities.</p>
