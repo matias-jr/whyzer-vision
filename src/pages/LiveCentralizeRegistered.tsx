@@ -88,7 +88,7 @@ const LiveCentralizeRegistered = () => (
         </p>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 9, background: CARD, border: `1px solid ${BORDER_2}`, fontSize: 14, fontWeight: 600, padding: '9px 16px', borderRadius: 999, marginBottom: 24 }}>
           <span style={{ width: 7, height: 7, borderRadius: '50%', background: ACCENT, boxShadow: '0 0 0 4px rgba(99,102,241,0.18)', flexShrink: 0 }} />
-          June 16, 2026 · 12:00 PM ET
+          July 7, 2026 · 12:00 PM ET
         </div>
         <p style={{ fontSize: 16.5, color: MUTED, maxWidth: 520, margin: '0 auto 0' }}>
           A confirmation email and calendar invite are headed to your inbox.
@@ -157,7 +157,7 @@ const LiveCentralizeRegistered = () => (
             <svg viewBox="0 0 24 24" fill="none" stroke={ACCENT_2} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 16, height: 16, flexShrink: 0 }}>
               <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
             </svg>
-            June 16, 2026 · 12:00 PM ET
+            July 7, 2026 · 12:00 PM ET
           </span>
         </div>
       </div>

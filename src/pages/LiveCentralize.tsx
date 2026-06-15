@@ -170,7 +170,7 @@ const LiveCentralize = () => (
             <div style={{ display: 'flex', alignItems: 'center', gap: 24, maxWidth: 470, padding: '18px 0', borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 17, fontWeight: 700 }}>
                 <svg viewBox="0 0 24 24" fill="none" stroke={ACCENT_2} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 22, height: 22, flexShrink: 0 }}><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
-                <span>June 16, 2026</span>
+                <span>July 7, 2026</span>
               </div>
               <div style={{ width: 1, height: 28, background: BORDER_2 }} />
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 17, fontWeight: 700 }}>
@@ -314,7 +314,7 @@ const LiveCentralize = () => (
     <section style={{ background: CARD, borderTop: `1px solid ${BORDER}`, textAlign: 'center', padding: '96px 32px' }}>
       <div style={{ maxWidth: 1180, margin: '0 auto' }}>
         <h2 style={{ fontSize: 'clamp(32px, 3.6vw, 46px)', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.08, margin: '0 0 16px' }}>Register for June 16</h2>
-        <p style={{ color: MUTED, fontSize: 18, margin: '0 0 34px' }}>June 16, 2026 · 12:00 PM ET · Free</p>
+        <p style={{ color: MUTED, fontSize: 18, margin: '0 0 34px' }}>July 7, 2026 · 12:00 PM ET · Free</p>
         <a href="#registration-form" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: ACCENT, color: '#fff', fontWeight: 700, fontSize: 16, letterSpacing: '0.03em', padding: '16px 34px', borderRadius: 10, border: `1px solid ${ACCENT}`, textDecoration: 'none' }}>
           Save Your Spot
         </a>
