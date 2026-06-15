@@ -23,7 +23,7 @@ function loadScript(src: string): Promise<void> {
 const CONFIRMATION_HTML = `<style>
 #wk_element_ef686ab4d9d28244630f2a52414694f4 {
   background: #111827 !important; border: 1px solid #232C3F !important;
-  border-radius: 16px !important; box-shadow: none !important; max-width: 520px !important;
+  border-radius: 16px !important; box-shadow: none !important; max-width: 720px !important;
 }
 .wk_timer_header { color: #9CA3AF !important; font-weight: 700 !important; letter-spacing: 0.03em !important; }
 .wk_timer_row h5 { color: #fff !important; font-weight: 800 !important; }
