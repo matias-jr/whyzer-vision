@@ -14,7 +14,25 @@ export default function ArticleCard({ article }: { article: ArticleSummary }) {
   return (
     <Link
       to={`/newsletter/${article.slug}`}
-      className="group flex flex-col rounded-xl border border-foreground/[0.06] bg-background-secondary overflow-hidden hover:border-foreground/[0.14] transition-all duration-300"
+      className="group flex flex-col rounded-2xl overflow-hidden"
+      style={{
+        background: '#111827',
+        border: '1px solid rgba(255,255,255,0.08)',
+        textDecoration: 'none',
+        transition: 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease',
+      }}
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.transform = 'translateY(-3px)';
+        el.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(59,111,240,0.10)';
+        el.style.borderColor = 'rgba(255,255,255,0.16)';
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.transform = 'translateY(0)';
+        el.style.boxShadow = 'none';
+        el.style.borderColor = 'rgba(255,255,255,0.08)';
+      }}
     >
       {article.cover_image_url && (
         <div className="aspect-[16/9] overflow-hidden">
@@ -26,19 +44,28 @@ export default function ArticleCard({ article }: { article: ArticleSummary }) {
         </div>
       )}
       <div className="p-6 flex flex-col flex-1">
-        <p className="font-mono-brand text-[11px] uppercase tracking-[0.15em] text-text-tertiary mb-3">
+        <p
+          className="font-mono-brand text-[11px] uppercase tracking-[0.15em] mb-3"
+          style={{ color: '#555E75' }}
+        >
           {formatDate(article.published_at)}
           {article.author ? ` · ${article.author}` : ''}
         </p>
-        <h3 className="font-display text-xl leading-tight text-foreground mb-2 group-hover:text-primary transition-colors">
+        <h3
+          className="text-xl leading-tight mb-2"
+          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#F0F4FF', letterSpacing: '-0.015em' }}
+        >
           {article.title}
         </h3>
         {article.excerpt && (
-          <p className="font-body text-sm text-text-secondary leading-[1.7] line-clamp-3">
+          <p className="font-body text-sm leading-[1.7] line-clamp-3" style={{ color: '#8B92A9' }}>
             {article.excerpt}
           </p>
         )}
-        <span className="font-mono-brand text-xs uppercase tracking-wider text-primary mt-4">
+        <span
+          className="font-mono-brand text-xs uppercase tracking-wider mt-4"
+          style={{ color: '#7EB3FF' }}
+        >
           Read →
         </span>
       </div>

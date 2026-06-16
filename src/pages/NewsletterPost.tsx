@@ -87,13 +87,14 @@ const NewsletterPost = () => {
   }, [slug]);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen" style={{ background: '#070B17', color: '#F0F4FF' }}>
       <GrainOverlay />
 
       <header className="relative z-10 px-6 py-6 md:px-12">
         <Link
           to="/"
-          className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary hover:text-foreground transition-colors"
+          className="font-mono text-xs uppercase tracking-[0.15em] transition-opacity duration-200 hover:opacity-80"
+          style={{ color: '#3B6FF0', textDecoration: 'none' }}
         >
           ← whyzer
         </Link>
@@ -101,20 +102,34 @@ const NewsletterPost = () => {
 
       <main className="relative z-10 mx-auto max-w-[720px] px-6 pb-24 pt-8 md:px-0">
         {state.kind === 'loading' && (
-          <p className="font-mono text-sm text-text-secondary">Loading…</p>
+          <p className="font-mono text-sm" style={{ color: '#8B92A9' }}>Loading…</p>
         )}
 
         {state.kind === 'not-found' && (
           <div className="py-24 text-center">
-            <p className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary mb-4">
+            <p
+              className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
+              style={{ color: '#555E75' }}
+            >
               404
             </p>
-            <h1 className="font-display text-4xl md:text-5xl uppercase tracking-tight mb-6">
+            <h1
+              className="mb-6"
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontWeight: 800,
+                fontSize: 'clamp(28px, 4vw, 42px)',
+                letterSpacing: '-0.035em',
+                lineHeight: 1.15,
+                color: '#F0F4FF',
+              }}
+            >
               Article not found
             </h1>
             <Link
               to="/newsletter/archive"
-              className="font-mono text-sm uppercase tracking-wider text-primary hover:underline"
+              className="font-mono text-sm uppercase tracking-wider hover:underline"
+              style={{ color: '#3B6FF0', textDecoration: 'none' }}
             >
               ← Browse all issues
             </Link>
@@ -123,25 +138,53 @@ const NewsletterPost = () => {
 
         {state.kind === 'error' && (
           <div className="py-24 text-center">
-            <p className="font-mono text-xs uppercase tracking-[0.15em] text-destructive mb-4">
+            <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: '#555E75' }}>
               Error
             </p>
-            <p className="font-body text-text-secondary">{state.message}</p>
+            <p className="font-body" style={{ color: '#8B92A9' }}>{state.message}</p>
           </div>
         )}
 
         {state.kind === 'ready' && (
           <article>
-            <div className="mb-8">
-              <p className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary mb-4">
+            {/* Hero glow behind headline */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 900,
+                height: 400,
+                background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.09) 0%, transparent 65%)',
+                pointerEvents: 'none',
+                zIndex: 0,
+              }}
+            />
+            <div className="mb-8" style={{ position: 'relative', zIndex: 1 }}>
+              <p
+                className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
+                style={{ color: '#555E75', fontSize: 13 }}
+              >
                 {formatDate(state.article.published_at)}
                 {state.article.author ? ` · ${state.article.author}` : ''}
               </p>
-              <h1 className="font-display text-4xl md:text-6xl uppercase leading-[1.05] tracking-tight mb-6">
+              <h1
+                className="mb-6"
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: 800,
+                  fontSize: 'clamp(28px, 4vw, 42px)',
+                  letterSpacing: '-0.035em',
+                  lineHeight: 1.15,
+                  color: '#F0F4FF',
+                }}
+              >
                 {state.article.title}
               </h1>
               {state.article.excerpt && (
-                <p className="font-body text-lg text-text-secondary leading-relaxed">
+                <p className="font-body text-lg leading-relaxed" style={{ color: '#8B92A9', fontSize: 17 }}>
                   {state.article.excerpt}
                 </p>
               )}
@@ -151,23 +194,25 @@ const NewsletterPost = () => {
               <img
                 src={state.article.cover_image_url}
                 alt=""
-                className="w-full rounded-lg mb-12 aspect-[16/9] object-cover"
+                className="w-full mb-12 aspect-[16/9] object-cover"
+                style={{ borderRadius: 12, boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
               />
             )}
 
             <div
-              className="article-body font-body text-[17px] leading-[1.75] text-foreground"
+              className="article-body font-body text-[17px] leading-[1.75]"
               dangerouslySetInnerHTML={{
                 __html: sanitizeArticleHtml(state.article.body),
               }}
             />
 
-            <div className="mt-16 pt-8 border-t border-foreground/10">
+            <div className="mt-16 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
               <Link
                 to="/newsletter"
-                className="font-mono text-sm uppercase tracking-wider text-primary hover:underline"
+                className="font-mono text-sm uppercase tracking-wider hover:underline"
+                style={{ color: '#3B6FF0', textDecoration: 'none' }}
               >
-                Subscribe to the newsletter →
+                ← Subscribe to the newsletter
               </Link>
             </div>
           </article>

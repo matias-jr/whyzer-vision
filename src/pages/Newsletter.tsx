@@ -105,7 +105,7 @@ const Newsletter = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
+    <div className="min-h-screen overflow-hidden" style={{ background: '#070B17', color: '#F0F4FF' }}>
 
       {/* ── Keyframe definitions ── */}
       <style>{`
@@ -128,8 +128,8 @@ const Newsletter = () => {
           50%       { transform: translate(30px, 60px) scale(1.04); }
         }
         @keyframes nl-glow-pulse {
-          0%, 100% { box-shadow: 0 0 0px 0px rgba(200,200,200,0); }
-          50%       { box-shadow: 0 0 40px 2px rgba(200,200,200,0.07); }
+          0%, 100% { box-shadow: 0 0 0px 0px rgba(59,111,240,0); }
+          50%       { box-shadow: 0 0 40px 2px rgba(59,111,240,0.08); }
         }
         @keyframes nl-shimmer {
           0%   { background-position: -200% center; }
@@ -174,7 +174,7 @@ const Newsletter = () => {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%);
+          background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%);
           background-size: 200% 100%;
           opacity: 0;
           transition: opacity 0.2s;
@@ -194,7 +194,7 @@ const Newsletter = () => {
           style={{
             width: 600, height: 600,
             top: '-15%', left: '-10%',
-            background: 'radial-gradient(circle, rgba(180,180,180,0.055) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(59,111,240,0.06) 0%, transparent 70%)',
             filter: 'blur(40px)',
           }}
         />
@@ -203,7 +203,7 @@ const Newsletter = () => {
           style={{
             width: 500, height: 500,
             top: '20%', right: '-8%',
-            background: 'radial-gradient(circle, rgba(160,160,160,0.04) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(59,111,240,0.04) 0%, transparent 70%)',
             filter: 'blur(50px)',
           }}
         />
@@ -212,7 +212,7 @@ const Newsletter = () => {
           style={{
             width: 400, height: 400,
             bottom: '10%', left: '30%',
-            background: 'radial-gradient(circle, rgba(200,200,200,0.03) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(59,111,240,0.03) 0%, transparent 70%)',
             filter: 'blur(60px)',
           }}
         />
@@ -231,8 +231,8 @@ const Newsletter = () => {
               if (fallback) fallback.classList.remove('hidden');
             }}
           />
-          <span className="hidden font-display text-2xl text-foreground">
-            Whyzer<span className="text-primary">.</span>
+          <span className="hidden text-2xl" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, color: '#F0F4FF' }}>
+            Whyzer<span style={{ color: '#3B6FF0' }}>.</span>
           </span>
         </a>
       </header>
@@ -242,36 +242,37 @@ const Newsletter = () => {
         className="relative flex flex-col items-center px-6 lg:px-12 pt-12 pb-20"
         style={{
           zIndex: 1,
-          background: 'radial-gradient(ellipse at 50% -10%, rgba(200,200,200,0.09) 0%, transparent 60%)',
+          background: 'radial-gradient(ellipse at 50% -10%, rgba(59,111,240,0.09) 0%, transparent 60%)',
         }}
       >
         {/* Overline */}
-        <p className="nl-fade-up-1 nl-overline-cursor font-mono-brand text-xs uppercase tracking-[0.2em] text-primary mb-6">
+        <p
+          className="nl-fade-up-1 nl-overline-cursor font-mono-brand text-xs uppercase tracking-[0.2em] mb-6"
+          style={{ color: '#7EB3FF' }}
+        >
           Join the Newsletter Strategic Sellers are using to level up in the AI world
         </p>
 
         {/* Headline */}
-        <h1 className="nl-fade-up-2 font-display text-center text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] mb-6 text-white">
+        <h1
+          className="nl-fade-up-2 text-center text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6"
+          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, letterSpacing: '-0.035em', color: '#F0F4FF' }}
+        >
           AI Secrets for<br />Strategic Sellers
         </h1>
 
         {/* Subhead */}
         <p
-          className="nl-fade-up-3 font-body text-lg leading-[1.7] text-center max-w-[560px] mb-12"
-          style={{
-            background: 'linear-gradient(135deg, #C8C8C8 0%, #EFEFEF 45%, #7A7A7A 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}
+          className="nl-fade-up-3 font-body text-lg leading-[1.65] text-center max-w-[560px] mb-12"
+          style={{ color: '#8B92A9', fontSize: 17 }}
         >
           Buyers are using AI in ways most sellers can't imagine. Reps get drowned in daily AI updates not knowing where to start. Every week, we close that gap — you'll receive curated AI insights that apply directly to your deals, not to AI in general.
         </p>
 
         {/* Form */}
         <div
-          className="nl-fade-up-4 nl-form-wrap w-full max-w-[520px] rounded-xl overflow-hidden border border-foreground/[0.08]"
-          style={{ background: 'rgba(255,255,255,0.02)' }}
+          className="nl-fade-up-4 nl-form-wrap w-full max-w-[520px] rounded-xl overflow-hidden"
+          style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}
         >
           <iframe
             src="https://link.msgsndr.com/widget/form/DbN0tSSpu40MR5JB2Zbc"
@@ -292,18 +293,23 @@ const Newsletter = () => {
           />
         </div>
 
-        <p className="nl-fade-up-5 font-mono-brand text-[11px] text-text-tertiary mt-4 tracking-wide">
+        <p className="nl-fade-up-5 font-mono-brand text-[11px] mt-4 tracking-wide" style={{ color: '#555E75' }}>
           No spam. No tools to set up. Unsubscribe anytime.
         </p>
       </section>
 
       {/* ── Divider ── */}
-      <div className="border-t border-foreground/[0.06] mx-6 lg:mx-12" style={{ zIndex: 1, position: 'relative' }} />
+      <div className="mx-6 lg:mx-12" style={{ zIndex: 1, position: 'relative', height: 1, background: 'rgba(255,255,255,0.08)' }} />
 
       {/* ── Value Props ── */}
       <section className="py-20 px-6 lg:px-12" style={{ zIndex: 1, position: 'relative' }}>
         <div className="max-w-[1200px] mx-auto mb-10 text-center">
-          <p className="font-mono-brand text-xs uppercase tracking-[0.2em] text-primary mb-3">Weekly AI nuggets to surface</p>
+          <p
+            className="font-mono-brand text-xs uppercase tracking-[0.2em] mb-3"
+            style={{ color: '#7EB3FF' }}
+          >
+            Weekly AI nuggets to surface
+          </p>
         </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
           {valueProps.map((prop, i) => {
@@ -312,27 +318,36 @@ const Newsletter = () => {
               <div
                 key={prop.label}
                 ref={cardsRef(i)}
-                className="nl-card-shimmer p-8 rounded-xl border border-foreground/[0.06] bg-background-secondary hover:border-foreground/[0.14] transition-all duration-300"
-                style={{ transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s' }}
+                className="nl-card-shimmer p-8 rounded-2xl"
+                style={{
+                  background: '#111827',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  transition: 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease',
+                }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
-                  (e.currentTarget as HTMLElement).style.boxShadow = '0 12px 40px rgba(0,0,0,0.4)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(59,111,240,0.10)';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.16)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                   (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
                 }}
               >
                 <div
                   className="w-10 h-10 rounded-md flex items-center justify-center mb-5"
-                  style={{ background: 'rgba(200,200,200,0.07)' }}
+                  style={{ background: 'rgba(59,111,240,0.10)', border: '1px solid rgba(59,111,240,0.20)' }}
                 >
-                  <Icon size={18} className="text-primary" />
+                  <Icon size={18} style={{ color: '#7EB3FF' }} />
                 </div>
-                <h3 className="font-display text-lg tracking-wide text-foreground mb-2">
+                <h3
+                  className="text-lg mb-2"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#F0F4FF', letterSpacing: '-0.01em' }}
+                >
                   {prop.label}
                 </h3>
-                <p className="font-body text-sm text-text-secondary leading-[1.7]">
+                <p className="font-body text-sm leading-[1.7]" style={{ color: '#8B92A9' }}>
                   {prop.description}
                 </p>
               </div>
@@ -344,22 +359,29 @@ const Newsletter = () => {
       {/* ── Recent Issues ── */}
       {recentIssues.length > 0 && (
         <section
-          className="py-20 px-6 lg:px-12 border-t border-foreground/[0.06]"
-          style={{ zIndex: 1, position: 'relative' }}
+          className="py-20 px-6 lg:px-12"
+          style={{ zIndex: 1, position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)' }}
         >
           <div className="max-w-[1200px] mx-auto">
             <div className="flex items-end justify-between mb-10">
               <div>
-                <p className="font-mono-brand text-xs uppercase tracking-[0.2em] text-primary mb-3">
+                <p
+                  className="font-mono-brand text-xs uppercase tracking-[0.2em] mb-3"
+                  style={{ color: '#7EB3FF' }}
+                >
                   Recent Issues
                 </p>
-                <h2 className="font-display text-2xl md:text-3xl text-foreground">
+                <h2
+                  className="text-2xl md:text-3xl"
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, color: '#F0F4FF', letterSpacing: '-0.025em' }}
+                >
                   Catch up on past editions
                 </h2>
               </div>
               <Link
                 to="/newsletter/archive"
-                className="font-mono-brand text-xs uppercase tracking-wider text-primary hover:underline whitespace-nowrap"
+                className="font-mono-brand text-xs uppercase tracking-wider whitespace-nowrap hover:underline"
+                style={{ color: '#3B6FF0' }}
               >
                 View all →
               </Link>
@@ -377,14 +399,21 @@ const Newsletter = () => {
       <section className="pb-20 px-6 lg:px-12" style={{ zIndex: 1, position: 'relative' }}>
         <div
           ref={proofRef}
-          className="max-w-[1200px] mx-auto flex flex-col items-center gap-6 border-t border-foreground/[0.06] pt-12"
+          className="max-w-[1200px] mx-auto flex flex-col items-center gap-6 pt-12"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
         >
-          <p className="font-mono-brand text-xs uppercase tracking-[0.2em] text-text-tertiary">
+          <p className="font-mono-brand text-xs uppercase tracking-[0.2em]" style={{ color: '#555E75' }}>
             Built for sellers navigating a world where buyers are already AI-native
           </p>
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-3">
             {['Enterprise AEs', 'Strategic Account Managers', 'Revenue Leaders', 'Solution Engineers'].map((role) => (
-              <span key={role} className="font-body text-sm text-text-secondary hover:text-foreground transition-colors duration-200">
+              <span
+                key={role}
+                className="font-body text-sm transition-colors duration-200 cursor-default"
+                style={{ color: '#8B92A9' }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F0F4FF'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#8B92A9'}
+              >
                 {role}
               </span>
             ))}
