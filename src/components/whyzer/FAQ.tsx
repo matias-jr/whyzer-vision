@@ -9,19 +9,39 @@ const faqs = [
   },
   {
     q: 'How is Whyzer different from Databook?',
-    a: "Databook is a strong product built for enterprise teams with enterprise budgets; contracts typically run $30,000–$60,000 per year and are sold top-down to large organisations. Whyzer is built for the individual seller who wants that same quality of financial intelligence without waiting for a procurement process. At $57/month, Whyzer puts boardroom-ready POVs in reach of every rep, not just the ones whose company can afford a six-figure vendor contract. Whyzer also covers 8,000+ public and private companies globally, including the private and international accounts that tools like Databook don't cover well.",
+    a: "Databook is a strong product built for enterprise teams with enterprise budgets; contracts typically run $30,000–$60,000 per year and are sold top-down to large organisations. Whyzer is built for the individual seller who wants that same quality of financial intelligence without waiting for a procurement process. At $57/month, Whyzer puts boardroom-ready POVs in reach of every rep, not just the ones whose company can afford a six-figure vendor contract. Whyzer also covers 8,500+ public and private companies globally, including the private and international accounts that tools like Databook don't cover well.",
   },
   {
     q: 'How does Whyzer work?',
-    a: "Search any of 8,000+ global companies. Whyzer instantly pulls from SEC filings, earnings calls, investor letters, and other public financial data to surface the account's financial priorities, executive pressures, and strategic bets. It then generates 2–3 boardroom-ready Points of View, each one connecting the account's board-level priorities to your solution's value. From search to POV in under 2 minutes, every time.",
+    a: "Search any of 8,500+ global companies. Whyzer instantly pulls from SEC filings, earnings calls, investor letters, and other public financial data to surface the account's financial priorities, executive pressures, and strategic bets. It then generates 2–3 boardroom-ready Points of View, each one connecting the account's board-level priorities to your solution's value. From search to POV in under 2 minutes, every time.",
   },
   {
     q: 'Is my data secure?',
     a: "Whyzer only uses publicly available, permissioned data sources: SEC filings, earnings calls, press releases, and investor communications. No scraping of private systems, no confidential data. All data is processed using encrypted infrastructure and we never store sensitive personal information. Your research stays yours, private, secure, and compliant by design.",
   },
   {
-    q: 'Does Whyzer cover international and private companies?',
-    a: "Yes, and this is one of Whyzer's most significant recent expansions. Whyzer now covers 8,000+ public and private companies across every global market, including European, Asian, Latin American, and private US companies. The accounts your competitors can't research (HSBC, Revolut, Stripe, Monzo) are now fully covered. Global coverage is included in all plans.",
+    q: 'Does Whyzer cover international and private companies outside the US?',
+    a: "Yes. Whyzer provides robust global coverage across North America, Europe, Latin America, and other major international markets. The platform surfaces strategic insights for both public and private companies globally. The only general parameter is that a target company should have 100 to 150+ employees to ensure a sufficiently deep trail of corporate data, earnings reports, or market signals exists for our engine to analyze.",
+  },
+  {
+    q: 'How quickly can I generate insights for a new international account?',
+    a: "Instantly. If a company isn't already one of the 8,500+ active profiles in our global database, you can simply add the named account to your dashboard. Whyzer's engine will completely map the company's financial health, strategic priorities, and executive viewpoints within 2 to 3 minutes.",
+  },
+  {
+    q: 'Can I target companies by broad geography or region?',
+    a: "No. Whyzer is purpose-built for highly targeted, account-based strategic selling. Rather than pulling massive, low-intent lists by geographic territory, the platform requires you to input specific named accounts so it can deliver precise, deeply personalized C-suite breakthrough strategies.",
+  },
+  {
+    q: 'Can Whyzer draft outreach tailored to specific C-suite personas?',
+    a: "Yes, natively. Once Whyzer maps an account's strategic gaps, you can navigate to the \"Write\" workflow. The system will identify the core stakeholders relevant to your deal, analyze their specific business pressures (e.g., CFO vs. Head of Supply Chain), and draft hyper-tailored point-of-view (PoV) outreach designed to clear executive inbox filters.",
+  },
+  {
+    q: 'Can a small sales team share a single Whyzer account?',
+    a: "No. Whyzer seats are provisioned on an individual basis to ensure the machine learning models and tailored workspace remain accurate to your specific pipeline, territory, and deal-tracking history. However, our subscription tiers are intentionally priced to make individual seats highly accessible for growing teams. For custom multi-seat team packages, please contact info@whyzer.ai.",
+  },
+  {
+    q: 'Can I track large lists of accounts simultaneously for automated signal tracking?',
+    a: "Bulk account tracking and programmatic point-of-view (PoV) generation are currently available as an early-access feature via our MCP (Model Context Protocol) server. This workflow allows strategic sellers to monitor 60–70+ named accounts simultaneously to prioritize high-intent pipeline signals. If you are a current subscriber and want early-bird access to our bulk workflows, contact our team.",
   },
   {
     q: 'Can Whyzer integrate with my CRM?',
@@ -68,7 +88,7 @@ const FAQ = () => {
               <div
                 className="overflow-hidden transition-all duration-300"
                 style={{
-                  maxHeight: openIndex === i ? '300px' : '0',
+                  maxHeight: openIndex === i ? '600px' : '0',
                   opacity: openIndex === i ? 1 : 0,
                 }}
               >

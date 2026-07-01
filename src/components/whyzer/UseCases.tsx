@@ -20,7 +20,7 @@ const cases = [
   {
     icon: Globe,
     title: 'Global Enterprise Deals',
-    body: "8,000+ public and private companies across every global market, fully researched, financially mapped, ready for your POV. The accounts your competitors gave up on are now your biggest opportunity.",
+    body: "8,500+ public and private companies across every global market, fully researched, financially mapped, ready for your POV. The accounts your competitors gave up on are now your biggest opportunity.",
   },
   {
     icon: BarChart3,
