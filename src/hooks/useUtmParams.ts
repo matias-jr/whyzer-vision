@@ -8,35 +8,25 @@ function getCookie(name: string): string | null {
 }
 
 export function useUtmParams(): (url: string) => string {
-  const [utmString, setUtmString] = useState('');
-  // Incrementing this triggers a re-render so am_id is re-read after am.js loads
-  const [, setTick] = useState(0);
+  const [paramString, setParamString] = useState('');
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const utmParams = new URLSearchParams();
-    UTM_KEYS.forEach(key => {
-      const val = params.get(key);
-      if (val) utmParams.set(key, val);
-    });
-    setUtmString(utmParams.toString());
+    const search = new URLSearchParams(window.location.search);
+    const out = new URLSearchParams();
 
-    // am.js is async — poll briefly after mount so we catch the cookie once it's written
-    let tries = 0;
-    const interval = setInterval(() => {
-      tries++;
-      if (getCookie('am_id') || tries >= 8) clearInterval(interval);
-      else setTick(t => t + 1);
-    }, 300);
-    return () => clearInterval(interval);
+    // UTM params — read from URL
+    UTM_KEYS.forEach(key => {
+      const val = search.get(key);
+      if (val) out.set(key, val);
+    });
+
+    // am_id — prefer URL param (user just arrived via affiliate link),
+    // fall back to cookie (user arrived in a previous session)
+    const amId = search.get('am_id') ?? getCookie('am_id');
+    if (amId) out.set('am_id', amId);
+
+    setParamString(out.toString());
   }, []);
 
-  // am_id is read fresh on every render so it's never stale
-  return (url: string) => {
-    const out = new URLSearchParams(utmString);
-    const amId = getCookie('am_id');
-    if (amId) out.set('am_id', amId);
-    const str = out.toString();
-    return str ? `${url}?${str}` : url;
-  };
+  return (url: string) => paramString ? `${url}?${paramString}` : url;
 }
