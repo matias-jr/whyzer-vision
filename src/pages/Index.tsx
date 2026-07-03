@@ -19,14 +19,23 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <GrainOverlay />
+      {/* Promo banner — fixed at top, z-60 above the nav (z-50). Height is fixed at 38px so
+          Navigation.tsx (top-[38px]) and HeroSection.tsx (pt-[102px]) stay in sync. Remove all
+          three when the offer expires. */}
       <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 38,
+        zIndex: 60,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         background: 'linear-gradient(90deg, #3a3a9e 0%, #5959D4 50%, #3a3a9e 100%)',
-        padding: '9px 16px',
-        textAlign: 'center',
-        position: 'relative',
-        zIndex: 50,
+        padding: '0 16px',
       }}>
-        <p style={{ margin: 0, color: '#fff', fontSize: 13.5, fontFamily: 'Inter, sans-serif', lineHeight: 1.4 }}>
+        <p style={{ margin: 0, color: '#fff', fontSize: 13, fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           <span style={{ marginRight: 6 }}>🇺🇸</span>
           Happy 4th of July — only through July 11, your first month of Whyzer Elite is{' '}
           <strong>$10</strong> with code{' '}
