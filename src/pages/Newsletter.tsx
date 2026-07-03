@@ -105,7 +105,7 @@ const Newsletter = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden" style={{ background: '#070B17', color: '#F0F4FF' }}>
+    <div className="min-h-screen overflow-hidden" style={{ background: '#0A0E1A', color: '#F9FAFB' }}>
 
       {/* ── Keyframe definitions ── */}
       <style>{`
@@ -128,8 +128,8 @@ const Newsletter = () => {
           50%       { transform: translate(30px, 60px) scale(1.04); }
         }
         @keyframes nl-glow-pulse {
-          0%, 100% { box-shadow: 0 0 0px 0px rgba(59,111,240,0); }
-          50%       { box-shadow: 0 0 40px 2px rgba(59,111,240,0.08); }
+          0%, 100% { box-shadow: 0 0 0px 0px rgba(99,102,241,0); }
+          50%       { box-shadow: 0 0 40px 2px rgba(99,102,241,0.08); }
         }
         @keyframes nl-shimmer {
           0%   { background-position: -200% center; }
@@ -194,7 +194,7 @@ const Newsletter = () => {
           style={{
             width: 600, height: 600,
             top: '-15%', left: '-10%',
-            background: 'radial-gradient(circle, rgba(59,111,240,0.06) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%)',
             filter: 'blur(40px)',
           }}
         />
@@ -203,7 +203,7 @@ const Newsletter = () => {
           style={{
             width: 500, height: 500,
             top: '20%', right: '-8%',
-            background: 'radial-gradient(circle, rgba(59,111,240,0.04) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(99,102,241,0.04) 0%, transparent 70%)',
             filter: 'blur(50px)',
           }}
         />
@@ -212,29 +212,31 @@ const Newsletter = () => {
           style={{
             width: 400, height: 400,
             bottom: '10%', left: '30%',
-            background: 'radial-gradient(circle, rgba(59,111,240,0.03) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(99,102,241,0.03) 0%, transparent 70%)',
             filter: 'blur(60px)',
           }}
         />
       </div>
 
       {/* ── Logo ── */}
-      <header className="nl-logo relative flex justify-center pt-10 pb-4" style={{ zIndex: 1 }}>
-        <a href="/" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
-          <img
-            src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
-            alt="Whyzer"
-            className="h-8"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
-              const fallback = (e.target as HTMLImageElement).nextElementSibling as HTMLElement;
-              if (fallback) fallback.classList.remove('hidden');
-            }}
-          />
-          <span className="hidden text-2xl" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, color: '#F0F4FF' }}>
-            Whyzer<span style={{ color: '#3B6FF0' }}>.</span>
-          </span>
-        </a>
+      <header className="nl-logo relative" style={{ zIndex: 1 }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '22px 32px', display: 'flex', alignItems: 'center' }}>
+          <a href="/" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
+            <img
+              src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
+              alt="Whyzer"
+              style={{ height: 30, width: 'auto' }}
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+                const fallback = (e.target as HTMLImageElement).nextElementSibling as HTMLElement;
+                if (fallback) fallback.classList.remove('hidden');
+              }}
+            />
+            <span className="hidden text-2xl" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, color: '#F9FAFB' }}>
+              Whyzer<span style={{ color: '#6366F1' }}>.</span>
+            </span>
+          </a>
+        </div>
       </header>
 
       {/* ── Hero + Form ── */}
@@ -242,13 +244,13 @@ const Newsletter = () => {
         className="relative flex flex-col items-center px-6 lg:px-12 pt-12 pb-20"
         style={{
           zIndex: 1,
-          background: 'radial-gradient(ellipse at 50% -10%, rgba(59,111,240,0.09) 0%, transparent 60%)',
+          background: 'radial-gradient(ellipse at 50% -10%, rgba(99,102,241,0.09) 0%, transparent 60%)',
         }}
       >
         {/* Overline */}
         <p
           className="nl-fade-up-1 nl-overline-cursor font-mono-brand text-xs uppercase tracking-[0.2em] mb-6"
-          style={{ color: '#7EB3FF' }}
+          style={{ color: '#818CF8' }}
         >
           Join the Newsletter Strategic Sellers are using to level up in the AI world
         </p>
@@ -256,7 +258,7 @@ const Newsletter = () => {
         {/* Headline */}
         <h1
           className="nl-fade-up-2 text-center text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6"
-          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, letterSpacing: '-0.035em', color: '#F0F4FF' }}
+          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, letterSpacing: '-0.035em', color: '#F9FAFB' }}
         >
           AI Secrets for<br />Strategic Sellers
         </h1>
@@ -264,7 +266,7 @@ const Newsletter = () => {
         {/* Subhead */}
         <p
           className="nl-fade-up-3 font-body text-lg leading-[1.65] text-center max-w-[560px] mb-12"
-          style={{ color: '#8B92A9', fontSize: 17 }}
+          style={{ color: '#9CA3AF', fontSize: 17 }}
         >
           Buyers are using AI in ways most sellers can't imagine. Reps get drowned in daily AI updates not knowing where to start. Every week, we close that gap — you'll receive curated AI insights that apply directly to your deals, not to AI in general.
         </p>
@@ -306,7 +308,7 @@ const Newsletter = () => {
         <div className="max-w-[1200px] mx-auto mb-10 text-center">
           <p
             className="font-mono-brand text-xs uppercase tracking-[0.2em] mb-3"
-            style={{ color: '#7EB3FF' }}
+            style={{ color: '#818CF8' }}
           >
             Weekly AI nuggets to surface
           </p>
@@ -326,7 +328,7 @@ const Newsletter = () => {
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
-                  (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(59,111,240,0.10)';
+                  (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(99,102,241,0.10)';
                   (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.16)';
                 }}
                 onMouseLeave={e => {
@@ -337,17 +339,17 @@ const Newsletter = () => {
               >
                 <div
                   className="w-10 h-10 rounded-md flex items-center justify-center mb-5"
-                  style={{ background: 'rgba(59,111,240,0.10)', border: '1px solid rgba(59,111,240,0.20)' }}
+                  style={{ background: 'rgba(99,102,241,0.10)', border: '1px solid rgba(99,102,241,0.20)' }}
                 >
-                  <Icon size={18} style={{ color: '#7EB3FF' }} />
+                  <Icon size={18} style={{ color: '#818CF8' }} />
                 </div>
                 <h3
                   className="text-lg mb-2"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#F0F4FF', letterSpacing: '-0.01em' }}
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#F9FAFB', letterSpacing: '-0.01em' }}
                 >
                   {prop.label}
                 </h3>
-                <p className="font-body text-sm leading-[1.7]" style={{ color: '#8B92A9' }}>
+                <p className="font-body text-sm leading-[1.7]" style={{ color: '#9CA3AF' }}>
                   {prop.description}
                 </p>
               </div>
@@ -367,13 +369,13 @@ const Newsletter = () => {
               <div>
                 <p
                   className="font-mono-brand text-xs uppercase tracking-[0.2em] mb-3"
-                  style={{ color: '#7EB3FF' }}
+                  style={{ color: '#818CF8' }}
                 >
                   Recent Issues
                 </p>
                 <h2
                   className="text-2xl md:text-3xl"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, color: '#F0F4FF', letterSpacing: '-0.025em' }}
+                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, color: '#F9FAFB', letterSpacing: '-0.025em' }}
                 >
                   Catch up on past editions
                 </h2>
@@ -381,7 +383,7 @@ const Newsletter = () => {
               <Link
                 to="/newsletter/archive"
                 className="font-mono-brand text-xs uppercase tracking-wider whitespace-nowrap hover:underline"
-                style={{ color: '#3B6FF0' }}
+                style={{ color: '#6366F1' }}
               >
                 View all →
               </Link>
@@ -410,9 +412,9 @@ const Newsletter = () => {
               <span
                 key={role}
                 className="font-body text-sm transition-colors duration-200 cursor-default"
-                style={{ color: '#8B92A9' }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F0F4FF'}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#8B92A9'}
+                style={{ color: '#9CA3AF' }}
+                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F9FAFB'}
+                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#9CA3AF'}
               >
                 {role}
               </span>

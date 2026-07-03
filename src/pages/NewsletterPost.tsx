@@ -87,14 +87,14 @@ const NewsletterPost = () => {
   }, [slug]);
 
   return (
-    <div className="relative min-h-screen" style={{ background: '#070B17', color: '#F0F4FF' }}>
+    <div className="relative min-h-screen" style={{ background: '#0A0E1A', color: '#F9FAFB' }}>
       <GrainOverlay />
 
       <header className="relative z-10 px-6 py-6 md:px-12">
         <Link
           to="/"
           className="font-mono text-xs uppercase tracking-[0.15em] transition-opacity duration-200 hover:opacity-80"
-          style={{ color: '#3B6FF0', textDecoration: 'none' }}
+          style={{ color: '#6366F1', textDecoration: 'none' }}
         >
           ← whyzer
         </Link>
@@ -102,7 +102,7 @@ const NewsletterPost = () => {
 
       <main className="relative z-10 mx-auto max-w-[720px] px-6 pb-24 pt-8 md:px-0">
         {state.kind === 'loading' && (
-          <p className="font-mono text-sm" style={{ color: '#8B92A9' }}>Loading…</p>
+          <p className="font-mono text-sm" style={{ color: '#9CA3AF' }}>Loading…</p>
         )}
 
         {state.kind === 'not-found' && (
@@ -121,7 +121,7 @@ const NewsletterPost = () => {
                 fontSize: 'clamp(28px, 4vw, 42px)',
                 letterSpacing: '-0.035em',
                 lineHeight: 1.15,
-                color: '#F0F4FF',
+                color: '#F9FAFB',
               }}
             >
               Article not found
@@ -129,7 +129,7 @@ const NewsletterPost = () => {
             <Link
               to="/newsletter/archive"
               className="font-mono text-sm uppercase tracking-wider hover:underline"
-              style={{ color: '#3B6FF0', textDecoration: 'none' }}
+              style={{ color: '#6366F1', textDecoration: 'none' }}
             >
               ← Browse all issues
             </Link>
@@ -141,7 +141,7 @@ const NewsletterPost = () => {
             <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: '#555E75' }}>
               Error
             </p>
-            <p className="font-body" style={{ color: '#8B92A9' }}>{state.message}</p>
+            <p className="font-body" style={{ color: '#9CA3AF' }}>{state.message}</p>
           </div>
         )}
 
@@ -157,7 +157,7 @@ const NewsletterPost = () => {
                 transform: 'translateX(-50%)',
                 width: 900,
                 height: 400,
-                background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.09) 0%, transparent 65%)',
+                background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.09) 0%, transparent 65%)',
                 pointerEvents: 'none',
                 zIndex: 0,
               }}
@@ -178,13 +178,13 @@ const NewsletterPost = () => {
                   fontSize: 'clamp(28px, 4vw, 42px)',
                   letterSpacing: '-0.035em',
                   lineHeight: 1.15,
-                  color: '#F0F4FF',
+                  color: '#F9FAFB',
                 }}
               >
                 {state.article.title}
               </h1>
               {state.article.excerpt && (
-                <p className="font-body text-lg leading-relaxed" style={{ color: '#8B92A9', fontSize: 17 }}>
+                <p className="font-body text-lg leading-relaxed" style={{ color: '#9CA3AF', fontSize: 17 }}>
                   {state.article.excerpt}
                 </p>
               )}
@@ -210,7 +210,7 @@ const NewsletterPost = () => {
               <Link
                 to="/newsletter"
                 className="font-mono text-sm uppercase tracking-wider hover:underline"
-                style={{ color: '#3B6FF0', textDecoration: 'none' }}
+                style={{ color: '#6366F1', textDecoration: 'none' }}
               >
                 ← Subscribe to the newsletter
               </Link>

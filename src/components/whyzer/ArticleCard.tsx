@@ -24,7 +24,7 @@ export default function ArticleCard({ article }: { article: ArticleSummary }) {
       onMouseEnter={e => {
         const el = e.currentTarget as HTMLElement;
         el.style.transform = 'translateY(-3px)';
-        el.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(59,111,240,0.10)';
+        el.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(99,102,241,0.10)';
         el.style.borderColor = 'rgba(255,255,255,0.16)';
       }}
       onMouseLeave={e => {
@@ -53,18 +53,18 @@ export default function ArticleCard({ article }: { article: ArticleSummary }) {
         </p>
         <h3
           className="text-xl leading-tight mb-2"
-          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#F0F4FF', letterSpacing: '-0.015em' }}
+          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#F9FAFB', letterSpacing: '-0.015em' }}
         >
           {article.title}
         </h3>
         {article.excerpt && (
-          <p className="font-body text-sm leading-[1.7] line-clamp-3" style={{ color: '#8B92A9' }}>
+          <p className="font-body text-sm leading-[1.7] line-clamp-3" style={{ color: '#9CA3AF' }}>
             {article.excerpt}
           </p>
         )}
         <span
           className="font-mono-brand text-xs uppercase tracking-wider mt-4"
-          style={{ color: '#7EB3FF' }}
+          style={{ color: '#818CF8' }}
         >
           Read →
         </span>
