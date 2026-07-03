@@ -37,8 +37,8 @@ const Index = () => {
       }}>
         <p style={{ margin: 0, color: '#fff', fontSize: 13, fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           <span style={{ marginRight: 6 }}>🇺🇸</span>
-          Happy 4th of July — only through July 11, your first month of Whyzer Elite is{' '}
-          <strong>$10</strong> with code{' '}
+          Happy 4th of July. Through July 11, your first month of Whyzer Elite is{' '}
+          <strong>$10</strong> (reg. $97) with code{' '}
           <span style={{
             fontFamily: '\'JetBrains Mono\', monospace',
             background: 'rgba(255,255,255,0.18)',
@@ -46,8 +46,7 @@ const Index = () => {
             borderRadius: 4,
             letterSpacing: '0.06em',
             fontWeight: 600,
-          }}>WHYZER10</span>{' '}
-          at checkout.
+          }}>WHYZER10</span>.
         </p>
       </div>
       <Navigation />
