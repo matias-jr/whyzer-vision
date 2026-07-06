@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Prevent placeholder favicon from being re-added (correct icon is favicon.png)
+public/favicon.ico
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
