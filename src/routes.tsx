@@ -21,6 +21,8 @@ import RequireAuth from './components/admin/RequireAuth';
 import NotFound from './pages/NotFound';
 import LiveCentralize from './pages/LiveCentralize';
 import LiveCentralizeRegistered from './pages/LiveCentralizeRegistered';
+import WebinarRegistration from './pages/WebinarRegistration';
+import WebinarThankYou from './pages/WebinarThankYou';
 
 export const routes: RouteObject[] = [
   {
@@ -40,6 +42,8 @@ export const routes: RouteObject[] = [
       { path: 'elite-upgrade', element: <EliteUpgrade /> },
       { path: 'live-centralize', element: <LiveCentralize /> },
       { path: 'live-centralize-registered', element: <LiveCentralizeRegistered /> },
+      { path: 'financial-fluency', element: <WebinarRegistration /> },
+      { path: 'financial-fluency-watch', element: <WebinarThankYou /> },
       { path: 'newsletter/archive', element: <NewsletterArchive /> },
       { path: 'newsletter/:slug', element: <NewsletterPost /> },
       { path: 'admin', element: <AdminLogin /> },
