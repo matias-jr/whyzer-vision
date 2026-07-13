@@ -44,7 +44,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ paddingTop: 'calc(var(--banner-h, 38px) + 64px)' }}>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ paddingTop: 64 }}>
       <div
         ref={wrapperRef}
         className="absolute inset-0"

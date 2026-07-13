@@ -24,7 +24,7 @@ const Navigation = () => {
       <nav
         className="fixed left-0 right-0 z-50 h-16 flex items-center justify-between px-6 lg:px-12 transition-all duration-500"
         style={{
-          top: 'var(--banner-h, 38px)',
+          top: 0,
           backdropFilter: 'blur(24px)',
           WebkitBackdropFilter: 'blur(24px)',
           background: scrolled ? 'rgba(18,18,18,0.94)' : 'rgba(15,15,15,0.4)',
