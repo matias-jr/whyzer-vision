@@ -231,11 +231,11 @@ const WebinarRegistration = () => {
       {/* CREDIBILITY */}
       <section style={{ padding: '84px 24px', display: 'flex', justifyContent: 'center', position: 'relative' }}>
         <div style={{ position: 'absolute', top: '20%', left: '8%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(124,111,255,0.14) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
-        <div className="wr-credibility" style={{ maxWidth: 760, display: 'flex', gap: 44, alignItems: 'center', position: 'relative' }}>
-          <div style={{ flexShrink: 0, width: 150, height: 150, borderRadius: '50%', padding: 3, background: 'linear-gradient(135deg, #7C6FFF, #3D3560)' }}>
-            <img src="/jr_headshot.webp" alt="Jamal Reimer" style={{ width: 144, height: 144, borderRadius: '50%', objectFit: 'cover', display: 'block' }} />
+        <div className="wr-credibility" style={{ maxWidth: 1080, width: '100%', display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 56, alignItems: 'center', position: 'relative' }}>
+          <div className="wr-cred-photo" style={{ position: 'relative', alignSelf: 'stretch', minHeight: 480, overflow: 'hidden' }}>
+            <img src="/jamal-hero-1.png" alt="Jamal Reimer" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 28%', display: 'block' }} />
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: EYEBROW, margin: 0 }}>Jamal Reimer</p>
             <h2 style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 'clamp(24px, 3vw, 32px)', lineHeight: 1.2, margin: 0 }}>I&rsquo;ve been there.<br />I&rsquo;ll show you exactly what I do now.</h2>
             <p style={{ fontSize: 17, lineHeight: 1.7, margin: 0, color: BODY }}>
@@ -340,7 +340,8 @@ const WebinarRegistration = () => {
           .wr-walk-col:first-child { border-top: none; padding-top: 0 !important; }
           .wr-priming { grid-template-columns: 1fr !important; gap: 24px !important; }
           .wr-cta-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .wr-credibility { flex-direction: column; text-align: center; gap: 24px; }
+          .wr-credibility { grid-template-columns: 1fr !important; gap: 28px !important; text-align: center; }
+          .wr-cred-photo { min-height: 340px !important; max-width: 360px; margin: 0 auto; }
         }
         @media (prefers-reduced-motion: reduce) {
           [style*="animation"] { animation: none !important; }
