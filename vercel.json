@@ -10,6 +10,8 @@
     { "source": "/pre-call-ai-checklist",      "destination": "/pre-call-ai-checklist.html",      "permanent": false },
     { "source": "/centralize-offer",           "destination": "/centralize-offer.html",           "permanent": false },
     { "source": "/centralize-offer-registered","destination": "/centralize-offer-registered.html","permanent": false },
+    { "source": "/zapier",             "destination": "/rko-access.html",         "permanent": false },
+    { "source": "/zapier-success",     "destination": "/rko-thank-you.html",      "permanent": false },
     { "source": "/d1/offer-a",         "destination": "/d1a",                     "permanent": true },
     { "source": "/d1/offer-b",         "destination": "/d1b",                     "permanent": true },
     { "source": "/d2/offer-a",         "destination": "/d2a",                     "permanent": true },
