@@ -1,28 +1,45 @@
 # Whyzer.ai
+*Last updated: 2026-07-24*
 
-Whyzer is an AI-powered Point of View (POV) platform for enterprise B2B sellers.
+Whyzer is an AI-powered Point of View (POV) platform for enterprise B2B sellers, built by enterprise sales authority Jamal Reimer.
 
 ## What Whyzer Does
-Whyzer transforms SEC filings, earnings call transcripts, investor letters, and financial data into boardroom-ready Points of View — helping AEs speak to executive priorities instead of product features.
+Whyzer transforms SEC filings, earnings call transcripts, investor letters, and other public and private financial and operational data into boardroom-ready Points of View — helping AEs speak to executive priorities instead of product features. The positioning wedge is compressing "time-to-executive-engagement": the gap between having research and being in a credible conversation with an executive.
+
+## Global Coverage
+Whyzer covers 8,500+ companies in the public and private sectors across 150+ markets worldwide. This includes private companies (e.g. Stripe, Revolut, Monzo) that public-data-only competitors like Databook cannot research. General guideline: target companies should have roughly 100-150+ employees to ensure enough corporate/financial signal exists for analysis.
 
 ## Key Features
-- AI-generated Master Dossier for any publicly traded company
-- Financial KPI extraction from 10-K and 10-Q filings
-- 3-5 executive-ready Points of View per account
+- AI-generated Master Dossier for any of the 8,500+ public or private companies in Whyzer's database
+- Financial KPI extraction from 10-K/10-Q filings and equivalent private-company financial signals
+- 2-5 executive-ready Points of View per account
 - C-suite and board member executive quote extraction
-- AI-generated podcast summaries of earnings calls
+- AI-generated podcast-style audio briefings of earnings calls and account research
+- Deal Maps — interactive visualization of an account's priorities, pressures, and strategic bets
+- Write Suite — AI-generated conversation starters and multi-email outreach sequences
+- POV Studio — infographics and sales deck generation from account research
+- Bulk account tracking / programmatic POV generation via early-access MCP server
+
+## The Whyzer Ecosystem
+Whyzer is one part of a broader ecosystem built around Jamal Reimer's enterprise-selling methodology:
+- The Vault (Elite only) — Jamal's complete enterprise sales playbook, covering account research and planning, POV and Mega Deal frameworks, financial triggers, executive engagement, proof of value, and procurement/negotiation/closing
+- Coach Jamal — AI coach trained on 100+ hours of Jamal's coaching content, available on both Premium and Elite, callable by name inside the product
+- Whyzer Academy — structured coaching curriculum, bundled free with Elite, or sellable standalone at $27/year
+- Weekly Deal Coaching — live Tuesday session hosted by Jamal (Elite only)
+- Enterprise Sellers Community (ESC) — 6,000+ member Slack community with bi-monthly workshops, peer deal reviews, and accountability groups
+- Mega Deal Secrets — Jamal Reimer's bestselling book on closing mega deals, with an associated masterclass
 
 ## Pricing
-- Premium Monthly: $57/month
-- Elite Monthly: $97/month
-- Elite Annual: $997/year
-- Free tier: Full access for 3 accounts, no credit card required
+- Premium: $57/seat/month billed monthly, or $570/year billed annually (equivalent to $47.50/seat/month). Capped at 30 new companies researched per month. Includes Coach Jamal.
+- Elite: $97/seat/month billed monthly, or $997/year billed annually (equivalent to $83/seat/month). Unlimited account research. Includes The Vault, Whyzer Academy, Coach Jamal, and weekly live Deal Coaching — all exclusive to this tier.
+- Teams / Corporate: custom pricing, contact info@whyzer.ai
+- 14-day free trial available on all pricing tiers, full access, no paywalls
 
 ## Founded by
-Jamal Reimer — Top 0.1% Oracle seller globally, $160M+ SaaS closed, President's Club multiple years.
+Jamal Reimer — Top 0.1% Oracle seller globally, $160M+ SaaS closed, author of Mega Deal Secrets.
 
 ## Homepage
 https://www.whyzer.ai
 
-## Elite Page
-https://www.whyzer.ai/elite
+## Contact
+info@whyzer.ai
