@@ -80,7 +80,7 @@ const TermsAndConditions = () => (
         <P><strong className="text-foreground font-semibold">Automatic conversion.</strong> Unless you cancel before the Trial ends, your account will automatically convert to a paid subscription at the then-current price for the plan you selected, and we will begin charging the payment method on file on the date the Trial ends. By starting a Trial, you authorize us to store your payment method and to charge it on this basis.</P>
         <P><strong className="text-foreground font-semibold">Notice before you're charged.</strong> We will send you at least one email reminder in advance of your Trial ending and before any charge is made, including instructions for cancelling. Reminder emails are a courtesy; it remains your responsibility to cancel before the Trial ends if you do not want to be charged.</P>
         <P>
-          <strong className="text-foreground font-semibold">How to cancel a Trial.</strong> You may cancel at any time during the Trial, at no cost, through your account settings at members.whyzer.ai or by contacting{' '}
+          <strong className="text-foreground font-semibold">How to cancel a Trial.</strong> You may cancel at any time during the Trial, at no cost, through your account settings at members.whyzer.ai, through the chatbot in app.whyzer.ai, or by contacting{' '}
           <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
           {' '}Cancelling before the Trial ends means you will not be charged.
         </P>
