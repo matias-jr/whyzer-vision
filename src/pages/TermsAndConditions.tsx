@@ -9,6 +9,10 @@ const P = ({ children }: { children: React.ReactNode }) => (
   <p className="text-text-secondary text-[15px] leading-[1.8] mb-4">{children}</p>
 );
 
+const SubHead = ({ children }: { children: React.ReactNode }) => (
+  <h3 className="font-display text-base text-foreground tracking-wide mt-8 mb-3">{children}</h3>
+);
+
 const UL = ({ items }: { items: string[] }) => (
   <ul className="space-y-2 mb-4">
     {items.map((item, i) => (
@@ -46,7 +50,7 @@ const TermsAndConditions = () => (
         <h1 className="font-display text-[2rem] md:text-[2.6rem] text-foreground leading-[1.2] tracking-[-0.02em] uppercase mb-4">
           Terms &amp; Conditions
         </h1>
-        <p className="text-text-secondary text-sm">Whyzer · Last Updated: April 2026</p>
+        <p className="text-text-secondary text-sm">Whyzer · Last Updated: August 2026</p>
       </div>
 
       <Section title="Agreement to Terms">
@@ -70,6 +74,17 @@ const TermsAndConditions = () => (
         <P>Subscriptions are billed on a monthly or annual basis depending on the plan you select. By subscribing, you authorize Whyzer AI to charge your payment method on a recurring basis until you cancel.</P>
         <P>Annual subscriptions are charged in full at the time of purchase.</P>
         <P>Payment is processed securely through Stripe. Whyzer AI does not store your full payment card details.</P>
+
+        <SubHead>Free Trials</SubHead>
+        <P>Whyzer AI may offer a free trial period on Premium or Elite plans ("Trial"). Unless a different length is stated at signup, the Trial lasts 14 days from the date you create your account.</P>
+        <P><strong className="text-foreground font-semibold">Automatic conversion.</strong> Unless you cancel before the Trial ends, your account will automatically convert to a paid subscription at the then-current price for the plan you selected, and we will begin charging the payment method on file on the date the Trial ends. By starting a Trial, you authorize us to store your payment method and to charge it on this basis.</P>
+        <P><strong className="text-foreground font-semibold">Notice before you're charged.</strong> We will send you at least one email reminder in advance of your Trial ending and before any charge is made, including instructions for cancelling. Reminder emails are a courtesy; it remains your responsibility to cancel before the Trial ends if you do not want to be charged.</P>
+        <P>
+          <strong className="text-foreground font-semibold">How to cancel a Trial.</strong> You may cancel at any time during the Trial, at no cost, through your account settings at members.whyzer.ai or by contacting{' '}
+          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
+          {' '}Cancelling before the Trial ends means you will not be charged.
+        </P>
+        <P><strong className="text-foreground font-semibold">Eligibility.</strong> We reserve the right to limit free trial eligibility to one per person, company, or payment method, and to determine eligibility at our discretion.</P>
       </Section>
 
       <Section title="No Refunds">
@@ -78,7 +93,7 @@ const TermsAndConditions = () => (
           'Cancellation after a billing cycle has begun',
           'Partial use of a subscription period',
           'Dissatisfaction with the platform or its outputs',
-          'Failure to cancel before an automatic renewal date',
+          'Failure to cancel a Trial or subscription before an automatic renewal or conversion date',
           'Accidental purchase',
         ]} />
         <P>If you cancel your subscription, you retain access to your plan through the end of the current billing period. Access ends when that period expires. No prorated refunds are issued for unused time.</P>
@@ -88,7 +103,7 @@ const TermsAndConditions = () => (
         <P>
           You may cancel your subscription at any time through your account settings or by contacting{' '}
           <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
-          {' '}Cancellation takes effect at the end of your current billing period. You will not be charged for the following period.
+          {' '}Cancellation takes effect at the end of your current billing period (or, for an active Trial, immediately — see Free Trials above). You will not be charged for the following period.
         </P>
         <P>Cancellation does not entitle you to a refund for any portion of the current billing period already paid.</P>
       </Section>
