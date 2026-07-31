@@ -28,6 +28,27 @@ const Pricing = () => {
   const sectionRef = useScrollReveal();
   const appendUtm = useUtmParams();
 
+  // "Try Whyzer for Free" CTAs (nav + hero) request the Monthly view.
+  // They both set the #pricing-monthly hash (for deep-linking / scroll) and
+  // dispatch 'whyzer:pricing-monthly' so a repeat click still works even when
+  // the hash is unchanged and no hashchange event fires.
+  useEffect(() => {
+    const showMonthly = () => {
+      setAnnual(false);
+      document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+    };
+    const onHashChange = () => {
+      if (window.location.hash === '#pricing-monthly') showMonthly();
+    };
+    if (window.location.hash === '#pricing-monthly') showMonthly();
+    window.addEventListener('hashchange', onHashChange);
+    window.addEventListener('whyzer:pricing-monthly', showMonthly);
+    return () => {
+      window.removeEventListener('hashchange', onHashChange);
+      window.removeEventListener('whyzer:pricing-monthly', showMonthly);
+    };
+  }, []);
+
   useEffect(() => {
     fetch('https://ipapi.co/json/')
       .then((r) => r.json())
@@ -96,7 +117,7 @@ const Pricing = () => {
           </span>
         </div>
 
-        <p className="text-center text-[13px] text-text-tertiary mb-10">Prices shown in your local currency. Cancel anytime.</p>
+        <p className="text-center text-[13px] text-text-tertiary mb-10 max-w-[560px] mx-auto leading-relaxed">Prices shown in your local currency. Monthly plans include a 14-day free trial — cancel before it ends and you won't be charged. Annual plans are billed in full at signup.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
           {/* PREMIUM */}
@@ -151,8 +172,13 @@ const Pricing = () => {
                 if (li_fat_id) fetch('/api/track-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ li_fat_id }) }).catch(() => {});
               }}
             >
-              Get Started Now
+              {annual ? 'Get Started Now' : 'Start Your Free Trial'}
             </a>
+            {!annual && (
+              <p className="text-[12px] text-text-tertiary leading-relaxed text-center mt-3">
+                Free for 14 days, then {premiumPrice}/mo, unless you cancel. Cancel anytime in your Client Portal.
+              </p>
+            )}
           </div>
 
           {/* ELITE */}
@@ -212,8 +238,13 @@ const Pricing = () => {
                   if (li_fat_id) fetch('/api/track-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ li_fat_id }) }).catch(() => {});
                 }}
               >
-                Get Started
+                {annual ? 'Get Started' : 'Start Your Free Trial'}
               </a>
+              {!annual && (
+                <p className="text-[12px] text-text-tertiary leading-relaxed text-center mt-3">
+                  Free for 14 days, then {elitePrice}/mo, unless you cancel. Cancel anytime in your Client Portal.
+                </p>
+              )}
             </div>
           </div>
 

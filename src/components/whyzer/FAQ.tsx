@@ -16,6 +16,10 @@ const faqs = [
     a: "Search any of 8,500+ global companies. Whyzer instantly pulls from SEC filings, earnings calls, investor letters, and other public financial data to surface the account's financial priorities, executive pressures, and strategic bets. It then generates 2–3 boardroom-ready Points of View, each one connecting the account's board-level priorities to your solution's value. From search to POV in under 2 minutes, every time.",
   },
   {
+    q: 'How does the free trial work?',
+    a: "Monthly Premium and Elite plans include a 14-day free trial. You'll have full access from day one, and if you don't cancel before the trial ends, we'll automatically charge your card and your subscription continues on a monthly basis. We'll email you a reminder before your trial ends so you're never caught off guard. Cancel anytime, free, from your Client Portal — no call required. Annual plans are billed in full at signup and don't include a trial.",
+  },
+  {
     q: 'Is my data secure?',
     a: "Whyzer only uses publicly available, permissioned data sources: SEC filings, earnings calls, press releases, and investor communications. No scraping of private systems, no confidential data. All data is processed using encrypted infrastructure and we never store sensitive personal information. Your research stays yours, private, secure, and compliant by design.",
   },
@@ -88,7 +92,7 @@ const FAQ = () => {
               <div
                 className="overflow-hidden transition-all duration-300"
                 style={{
-                  maxHeight: openIndex === i ? '600px' : '0',
+                  maxHeight: openIndex === i ? '800px' : '0',
                   opacity: openIndex === i ? 1 : 0,
                 }}
               >
