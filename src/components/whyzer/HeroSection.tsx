@@ -101,11 +101,12 @@ const HeroSection = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <a
-            href="#pricing"
+            href="#pricing-monthly"
+            onClick={() => window.dispatchEvent(new Event('whyzer:pricing-monthly'))}
             className="inline-flex items-center justify-center text-white font-bold text-lg px-8 h-14 rounded-lg hover:brightness-110 transition-all duration-200 hover:shadow-[0_0_28px_rgba(89,89,212,0.6)] active:scale-[0.98]"
             style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
           >
-            Get Whyzer
+            Try Whyzer for Free
           </a>
           <a
             href="#how-it-works"

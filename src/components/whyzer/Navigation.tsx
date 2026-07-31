@@ -66,11 +66,12 @@ const Navigation = () => {
             Members Area
           </a>
           <a
-            href="#pricing"
+            href="#pricing-monthly"
+            onClick={() => window.dispatchEvent(new Event('whyzer:pricing-monthly'))}
             className="text-sm font-bold text-white px-4 py-2 rounded-md hover:brightness-110 transition-all duration-200"
             style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
           >
-            Start Now
+            Try Whyzer for Free
           </a>
         </div>
 
@@ -115,12 +116,12 @@ const Navigation = () => {
             Members Area
           </a>
           <a
-            href="#pricing"
+            href="#pricing-monthly"
             className="text-lg font-bold text-white px-8 py-3 rounded-md"
             style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
-            onClick={() => setMobileOpen(false)}
+            onClick={() => { setMobileOpen(false); window.dispatchEvent(new Event('whyzer:pricing-monthly')); }}
           >
-            Start Now
+            Try Whyzer for Free
           </a>
         </div>
       )}
