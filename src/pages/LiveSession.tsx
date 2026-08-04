@@ -3,8 +3,8 @@ import GrainOverlay from '@/components/whyzer/GrainOverlay';
 import { getNextSessionAt } from '@/lib/siteConfig';
 
 // Fast initial paint; replaced by the value from site_config once it loads.
-// June 24, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
-const FALLBACK_SESSION_DATE = new Date('2026-06-24T16:00:00Z');
+// August 26, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
+const FALLBACK_SESSION_DATE = new Date('2026-08-26T16:00:00Z');
 
 function useCountdown() {
   const [target, setTarget] = useState<Date>(FALLBACK_SESSION_DATE);
@@ -43,22 +43,45 @@ function useCountdown() {
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
+// Whyzer wordmark matching the product app: angular "W" in a white circle
+// alongside a heavy uppercase wordmark. Inline SVG so it's crisp and has no
+// external dependency (the old CDN "Group 52" asset predates this mark).
+const WhyzerLogo = ({ height = 28, wordmark = true }: { height?: number; wordmark?: boolean }) => (
+  <span className="inline-flex items-center" style={{ gap: height * 0.32 }}>
+    <svg width={height} height={height} viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="50" r="50" fill="#FFFFFF" />
+      <path
+        d="M24 38 L34 66 L44 46 L50 58 L56 46 L66 66 L76 38"
+        stroke="#0A0E1A"
+        strokeWidth="9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </svg>
+    {wordmark && (
+      <span
+        className="font-display font-bold text-white"
+        style={{ fontSize: height * 0.82, letterSpacing: '-0.02em', lineHeight: 1 }}
+      >
+        WHYZER
+      </span>
+    )}
+  </span>
+);
+
 const MinimalNav = () => (
   <nav
     className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-center px-6"
     style={{
       backdropFilter: 'blur(24px)',
       WebkitBackdropFilter: 'blur(24px)',
-      background: 'rgba(10,10,10,0.85)',
+      background: 'rgba(10,14,26,0.85)',
       borderBottom: '1px solid rgba(255,255,255,0.06)',
     }}
   >
-    <a href="#hero">
-      <img
-        src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
-        alt="Whyzer"
-        className="h-7"
-      />
+    <a href="#hero" aria-label="Whyzer">
+      <WhyzerLogo height={28} />
     </a>
   </nav>
 );
@@ -68,8 +91,8 @@ const UrgencyStrip = () => (
     <div style={{ transform: 'rotate(-1.2deg)', padding: '10px 0' }}>
       <div className="animate-marquee flex whitespace-nowrap">
         {Array(10).fill(null).map((_, i) => (
-          <span key={i} className="font-display text-white text-[16px]tracking-[0.28em] px-10 flex-shrink-0">
-            MASTER THE NUMBERS. ENGINEER THE DEAL. CLOSE BIGGER. ✦
+          <span key={i} className="font-display text-white text-[16px] tracking-[0.28em] px-10 flex-shrink-0">
+            SOUND LIKE NO ONE ELSE. BUILD YOUR POINT OF VIEW. CLOSE BIGGER. ✦
           </span>
         ))}
       </div>
@@ -80,13 +103,11 @@ const UrgencyStrip = () => (
 const MinimalFooter = () => (
   <footer
     className="py-12 px-6 text-center border-t border-foreground/[0.06]"
-    style={{ background: '#080808' }}
+    style={{ background: '#0B1020' }}
   >
-    <img
-      src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
-      alt="Whyzer"
-      className="h-6 mx-auto mb-4 opacity-70"
-    />
+    <div className="flex justify-center mb-4 opacity-70">
+      <WhyzerLogo height={24} />
+    </div>
     <p className="font-mono text-sm text-text-tertiary tracking-wide">
       © 2026 Whyzer · Founded by Jamal Reimer, strategic seller &amp; author of Mega Deal Secrets
     </p>
@@ -113,44 +134,44 @@ const CtaButton = ({ children, large = false }: { children: React.ReactNode; lar
 const workflows = [
   {
     num: '01',
-    title: 'Deep Account Research in Minutes, Not Days',
-    body: "How to use AI to extract the financial story behind your target accounts, from earnings calls, SEC filings, and market signals, so you walk into every meeting more informed than your buyer's own team.",
+    title: 'Why You Sound Like Everyone Else',
+    body: "How most sellers get stuck pitching at the one level every buyer has already heard five times this week and why that's exactly what gets you delegated back down.",
   },
   {
     num: '02',
-    title: 'Building a Boardroom-Ready Point of View',
-    body: 'How top strategic sellers use AI to transform raw account intel into a compelling POV that resonates with CFOs and executive buyers. Not just operational stakeholders.',
+    title: 'The Three Parts of a Point of View',
+    body: "Anchor, Tension, Invitation. The structure that turns a generic pitch into something a buyer can't politely file away and forget.",
   },
   {
     num: '03',
-    title: 'Sharpening Your Discovery with AI',
-    body: 'How to generate smarter, more strategic discovery questions tailored to each account, so you uncover the real blockers, budget dynamics, and urgency behind every deal.',
+    title: 'The Four Levels of Value',
+    body: 'Task, process, metric, narrative. Why the level you\'re pitching at determines whether the person across from you can champion you to anyone above them.',
   },
   {
     num: '04',
-    title: 'Role-Playing Your Way to Executive Conversations',
-    body: 'How to use AI as a sparring partner before high-stakes meetings: simulating executive objections, refining your narrative, and walking in confident.',
+    title: 'Building Your POV Live',
+    body: "You'll draft your own Point of View, for a real account, in real time. Not a worksheet you fill in later and never open again.",
   },
   {
     num: '05',
-    title: 'Creating Sales Assets at the Speed of the Deal',
-    body: 'How AI can help you build follow-up decks, leave-behinds, and proposals faster without sacrificing the quality and financial precision that moves enterprise deals forward.',
+    title: 'Where It Has to Hold Up',
+    body: 'The two executive meetings your Point of View has to survive and why most of them fall apart in the meeting in between.',
   },
 ];
 
 const walkAwayPoints = [
-  'A clear map of 5 AI workflows you can implement immediately in your current deals. No technical expertise required.',
-  'Live examples of each workflow in action, walked through in real time.',
-  'A practical next step: one workflow you can apply to one of your top accounts within 24 hours of leaving this session.',
-  'A framework for using AI to systematically close larger deals. Not a one-shot tactic that expires when the tool gets old.',
+  'A clear structure for building a Point of View you can use on any account. No template required.',
+  'A live example built in real time, not a case study you have to imagine yourself into.',
+  "One specific move: the account and the meeting you'll bring your Point of View to, within 14 days.",
+  'A framework for standing out consistently. Not a one-time trick that stops working the moment everyone else copies it.',
 ];
 
 const whoItems = [
   'An Account Executive or Senior AE working deals that take months to close and involve multiple stakeholders, including executives and CFOs.',
-  'A Strategic Account Manager managing large, high-value accounts where depth of insight is your competitive edge.',
-  'An independent seller or consultant who needs to punch above their weight in competitive enterprise deals without a large support team.',
-  "Someone who already uses AI for basic tasks (email writing, research) but suspects there's a much deeper level you haven't tapped yet.",
-  'A seller who has heard "we went with someone else" one too many times and is ready to show up differently.',
+  'A Strategic Account Manager who keeps getting delegated to procurement instead of the room you actually need.',
+  "An independent seller or consultant who needs a Point of View sharp enough to earn an executive's time without a big brand behind you.",
+  "Someone who's already sat through a Financial Fluency session and wants the framework for actually saying it out loud.",
+  'A seller who\'s heard "you guys all sound the same" or suspects a buyer\'s thought it and just didn\'t say so.',
 ];
 
 function loadCss(href: string) {
@@ -189,7 +210,7 @@ const LiveSession = () => {
   const t = useCountdown();
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: '#0A0E1A' }}>
       <GrainOverlay />
       <MinimalNav />
 
@@ -198,13 +219,18 @@ const LiveSession = () => {
         id="hero"
         className="relative pt-16 min-h-screen flex items-center overflow-hidden"
       >
+        {/* Signature Whyzer gradient: purple (lower-left) flowing to cyan (upper-right) */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 80% 70% at 25% 55%, rgba(67,67,168,0.24) 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(ellipse 75% 70% at 22% 78%, rgba(91,75,214,0.32) 0%, transparent 62%)' }}
         />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 50% 45% at 80% 75%, rgba(67,67,168,0.1) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse 65% 60% at 82% 22%, rgba(59,201,219,0.20) 0%, transparent 60%)' }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 55% 50% at 55% 45%, rgba(79,125,240,0.14) 0%, transparent 65%)' }}
         />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 py-24 grid lg:grid-cols-2 gap-16 items-center w-full">
@@ -218,17 +244,17 @@ const LiveSession = () => {
             </div>
 
             <h1 className="font-display text-[60px] sm:text-[64px] lg:text-[78px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
-              The Strategic
+              Stop Sounding
               <br />
-              <span className="bg-gradient-to-br from-[#A8A8FF] to-[#4343A8] bg-clip-text text-transparent">
-                Seller's AI Stack
+              <span className="bg-gradient-to-r from-[#A8A8FF] via-[#7B8CFF] to-[#3BC9DB] bg-clip-text text-transparent">
+                Like Everybody Else
               </span>
             </h1>
 
             <p className="font-body text-[17px] text-foreground/75 leading-[1.8] max-w-[500px]">
-              Stop treating AI as a tactical tool for one task. Learn the five integrated workflows
-              that separate elite sellers from the rest — the ones who systematically embed AI across
-              all stages of the buying cycle to engineer bigger deals at scale.
+              Stop pitching the same use cases as every other rep in the deal. Learn the three-part
+              framework elite sellers use to build a Point of View sharp enough to get you back in the
+              room with the people who can actually say yes.
             </p>
           </div>
 
@@ -264,7 +290,7 @@ const LiveSession = () => {
             <div className="flex flex-col gap-5">
               <WebinarKitRegistration />
               <p className="text-center font-mono text-[13px] text-text-tertiary tracking-wide leading-relaxed">
-                5 workflows. 60 minutes. One session that changes how you sell.
+                One framework. 60 minutes. One session that changes how you sell.
               </p>
             </div>
           </div>
@@ -274,17 +300,18 @@ const LiveSession = () => {
       {/* ── CREDIBILITY ── */}
       <section
         className="py-20 relative overflow-hidden"
-        style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#0B1020', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div className="max-w-[680px] mx-auto px-6 text-center">
           <p className="font-body text-[17px] text-text-secondary leading-[1.85]">
-            Most sellers are using AI to write emails. Elite sellers are using it to engineer deals.
+            Most sellers open with a pitch. Elite sellers open with a Point of View.
             In this free live session, Jamal Reimer,{' '}
             <span className="text-foreground font-semibold">
-              who has personally closed $160M as an individual contributor,
+              who has personally closed $160M as an individual contributor after getting fired twice
+              for pitching exactly like everyone else,
             </span>{' '}
-            breaks down the exact AI workflows that separate average reps from the ones closing
-            7- and 8-figure deals in 2026.
+            breaks down the exact framework that separates reps who get delegated down from the ones
+            who get invited back.
           </p>
         </div>
       </section>
@@ -292,23 +319,23 @@ const LiveSession = () => {
       {/* ── WHAT YOU'LL LEARN ── */}
       <section
         className="py-28 px-6 lg:px-12 relative"
-        style={{ background: '#0A0A0A', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#0A0E1A', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 50% at 100% 50%, rgba(40,24,73,0.5) 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 50% at 100% 50%, rgba(59,201,219,0.10) 0%, rgba(40,24,73,0.42) 45%, transparent 68%)' }}
         />
         <div className="max-w-[1000px] mx-auto relative">
           <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
             What You'll Learn
           </p>
           <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-4">
-            5 Workflows.{' '}
-            <span className="text-primary">One Engineered Deal.</span>
+            3 Components.{' '}
+            <span className="text-primary">One Point of View.</span>
           </h2>
           <p className="font-body text-[17px] text-text-secondary max-w-[520px] leading-[1.8] mb-16">
-            Each workflow builds on the last. By the end, you won't just know what elite sellers
-            do — you'll understand the system behind it.
+            Each piece builds on the last. By the end, you won't just have talking points — you'll
+            have a repeatable structure for standing out on any account.
           </p>
 
           <div className="mb-12 space-y-0">
@@ -342,7 +369,7 @@ const LiveSession = () => {
       {/* ── WALK AWAY WITH ── */}
       <section
         className="py-28 px-6 lg:px-12"
-        style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#0B1020', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div className="max-w-[1100px] mx-auto grid lg:grid-cols-2 gap-20 items-start">
           <div className="lg:sticky lg:top-24">
@@ -350,13 +377,13 @@ const LiveSession = () => {
               What You'll Walk Away With
             </p>
             <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-5">
-              Not Prompts.
+              Not a Pitch.
               <br />
-              <span className="text-primary">A Framework.</span>
+              <span className="text-primary">A Point of View.</span>
             </h2>
             <p className="font-body text-[17px] text-text-secondary leading-[1.8] max-w-[380px]">
-              You won't leave this session with a list of tips. You'll leave with a repeatable system
-              to use AI to engineer bigger deals over and over again.
+              You won't leave this session with a list of talking points. You'll leave with a
+              repeatable way to build a Point of View for any account, every time.
             </p>
           </div>
           <div>
@@ -377,14 +404,20 @@ const LiveSession = () => {
               ))}
             </div>
 
-            {/* Bonus */}
+            {/* Bonus — glass panel matching the product app */}
             <div
               className="rounded-2xl p-8 mb-10 relative overflow-hidden"
-              style={{ background: 'rgba(89,89,212,0.07)', border: '1px solid rgba(89,89,212,0.22)' }}
+              style={{
+                background: 'linear-gradient(135deg, rgba(91,75,214,0.10), rgba(59,201,219,0.06))',
+                border: '1px solid rgba(120,140,255,0.20)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                boxShadow: '0 8px 40px rgba(0,0,0,0.35)',
+              }}
             >
               <div
                 className="absolute inset-x-0 top-0 h-px"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(89,89,212,0.65), transparent)' }}
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(120,140,255,0.65), rgba(59,201,219,0.5), transparent)' }}
               />
               <span
                 className="inline-block font-mono text-[12px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4"
@@ -393,12 +426,12 @@ const LiveSession = () => {
                 Exclusive Bonus
               </span>
               <h3 className="font-display text-[23px] text-foreground uppercase mb-3">
-                The Tool Comparison: What Actually Works
+                14 Days of Whyzer Elite, Free
               </h3>
               <p className="font-body text-[16px] text-text-secondary leading-[1.8]">
-                A candid breakdown of what the market offers (ChatGPT, generic LLMs, enterprise
-                platforms) vs. what strategic sellers actually need, and why most tools weren't
-                built for the complexity of mid-to-large deals.
+                Attend live and get full access to the Vault, Coach Jamal, and the research tools to
+                turn the Point of View you build in the session into something you actually bring
+                into the room.
               </p>
             </div>
 
@@ -410,20 +443,18 @@ const LiveSession = () => {
       {/* ── WHO THIS IS FOR ── */}
       <section
         className="py-28 px-6 lg:px-12 relative overflow-hidden"
-        style={{ background: '#0A0A0A', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#0A0E1A', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(40,24,73,0.55) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(91,75,214,0.30) 0%, rgba(59,201,219,0.08) 45%, transparent 62%)' }}
         />
         <div className="max-w-[800px] mx-auto relative">
           <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
             Who This Is For
           </p>
           <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-5">
-            Built for Enterprise Sellers.
-            <br />
-            <span className="text-primary">Not Managers. Not Teams.</span>
+            Built for <span className="text-primary">Enterprise Sellers.</span>
           </h2>
           <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-14 max-w-[540px]">
             This session is built for individual enterprise sellers navigating complex, mid-to-large
@@ -469,20 +500,20 @@ const LiveSession = () => {
       {/* ── ABOUT JAMAL ── */}
       <section
         className="py-28 px-6 lg:px-12 relative overflow-hidden"
-        style={{ background: '#080808', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#0B1020', borderTop: '1px solid rgba(255,255,255,0.04)' }}
       >
         <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
           {/* Photo placeholder */}
           <div className="relative order-2 lg:order-1">
             <div
               className="absolute inset-0 scale-110"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(67,67,168,0.3) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(ellipse at center, rgba(91,75,214,0.32) 0%, rgba(59,201,219,0.12) 55%, transparent 72%)' }}
             />
             <div
               className="relative rounded-2xl overflow-hidden"
               style={{
                 aspectRatio: '3/4',
-                border: '1px solid rgba(89,89,212,0.14)',
+                border: '1px solid rgba(120,140,255,0.18)',
               }}
             >
               <img
@@ -508,8 +539,8 @@ const LiveSession = () => {
 
             <div className="space-y-5 mb-10">
               {[
-                "Jamal Reimer is one of the few enterprise sales mentors who has actually done it at scale. As an individual contributor, he has closed over $160M in enterprise deals, including multiple transactions exceeding $50M. He is the author of Mega Deal Secrets, a playbook used by sellers at companies like Oracle, SAP, Salesforce, IBM, and AWS.",
-                "After two decades in the field, Jamal built Whyzer — an AI platform designed from the ground up for the specific complexity of mid-to-large enterprise deals. Not for teams. Not for managers. For the individual seller who has to walk into a CFO's office and earn their trust in under 30 minutes.",
+                "Jamal Reimer is one of the few enterprise sales mentors who has actually done it at scale. As an individual contributor, he has closed over $160M in enterprise sales, including multiple transactions exceeding $50M. He is the author of Mega Deal Secrets, a playbook used by sellers at companies like Oracle, SAP, Salesforce, IBM, and AWS.",
+                "After two decades in the field, Jamal built Whyzer — an AI platform designed for the specific complexity of mid-to-large enterprise deals. Not theory. Not a template library. The system he used to stop sounding like every other rep in the room.",
                 "His sessions aren't theory. Everything taught comes from deals he has personally run, lost, and closed at the highest levels of enterprise sales.",
               ].map((para, i) => (
                 <p key={i} className="font-body text-[17px] text-text-secondary leading-[1.85]">
@@ -526,7 +557,7 @@ const LiveSession = () => {
               {[
                 { val: '$160M+', label: 'closed as an individual contributor' },
                 { val: '$50M+', label: 'largest single deal closed' },
-                { val: '10,000+', label: 'enterprise sellers trained globally' },
+                { val: '10,000+', label: 'enterprise sellers mentored' },
               ].map((s, i) => (
                 <div key={i}>
                   <span
@@ -551,11 +582,11 @@ const LiveSession = () => {
       {/* ── CLOSING CTA ── */}
       <section
         className="py-36 px-6 text-center relative overflow-hidden"
-        style={{ background: '#0A0A0A' }}
+        style={{ background: '#0A0E1A' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(67,67,168,0.14) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(91,75,214,0.18) 0%, rgba(59,201,219,0.08) 50%, transparent 72%)' }}
         />
         <div className="relative max-w-[640px] mx-auto">
           <h2 className="font-display text-[56px] md:text-[70px] text-foreground uppercase tracking-[-0.02em] leading-[1.05] mb-6">
@@ -568,7 +599,7 @@ const LiveSession = () => {
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
           <p className="font-mono text-[13px] text-text-tertiary mt-7 tracking-wide">
-            June 24 · 12PM ET
+            August 26 · 12PM ET
           </p>
         </div>
       </section>
