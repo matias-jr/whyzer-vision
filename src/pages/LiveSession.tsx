@@ -43,33 +43,6 @@ function useCountdown() {
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
-// Whyzer wordmark matching the product app: angular "W" in a white circle
-// alongside a heavy uppercase wordmark. Inline SVG so it's crisp and has no
-// external dependency (the old CDN "Group 52" asset predates this mark).
-const WhyzerLogo = ({ height = 28, wordmark = true }: { height?: number; wordmark?: boolean }) => (
-  <span className="inline-flex items-center" style={{ gap: height * 0.32 }}>
-    <svg width={height} height={height} viewBox="0 0 100 100" fill="none" aria-hidden="true">
-      <circle cx="50" cy="50" r="50" fill="#FFFFFF" />
-      <path
-        d="M24 38 L34 66 L44 46 L50 58 L56 46 L66 66 L76 38"
-        stroke="#0A0E1A"
-        strokeWidth="9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-    {wordmark && (
-      <span
-        className="font-display font-bold text-white"
-        style={{ fontSize: height * 0.82, letterSpacing: '-0.02em', lineHeight: 1 }}
-      >
-        WHYZER
-      </span>
-    )}
-  </span>
-);
-
 const MinimalNav = () => (
   <nav
     className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-center px-6"
@@ -80,8 +53,12 @@ const MinimalNav = () => (
       borderBottom: '1px solid rgba(255,255,255,0.06)',
     }}
   >
-    <a href="#hero" aria-label="Whyzer">
-      <WhyzerLogo height={28} />
+    <a href="#hero">
+      <img
+        src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
+        alt="Whyzer"
+        className="h-7"
+      />
     </a>
   </nav>
 );
@@ -105,9 +82,11 @@ const MinimalFooter = () => (
     className="py-12 px-6 text-center border-t border-foreground/[0.06]"
     style={{ background: '#0B1020' }}
   >
-    <div className="flex justify-center mb-4 opacity-70">
-      <WhyzerLogo height={24} />
-    </div>
+    <img
+      src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
+      alt="Whyzer"
+      className="h-6 mx-auto mb-4 opacity-70"
+    />
     <p className="font-mono text-sm text-text-tertiary tracking-wide">
       © 2026 Whyzer · Founded by Jamal Reimer, strategic seller &amp; author of Mega Deal Secrets
     </p>
