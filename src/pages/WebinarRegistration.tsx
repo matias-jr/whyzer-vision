@@ -169,11 +169,11 @@ const WebinarRegistration = () => {
     >
       {/* NAV — stays navy, as in the mockup */}
       <div style={{ background: NAVY }}>
-        <header className="wr-nav" style={{ maxWidth: 1140, margin: '0 auto', padding: '20px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', position: 'relative', zIndex: 5 }}>
+        <header className="wr-nav" style={{ maxWidth: 1140, margin: '0 auto', padding: '20px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'nowrap', position: 'relative', zIndex: 5 }}>
           <img src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png" alt="Whyzer" style={{ height: 30, width: 'auto', flexShrink: 0 }} />
-          <div className="wr-nav-meta" style={{ display: 'flex', alignItems: 'center', gap: 20, fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#C7C7EB', flexShrink: 0 }}>
+          <div className="wr-nav-meta" style={{ alignItems: 'center', gap: 20, fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#C7C7EB', flexShrink: 0 }}>
             <span style={{ whiteSpace: 'nowrap' }}>&#9737; Free Webinar</span>
-            <span style={{ whiteSpace: 'nowrap' }}>&#8226; 20 Minutes</span>
+            <span className="wr-nav-mins" style={{ whiteSpace: 'nowrap' }}>&#8226; 20 Minutes</span>
           </div>
         </header>
       </div>
@@ -274,7 +274,7 @@ const WebinarRegistration = () => {
       <section style={{ padding: '90px 24px', display: 'flex', justifyContent: 'center', position: 'relative', background: NAVY, overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '20%', left: '8%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(98,98,233,0.20) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
         <div className="wr-credibility" style={{ maxWidth: 1080, width: '100%', display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 56, alignItems: 'center', position: 'relative' }}>
-          <div className="wr-cred-photo wr-glass-dark" style={{ position: 'relative', alignSelf: 'stretch', minHeight: 480, overflow: 'hidden', borderRadius: 20, padding: 0 }}>
+          <div className="wr-cred-photo wr-glass-dark" style={{ position: 'relative', minHeight: 480, overflow: 'hidden', borderRadius: 20, padding: 0 }}>
             <img src="/jamal-hero-1.png" alt="Jamal Reimer" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 28%', display: 'block', zIndex: 1 }} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -385,6 +385,8 @@ const WebinarRegistration = () => {
           .wr-glass { background: ${WHITE}; border-color: ${LINE}; }
           .wr-glass-dark { background: ${NAVY2}; border-color: ${D_LINE}; }
         }
+        .wr-nav-meta { display: flex; }
+        .wr-cred-photo { align-self: stretch; }
         .wr-problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
         .wr-who-head { text-align: left; margin-bottom: 36px; }
         .wr-who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -394,9 +396,19 @@ const WebinarRegistration = () => {
         input:focus, .wr-form input:focus { outline: none; border-color: ${ACCENT}; box-shadow: 0 0 0 3px rgba(98,98,233,0.22); }
         a:focus-visible, button:focus-visible { outline: 2px solid ${ACCENT}; outline-offset: 3px; }
         @media (max-width: 640px) {
-          /* Stack the nav so the meta never crowds the logo */
-          .wr-nav { justify-content: center; gap: 12px; padding: 16px 20px; }
-          .wr-nav-meta { width: 100%; justify-content: center; gap: 14px; font-size: 11px; }
+          /* Keep the nav on one line — shrink the meta rather than wrapping it */
+          .wr-nav { flex-wrap: nowrap; gap: 12px; padding: 16px 18px; }
+          .wr-nav-meta { gap: 10px; font-size: 10px; letter-spacing: 0.06em; }
+          .wr-nav img { height: 24px; }
+        }
+        @media (max-width: 560px) {
+          /* Both labels can't fit beside the logo on phones — drop the duration
+             and keep "Free Webinar" legible on the one line. */
+          .wr-nav-mins { display: none; }
+        }
+        @media (max-width: 400px) {
+          /* Below this even the single label clips, so the logo stands alone. */
+          .wr-nav-meta { display: none; }
         }
         @media (max-width: 900px) {
           .wr-problem-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -407,7 +419,10 @@ const WebinarRegistration = () => {
           .wr-priming { grid-template-columns: 1fr !important; gap: 24px !important; }
           .wr-cta-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .wr-credibility { grid-template-columns: 1fr !important; gap: 28px !important; text-align: center; }
-          .wr-cred-photo { min-height: 340px !important; max-width: 360px; margin: 0 auto; }
+          /* Single-column: the row no longer stretches, so give the frame a real
+             height and let the portrait fill it rather than collapsing. */
+          .wr-cred-photo { min-height: 0 !important; height: 420px; max-width: 340px; width: 100%; margin: 0 auto; align-self: center !important; }
+          .wr-cred-photo img { object-position: center 22% !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           [style*="animation"] { animation: none !important; }
