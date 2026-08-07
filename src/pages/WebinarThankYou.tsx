@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import { useUtmParams } from '@/hooks/useUtmParams';
 
 function loadCss(href: string) {
@@ -16,11 +17,18 @@ const EU_COUNTRIES = new Set([
   'LI','MC','SM','VA','AD','XK',
 ]);
 
-const INK = '#F3F2F8';
-const MUTED = '#9C9BAE';
-const BODY = '#D3D1DE';
-const EYEBROW = '#B3A6FF';
+// ── v2 design system
+const BG = '#070B17';
+const ACCENT = '#3B6FF0';
+const INK = '#F0F4FF';
+const MUTED = '#8A96B4';
+const BODY = '#C3CCE2';
+const EYEBROW = '#7FA0F5';
 const BORDER = 'rgba(255,255,255,0.08)';
+// Layered cards: primary sits on the page, secondary nests inside a primary.
+const CARD_PRIMARY = 'rgba(255,255,255,0.04)';
+const CARD_SECONDARY = 'rgba(255,255,255,0.06)';
+const HEADING: React.CSSProperties = { fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.035em' };
 
 const testimonials = [
   {
@@ -40,10 +48,116 @@ const testimonials = [
   },
 ];
 
+// ── §5 How It Works
+const howItWorks = [
+  {
+    step: 'Search',
+    body: 'Pull up any of 7,500+ public and private companies, anywhere in the world. Whyzer reads the SEC filings, earnings calls, investor letters, and proxy statements the same way I just did on camera.',
+  },
+  {
+    step: 'Build',
+    body: 'Whyzer surfaces the financial priorities and executive pressures actually driving the account, then generates two to three boardroom-ready points of view connecting those priorities to what you sell.',
+  },
+  {
+    step: 'Walk In Prepared',
+    body: "Every claim is sourced back to the original filing. You're not editing an AI draft and hoping it holds up. You're reading something built to survive a CFO pushing back on it.",
+  },
+];
+
+// ── §6 What's Included in Whyzer Elite
+const eliteFeatures = [
+  {
+    title: 'The full research and POV engine',
+    body: 'Unlimited company research across 7,500+ global public and private companies. Unlimited Deal Maps, unlimited Executive POV Dossiers, unlimited Whyzer & Jamal podcast-style account briefings.',
+  },
+  {
+    title: 'The Vault',
+    body: "Jamal's complete enterprise selling methodology, built from $160M+ in closed SaaS deals. Includes the Pipeline Flywheel, the MDA Masterclass, the Executive Outreach Course, and Financial Fluency 101. Not just the tool. The thinking behind it.",
+  },
+  {
+    title: 'Coach Jamal, your AI co-pilot',
+    body: "24/7 access to an AI coach trained on 100+ hours of Jamal's coaching content. Ask it how to write a POV for cold outbound to a CFO, how to handle a stalled multi-thread, or how Jamal would run a high-stakes internal deal review, and get a structured answer immediately.",
+  },
+  {
+    title: 'Whyzer Academy',
+    body: 'Monthly live upskilling sessions led by Jamal, plus live deal reviews and MDA office hours where the methodology gets applied to real, current opportunities, including yours.',
+  },
+  {
+    title: 'Global coverage',
+    body: "The accounts your competitors can't research. HSBC, Revolut, Stripe, Monzo, and thousands of other private and international companies most tools simply don't cover.",
+  },
+];
+
+// ── §7 Testimonial grid #1
+const grid1 = [
+  {
+    quote: '"The EVP looked at the point of view and said, ‘How do you know this? That’s insider information.’"',
+    name: 'Jesse M.',
+    detail: 'enterprise seller inside a top-10 global financial company',
+  },
+  {
+    quote: '"It’s built for our specific needs. Way better than agents like Perplexity or Claude for strategic selling."',
+    name: 'Brian Tripp',
+    detail: '',
+  },
+  {
+    quote: '$5.75M closed. $11.5M more sitting in pipeline, built the same way, account by account.',
+    name: 'Enterprise AE',
+    detail: 'using the Whyzer method',
+  },
+];
+
+// ── §10 Testimonial grid #2
+const grid2 = [
+  {
+    quote: 'My own response rate on cold executive outreach went from 2% to 23% the year I stopped leading with product and started leading with the numbers.',
+    name: 'Jamal Reimer',
+    detail: 'founder, closed $160M+ as an individual seller',
+  },
+  {
+    quote: '"What used to take a rep a year, I can do in two weeks."',
+    name: 'Rob Sader',
+    detail: '',
+  },
+  {
+    quote: "A point of view built around a €650M IT CapEx priority got Tobia's team a meeting his usual outreach couldn't.",
+    name: 'Tobia La Marca',
+    detail: 'Contentsquare',
+  },
+];
+
+// ── §9 FAQ
+const faqs = [
+  {
+    q: 'Do I need a credit card to start the trial?',
+    a: "Yes. You won't be charged until your 14-day trial ends, and you can cancel any time before then.",
+  },
+  {
+    q: "What's different about Elite versus Premium?",
+    a: 'Premium gives you the research and POV engine. Elite adds The Vault, Coach Jamal, and monthly live sessions with Jamal, the full methodology behind the tool, not just the tool itself.',
+  },
+  {
+    q: 'Does Whyzer work on private and international companies?',
+    a: "Yes. Coverage spans 7,500+ public and private companies globally, including accounts most research tools can't reach.",
+  },
+  {
+    q: 'Is my data secure?',
+    a: 'Whyzer only pulls from public, permissioned sources: filings, earnings calls, and investor communications. Nothing scraped, nothing confidential, encrypted infrastructure throughout.',
+  },
+  {
+    q: 'What happens after the discount period?',
+    a: 'Elite renews at $97/month starting month 4. Cancel any time before then if it’s not a fit.',
+  },
+];
+
 const WebinarThankYou = () => {
   const appendUtm = useUtmParams();
+  // First FAQ item starts expanded, per the brief.
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [regionSuffix, setRegionSuffix] = useState('');
-  const trialUrl = appendUtm(`https://subscribe.whyzer.ai/premium-monthly${regionSuffix}`);
+  // Elite trial checkout (was premium-monthly). Matches the URL pattern used in
+  // Pricing.tsx and EliteUpgrade.tsx, including the region suffix.
+  const trialUrl = appendUtm(`https://subscribe.whyzer.ai/elite-monthly${regionSuffix}`);
 
   useEffect(() => {
     loadCss('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
@@ -68,13 +182,20 @@ const WebinarThankYou = () => {
       style={{
         fontFamily: "'Inter', sans-serif",
         color: INK,
-        background: '#08080F',
+        background: BG,
         width: '100%',
         minHeight: '100vh',
         overflow: 'hidden',
         position: 'relative',
       }}
     >
+      {/* PROMO BAR */}
+      <div style={{ background: ACCENT, color: '#FFFFFF', textAlign: 'center', padding: '11px 18px', position: 'relative', zIndex: 3 }}>
+        <p style={{ margin: '0 auto', maxWidth: 900, fontSize: 14, lineHeight: 1.5, fontWeight: 600 }}>
+          <span aria-hidden="true">&#128293;</span> LIMITED TIME &mdash; Whyzer Elite for $57/month for your first 3 months. Code <strong style={{ fontWeight: 800, letterSpacing: '0.02em' }}>FLUENCY57</strong> at trial checkout.
+        </p>
+      </div>
+
       <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* PRIMING LINE */}
@@ -139,22 +260,150 @@ const WebinarThankYou = () => {
           </div>
         </section>
 
-        {/* RISK REVERSAL + FINAL CTA */}
-        <section style={{ padding: '84px 24px 100px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 22, background: 'linear-gradient(180deg, rgba(124,111,255,0.08) 0%, rgba(10,10,18,0.9) 100%)', borderTop: `1px solid ${BORDER}`, position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', bottom: -160, left: '50%', transform: 'translateX(-50%)', width: 700, height: 400, background: 'radial-gradient(ellipse at center, rgba(124,111,255,0.28) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
-          <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: EYEBROW, position: 'relative' }}>14-day free trial</div>
-          <p style={{ fontSize: 19, lineHeight: 1.7, maxWidth: 600, margin: 0, color: BODY, position: 'relative' }}>
-            14 days free on your hardest account. After that, $57 a month in Whyzer Premium, unless you cancel first, in which case you pay nothing.
-          </p>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 'clamp(24px, 3.4vw, 30px)', lineHeight: 1.3, maxWidth: 560, margin: '8px 0 0', position: 'relative' }}>
-            Run it on the account that's gone quiet. See if it changes how you'd walk into the room.
+        {/* HOW IT WORKS */}
+        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+          <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 40px', color: INK, textAlign: 'center' }}>
+            From stalled account to boardroom-ready in under two minutes.
           </h2>
+          <div className="wty-steps">
+            {howItWorks.map((s, i) => (
+              <div key={s.step} style={{ background: CARD_PRIMARY, border: `1px solid ${BORDER}`, borderRadius: 16, padding: '28px 24px' }}>
+                <div style={{ ...HEADING, fontSize: 13, letterSpacing: '0.12em', color: ACCENT, marginBottom: 12 }}>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <h3 style={{ ...HEADING, fontSize: 20, margin: '0 0 10px', color: INK }}>{s.step}</h3>
+                <p style={{ fontSize: 15, lineHeight: 1.65, margin: 0, color: BODY }}>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* WHAT'S INCLUDED IN WHYZER ELITE + PRICING */}
+        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+          <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
+            Everything in Whyzer Elite
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 720, margin: '0 auto 44px' }}>
+            {eliteFeatures.map((f) => (
+              <div key={f.title} style={{ background: CARD_PRIMARY, border: `1px solid ${BORDER}`, borderRadius: 14, padding: '22px 24px' }}>
+                <h3 style={{ ...HEADING, fontSize: 17, margin: '0 0 8px', color: INK }}>{f.title}</h3>
+                <p style={{ fontSize: 15, lineHeight: 1.65, margin: 0, color: BODY }}>{f.body}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Pricing box — secondary card nested on the section surface */}
+          <div style={{ maxWidth: 460, margin: '0 auto', background: CARD_SECONDARY, border: `1px solid rgba(59,111,240,0.35)`, borderRadius: 20, padding: '32px 26px', textAlign: 'center', boxShadow: '0 24px 60px -30px rgba(59,111,240,0.55)' }}>
+            <h3 style={{ ...HEADING, fontSize: 22, margin: '0 0 14px', color: INK }}>Whyzer Elite</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'center', gap: 10, marginBottom: 6 }}>
+              <span style={{ fontSize: 19, color: MUTED, textDecoration: 'line-through' }}>$97/month</span>
+              <span style={{ ...HEADING, fontSize: 'clamp(24px, 5vw, 30px)', color: INK }}>$57/month</span>
+            </div>
+            <p style={{ ...HEADING, fontSize: 15, margin: '0 0 12px', color: INK }}>for your first 3 months</p>
+            <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 18px', color: BODY }}>
+              with code <strong style={{ ...HEADING, color: ACCENT, fontSize: 15 }}>FLUENCY57</strong>
+            </p>
+            <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 18px', color: BODY }}>
+              14 days free on your three hardest accounts. Start with the one that's gone quiet.
+            </p>
+            <p style={{ fontSize: 13.5, lineHeight: 1.6, margin: '0 0 22px', color: MUTED }}>
+              After your free trial: $57/month for 3 months, then $97/month. Cancel any time before your trial ends and you won't be charged.
+            </p>
+            <a href={trialUrl} className="wty-cta" style={{ display: 'block', width: '100%', boxSizing: 'border-box', background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 16, padding: '16px 20px', borderRadius: 10, textDecoration: 'none', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
+              Start My Free Trial &rarr;
+            </a>
+          </div>
+        </section>
+
+        {/* TESTIMONIAL GRID #1 */}
+        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+          <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
+            More revenue, not just more replies
+          </h2>
+          <div className="wty-grid">
+            {grid1.map((t, i) => (
+              <figure key={i} className="wty-testimonial" style={{ background: CARD_PRIMARY, border: `1px solid ${BORDER}`, borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+                <blockquote style={{ fontSize: 16, lineHeight: 1.6, margin: 0, color: BODY }}>{t.quote}</blockquote>
+                <figcaption style={{ fontSize: 14, color: MUTED, marginTop: 'auto' }}>
+                  <span style={{ ...HEADING, color: EYEBROW, fontSize: 14 }}>{t.name}</span>
+                  {t.detail && <span>, {t.detail}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        {/* TRIAL TERMS BAND — cancellation window, not a refund guarantee */}
+        <section style={{ padding: '64px 24px', borderTop: `1px solid ${BORDER}`, background: 'rgba(59,111,240,0.07)' }}>
+          <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ ...HEADING, fontSize: 'clamp(22px, 3.2vw, 28px)', lineHeight: 1.28, margin: '0 0 16px', color: INK }}>
+              Try it on the account that's gone quiet. See if it changes how you'd walk into the room.
+            </h2>
+            <p style={{ fontSize: 16, lineHeight: 1.7, margin: 0, color: BODY }}>
+              Fourteen days free, full Elite access, no restrictions on which three accounts you pick. If it's not for you, cancel before the trial ends and you're never charged.
+            </p>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+          <div style={{ maxWidth: 720, margin: '0 auto' }}>
+            <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 28px', color: INK, textAlign: 'center' }}>
+              Questions, answered.
+            </h2>
+            {faqs.map((faq, i) => (
+              <div key={i} style={{ borderBottom: `1px solid ${BORDER}` }}>
+                <button
+                  type="button"
+                  className="wty-faq-btn"
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                  aria-expanded={openIndex === i}
+                  style={{ width: '100%', minHeight: 44, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, padding: '18px 0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', font: 'inherit' }}
+                >
+                  <span style={{ ...HEADING, fontSize: 16.5, lineHeight: 1.4, color: openIndex === i ? ACCENT : INK }}>{faq.q}</span>
+                  <ChevronDown size={18} style={{ flexShrink: 0, transition: 'transform 0.2s ease, color 0.2s ease', transform: openIndex === i ? 'rotate(180deg)' : 'none', color: openIndex === i ? ACCENT : MUTED }} />
+                </button>
+                <div style={{ overflow: 'hidden', transition: 'max-height 0.3s ease, opacity 0.3s ease', maxHeight: openIndex === i ? 600 : 0, opacity: openIndex === i ? 1 : 0 }}>
+                  <p style={{ fontSize: 15.5, lineHeight: 1.75, margin: 0, padding: '0 0 20px', color: BODY }}>{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* TESTIMONIAL GRID #2 */}
+        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+          <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
+            Proof it changes the numbers, not just the pitch
+          </h2>
+          <div className="wty-grid">
+            {grid2.map((t, i) => (
+              <figure key={i} className="wty-testimonial" style={{ background: CARD_PRIMARY, border: `1px solid ${BORDER}`, borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+                <blockquote style={{ fontSize: 16, lineHeight: 1.6, margin: 0, color: BODY }}>{t.quote}</blockquote>
+                <figcaption style={{ fontSize: 14, color: MUTED, marginTop: 'auto' }}>
+                  <span style={{ ...HEADING, color: EYEBROW, fontSize: 14 }}>{t.name}</span>
+                  {t.detail && <span>, {t.detail}</span>}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        {/* FINAL CTA BAND */}
+        <section style={{ padding: '84px 24px 100px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 20, borderTop: `1px solid ${BORDER}`, position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', bottom: -160, left: '50%', transform: 'translateX(-50%)', width: 700, height: 400, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.30) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
+          <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.8vw, 34px)', lineHeight: 1.25, maxWidth: 560, margin: 0, color: INK, position: 'relative' }}>
+            Run it on the account that's gone quiet.
+          </h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, maxWidth: 560, margin: 0, color: BODY, position: 'relative' }}>
+            Fourteen days free on Whyzer Elite. $57/month for your first three months with code FLUENCY57 after that.
+          </p>
           <a
             href={trialUrl}
             className="wty-cta"
-            style={{ marginTop: 4, background: 'linear-gradient(135deg, #7C6FFF 0%, #5B4EF0 100%)', color: '#FFFFFF', fontWeight: 600, fontSize: 17, padding: '18px 38px', borderRadius: 999, textDecoration: 'none', display: 'inline-block', boxShadow: '0 8px 30px -6px rgba(109,95,251,0.6)', position: 'relative' }}
+            style={{ marginTop: 4, background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 36px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)', position: 'relative' }}
           >
-            Start My Free Trial
+            Start My Free Trial &rarr;
           </a>
         </section>
 
@@ -163,8 +412,16 @@ const WebinarThankYou = () => {
       <style>{`
         @keyframes wty-fadeInUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes wty-glowPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 0.85; } }
-        .wty-cta:hover { box-shadow: 0 10px 36px -4px rgba(109,95,251,0.8); transform: translateY(-1px); }
-        .wty-testimonial:hover { border-color: rgba(124,111,255,0.4); }
+        .wty-cta { transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease; }
+        .wty-cta:hover { background: #2F5FD8; box-shadow: 0 12px 34px -6px rgba(59,111,240,0.85); transform: translateY(-1px); }
+        .wty-testimonial { transition: border-color 0.2s ease; }
+        .wty-testimonial:hover { border-color: rgba(59,111,240,0.45); }
+        .wty-faq-btn:focus-visible, .wty-cta:focus-visible { outline: 2px solid ${ACCENT}; outline-offset: 3px; }
+        /* Mobile-first: single column, widening at the 768px breakpoint. */
+        .wty-grid, .wty-steps { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        @media (min-width: 768px) {
+          .wty-grid, .wty-steps { grid-template-columns: repeat(3, 1fr); }
+        }
       `}</style>
     </div>
   );
