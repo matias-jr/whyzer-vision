@@ -17,17 +17,34 @@ const EU_COUNTRIES = new Set([
   'LI','MC','SM','VA','AD','XK',
 ]);
 
-// ── v2 design system
-const BG = '#070B17';
+// ── v2 design system, inverted: a light page with #070B17 reserved for the two
+// sections that stay dark (hero/video priming, final CTA). Mirrors the
+// light-band rhythm used on the financial-fluency page.
+const DARK = '#070B17';
+const DARK2 = '#0E1526';
 const ACCENT = '#3B6FF0';
-const INK = '#F0F4FF';
-const MUTED = '#8A96B4';
-const BODY = '#C3CCE2';
-const EYEBROW = '#7FA0F5';
+const ACCENT_DARK = '#2F5FD8';
+const ACCENT_TINT = '#EAF0FE';
+
+// Light-section text + surfaces
+const INK = '#0B1020';
+const BODY = '#4A5570';
+const MUTED = '#7C88A4';
+const BG = '#FAFBFD';
+const BG_ALT = '#F1F4FB';
+const WHITE = '#FFFFFF';
+const LINE = '#E2E7F2';
+const EYEBROW = ACCENT_DARK;
+
+// Dark-section text (used only inside the two dark sections)
+const D_INK = '#F0F4FF';
+const D_BODY = '#C3CCE2';
+const D_MUTED = '#8A96B4';
+const D_EYEBROW = '#7FA0F5';
 const BORDER = 'rgba(255,255,255,0.08)';
-// Layered cards: primary sits on the page, secondary nests inside a primary.
-const CARD_PRIMARY = 'rgba(255,255,255,0.04)';
-const CARD_SECONDARY = 'rgba(255,255,255,0.06)';
+
+// Layered cards: white cards sit on the tinted section bands.
+const CARD_PRIMARY = WHITE;
 const HEADING: React.CSSProperties = { fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.035em' };
 
 const testimonials = [
@@ -189,6 +206,8 @@ const WebinarThankYou = () => {
         position: 'relative',
       }}
     >
+      {/* The wrapper is light; the hero/video block below keeps the dark
+          treatment and spans full width behind the centred column. */}
       {/* PROMO BAR */}
       <div style={{ background: ACCENT, color: '#FFFFFF', textAlign: 'center', padding: '11px 18px', position: 'relative', zIndex: 3 }}>
         <p style={{ margin: '0 auto', maxWidth: 900, fontSize: 14, lineHeight: 1.5, fontWeight: 600 }}>
@@ -196,46 +215,52 @@ const WebinarThankYou = () => {
         </p>
       </div>
 
-      <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      {/* HERO + VIDEO — kept dark, full-width band */}
+      <div style={{ background: DARK, position: 'relative', overflow: 'hidden' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-        {/* PRIMING LINE */}
-        <section style={{ padding: '88px 24px 32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 16, position: 'relative' }}>
-          <div style={{ position: 'absolute', top: -220, left: '50%', transform: 'translateX(-50%)', width: 800, height: 560, background: 'radial-gradient(ellipse at center, rgba(109,95,251,0.36) 0%, rgba(109,95,251,0.12) 40%, transparent 70%)', filter: 'blur(20px)', animation: 'wty-glowPulse 6s ease-in-out infinite', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 420, backgroundImage: 'radial-gradient(rgba(178,166,255,0.5) 1px, transparent 1.5px)', backgroundSize: '28px 28px', WebkitMaskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', pointerEvents: 'none', zIndex: 0 }} />
+          {/* PRIMING LINE */}
+          <section style={{ padding: '88px 24px 32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 16, position: 'relative' }}>
+            <div style={{ position: 'absolute', top: -220, left: '50%', transform: 'translateX(-50%)', width: 800, height: 560, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.34) 0%, rgba(59,111,240,0.12) 40%, transparent 70%)', filter: 'blur(20px)', animation: 'wty-glowPulse 6s ease-in-out infinite', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 420, backgroundImage: 'radial-gradient(rgba(127,160,245,0.5) 1px, transparent 1.5px)', backgroundSize: '28px 28px', WebkitMaskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', pointerEvents: 'none', zIndex: 0 }} />
 
-          <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: EYEBROW, position: 'relative', animation: 'wty-fadeInUp 0.7s ease both' }}>
-            You're in
-          </div>
-          <p style={{ fontSize: 21, lineHeight: 1.6, maxWidth: 620, margin: 0, color: BODY, position: 'relative', animation: 'wty-fadeInUp 0.8s ease 0.05s both' }}>
-            Before you press play, go pull up that stalled account. The one you've sent three follow-ups to and heard nothing back. You're going to read it the way a CFO would, right alongside me. Twenty minutes, and you'll walk out knowing exactly why they've gone quiet.
-          </p>
-        </section>
+            <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: D_EYEBROW, position: 'relative', animation: 'wty-fadeInUp 0.7s ease both' }}>
+              You're in
+            </div>
+            <p style={{ fontSize: 21, lineHeight: 1.6, maxWidth: 620, margin: 0, color: D_BODY, position: 'relative', animation: 'wty-fadeInUp 0.8s ease 0.05s both' }}>
+              Before you press play, go pull up that stalled account. The one you've sent three follow-ups to and heard nothing back. You're going to read it the way a CFO would, right alongside me. Twenty minutes, and you'll walk out knowing exactly why they've gone quiet.
+            </p>
+          </section>
 
-        {/* VIDEO */}
-        <section style={{ padding: '16px 24px 56px', display: 'flex', justifyContent: 'center' }}>
-          <div style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: 'repeating-linear-gradient(135deg, #14141E, #14141E 12px, #1A1A26 12px, #1A1A26 24px)', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(109,95,251,0.35)' }}>
-            <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 40%, rgba(124,111,255,0.18) 0%, transparent 65%)' }} />
-            <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
-              <div style={{ width: 76, height: 76, borderRadius: '50%', background: 'linear-gradient(135deg, #7C6FFF, #5B4EF0)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px -6px rgba(109,95,251,0.7)' }}>
-                <div style={{ width: 0, height: 0, borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '22px solid #FFFFFF', marginLeft: 5 }} />
-              </div>
-              <div style={{ fontFamily: "'Inter', monospace", fontSize: 13, letterSpacing: '0.06em', color: MUTED, textTransform: 'uppercase' }}>
-                webinar video
+          {/* VIDEO */}
+          <section style={{ padding: '16px 24px 72px', display: 'flex', justifyContent: 'center' }}>
+            <div style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: 'repeating-linear-gradient(135deg, #0E1526, #0E1526 12px, #141D33 12px, #141D33 24px)', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(59,111,240,0.45)' }}>
+              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 40%, rgba(59,111,240,0.20) 0%, transparent 65%)' }} />
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
+                <div style={{ width: 76, height: 76, borderRadius: '50%', background: ACCENT, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px -6px rgba(59,111,240,0.7)' }}>
+                  <div style={{ width: 0, height: 0, borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '22px solid #FFFFFF', marginLeft: 5 }} />
+                </div>
+                <div style={{ fontFamily: "'Inter', monospace", fontSize: 13, letterSpacing: '0.06em', color: D_MUTED, textTransform: 'uppercase' }}>
+                  webinar video
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* PROOF BLOCK */}
-        <section style={{ padding: '64px 24px', background: 'linear-gradient(180deg, rgba(124,111,255,0.06) 0%, rgba(18,18,28,0.6) 100%)', display: 'flex', justifyContent: 'center', borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+        <section style={{ padding: '72px 24px', background: BG_ALT, display: 'flex', justifyContent: 'center', borderBottom: `1px solid ${LINE}` }}>
           <div style={{ maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 28 }}>
             <p style={{ fontSize: 19, lineHeight: 1.7, margin: 0, color: BODY }}>
               I've watched this shift play out on hundreds of sellers now. Here's what it looked like on three of them.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
               {testimonials.map((t, i) => (
-                <div key={i} className="wty-testimonial" style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${BORDER}`, borderRadius: 14, padding: 28, position: 'relative', overflow: 'hidden' }}>
-                  <div style={{ position: 'absolute', top: 0, left: 0, width: 3, height: '100%', background: 'linear-gradient(180deg, #7C6FFF, transparent)' }} />
+                <div key={i} className="wty-testimonial" style={{ background: WHITE, border: `1px solid ${LINE}`, borderRadius: 14, padding: 28, position: 'relative', overflow: 'hidden' }}>
+                  <div style={{ position: 'absolute', top: 0, left: 0, width: 3, height: '100%', background: `linear-gradient(180deg, ${ACCENT}, transparent)` }} />
                   <p style={{ fontSize: 18, lineHeight: 1.6, margin: '0 0 12px', fontStyle: t.italic ? 'italic' : 'normal', color: BODY }}>{t.quote}</p>
                   <div style={{ fontSize: 14, fontWeight: 700, color: EYEBROW, marginTop: t.italic ? 0 : 12 }}>{t.attribution}</div>
                 </div>
@@ -248,8 +273,8 @@ const WebinarThankYou = () => {
         </section>
 
         {/* WALL / BRIDGE TO OFFER */}
-        <section style={{ padding: '76px 24px', display: 'flex', justifyContent: 'center', position: 'relative' }}>
-          <div style={{ position: 'absolute', top: '10%', right: '6%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(124,111,255,0.16) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
+        <section style={{ padding: '76px 24px', display: 'flex', justifyContent: 'center', position: 'relative', background: BG }}>
+          <div style={{ position: 'absolute', top: '10%', right: '6%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(59,111,240,0.12) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
           <div style={{ maxWidth: 640, display: 'flex', flexDirection: 'column', gap: 20, position: 'relative' }}>
             <p style={{ fontSize: 19, lineHeight: 1.7, margin: 0, color: BODY }}>
               You just watched what fifteen minutes of reading looks like on one account. Now multiply that by the twenty, forty, sixty accounts you're actually carrying. That's not a skill problem anymore. That's a leverage problem.
@@ -261,13 +286,13 @@ const WebinarThankYou = () => {
         </section>
 
         {/* HOW IT WORKS */}
-        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 40px', color: INK, textAlign: 'center' }}>
             From stalled account to boardroom-ready in under two minutes.
           </h2>
           <div className="wty-steps">
             {howItWorks.map((s, i) => (
-              <div key={s.step} style={{ background: CARD_PRIMARY, border: `1px solid ${BORDER}`, borderRadius: 16, padding: '28px 24px' }}>
+              <div key={s.step} style={{ background: CARD_PRIMARY, border: `1px solid ${LINE}`, borderRadius: 16, padding: '28px 24px' }}>
                 <div style={{ ...HEADING, fontSize: 13, letterSpacing: '0.12em', color: ACCENT, marginBottom: 12 }}>
                   {String(i + 1).padStart(2, '0')}
                 </div>
@@ -279,34 +304,35 @@ const WebinarThankYou = () => {
         </section>
 
         {/* WHAT'S INCLUDED IN WHYZER ELITE + PRICING */}
-        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+        <section style={{ padding: '76px 24px', background: BG }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             Everything in Whyzer Elite
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 720, margin: '0 auto 44px' }}>
             {eliteFeatures.map((f) => (
-              <div key={f.title} style={{ background: CARD_PRIMARY, border: `1px solid ${BORDER}`, borderRadius: 14, padding: '22px 24px' }}>
+              <div key={f.title} style={{ background: CARD_PRIMARY, border: `1px solid ${LINE}`, borderRadius: 14, padding: '22px 24px' }}>
                 <h3 style={{ ...HEADING, fontSize: 17, margin: '0 0 8px', color: INK }}>{f.title}</h3>
                 <p style={{ fontSize: 15, lineHeight: 1.65, margin: 0, color: BODY }}>{f.body}</p>
               </div>
             ))}
           </div>
 
-          {/* Pricing box — secondary card nested on the section surface */}
-          <div style={{ maxWidth: 460, margin: '0 auto', background: CARD_SECONDARY, border: `1px solid rgba(59,111,240,0.35)`, borderRadius: 20, padding: '32px 26px', textAlign: 'center', boxShadow: '0 24px 60px -30px rgba(59,111,240,0.55)' }}>
-            <h3 style={{ ...HEADING, fontSize: 22, margin: '0 0 14px', color: INK }}>Whyzer Elite</h3>
+          {/* Pricing box — kept dark so the conversion moment stands out of the
+              light section, the same role the form card plays on the reg page. */}
+          <div style={{ maxWidth: 460, margin: '0 auto', background: DARK2, border: `1px solid rgba(59,111,240,0.45)`, borderRadius: 20, padding: '32px 26px', textAlign: 'center', boxShadow: '0 24px 60px -28px rgba(11,16,32,0.55)' }}>
+            <h3 style={{ ...HEADING, fontSize: 22, margin: '0 0 14px', color: D_INK }}>Whyzer Elite</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'center', gap: 10, marginBottom: 6 }}>
-              <span style={{ fontSize: 19, color: MUTED, textDecoration: 'line-through' }}>$97/month</span>
-              <span style={{ ...HEADING, fontSize: 'clamp(24px, 5vw, 30px)', color: INK }}>$57/month</span>
+              <span style={{ fontSize: 19, color: D_MUTED, textDecoration: 'line-through' }}>$97/month</span>
+              <span style={{ ...HEADING, fontSize: 'clamp(24px, 5vw, 30px)', color: D_INK }}>$57/month</span>
             </div>
-            <p style={{ ...HEADING, fontSize: 15, margin: '0 0 12px', color: INK }}>for your first 3 months</p>
-            <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 18px', color: BODY }}>
-              with code <strong style={{ ...HEADING, color: ACCENT, fontSize: 15 }}>FLUENCY57</strong>
+            <p style={{ ...HEADING, fontSize: 15, margin: '0 0 12px', color: D_INK }}>for your first 3 months</p>
+            <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 18px', color: D_BODY }}>
+              with code <strong style={{ ...HEADING, color: D_EYEBROW, fontSize: 15 }}>FLUENCY57</strong>
             </p>
-            <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 18px', color: BODY }}>
+            <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 18px', color: D_BODY }}>
               14 days free on your three hardest accounts. Start with the one that's gone quiet.
             </p>
-            <p style={{ fontSize: 13.5, lineHeight: 1.6, margin: '0 0 22px', color: MUTED }}>
+            <p style={{ fontSize: 13.5, lineHeight: 1.6, margin: '0 0 22px', color: D_MUTED }}>
               After your free trial: $57/month for 3 months, then $97/month. Cancel any time before your trial ends and you won't be charged.
             </p>
             <a href={trialUrl} className="wty-cta" style={{ display: 'block', width: '100%', boxSizing: 'border-box', background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 16, padding: '16px 20px', borderRadius: 10, textDecoration: 'none', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
@@ -316,13 +342,13 @@ const WebinarThankYou = () => {
         </section>
 
         {/* TESTIMONIAL GRID #1 */}
-        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             More revenue, not just more replies
           </h2>
           <div className="wty-grid">
             {grid1.map((t, i) => (
-              <figure key={i} className="wty-testimonial" style={{ background: CARD_PRIMARY, border: `1px solid ${BORDER}`, borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <figure key={i} className="wty-testimonial" style={{ background: CARD_PRIMARY, border: `1px solid ${LINE}`, borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
                 <blockquote style={{ fontSize: 16, lineHeight: 1.6, margin: 0, color: BODY }}>{t.quote}</blockquote>
                 <figcaption style={{ fontSize: 14, color: MUTED, marginTop: 'auto' }}>
                   <span style={{ ...HEADING, color: EYEBROW, fontSize: 14 }}>{t.name}</span>
@@ -334,7 +360,7 @@ const WebinarThankYou = () => {
         </section>
 
         {/* TRIAL TERMS BAND — cancellation window, not a refund guarantee */}
-        <section style={{ padding: '64px 24px', borderTop: `1px solid ${BORDER}`, background: 'rgba(59,111,240,0.07)' }}>
+        <section style={{ padding: '64px 24px', background: ACCENT_TINT, borderBottom: `1px solid ${LINE}` }}>
           <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
             <h2 style={{ ...HEADING, fontSize: 'clamp(22px, 3.2vw, 28px)', lineHeight: 1.28, margin: '0 0 16px', color: INK }}>
               Try it on the account that's gone quiet. See if it changes how you'd walk into the room.
@@ -346,13 +372,13 @@ const WebinarThankYou = () => {
         </section>
 
         {/* FAQ */}
-        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+        <section style={{ padding: '76px 24px', background: BG }}>
           <div style={{ maxWidth: 720, margin: '0 auto' }}>
             <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 28px', color: INK, textAlign: 'center' }}>
               Questions, answered.
             </h2>
             {faqs.map((faq, i) => (
-              <div key={i} style={{ borderBottom: `1px solid ${BORDER}` }}>
+              <div key={i} style={{ borderBottom: `1px solid ${LINE}` }}>
                 <button
                   type="button"
                   className="wty-faq-btn"
@@ -372,13 +398,13 @@ const WebinarThankYou = () => {
         </section>
 
         {/* TESTIMONIAL GRID #2 */}
-        <section style={{ padding: '76px 24px', borderTop: `1px solid ${BORDER}` }}>
+        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}` }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             Proof it changes the numbers, not just the pitch
           </h2>
           <div className="wty-grid">
             {grid2.map((t, i) => (
-              <figure key={i} className="wty-testimonial" style={{ background: CARD_PRIMARY, border: `1px solid ${BORDER}`, borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <figure key={i} className="wty-testimonial" style={{ background: CARD_PRIMARY, border: `1px solid ${LINE}`, borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
                 <blockquote style={{ fontSize: 16, lineHeight: 1.6, margin: 0, color: BODY }}>{t.quote}</blockquote>
                 <figcaption style={{ fontSize: 14, color: MUTED, marginTop: 'auto' }}>
                   <span style={{ ...HEADING, color: EYEBROW, fontSize: 14 }}>{t.name}</span>
@@ -389,13 +415,16 @@ const WebinarThankYou = () => {
           </div>
         </section>
 
-        {/* FINAL CTA BAND */}
-        <section style={{ padding: '84px 24px 100px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 20, borderTop: `1px solid ${BORDER}`, position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', bottom: -160, left: '50%', transform: 'translateX(-50%)', width: 700, height: 400, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.30) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
-          <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.8vw, 34px)', lineHeight: 1.25, maxWidth: 560, margin: 0, color: INK, position: 'relative' }}>
+      </div>
+
+      {/* FINAL CTA BAND — kept dark, full-width */}
+      <div style={{ background: DARK, position: 'relative', overflow: 'hidden' }}>
+        <section style={{ maxWidth: 900, margin: '0 auto', padding: '84px 24px 100px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 20, position: 'relative' }}>
+          <div style={{ position: 'absolute', bottom: -160, left: '50%', transform: 'translateX(-50%)', width: 700, height: 400, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.32) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
+          <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.8vw, 34px)', lineHeight: 1.25, maxWidth: 560, margin: 0, color: D_INK, position: 'relative' }}>
             Run it on the account that's gone quiet.
           </h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, maxWidth: 560, margin: 0, color: BODY, position: 'relative' }}>
+          <p style={{ fontSize: 17, lineHeight: 1.7, maxWidth: 560, margin: 0, color: D_BODY, position: 'relative' }}>
             Fourteen days free on Whyzer Elite. $57/month for your first three months with code FLUENCY57 after that.
           </p>
           <a
@@ -406,7 +435,6 @@ const WebinarThankYou = () => {
             Start My Free Trial &rarr;
           </a>
         </section>
-
       </div>
 
       <style>{`
@@ -414,8 +442,8 @@ const WebinarThankYou = () => {
         @keyframes wty-glowPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 0.85; } }
         .wty-cta { transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease; }
         .wty-cta:hover { background: #2F5FD8; box-shadow: 0 12px 34px -6px rgba(59,111,240,0.85); transform: translateY(-1px); }
-        .wty-testimonial { transition: border-color 0.2s ease; }
-        .wty-testimonial:hover { border-color: rgba(59,111,240,0.45); }
+        .wty-testimonial { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+        .wty-testimonial:hover { border-color: rgba(59,111,240,0.45); box-shadow: 0 10px 30px -14px rgba(11,16,32,0.22); }
         .wty-faq-btn:focus-visible, .wty-cta:focus-visible { outline: 2px solid ${ACCENT}; outline-offset: 3px; }
         /* Mobile-first: single column, widening at the 768px breakpoint. */
         .wty-grid, .wty-steps { display: grid; grid-template-columns: 1fr; gap: 18px; }
