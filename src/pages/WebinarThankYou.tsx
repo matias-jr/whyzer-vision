@@ -78,36 +78,36 @@ const howItWorks = [
 const eliteFeatures = [
   {
     title: 'The full research and POV engine',
-    body: 'Unlimited company research across 7,500+ global public and private companies. Unlimited Deal Maps, unlimited Executive POV Dossiers, unlimited Whyzer & Jamal podcast-style account briefings.',
+    body: 'Unlimited research across 7,500+ global companies. Unlimited Deal Maps, Executive POV Dossiers, and podcast-style account briefings.',
   },
   {
     title: 'The Vault',
-    body: "Jamal's complete enterprise selling methodology, built from $160M+ in closed SaaS deals. Includes the Pipeline Flywheel, the MDA Masterclass, the Executive Outreach Course, and Financial Fluency 101. Not just the tool. The thinking behind it.",
+    body: "Jamal's complete methodology from $160M+ in closed deals: the Pipeline Flywheel, MDA Masterclass, Executive Outreach Course, and Financial Fluency 101.",
   },
   {
     title: 'Coach Jamal, your AI co-pilot',
-    body: "24/7 access to an AI coach trained on 100+ hours of Jamal's coaching content. Ask it how to write a POV for cold outbound to a CFO, how to handle a stalled multi-thread, or how Jamal would run a high-stakes internal deal review, and get a structured answer immediately.",
+    body: 'An AI coach trained on 100+ hours of Jamal’s coaching. Ask it how to write a CFO POV or handle a stalled multi-thread, and get a structured answer immediately.',
   },
   {
     title: 'Whyzer Academy',
-    body: 'Monthly live upskilling sessions led by Jamal, plus live deal reviews and MDA office hours where the methodology gets applied to real, current opportunities, including yours.',
+    body: 'Monthly live sessions with Jamal, plus deal reviews and MDA office hours applied to real, current opportunities. Including yours.',
   },
   {
     title: 'Global coverage',
-    body: "The accounts your competitors can't research. HSBC, Revolut, Stripe, Monzo, and thousands of other private and international companies most tools simply don't cover.",
+    body: "The accounts your competitors can't research. HSBC, Revolut, Stripe, Monzo, and thousands of private and international companies.",
   },
 ];
 
-// ── §7 Testimonial grid #1
+// ── §7 Testimonial grid #1. Surnames reduced to an initial throughout.
 const grid1 = [
   {
     quote: '"The EVP looked at the point of view and said, ‘How do you know this? That’s insider information.’"',
     name: 'Jesse M.',
-    detail: 'enterprise seller inside a top-10 global financial company',
+    detail: 'enterprise seller, top-10 global financial company',
   },
   {
     quote: '"It’s built for our specific needs. Way better than agents like Perplexity or Claude for strategic selling."',
-    name: 'Brian Tripp',
+    name: 'Brian T.',
     detail: '',
   },
   {
@@ -117,22 +117,24 @@ const grid1 = [
   },
 ];
 
-// ── §10 Testimonial grid #2
+// ── §10 Testimonial grid #2. Jamal's own quote removed — a founder statement
+// doesn't function as a testimonial. Replacements drawn from the home-page
+// marquee (Testimonials.tsx).
 const grid2 = [
   {
-    quote: 'My own response rate on cold executive outreach went from 2% to 23% the year I stopped leading with product and started leading with the numbers.',
-    name: 'Jamal Reimer',
-    detail: 'founder, closed $160M+ as an individual seller',
-  },
-  {
-    quote: '"What used to take a rep a year, I can do in two weeks."',
-    name: 'Rob Sader',
+    quote: '"What used to take a rep a year, I can do in two weeks with Whyzer. It helps us work on the right accounts."',
+    name: 'David I.',
     detail: '',
   },
   {
-    quote: "A point of view built around a €650M IT CapEx priority got Tobia's team a meeting his usual outreach couldn't.",
-    name: 'Tobia La Marca',
-    detail: 'Contentsquare',
+    quote: '"Whyzer flagged a cybersecurity breach that helped me book a CISO meeting on my first try using Jamal’s technique — it worked immediately."',
+    name: 'Paul H.',
+    detail: '',
+  },
+  {
+    quote: '"Compared to tools like HockeyStack, Whyzer makes detailed info from 10Ks, 10Qs, and earnings reports actually usable for salespeople."',
+    name: 'Lee W.',
+    detail: '',
   },
 ];
 
@@ -233,31 +235,30 @@ const WebinarThankYou = () => {
             </div>
           </section>
 
-          {/* POST-VIDEO CTA */}
-          <section style={{ padding: '0 24px 26px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
-            <a href={trialUrl} className="wty-cta" style={{ background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 38px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
+          {/* POST-VIDEO CTA — scrolls to the pricing box, which carries checkout */}
+          <section style={{ padding: '0 24px 30px', display: 'flex', justifyContent: 'center' }}>
+            <a href="#pricing" className="wty-cta" style={{ background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 38px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
               Start My Free Trial Now &rarr;
             </a>
-            <p style={{ fontSize: 13.5, lineHeight: 1.6, margin: 0, color: D_MUTED, textAlign: 'center' }}>
-              Free for 14 days, then $57/mo for 3 months, unless you cancel. Cancel anytime in your Client Portal.
-            </p>
           </section>
         </div>
 
-        {/* PROMO BAR — sits directly under the post-video CTA */}
-        <div style={{ background: ACCENT, color: '#FFFFFF', textAlign: 'center', padding: '12px 18px', position: 'relative', zIndex: 3 }}>
-          <p style={{ margin: '0 auto', maxWidth: 900, fontSize: 14, lineHeight: 1.5, fontWeight: 600 }}>
-            <span aria-hidden="true">&#128293;</span> LIMITED TIME &mdash; Whyzer Elite for $57/month for your first 3 months. Code <strong style={{ fontWeight: 800, letterSpacing: '0.02em' }}>FLUENCY57</strong> at trial checkout.
-          </p>
-        </div>
       </div>
 
-      <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      {/* PROMO BAR — full-bleed, directly under the post-video CTA */}
+      <div style={{ background: ACCENT, color: '#FFFFFF', textAlign: 'center', padding: '26px 24px', position: 'relative', zIndex: 3 }}>
+        <p style={{ margin: '0 auto', maxWidth: 900, fontSize: 'clamp(17px, 2.4vw, 22px)', lineHeight: 1.4, fontWeight: 700, letterSpacing: '-0.01em' }}>
+          <span aria-hidden="true">&#128293;</span> LIMITED TIME &mdash; Whyzer Elite for $57/month for your first 3 months.
+        </p>
+        <p style={{ margin: '8px auto 0', maxWidth: 900, fontSize: 'clamp(14px, 1.8vw, 16px)', lineHeight: 1.5, fontWeight: 600, opacity: 0.95 }}>
+          Code <strong style={{ fontWeight: 800, letterSpacing: '0.04em', padding: '2px 8px', borderRadius: 6, background: 'rgba(255,255,255,0.18)' }}>FLUENCY57</strong> at trial checkout.
+        </p>
+      </div>
 
-        {/* WALL / BRIDGE TO OFFER */}
-        <section style={{ padding: '76px 24px', display: 'flex', justifyContent: 'center', position: 'relative', background: BG }}>
-          <div style={{ position: 'absolute', top: '10%', right: '6%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(59,111,240,0.12) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
-          <div style={{ maxWidth: 640, display: 'flex', flexDirection: 'column', gap: 20, position: 'relative' }}>
+      {/* WALL / BRIDGE TO OFFER */}
+      <section style={{ padding: '76px 24px', display: 'flex', justifyContent: 'center', position: 'relative', background: BG }}>
+        <div style={{ position: 'absolute', top: '10%', right: '6%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(59,111,240,0.12) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 640, display: 'flex', flexDirection: 'column', gap: 20, position: 'relative' }}>
             <p style={{ fontSize: 19, lineHeight: 1.7, margin: 0, color: BODY }}>
               You just watched what fifteen minutes of reading looks like on one account. Now multiply that by the twenty, forty, sixty accounts you're actually carrying. That's not a skill problem anymore. That's a leverage problem.
             </p>
@@ -267,11 +268,12 @@ const WebinarThankYou = () => {
           </div>
         </section>
 
-        {/* HOW IT WORKS */}
-        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
-          {/* Soft accent blooms give the frosted cards something to refract */}
-          <div aria-hidden="true" style={{ position: 'absolute', top: '42%', left: '4%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.20) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
-          <div aria-hidden="true" style={{ position: 'absolute', bottom: '2%', right: '3%', width: 380, height: 280, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.14) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+      {/* HOW IT WORKS */}
+      <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
+        {/* Soft accent blooms give the frosted cards something to refract */}
+        <div aria-hidden="true" style={{ position: 'absolute', top: '42%', left: '4%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.20) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: '2%', right: '3%', width: 380, height: 280, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.14) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 40px', color: INK, textAlign: 'center' }}>
             From stalled account to boardroom-ready in under two minutes.
           </h2>
@@ -286,32 +288,39 @@ const WebinarThankYou = () => {
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* WHAT'S INCLUDED IN WHYZER ELITE + PRICING */}
-        <section style={{ padding: '76px 24px', background: BG, position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', top: '18%', right: '2%', width: 460, height: 340, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
-          <div aria-hidden="true" style={{ position: 'absolute', bottom: '6%', left: '2%', width: 400, height: 320, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.13) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+      {/* WHAT'S INCLUDED IN WHYZER ELITE + PRICING */}
+      <section style={{ padding: '76px 24px', background: BG, position: 'relative', overflow: 'hidden' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', top: '18%', right: '2%', width: 460, height: 340, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: '6%', left: '2%', width: 400, height: 320, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.13) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             Everything in Whyzer Elite
           </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 720, margin: '0 auto 44px' }}>
+          {/* Compact 2-up grid: a short label carries the promise, the detail sits
+              underneath, so five features read in roughly one screen. */}
+          <div className="wty-features">
             {eliteFeatures.map((f) => (
-              <div key={f.title} className="wty-glass" style={{ borderRadius: 14, padding: '22px 24px' }}>
-                <h3 style={{ ...HEADING, fontSize: 17, margin: '0 0 8px', color: INK }}>{f.title}</h3>
-                <p style={{ fontSize: 15, lineHeight: 1.65, margin: 0, color: BODY }}>{f.body}</p>
+              <div key={f.title} className="wty-glass" style={{ borderRadius: 14, padding: '20px 22px', display: 'flex', gap: 13 }}>
+                <Check size={18} strokeWidth={2.6} style={{ flexShrink: 0, marginTop: 3, color: ACCENT }} />
+                <div>
+                  <h3 style={{ ...HEADING, fontSize: 16, margin: '0 0 6px', color: INK }}>{f.title}</h3>
+                  <p style={{ fontSize: 14.5, lineHeight: 1.6, margin: 0, color: BODY }}>{f.body}</p>
+                </div>
               </div>
             ))}
           </div>
 
           {/* Value framing, mirroring the home page's cost-comparison line. */}
-          <p style={{ fontSize: 16, lineHeight: 1.7, margin: '0 auto 28px', maxWidth: 660, color: BODY, textAlign: 'center' }}>
+          <p style={{ fontSize: 16, lineHeight: 1.7, margin: '44px auto 28px', maxWidth: 660, color: BODY, textAlign: 'center' }}>
             Getting one executive meeting costs more in time, effort, and expense than Whyzer costs in a year. Comparable financial intelligence exists (AlphaSense, Gartner, Bloomberg) at $15,000&ndash;$50,000 per year. Not one of them knows what a POV is.
           </p>
 
           {/* Pricing box — kept dark so the conversion moment stands out of the
               light section, the same role the form card plays on the reg page. */}
-          <div className="wty-price-box" style={{ maxWidth: 480, margin: '0 auto', background: DARK2, border: `1px solid rgba(59,111,240,0.45)`, borderRadius: 20, padding: '30px 26px 32px', textAlign: 'center', boxShadow: '0 24px 60px -28px rgba(11,16,32,0.55)', position: 'relative' }}>
+          <div id="pricing" className="wty-price-box" style={{ maxWidth: 480, margin: '0 auto', background: DARK2, border: `1px solid rgba(59,111,240,0.45)`, borderRadius: 20, padding: '30px 26px 32px', textAlign: 'center', boxShadow: '0 24px 60px -28px rgba(11,16,32,0.55)', position: 'relative', scrollMarginTop: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: 18 }}>
               <span style={{ ...HEADING, fontSize: 15, color: D_EYEBROW, letterSpacing: '0.04em', textTransform: 'uppercase' }}>Whyzer Elite</span>
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', padding: '4px 10px', borderRadius: 999, border: '1px solid rgba(59,111,240,0.45)', background: 'rgba(59,111,240,0.16)', color: D_EYEBROW, whiteSpace: 'nowrap' }}>FULL ACCESS</span>
@@ -352,11 +361,13 @@ const WebinarThankYou = () => {
               No charge today. Cancel anytime in your Client Portal.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* TESTIMONIAL GRID #1 */}
-        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', top: '30%', left: '6%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+      {/* TESTIMONIAL GRID #1 */}
+      <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', top: '30%', left: '6%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             More revenue, not just more replies
           </h2>
@@ -371,10 +382,11 @@ const WebinarThankYou = () => {
               </figure>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* TRIAL TERMS BAND — cancellation window, not a refund guarantee */}
-        <section style={{ padding: '64px 24px', background: ACCENT_TINT, borderBottom: `1px solid ${LINE}` }}>
+      {/* TRIAL TERMS BAND — cancellation window, not a refund guarantee */}
+      <section style={{ padding: '64px 24px', background: ACCENT_TINT, borderBottom: `1px solid ${LINE}` }}>
           <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
             <h2 style={{ ...HEADING, fontSize: 'clamp(22px, 3.2vw, 28px)', lineHeight: 1.28, margin: '0 0 16px', color: INK }}>
               Try it on the account that's gone quiet. See if it changes how you'd walk into the room.
@@ -388,8 +400,8 @@ const WebinarThankYou = () => {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section style={{ padding: '76px 24px', background: BG }}>
+      {/* FAQ */}
+      <section style={{ padding: '76px 24px', background: BG }}>
           <div style={{ maxWidth: 720, margin: '0 auto' }}>
             <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 28px', color: INK, textAlign: 'center' }}>
               Questions, answered.
@@ -414,9 +426,10 @@ const WebinarThankYou = () => {
           </div>
         </section>
 
-        {/* TESTIMONIAL GRID #2 */}
-        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
-          <div aria-hidden="true" style={{ position: 'absolute', top: '28%', right: '5%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+      {/* TESTIMONIAL GRID #2 */}
+      <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', top: '28%', right: '5%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             Proof it changes the numbers, not just the pitch
           </h2>
@@ -431,9 +444,8 @@ const WebinarThankYou = () => {
               </figure>
             ))}
           </div>
-        </section>
-
-      </div>
+        </div>
+      </section>
 
       {/* FINAL CTA BAND — kept dark, full-width */}
       <div style={{ background: DARK, position: 'relative', overflow: 'hidden' }}>
@@ -446,7 +458,7 @@ const WebinarThankYou = () => {
             Fourteen days free on Whyzer Elite. $57/month for your first three months with code FLUENCY57 after that.
           </p>
           <a
-            href={trialUrl}
+            href="#pricing"
             className="wty-cta"
             style={{ marginTop: 4, background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 36px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)', position: 'relative' }}
           >
@@ -492,10 +504,15 @@ const WebinarThankYou = () => {
         .wty-faq-btn:focus-visible, .wty-cta:focus-visible { outline: 2px solid ${ACCENT}; outline-offset: 3px; }
         /* Mobile-first: single column, widening at the 768px breakpoint. */
         /* position:relative keeps grids above the decorative section blooms */
-        .wty-grid, .wty-steps { display: grid; grid-template-columns: 1fr; gap: 18px; position: relative; }
+        .wty-grid, .wty-steps, .wty-features { display: grid; grid-template-columns: 1fr; gap: 18px; position: relative; }
         @media (min-width: 768px) {
           .wty-grid, .wty-steps { grid-template-columns: repeat(3, 1fr); }
+          /* Five features in two columns; the last one spans so the row closes. */
+          .wty-features { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+          .wty-features > :last-child { grid-column: 1 / -1; }
         }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
       `}</style>
     </div>
   );
