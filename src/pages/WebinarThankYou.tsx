@@ -146,7 +146,7 @@ const grid2 = [
 const faqs = [
   {
     q: 'Do I need a credit card to start the trial?',
-    a: "Yes. You won't be charged until your 14-day trial ends, and you can cancel any time before then.",
+    a: "Yes. A valid payment method is required to start. You won't be charged until your 14-day trial ends, and you can cancel free at any time before then from your Client Portal, the in-app chatbot, or by emailing info@whyzer.ai. If you don't cancel, your account converts automatically to a paid monthly subscription and we charge the card on file. We'll email you a reminder before that happens.",
   },
   {
     q: "What's different about Elite versus Premium?",
@@ -343,10 +343,10 @@ const WebinarThankYou = () => {
               <span style={{ fontSize: 12, fontWeight: 700, padding: '5px 11px', borderRadius: 999, background: 'rgba(255,255,255,0.06)', color: D_BODY, border: `1px solid ${GLASS_DARK_BORDER}` }}>Code FLUENCY57</span>
             </div>
 
-            {/* Terms, itemised so nothing is buried in prose */}
-            <ul style={{ listStyle: 'none', margin: '0 0 22px', padding: '18px 0 0', borderTop: `1px solid ${GLASS_DARK_BORDER}`, display: 'flex', flexDirection: 'column', gap: 11, textAlign: 'left' }}>
+            {/* Billing sequence, itemised so nothing is buried in prose */}
+            <ul style={{ listStyle: 'none', margin: '0 0 18px', padding: '18px 0 0', borderTop: `1px solid ${GLASS_DARK_BORDER}`, display: 'flex', flexDirection: 'column', gap: 11, textAlign: 'left' }}>
               {[
-                'Today: $0. Full Elite access free for 14 days.',
+                'Today: $0. Full Elite access free for 14 days from signup.',
                 'Months 1–3 after the trial: $57/month with code FLUENCY57.',
                 'Month 4 onward: $97/month, the standard Elite rate.',
                 "Cancel any time before the trial ends and you're never charged.",
@@ -358,11 +358,24 @@ const WebinarThankYou = () => {
               ))}
             </ul>
 
+            {/* Required disclosures: card capture, auto-renewal, how to cancel,
+                and the no-refund policy, per TermsAndConditions.tsx §Free Trials. */}
+            <div style={{ margin: '0 0 20px', padding: '14px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.04)', border: `1px solid ${GLASS_DARK_BORDER}`, textAlign: 'left' }}>
+              <p style={{ ...HEADING, fontSize: 12, letterSpacing: '0.06em', textTransform: 'uppercase', margin: '0 0 8px', color: D_EYEBROW }}>
+                Trial terms
+              </p>
+              <p style={{ fontSize: 12.5, lineHeight: 1.65, margin: 0, color: D_MUTED }}>
+                A valid payment method is required to start your trial. The trial runs 14 days from the date you create your account. Unless you cancel before it ends, your account converts automatically to a paid monthly subscription and your card is charged the then-current rate for the plan you selected. We&rsquo;ll email a reminder before the trial ends, but cancelling in time remains your responsibility. Cancel free at any time from your Client Portal, the in-app chatbot, or by emailing info@whyzer.ai. All purchases are final &mdash; Whyzer does not offer refunds. Trial eligibility may be limited to one per person, company, or payment method. Prices in USD; local currency may apply. See the{' '}
+                <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: D_EYEBROW, textDecoration: 'underline' }}>Terms &amp; Conditions</a>
+                {' '}for full details.
+              </p>
+            </div>
+
             <a href={trialUrl} className="wty-cta" style={{ display: 'block', width: '100%', boxSizing: 'border-box', background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 16, padding: '16px 20px', borderRadius: 10, textDecoration: 'none', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
               Start My Free Trial &rarr;
             </a>
             <p style={{ fontSize: 12.5, lineHeight: 1.6, margin: '12px 0 0', color: D_MUTED }}>
-              No charge today. Cancel anytime in your Client Portal.
+              No charge today. Cancel anytime before your trial ends.
             </p>
           </div>
         </div>
@@ -399,7 +412,7 @@ const WebinarThankYou = () => {
               Fourteen days free, full Elite access, no restrictions on which three accounts you pick. If it's not for you, cancel before the trial ends and you're never charged.
             </p>
             <p style={{ fontSize: 14.5, lineHeight: 1.7, margin: 0, color: MUTED }}>
-              $0 today &rarr; $57/month for months 1&ndash;3 with code FLUENCY57 &rarr; $97/month from month 4. Cancel anytime in your Client Portal.
+              $0 today &rarr; $57/month for months 1&ndash;3 with code FLUENCY57 &rarr; $97/month from month 4. A payment method is required to start; unless you cancel before the trial ends, it converts automatically to a paid monthly plan. Cancel free anytime in your Client Portal. All purchases are final.
             </p>
           </div>
         </section>
