@@ -62,7 +62,7 @@ const HEADING: React.CSSProperties = { fontFamily: "'Inter', sans-serif", fontWe
 const howItWorks = [
   {
     step: 'Search',
-    body: 'Pull up any of 7,500+ public and private companies, anywhere in the world. Whyzer reads the SEC filings, earnings calls, investor letters, and proxy statements the same way I just did on camera.',
+    body: 'Pull up any of 8,500+ public and private companies, anywhere in the world. Whyzer reads the SEC filings, earnings calls, investor letters, and proxy statements the same way I just did on camera.',
   },
   {
     step: 'Build',
@@ -78,7 +78,7 @@ const howItWorks = [
 const eliteFeatures = [
   {
     title: 'The full research and POV engine',
-    body: 'Unlimited research across 7,500+ global companies. Unlimited Deal Maps, Executive POV Dossiers, and podcast-style account briefings.',
+    body: 'Unlimited research across 8,500+ global companies. Unlimited Deal Maps, Executive POV Dossiers, and podcast-style account briefings.',
   },
   {
     title: 'The Vault',
@@ -154,7 +154,7 @@ const faqs = [
   },
   {
     q: 'Does Whyzer work on private and international companies?',
-    a: "Yes. Coverage spans 7,500+ public and private companies globally, including accounts most research tools can't reach.",
+    a: "Yes. Coverage spans 8,500+ public and private companies globally, including accounts most research tools can't reach.",
   },
   {
     q: 'Is my data secure?',
@@ -365,9 +365,8 @@ const WebinarThankYou = () => {
                 Trial terms
               </p>
               <p style={{ fontSize: 12.5, lineHeight: 1.65, margin: 0, color: D_MUTED }}>
-                A valid payment method is required to start your trial. The trial runs 14 days from the date you create your account. Unless you cancel before it ends, your account converts automatically to a paid monthly subscription and your card is charged the then-current rate for the plan you selected. We&rsquo;ll email a reminder before the trial ends, but cancelling in time remains your responsibility. Cancel free at any time from your Client Portal, the in-app chatbot, or by emailing info@whyzer.ai. All purchases are final &mdash; Whyzer does not offer refunds. Trial eligibility may be limited to one per person, company, or payment method. Prices in USD; local currency may apply. See the{' '}
-                <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: D_EYEBROW, textDecoration: 'underline' }}>Terms &amp; Conditions</a>
-                {' '}for full details.
+                Payment method required. Your trial runs 14 days from signup, and unless you cancel before it ends your account converts to a paid monthly subscription automatically. Cancel free anytime from your Client Portal. All purchases are final &mdash; see the{' '}
+                <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: D_EYEBROW, textDecoration: 'underline' }}>Terms &amp; Conditions</a>.
               </p>
             </div>
 
@@ -412,7 +411,7 @@ const WebinarThankYou = () => {
               Fourteen days free, full Elite access, no restrictions on which three accounts you pick. If it's not for you, cancel before the trial ends and you're never charged.
             </p>
             <p style={{ fontSize: 14.5, lineHeight: 1.7, margin: 0, color: MUTED }}>
-              $0 today &rarr; $57/month for months 1&ndash;3 with code FLUENCY57 &rarr; $97/month from month 4. A payment method is required to start; unless you cancel before the trial ends, it converts automatically to a paid monthly plan. Cancel free anytime in your Client Portal. All purchases are final.
+              $0 today &rarr; $57/month for months 1&ndash;3 with code FLUENCY57 &rarr; $97/month from month 4. Payment method required; converts automatically unless you cancel before the trial ends. Cancel free anytime.
             </p>
           </div>
         </section>
