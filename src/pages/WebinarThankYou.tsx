@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import { useUtmParams } from '@/hooks/useUtmParams';
 
 function loadCss(href: string) {
@@ -45,25 +45,18 @@ const BORDER = 'rgba(255,255,255,0.08)';
 
 // Layered cards: white cards sit on the tinted section bands.
 const CARD_PRIMARY = WHITE;
-const HEADING: React.CSSProperties = { fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.035em' };
 
-const testimonials = [
-  {
-    quote: '"I needed to show up to the executive call and define, crystal clear, what was going on with the board. It took me three minutes. Less than it takes me to write the prompt to other LLMs."',
-    attribution: 'Danny H. — hit 65% of annual quota by March',
-    italic: true,
-  },
-  {
-    quote: '"What used to take a rep a year, I can do in two weeks."',
-    attribution: 'Rob Sader',
-    italic: true,
-  },
-  {
-    quote: 'Tobia La Marca built a point of view in financial language for a €650M IT CapEx priority at Contentsquare. His team told him they\'d never seen anything like it.',
-    attribution: 'Tobia La Marca — Contentsquare',
-    italic: false,
-  },
-];
+// ── Glass surfaces, matching the registration page: a translucent fill plus a
+// backdrop blur and a lit top edge. Light cards frost against the page tint;
+// dark cards frost against the dark bands.
+const GLASS_LIGHT = 'rgba(255,255,255,0.58)';
+const GLASS_LIGHT_BORDER = 'rgba(255,255,255,0.75)';
+const GLASS_LIGHT_SHADOW = '0 8px 32px -12px rgba(11,16,32,0.16)';
+const GLASS_DARK = 'rgba(255,255,255,0.06)';
+const GLASS_DARK_BORDER = 'rgba(255,255,255,0.14)';
+const GLASS_DARK_SHADOW = '0 8px 32px -12px rgba(0,0,0,0.55)';
+const GLASS_BLUR = 'blur(12px) saturate(140%)';
+const HEADING: React.CSSProperties = { fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.035em' };
 
 // ── §5 How It Works
 const howItWorks = [
@@ -208,13 +201,6 @@ const WebinarThankYou = () => {
     >
       {/* The wrapper is light; the hero/video block below keeps the dark
           treatment and spans full width behind the centred column. */}
-      {/* PROMO BAR */}
-      <div style={{ background: ACCENT, color: '#FFFFFF', textAlign: 'center', padding: '11px 18px', position: 'relative', zIndex: 3 }}>
-        <p style={{ margin: '0 auto', maxWidth: 900, fontSize: 14, lineHeight: 1.5, fontWeight: 600 }}>
-          <span aria-hidden="true">&#128293;</span> LIMITED TIME &mdash; Whyzer Elite for $57/month for your first 3 months. Code <strong style={{ fontWeight: 800, letterSpacing: '0.02em' }}>FLUENCY57</strong> at trial checkout.
-        </p>
-      </div>
-
       {/* HERO + VIDEO — kept dark, full-width band */}
       <div style={{ background: DARK, position: 'relative', overflow: 'hidden' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
@@ -233,7 +219,7 @@ const WebinarThankYou = () => {
           </section>
 
           {/* VIDEO */}
-          <section style={{ padding: '16px 24px 72px', display: 'flex', justifyContent: 'center' }}>
+          <section style={{ padding: '16px 24px 36px', display: 'flex', justifyContent: 'center' }}>
             <div style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: 'repeating-linear-gradient(135deg, #0E1526, #0E1526 12px, #141D33 12px, #141D33 24px)', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(59,111,240,0.45)' }}>
               <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 40%, rgba(59,111,240,0.20) 0%, transparent 65%)' }} />
               <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
@@ -246,31 +232,27 @@ const WebinarThankYou = () => {
               </div>
             </div>
           </section>
+
+          {/* POST-VIDEO CTA */}
+          <section style={{ padding: '0 24px 26px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+            <a href={trialUrl} className="wty-cta" style={{ background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 38px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
+              Start My Free Trial Now &rarr;
+            </a>
+            <p style={{ fontSize: 13.5, lineHeight: 1.6, margin: 0, color: D_MUTED, textAlign: 'center' }}>
+              Free for 14 days, then $57/mo for 3 months, unless you cancel. Cancel anytime in your Client Portal.
+            </p>
+          </section>
+        </div>
+
+        {/* PROMO BAR — sits directly under the post-video CTA */}
+        <div style={{ background: ACCENT, color: '#FFFFFF', textAlign: 'center', padding: '12px 18px', position: 'relative', zIndex: 3 }}>
+          <p style={{ margin: '0 auto', maxWidth: 900, fontSize: 14, lineHeight: 1.5, fontWeight: 600 }}>
+            <span aria-hidden="true">&#128293;</span> LIMITED TIME &mdash; Whyzer Elite for $57/month for your first 3 months. Code <strong style={{ fontWeight: 800, letterSpacing: '0.02em' }}>FLUENCY57</strong> at trial checkout.
+          </p>
         </div>
       </div>
 
       <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
-
-        {/* PROOF BLOCK */}
-        <section style={{ padding: '72px 24px', background: BG_ALT, display: 'flex', justifyContent: 'center', borderBottom: `1px solid ${LINE}` }}>
-          <div style={{ maxWidth: 680, display: 'flex', flexDirection: 'column', gap: 28 }}>
-            <p style={{ fontSize: 19, lineHeight: 1.7, margin: 0, color: BODY }}>
-              I've watched this shift play out on hundreds of sellers now. Here's what it looked like on three of them.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-              {testimonials.map((t, i) => (
-                <div key={i} className="wty-testimonial" style={{ background: WHITE, border: `1px solid ${LINE}`, borderRadius: 14, padding: 28, position: 'relative', overflow: 'hidden' }}>
-                  <div style={{ position: 'absolute', top: 0, left: 0, width: 3, height: '100%', background: `linear-gradient(180deg, ${ACCENT}, transparent)` }} />
-                  <p style={{ fontSize: 18, lineHeight: 1.6, margin: '0 0 12px', fontStyle: t.italic ? 'italic' : 'normal', color: BODY }}>{t.quote}</p>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: EYEBROW, marginTop: t.italic ? 0 : 12 }}>{t.attribution}</div>
-                </div>
-              ))}
-            </div>
-            <p style={{ fontSize: 19, lineHeight: 1.7, margin: 0, fontWeight: 600, color: INK }}>
-              None of them got there with a better subject line. They got there by reading the numbers before writing a word.
-            </p>
-          </div>
-        </section>
 
         {/* WALL / BRIDGE TO OFFER */}
         <section style={{ padding: '76px 24px', display: 'flex', justifyContent: 'center', position: 'relative', background: BG }}>
@@ -286,13 +268,16 @@ const WebinarThankYou = () => {
         </section>
 
         {/* HOW IT WORKS */}
-        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
+        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
+          {/* Soft accent blooms give the frosted cards something to refract */}
+          <div aria-hidden="true" style={{ position: 'absolute', top: '42%', left: '4%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.20) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', bottom: '2%', right: '3%', width: 380, height: 280, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.14) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
           <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 40px', color: INK, textAlign: 'center' }}>
             From stalled account to boardroom-ready in under two minutes.
           </h2>
           <div className="wty-steps">
             {howItWorks.map((s, i) => (
-              <div key={s.step} style={{ background: CARD_PRIMARY, border: `1px solid ${LINE}`, borderRadius: 16, padding: '28px 24px' }}>
+              <div key={s.step} className="wty-glass" style={{ borderRadius: 16, padding: '28px 24px' }}>
                 <div style={{ ...HEADING, fontSize: 13, letterSpacing: '0.12em', color: ACCENT, marginBottom: 12 }}>
                   {String(i + 1).padStart(2, '0')}
                 </div>
@@ -304,51 +289,80 @@ const WebinarThankYou = () => {
         </section>
 
         {/* WHAT'S INCLUDED IN WHYZER ELITE + PRICING */}
-        <section style={{ padding: '76px 24px', background: BG }}>
+        <section style={{ padding: '76px 24px', background: BG, position: 'relative', overflow: 'hidden' }}>
+          <div aria-hidden="true" style={{ position: 'absolute', top: '18%', right: '2%', width: 460, height: 340, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', bottom: '6%', left: '2%', width: 400, height: 320, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.13) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
           <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             Everything in Whyzer Elite
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 720, margin: '0 auto 44px' }}>
             {eliteFeatures.map((f) => (
-              <div key={f.title} style={{ background: CARD_PRIMARY, border: `1px solid ${LINE}`, borderRadius: 14, padding: '22px 24px' }}>
+              <div key={f.title} className="wty-glass" style={{ borderRadius: 14, padding: '22px 24px' }}>
                 <h3 style={{ ...HEADING, fontSize: 17, margin: '0 0 8px', color: INK }}>{f.title}</h3>
                 <p style={{ fontSize: 15, lineHeight: 1.65, margin: 0, color: BODY }}>{f.body}</p>
               </div>
             ))}
           </div>
 
+          {/* Value framing, mirroring the home page's cost-comparison line. */}
+          <p style={{ fontSize: 16, lineHeight: 1.7, margin: '0 auto 28px', maxWidth: 660, color: BODY, textAlign: 'center' }}>
+            Getting one executive meeting costs more in time, effort, and expense than Whyzer costs in a year. Comparable financial intelligence exists (AlphaSense, Gartner, Bloomberg) at $15,000&ndash;$50,000 per year. Not one of them knows what a POV is.
+          </p>
+
           {/* Pricing box — kept dark so the conversion moment stands out of the
               light section, the same role the form card plays on the reg page. */}
-          <div style={{ maxWidth: 460, margin: '0 auto', background: DARK2, border: `1px solid rgba(59,111,240,0.45)`, borderRadius: 20, padding: '32px 26px', textAlign: 'center', boxShadow: '0 24px 60px -28px rgba(11,16,32,0.55)' }}>
-            <h3 style={{ ...HEADING, fontSize: 22, margin: '0 0 14px', color: D_INK }}>Whyzer Elite</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'center', gap: 10, marginBottom: 6 }}>
-              <span style={{ fontSize: 19, color: D_MUTED, textDecoration: 'line-through' }}>$97/month</span>
-              <span style={{ ...HEADING, fontSize: 'clamp(24px, 5vw, 30px)', color: D_INK }}>$57/month</span>
+          <div className="wty-price-box" style={{ maxWidth: 480, margin: '0 auto', background: DARK2, border: `1px solid rgba(59,111,240,0.45)`, borderRadius: 20, padding: '30px 26px 32px', textAlign: 'center', boxShadow: '0 24px 60px -28px rgba(11,16,32,0.55)', position: 'relative' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: 18 }}>
+              <span style={{ ...HEADING, fontSize: 15, color: D_EYEBROW, letterSpacing: '0.04em', textTransform: 'uppercase' }}>Whyzer Elite</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', padding: '4px 10px', borderRadius: 999, border: '1px solid rgba(59,111,240,0.45)', background: 'rgba(59,111,240,0.16)', color: D_EYEBROW, whiteSpace: 'nowrap' }}>FULL ACCESS</span>
             </div>
-            <p style={{ ...HEADING, fontSize: 15, margin: '0 0 12px', color: D_INK }}>for your first 3 months</p>
-            <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 18px', color: D_BODY }}>
-              with code <strong style={{ ...HEADING, color: D_EYEBROW, fontSize: 15 }}>FLUENCY57</strong>
-            </p>
-            <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 18px', color: D_BODY }}>
-              14 days free on your three hardest accounts. Start with the one that's gone quiet.
-            </p>
-            <p style={{ fontSize: 13.5, lineHeight: 1.6, margin: '0 0 22px', color: D_MUTED }}>
-              After your free trial: $57/month for 3 months, then $97/month. Cancel any time before your trial ends and you won't be charged.
-            </p>
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'center', gap: 10, marginBottom: 4 }}>
+              <span style={{ fontSize: 20, color: D_MUTED, textDecoration: 'line-through' }}>$97</span>
+              <span style={{ ...HEADING, fontSize: 'clamp(38px, 9vw, 48px)', lineHeight: 1, color: D_INK }}>$57</span>
+              <span style={{ fontSize: 15, color: D_BODY }}>per seat / month</span>
+            </div>
+            <p style={{ ...HEADING, fontSize: 15, margin: '0 0 14px', color: D_INK }}>for your first 3 months</p>
+
+            {/* Value signals */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 20 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, padding: '5px 11px', borderRadius: 999, background: 'rgba(59,111,240,0.16)', color: D_EYEBROW, border: '1px solid rgba(59,111,240,0.35)' }}>Save $120 over 3 months</span>
+              <span style={{ fontSize: 12, fontWeight: 700, padding: '5px 11px', borderRadius: 999, background: 'rgba(255,255,255,0.06)', color: D_BODY, border: `1px solid ${GLASS_DARK_BORDER}` }}>Code FLUENCY57</span>
+            </div>
+
+            {/* Terms, itemised so nothing is buried in prose */}
+            <ul style={{ listStyle: 'none', margin: '0 0 22px', padding: '18px 0 0', borderTop: `1px solid ${GLASS_DARK_BORDER}`, display: 'flex', flexDirection: 'column', gap: 11, textAlign: 'left' }}>
+              {[
+                'Today: $0. Full Elite access free for 14 days.',
+                'Months 1–3 after the trial: $57/month with code FLUENCY57.',
+                'Month 4 onward: $97/month, the standard Elite rate.',
+                "Cancel any time before the trial ends and you're never charged.",
+              ].map((line) => (
+                <li key={line} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.55, color: D_BODY }}>
+                  <Check size={16} strokeWidth={2.6} style={{ flexShrink: 0, marginTop: 3, color: ACCENT }} />
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+
             <a href={trialUrl} className="wty-cta" style={{ display: 'block', width: '100%', boxSizing: 'border-box', background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 16, padding: '16px 20px', borderRadius: 10, textDecoration: 'none', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
               Start My Free Trial &rarr;
             </a>
+            <p style={{ fontSize: 12.5, lineHeight: 1.6, margin: '12px 0 0', color: D_MUTED }}>
+              No charge today. Cancel anytime in your Client Portal.
+            </p>
           </div>
         </section>
 
         {/* TESTIMONIAL GRID #1 */}
-        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
+        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
+          <div aria-hidden="true" style={{ position: 'absolute', top: '30%', left: '6%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
           <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             More revenue, not just more replies
           </h2>
           <div className="wty-grid">
             {grid1.map((t, i) => (
-              <figure key={i} className="wty-testimonial" style={{ background: CARD_PRIMARY, border: `1px solid ${LINE}`, borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <figure key={i} className="wty-testimonial wty-glass" style={{ borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
                 <blockquote style={{ fontSize: 16, lineHeight: 1.6, margin: 0, color: BODY }}>{t.quote}</blockquote>
                 <figcaption style={{ fontSize: 14, color: MUTED, marginTop: 'auto' }}>
                   <span style={{ ...HEADING, color: EYEBROW, fontSize: 14 }}>{t.name}</span>
@@ -365,8 +379,11 @@ const WebinarThankYou = () => {
             <h2 style={{ ...HEADING, fontSize: 'clamp(22px, 3.2vw, 28px)', lineHeight: 1.28, margin: '0 0 16px', color: INK }}>
               Try it on the account that's gone quiet. See if it changes how you'd walk into the room.
             </h2>
-            <p style={{ fontSize: 16, lineHeight: 1.7, margin: 0, color: BODY }}>
+            <p style={{ fontSize: 16, lineHeight: 1.7, margin: '0 0 18px', color: BODY }}>
               Fourteen days free, full Elite access, no restrictions on which three accounts you pick. If it's not for you, cancel before the trial ends and you're never charged.
+            </p>
+            <p style={{ fontSize: 14.5, lineHeight: 1.7, margin: 0, color: MUTED }}>
+              $0 today &rarr; $57/month for months 1&ndash;3 with code FLUENCY57 &rarr; $97/month from month 4. Cancel anytime in your Client Portal.
             </p>
           </div>
         </section>
@@ -398,13 +415,14 @@ const WebinarThankYou = () => {
         </section>
 
         {/* TESTIMONIAL GRID #2 */}
-        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}` }}>
+        <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
+          <div aria-hidden="true" style={{ position: 'absolute', top: '28%', right: '5%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
           <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             Proof it changes the numbers, not just the pitch
           </h2>
           <div className="wty-grid">
             {grid2.map((t, i) => (
-              <figure key={i} className="wty-testimonial" style={{ background: CARD_PRIMARY, border: `1px solid ${LINE}`, borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <figure key={i} className="wty-testimonial wty-glass" style={{ borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
                 <blockquote style={{ fontSize: 16, lineHeight: 1.6, margin: 0, color: BODY }}>{t.quote}</blockquote>
                 <figcaption style={{ fontSize: 14, color: MUTED, marginTop: 'auto' }}>
                   <span style={{ ...HEADING, color: EYEBROW, fontSize: 14 }}>{t.name}</span>
@@ -442,11 +460,39 @@ const WebinarThankYou = () => {
         @keyframes wty-glowPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 0.85; } }
         .wty-cta { transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease; }
         .wty-cta:hover { background: #2F5FD8; box-shadow: 0 12px 34px -6px rgba(59,111,240,0.85); transform: translateY(-1px); }
+        /* Glass surfaces: translucent fill + backdrop blur, with a bright top
+           edge so the panel reads as a lit sheet rather than a flat tint. */
+        .wty-glass {
+          position: relative;
+          background: ${GLASS_LIGHT};
+          border: 1px solid ${GLASS_LIGHT_BORDER};
+          box-shadow: ${GLASS_LIGHT_SHADOW};
+          backdrop-filter: ${GLASS_BLUR};
+          -webkit-backdrop-filter: ${GLASS_BLUR};
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .wty-glass::before {
+          content: ''; position: absolute; inset: 0; border-radius: inherit;
+          pointer-events: none;
+          background: linear-gradient(160deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%);
+        }
+        .wty-glass > * { position: relative; z-index: 1; }
+        .wty-glass:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -12px rgba(11,16,32,0.22); border-color: rgba(59,111,240,0.35); }
+        /* The dark pricing box frosts against the section behind it. */
+        .wty-price-box {
+          backdrop-filter: ${GLASS_BLUR};
+          -webkit-backdrop-filter: ${GLASS_BLUR};
+        }
+        /* Fallback: without backdrop-filter the translucent fill reads as washed
+           out, so fall back to the solid card colours. */
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+          .wty-glass { background: ${CARD_PRIMARY}; border-color: ${LINE}; }
+        }
         .wty-testimonial { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-        .wty-testimonial:hover { border-color: rgba(59,111,240,0.45); box-shadow: 0 10px 30px -14px rgba(11,16,32,0.22); }
         .wty-faq-btn:focus-visible, .wty-cta:focus-visible { outline: 2px solid ${ACCENT}; outline-offset: 3px; }
         /* Mobile-first: single column, widening at the 768px breakpoint. */
-        .wty-grid, .wty-steps { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        /* position:relative keeps grids above the decorative section blooms */
+        .wty-grid, .wty-steps { display: grid; grid-template-columns: 1fr; gap: 18px; position: relative; }
         @media (min-width: 768px) {
           .wty-grid, .wty-steps { grid-template-columns: repeat(3, 1fr); }
         }
