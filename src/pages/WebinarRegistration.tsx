@@ -275,7 +275,7 @@ const WebinarRegistration = () => {
         <div style={{ position: 'absolute', top: '20%', left: '8%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(98,98,233,0.20) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
         <div className="wr-credibility" style={{ maxWidth: 1080, width: '100%', display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: 56, alignItems: 'center', position: 'relative' }}>
           <div className="wr-cred-photo wr-glass-dark" style={{ position: 'relative', minHeight: 480, overflow: 'hidden', borderRadius: 20, padding: 0 }}>
-            <img src="/jamal-hero-1.png" alt="Jamal Reimer" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 28%', display: 'block', zIndex: 1 }} />
+            <img src="/jamal%20evergreen%201.png" alt="Jamal Reimer" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block', zIndex: 1 }} />
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: D_EYEBROW, margin: 0 }}>Jamal Reimer</p>
@@ -422,7 +422,7 @@ const WebinarRegistration = () => {
           /* Single-column: the row no longer stretches, so give the frame a real
              height and let the portrait fill it rather than collapsing. */
           .wr-cred-photo { min-height: 0 !important; height: 420px; max-width: 340px; width: 100%; margin: 0 auto; align-self: center !important; }
-          .wr-cred-photo img { object-position: center 22% !important; }
+          .wr-cred-photo img { object-position: center 38% !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           [style*="animation"] { animation: none !important; }
