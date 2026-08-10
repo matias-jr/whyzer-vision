@@ -89,6 +89,10 @@ const eliteFeatures = [
     body: 'An AI coach trained on 100+ hours of Jamal’s coaching. Ask it how to write a CFO POV or handle a stalled multi-thread, and get a structured answer immediately.',
   },
   {
+    title: 'Weekly Deal Coaching',
+    body: "Every week, you bring a real deal. Jamal works on it with you, live. Got an active opportunity you're working through? Bring it to the session and get a fresh perspective, direct feedback, and clear next moves from Jamal.",
+  },
+  {
     title: 'Whyzer Academy',
     body: 'Monthly live sessions with Jamal, plus deal reviews and MDA office hours applied to real, current opportunities. Including yours.',
   },
@@ -507,9 +511,9 @@ const WebinarThankYou = () => {
         .wty-grid, .wty-steps, .wty-features { display: grid; grid-template-columns: 1fr; gap: 18px; position: relative; }
         @media (min-width: 768px) {
           .wty-grid, .wty-steps { grid-template-columns: repeat(3, 1fr); }
-          /* Five features in two columns; the last one spans so the row closes. */
+          /* Features in two columns. An odd one out spans so the row closes. */
           .wty-features { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-          .wty-features > :last-child { grid-column: 1 / -1; }
+          .wty-features > :last-child:nth-child(odd) { grid-column: 1 / -1; }
         }
         html { scroll-behavior: smooth; }
         @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
