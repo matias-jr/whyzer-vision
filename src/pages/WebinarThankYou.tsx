@@ -212,7 +212,7 @@ const WebinarThankYou = () => {
         <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
           {/* PRIMING LINE */}
-          <section style={{ padding: '88px 24px 32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 16, position: 'relative' }}>
+          <section className="wty-priming" style={{ padding: '88px 24px 32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 16, position: 'relative' }}>
             <div style={{ position: 'absolute', top: -220, left: '50%', transform: 'translateX(-50%)', width: 800, height: 560, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.34) 0%, rgba(59,111,240,0.12) 40%, transparent 70%)', filter: 'blur(20px)', animation: 'wty-glowPulse 6s ease-in-out infinite', pointerEvents: 'none' }} />
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 420, backgroundImage: 'radial-gradient(rgba(127,160,245,0.5) 1px, transparent 1.5px)', backgroundSize: '28px 28px', WebkitMaskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', pointerEvents: 'none', zIndex: 0 }} />
 
@@ -225,8 +225,8 @@ const WebinarThankYou = () => {
           </section>
 
           {/* VIDEO */}
-          <section style={{ padding: '16px 24px 36px', display: 'flex', justifyContent: 'center' }}>
-            <div style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: 'repeating-linear-gradient(135deg, #0E1526, #0E1526 12px, #141D33 12px, #141D33 24px)', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(59,111,240,0.45)' }}>
+          <section style={{ padding: '16px 24px 28px', display: 'flex', justifyContent: 'center' }}>
+            <div className="wty-video" style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: 'repeating-linear-gradient(135deg, #0E1526, #0E1526 12px, #141D33 12px, #141D33 24px)', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(59,111,240,0.45)' }}>
               <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 40%, rgba(59,111,240,0.20) 0%, transparent 65%)' }} />
               <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
                 <div style={{ width: 76, height: 76, borderRadius: '50%', background: ACCENT, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px -6px rgba(59,111,240,0.7)' }}>
@@ -517,6 +517,22 @@ const WebinarThankYou = () => {
         }
         html { scroll-behavior: smooth; }
         @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+        /* Above-the-fold fit. On short landscape viewports (laptops) the 16:9
+           video alone consumed the whole screen, pushing the CTA and promo
+           banner below the fold. Cap the video by viewport height and tighten
+           the hero padding so priming + video + CTA + banner all fit.
+           Portrait phones already fit, so this is scoped to landscape. */
+        @media (orientation: landscape) and (max-height: 1000px) {
+          .wty-priming { padding-top: 34px !important; padding-bottom: 16px !important; gap: 10px !important; }
+          .wty-priming p { font-size: 16.5px !important; line-height: 1.5 !important; }
+          .wty-video { max-width: min(800px, calc((100vh - 440px) * 16 / 9)) !important; }
+        }
+        @media (orientation: landscape) and (max-height: 820px) {
+          .wty-priming { padding-top: 24px !important; padding-bottom: 12px !important; }
+          .wty-priming p { font-size: 15.5px !important; }
+          .wty-video { max-width: min(800px, calc((100vh - 400px) * 16 / 9)) !important; }
+        }
       `}</style>
     </div>
   );
