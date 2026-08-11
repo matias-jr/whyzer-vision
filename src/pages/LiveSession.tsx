@@ -364,7 +364,7 @@ const LiveSession = () => {
           <div>
             {/* Oversized numerals against a hairline rule — no card wrappers, so
                 this reads differently from the grids above and below. */}
-            <div className="mb-12">
+            <div>
               {walkAwayPoints.map((item, i) => (
                 <div
                   key={i}
@@ -382,39 +382,43 @@ const LiveSession = () => {
               ))}
             </div>
 
-            {/* Bonus — glass panel matching the product app */}
-            <div
-              className="rounded-2xl p-8 mb-10 relative overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, rgba(98,98,233,0.08), rgba(98,98,233,0.05))',
-                border: '1px solid rgba(120,140,255,0.20)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                boxShadow: '0 8px 40px rgba(0,0,0,0.35)',
-              }}
-            >
-              <div
-                className="absolute inset-x-0 top-0 h-px"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(98,98,233,0.55), rgba(98,98,233,0.35), transparent)' }}
-              />
-              <span
-                className="inline-block font-mono text-[12px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4"
-                style={{ background: 'rgba(98,98,233,0.10)', border: '1px solid rgba(98,98,233,0.30)', color: '#4A4AD1' }}
-              >
-                Exclusive Bonus
-              </span>
-              <h3 className="font-display text-[23px] text-[#14141F] uppercase mb-3">
-                14 Days of Whyzer Elite, Free
-              </h3>
-              <p className="font-body text-[16px] text-[#55556B] leading-[1.8]">
-                Attend live and get full access to the Vault, Coach Jamal, and the research tools to
-                turn the Point of View you build in the session into something you actually bring
-                into the room.
-              </p>
-            </div>
-
-            <CtaButton>Save My Free Seat →</CtaButton>
           </div>
+        </div>
+
+        {/* Bonus + CTA, centred below both columns so they close the section
+            rather than trailing the right-hand list. */}
+        <div className="max-w-[640px] mx-auto mt-20 text-center">
+          <div
+            className="rounded-2xl p-8 mb-10 relative overflow-hidden text-left"
+            style={{
+              background: 'linear-gradient(135deg, rgba(98,98,233,0.10), rgba(98,98,233,0.05))',
+              border: '1px solid rgba(98,98,233,0.22)',
+              backdropFilter: 'blur(16px)',
+              WebkitBackdropFilter: 'blur(16px)',
+              boxShadow: '0 12px 44px -20px rgba(20,20,31,0.22)',
+            }}
+          >
+            <div
+              className="absolute inset-x-0 top-0 h-px"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(98,98,233,0.55), rgba(98,98,233,0.35), transparent)' }}
+            />
+            <span
+              className="inline-block font-mono text-[12px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4"
+              style={{ background: 'rgba(98,98,233,0.10)', border: '1px solid rgba(98,98,233,0.30)', color: '#4A4AD1' }}
+            >
+              Exclusive Bonus
+            </span>
+            <h3 className="font-display text-[23px] text-[#14141F] uppercase mb-3">
+              14 Days of Whyzer Elite, Free
+            </h3>
+            <p className="font-body text-[16px] text-[#55556B] leading-[1.8]">
+              Attend live and get full access to the Vault, Coach Jamal, and the research tools to
+              turn the Point of View you build in the session into something you actually bring
+              into the room.
+            </p>
+          </div>
+
+          <CtaButton>Save My Free Seat →</CtaButton>
         </div>
       </section>
 
