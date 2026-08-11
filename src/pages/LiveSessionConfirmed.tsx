@@ -332,7 +332,7 @@ const LiveSessionConfirmed = () => {
                   }}
                 >
                   <span className="font-mono text-sm text-[#4A4AD1]">
-                    "You're registered: Stop Sounding Like Everybody Else"
+                    "Stop Sounding Like Everybody Else: You're registered for my live session"
                   </span>
                 </div>
               </div>
