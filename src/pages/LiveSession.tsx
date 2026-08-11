@@ -49,8 +49,8 @@ const MinimalNav = () => (
     style={{
       backdropFilter: 'blur(24px)',
       WebkitBackdropFilter: 'blur(24px)',
-      background: 'rgba(10,14,26,0.85)',
-      borderBottom: '1px solid rgba(255,255,255,0.06)',
+      background: 'rgba(11,11,24,0.92)',
+      borderBottom: '1px solid #E4E3F0',
     }}
   >
     <a href="#hero">
@@ -64,7 +64,7 @@ const MinimalNav = () => (
 );
 
 const UrgencyStrip = () => (
-  <div className="relative overflow-hidden" style={{ background: '#5959D4', padding: '6px 0' }}>
+  <div className="relative overflow-hidden" style={{ background: '#6262E9', padding: '6px 0' }}>
     <div style={{ transform: 'rotate(-1.2deg)', padding: '10px 0' }}>
       <div className="animate-marquee flex whitespace-nowrap">
         {Array(10).fill(null).map((_, i) => (
@@ -80,14 +80,14 @@ const UrgencyStrip = () => (
 const MinimalFooter = () => (
   <footer
     className="py-12 px-6 text-center border-t border-foreground/[0.06]"
-    style={{ background: '#0B1020' }}
+    style={{ background: '#F2F1FB' }}
   >
     <img
       src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
       alt="Whyzer"
       className="h-6 mx-auto mb-4 opacity-70"
     />
-    <p className="font-mono text-sm text-text-tertiary tracking-wide">
+    <p className="font-mono text-sm text-[#8A8AA0] tracking-wide">
       © 2026 Whyzer · Founded by Jamal Reimer, strategic seller &amp; author of Mega Deal Secrets
     </p>
   </footer>
@@ -98,13 +98,13 @@ const CtaButton = ({ children, large = false }: { children: React.ReactNode; lar
     href="#hero"
     className={`inline-flex items-center justify-center text-white font-display font-semibold uppercase tracking-[0.14em] rounded-lg hover:brightness-110 transition-all duration-200 active:scale-[0.98] ${large ? 'px-12 h-16 text-base' : 'px-8 h-13 text-sm'}`}
     style={{
-      background: 'linear-gradient(135deg, #5959D4, #4343A8)',
-      boxShadow: '0 4px 24px rgba(67,67,168,0.3)',
+      background: 'linear-gradient(135deg, #6262E9, #4A4AD1)',
+      boxShadow: '0 4px 24px rgba(98,98,233,0.16)',
       height: large ? '64px' : '52px',
       lineHeight: 1,
     }}
-    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 28px rgba(89,89,212,0.55), 0 4px 24px rgba(67,67,168,0.4)'; }}
-    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(67,67,168,0.3)'; }}
+    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 0 28px rgba(98,98,233,0.45), 0 4px 24px rgba(67,67,168,0.4)'; }}
+    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(98,98,233,0.16)'; }}
   >
     {children}
   </a>
@@ -172,7 +172,7 @@ function loadScript(src: string): Promise<void> {
   });
 }
 
-const REGISTRATION_HTML = `<style>@media (max-width: 1e+09px) {  #wk_element_399409224331983c0bb3717d18e66cc0 { width: 100%; max-width: 100%; min-height: 16px; padding: 16px; margin: 0px auto; border-style: solid; border-color: rgb(0, 0, 0); border-width: 0px; border-radius: 16px; background: rgb(26, 26, 26); }  #wk_element_889d2c8b54ae5001837c2ec42ca72c7e { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.35; letter-spacing: 0px; display: flex; }  #wk_element_889d2c8b54ae5001837c2ec42ca72c7e :not(:last-child) { margin-bottom: 0px; }  #wk_element_399409224331983c0bb3717d18e66cc0_checkbox { color: rgb(0, 0, 0); }  #wk_element_6aef8c2761d05f7a7fee01f707ee3d9f { width: 100%; max-width: 100%; min-height: 0px; padding: 8px 16px; margin: 0px; color: rgb(255, 255, 255); border-style: solid; border-color: rgb(51, 94, 234); border-width: 0px; border-radius: 6px; background: rgb(155, 99, 245); font-family: HKGroteskPro, serif; font-size: 19px; line-height: 1.5; letter-spacing: 0px; display: flex; }  #wk_element_6aef8c2761d05f7a7fee01f707ee3d9f :not(:last-child) { margin-bottom: 0px; }  #wk_element_d94017575195c57e80b94bab113f9bdc { max-width: 540px; min-height: 16px; padding: 0px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(255, 255, 255); }}@media (max-width: 992px) {}@media (max-width: 768px) {}</style><div class="wk_root" style="width: 100%; z-index: 100000;"><div class="wk_ascend_tree col-12 col-md my-auto shadow wk_column wk_editor_hide_tooltips" id="wk_element_d94017575195c57e80b94bab113f9bdc" data-custom-css-classes="shadow" data-wk-border-style-desktop="solid" data-wk-background-type-desktop="solid">  <div class="wk_editor_hide_tooltips shadow shadow-none wk_registration_form" id="wk_element_399409224331983c0bb3717d18e66cc0" data-wk-background-type-desktop="solid" data-wk-border-style-desktop="solid" data-wk-enable-instant-watch="false" data-custom-css-classes="shadow-none" data-wk-date-format-type="en-US" data-wk-webinar-id="69cd784be33fea470cc6fcab"> <form class="wk_ascend_tree wk_registration_form_element"> <select class="mb-3 bg-light form-select form-select-lg wk_registration_form_date" onchange="set_date_text(event,this.value)"></select><input class="wk_registration_form_date_text" type="hidden"><input class="mb-3 bg-light form-control form-control-lg wk_registration_form_first_name" placeholder="First Name" required=""><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_last_name" placeholder="Last Name"><input class="mb-3 bg-light form-control form-control-lg wk_registration_form_email" placeholder="Email" oninput="wk_input_change(this)" type="email" required=""><input class="form-control form-control-lg bg-light mb-3 wk_registration_form_phone d-none" type="tel" placeholder="Phone Number" oninput="wk_input_change(this)"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_1" placeholder="Custom Field 1"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_2" placeholder="Custom Field 2"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_3" placeholder="Custom Field 3"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_4" placeholder="Custom Field 4"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_5" placeholder="Custom Field 5"> <div class="mb-3 mx-0 p-0 wk_registration_form_checkbox wk_row_internal d-none"> <div class="my-auto col-auto"> <div class="wk_checkbox"><input class="wk_checkbox_input" type="checkbox" id="wk_element_399409224331983c0bb3717d18e66cc0_checkbox"></div> </div> <div class="my-auto col"> <div class="wk_editor_hide_tooltips wk_text" id="wk_element_889d2c8b54ae5001837c2ec42ca72c7e" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <p>I consent to receiving emails and/or text message reminders for this event.</p> </div> </div> </div> </div> <div class="wk_editor_hide_tooltips wk_button btn btn-lg wk_button_hide_settings" id="wk_element_6aef8c2761d05f7a7fee01f707ee3d9f" data-wk-background-type-desktop="solid" data-wk-border-style-desktop="solid" onclick="webinar_registration_submit(event)"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <p><b>REGISTER NOW</b></p> </div> </div> </form> </div> </div></div>`;
+const REGISTRATION_HTML = `<style>@media (max-width: 1e+09px) {  #wk_element_399409224331983c0bb3717d18e66cc0 { width: 100%; max-width: 100%; min-height: 16px; padding: 16px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(255, 255, 255); }  #wk_element_889d2c8b54ae5001837c2ec42ca72c7e { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.35; letter-spacing: 0px; display: flex; }  #wk_element_889d2c8b54ae5001837c2ec42ca72c7e :not(:last-child) { margin-bottom: 0px; }  #wk_element_399409224331983c0bb3717d18e66cc0_checkbox { color: rgb(0, 0, 0); }  #wk_element_6aef8c2761d05f7a7fee01f707ee3d9f { width: 100%; max-width: 100%; min-height: 0px; padding: 8px 16px; margin: 0px; color: rgb(255, 255, 255); border-style: solid; border-color: rgb(51, 94, 234); border-width: 0px; border-radius: 6px; background: rgb(98, 98, 233); font-family: HKGroteskPro, serif; font-size: 19px; line-height: 1.5; letter-spacing: 0px; display: flex; }  #wk_element_6aef8c2761d05f7a7fee01f707ee3d9f :not(:last-child) { margin-bottom: 0px; }  #wk_element_d94017575195c57e80b94bab113f9bdc { max-width: 540px; min-height: 16px; padding: 0px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(255, 255, 255); }}@media (max-width: 992px) {}@media (max-width: 768px) {}</style><div class="wk_root" style="width: 100%; z-index: 100000;"><div class="wk_ascend_tree col-12 col-md my-auto shadow wk_column wk_editor_hide_tooltips" id="wk_element_d94017575195c57e80b94bab113f9bdc" data-custom-css-classes="shadow" data-wk-border-style-desktop="solid" data-wk-background-type-desktop="solid">  <div class="wk_editor_hide_tooltips shadow shadow-none wk_registration_form" id="wk_element_399409224331983c0bb3717d18e66cc0" data-wk-background-type-desktop="solid" data-wk-border-style-desktop="solid" data-wk-enable-instant-watch="false" data-custom-css-classes="shadow-none" data-wk-date-format-type="en-US" data-wk-webinar-id="6a7b29be3db0318c2bcf6e6a"> <form class="wk_ascend_tree wk_registration_form_element"> <select class="mb-3 bg-light form-select form-select-lg wk_registration_form_date" onchange="set_date_text(event,this.value)"></select><input class="wk_registration_form_date_text" type="hidden"><input class="mb-3 bg-light form-control form-control-lg wk_registration_form_first_name" placeholder="First Name" required=""><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_last_name" placeholder="Last Name"><input class="mb-3 bg-light form-control form-control-lg wk_registration_form_email" placeholder="Email" oninput="wk_input_change(this)" type="email" required=""><input class="form-control form-control-lg bg-light mb-3 wk_registration_form_phone d-none" type="tel" placeholder="Phone Number" oninput="wk_input_change(this)"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_1" placeholder="Custom Field 1"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_2" placeholder="Custom Field 2"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_3" placeholder="Custom Field 3"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_4" placeholder="Custom Field 4"><input class="mb-3 bg-light form-control form-control-lg d-none wk_registration_form_custom_field_5" placeholder="Custom Field 5"> <div class="mb-3 mx-0 p-0 wk_registration_form_checkbox wk_row_internal" data-wk-show-checkbox="true"> <div class="my-auto col-auto"> <div class="wk_checkbox"><input class="wk_checkbox_input" type="checkbox" id="wk_element_399409224331983c0bb3717d18e66cc0_checkbox" required=""></div> </div> <div class="my-auto col"> <div class="wk_editor_hide_tooltips wk_text" id="wk_element_889d2c8b54ae5001837c2ec42ca72c7e" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <p>Please send me email reminders and other communication relevant to the event.</p> </div> </div> </div> </div> <div class="wk_editor_hide_tooltips wk_button btn btn-lg wk_button_hide_settings" id="wk_element_6aef8c2761d05f7a7fee01f707ee3d9f" data-wk-background-type-desktop="solid" data-wk-border-style-desktop="solid" onclick="webinar_registration_submit(event)"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <p><b>SIGN ME UP!</b></p> </div> </div> </form> </div> </div></div>`;
 
 const WebinarKitRegistration = () => {
   useEffect(() => {
@@ -180,7 +180,8 @@ const WebinarKitRegistration = () => {
     loadCss('https://webinarkit.com/css/ewk_v5.css?cache=5');
     loadScript('https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js')
       .then(() => loadScript('https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js'))
-      .then(() => loadScript('https://webinarkit.com/js/ewk_v7.js?v=6&sv=true'));
+      .then(() => loadScript('https://webinarkit.com/js/ewk_v7.js?v=7&sv=true')
+      .then(() => loadScript('https://webinarkit.com/js/ewk_i.js?v=1')));
   }, []);
   return <div dangerouslySetInnerHTML={{ __html: REGISTRATION_HTML }} />;
 };
@@ -189,7 +190,7 @@ const LiveSession = () => {
   const t = useCountdown();
 
   return (
-    <div className="min-h-screen" style={{ background: '#0A0E1A' }}>
+    <div className="min-h-screen" style={{ background: '#FAFAF9' }}>
       <GrainOverlay />
       <MinimalNav />
 
@@ -201,15 +202,15 @@ const LiveSession = () => {
         {/* Signature Whyzer gradient: purple (lower-left) flowing to cyan (upper-right) */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 75% 70% at 22% 78%, rgba(91,75,214,0.32) 0%, transparent 62%)' }}
+          style={{ background: 'radial-gradient(ellipse 75% 70% at 22% 78%, rgba(98,98,233,0.16) 0%, transparent 62%)' }}
         />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 65% 60% at 82% 22%, rgba(59,201,219,0.20) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse 65% 60% at 82% 22%, rgba(98,98,233,0.10) 0%, transparent 60%)' }}
         />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 55% 50% at 55% 45%, rgba(79,125,240,0.14) 0%, transparent 65%)' }}
+          style={{ background: 'radial-gradient(ellipse 55% 50% at 55% 45%, rgba(98,98,233,0.08) 0%, transparent 65%)' }}
         />
 
         <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 py-24 grid lg:grid-cols-2 gap-16 items-center w-full">
@@ -217,20 +218,20 @@ const LiveSession = () => {
           <div>
             <div className="inline-flex items-center gap-2.5 mb-5">
               <span className="w-2 h-2 rounded-full bg-primary" style={{ animation: 'pulse 2s ease-in-out infinite' }} />
-              <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-primary font-semibold">
+              <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-[#4A4AD1] font-semibold">
                 Free Live Webinar
               </span>
             </div>
 
-            <h1 className="font-display text-[60px] sm:text-[64px] lg:text-[78px] leading-[1.0] tracking-[-0.02em] text-foreground uppercase mb-7">
+            <h1 className="font-display text-[60px] sm:text-[64px] lg:text-[78px] leading-[1.0] tracking-[-0.02em] text-[#14141F] uppercase mb-7">
               Stop Sounding
               <br />
-              <span className="bg-gradient-to-r from-[#A8A8FF] via-[#7B8CFF] to-[#3BC9DB] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#4A4AD1] via-[#6262E9] to-[#4A4AD1] bg-clip-text text-transparent">
                 Like Everybody Else
               </span>
             </h1>
 
-            <p className="font-body text-[17px] text-foreground/75 leading-[1.8] max-w-[500px]">
+            <p className="font-body text-[17px] text-[#55556B] leading-[1.8] max-w-[500px]">
               Stop pitching the same use cases as every other rep in the deal. Learn the three-part
               framework elite sellers use to build a Point of View sharp enough to get you back in the
               room with the people who can actually say yes.
@@ -241,7 +242,7 @@ const LiveSession = () => {
           <div className="flex flex-col gap-8">
             {/* Countdown */}
             <div>
-              <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-text-tertiary mb-5">
+              <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#8A8AA0] mb-5">
                 Session Starts In
               </p>
               <div className="flex items-end gap-6">
@@ -254,11 +255,11 @@ const LiveSession = () => {
                   <div key={i} className="flex flex-col items-center">
                     <span
                       className="font-mono text-[60px] sm:text-[70px] leading-none font-bold"
-                      style={{ color: '#A8A8FF' }}
+                      style={{ color: '#4A4AD1' }}
                     >
                       {pad(val)}
                     </span>
-                    <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-text-tertiary mt-2">
+                    <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-[#8A8AA0] mt-2">
                       {label}
                     </span>
                   </div>
@@ -268,7 +269,7 @@ const LiveSession = () => {
 
             <div className="flex flex-col gap-5">
               <WebinarKitRegistration />
-              <p className="text-center font-mono text-[13px] text-text-tertiary tracking-wide leading-relaxed">
+              <p className="text-center font-mono text-[13px] text-[#8A8AA0] tracking-wide leading-relaxed">
                 One framework. 60 minutes. One session that changes how you sell.
               </p>
             </div>
@@ -279,13 +280,13 @@ const LiveSession = () => {
       {/* ── CREDIBILITY ── */}
       <section
         className="py-20 relative overflow-hidden"
-        style={{ background: '#0B1020', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#F2F1FB', borderTop: '1px solid #E4E3F0' }}
       >
         <div className="max-w-[680px] mx-auto px-6 text-center">
-          <p className="font-body text-[17px] text-text-secondary leading-[1.85]">
+          <p className="font-body text-[17px] text-[#55556B] leading-[1.85]">
             Most sellers open with a pitch. Elite sellers open with a Point of View.
             In this free live session, Jamal Reimer,{' '}
-            <span className="text-foreground font-semibold">
+            <span className="text-[#14141F] font-semibold">
               who has personally closed $160M as an individual contributor after getting fired twice
               for pitching exactly like everyone else,
             </span>{' '}
@@ -298,21 +299,21 @@ const LiveSession = () => {
       {/* ── WHAT YOU'LL LEARN ── */}
       <section
         className="py-28 px-6 lg:px-12 relative"
-        style={{ background: '#0A0E1A', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#FAFAF9', borderTop: '1px solid #E4E3F0' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 50% at 100% 50%, rgba(59,201,219,0.10) 0%, rgba(40,24,73,0.42) 45%, transparent 68%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 50% at 100% 50%, rgba(98,98,233,0.07) 0%, rgba(98,98,233,0.07) 45%, transparent 68%)' }}
         />
         <div className="max-w-[1000px] mx-auto relative">
-          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
+          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
             What You'll Learn
           </p>
-          <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-4">
+          <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] uppercase tracking-[-0.02em] mb-4">
             3 Components.{' '}
-            <span className="text-primary">One Point of View.</span>
+            <span className="text-[#4A4AD1]">One Point of View.</span>
           </h2>
-          <p className="font-body text-[17px] text-text-secondary max-w-[520px] leading-[1.8] mb-16">
+          <p className="font-body text-[17px] text-[#55556B] max-w-[520px] leading-[1.8] mb-16">
             Each piece builds on the last. By the end, you won't just have talking points — you'll
             have a repeatable structure for standing out on any account.
           </p>
@@ -325,15 +326,15 @@ const LiveSession = () => {
               >
                 <span
                   className="font-mono text-3xl font-bold flex-shrink-0 leading-none mt-1"
-                  style={{ color: '#5959D4' }}
+                  style={{ color: '#6262E9' }}
                 >
                   {w.num}
                 </span>
                 <div>
-                  <h3 className="font-display text-[22px] text-foreground uppercase tracking-wide mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-display text-[22px] text-[#14141F] uppercase tracking-wide mb-3 group-hover:text-[#4A4AD1] transition-colors duration-300">
                     {w.title}
                   </h3>
-                  <p className="font-body text-[16px] text-text-secondary leading-[1.8]">{w.body}</p>
+                  <p className="font-body text-[16px] text-[#55556B] leading-[1.8]">{w.body}</p>
                 </div>
               </div>
             ))}
@@ -348,19 +349,19 @@ const LiveSession = () => {
       {/* ── WALK AWAY WITH ── */}
       <section
         className="py-28 px-6 lg:px-12"
-        style={{ background: '#0B1020', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#F2F1FB', borderTop: '1px solid #E4E3F0' }}
       >
         <div className="max-w-[1100px] mx-auto grid lg:grid-cols-2 gap-20 items-start">
           <div className="lg:sticky lg:top-24">
-            <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
+            <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
               What You'll Walk Away With
             </p>
-            <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-5">
+            <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] uppercase tracking-[-0.02em] mb-5">
               Not a Pitch.
               <br />
-              <span className="text-primary">A Point of View.</span>
+              <span className="text-[#4A4AD1]">A Point of View.</span>
             </h2>
-            <p className="font-body text-[17px] text-text-secondary leading-[1.8] max-w-[380px]">
+            <p className="font-body text-[17px] text-[#55556B] leading-[1.8] max-w-[380px]">
               You won't leave this session with a list of talking points. You'll leave with a
               repeatable way to build a Point of View for any account, every time.
             </p>
@@ -374,11 +375,11 @@ const LiveSession = () => {
                 >
                   <span
                     className="font-display text-xl flex-shrink-0 mt-0.5"
-                    style={{ color: '#5959D4' }}
+                    style={{ color: '#6262E9' }}
                   >
                     →
                   </span>
-                  <p className="font-body text-[17px] text-text-secondary leading-[1.8]">{item}</p>
+                  <p className="font-body text-[17px] text-[#55556B] leading-[1.8]">{item}</p>
                 </div>
               ))}
             </div>
@@ -387,7 +388,7 @@ const LiveSession = () => {
             <div
               className="rounded-2xl p-8 mb-10 relative overflow-hidden"
               style={{
-                background: 'linear-gradient(135deg, rgba(91,75,214,0.10), rgba(59,201,219,0.06))',
+                background: 'linear-gradient(135deg, rgba(98,98,233,0.08), rgba(98,98,233,0.05))',
                 border: '1px solid rgba(120,140,255,0.20)',
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
@@ -396,18 +397,18 @@ const LiveSession = () => {
             >
               <div
                 className="absolute inset-x-0 top-0 h-px"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(120,140,255,0.65), rgba(59,201,219,0.5), transparent)' }}
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(98,98,233,0.55), rgba(98,98,233,0.35), transparent)' }}
               />
               <span
                 className="inline-block font-mono text-[12px] uppercase tracking-[0.2em] px-3 py-1.5 rounded-full mb-4"
-                style={{ background: 'rgba(89,89,212,0.15)', border: '1px solid rgba(89,89,212,0.35)', color: '#A8A8FF' }}
+                style={{ background: 'rgba(98,98,233,0.10)', border: '1px solid rgba(98,98,233,0.30)', color: '#4A4AD1' }}
               >
                 Exclusive Bonus
               </span>
-              <h3 className="font-display text-[23px] text-foreground uppercase mb-3">
+              <h3 className="font-display text-[23px] text-[#14141F] uppercase mb-3">
                 14 Days of Whyzer Elite, Free
               </h3>
-              <p className="font-body text-[16px] text-text-secondary leading-[1.8]">
+              <p className="font-body text-[16px] text-[#55556B] leading-[1.8]">
                 Attend live and get full access to the Vault, Coach Jamal, and the research tools to
                 turn the Point of View you build in the session into something you actually bring
                 into the room.
@@ -422,20 +423,20 @@ const LiveSession = () => {
       {/* ── WHO THIS IS FOR ── */}
       <section
         className="py-28 px-6 lg:px-12 relative overflow-hidden"
-        style={{ background: '#0A0E1A', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#FAFAF9', borderTop: '1px solid #E4E3F0' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(91,75,214,0.30) 0%, rgba(59,201,219,0.08) 45%, transparent 62%)' }}
+          style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(98,98,233,0.14) 0%, rgba(98,98,233,0.06) 45%, transparent 62%)' }}
         />
         <div className="max-w-[800px] mx-auto relative">
-          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
+          <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
             Who This Is For
           </p>
-          <h2 className="font-display text-[42px] md:text-[56px] text-foreground uppercase tracking-[-0.02em] mb-5">
-            Built for <span className="text-primary">Enterprise Sellers.</span>
+          <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] uppercase tracking-[-0.02em] mb-5">
+            Built for <span className="text-[#4A4AD1]">Enterprise Sellers.</span>
           </h2>
-          <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-14 max-w-[540px]">
+          <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-14 max-w-[540px]">
             This session is built for individual enterprise sellers navigating complex, mid-to-large
             deals. You'll get the most out of this if you are:
           </p>
@@ -456,14 +457,14 @@ const LiveSession = () => {
                   <svg width="10" height="8" viewBox="0 0 12 10" fill="none">
                     <path
                       d="M1 5l3.5 3.5L11 1"
-                      stroke="#5959D4"
+                      stroke="#6262E9"
                       strokeWidth="1.8"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </svg>
                 </div>
-                <p className="font-body text-[17px] text-text-secondary leading-[1.8] group-hover:text-foreground/80 transition-colors duration-300">
+                <p className="font-body text-[17px] text-[#55556B] leading-[1.8] group-hover:text-[#55556B] transition-colors duration-300">
                   {item}
                 </p>
               </div>
@@ -479,14 +480,14 @@ const LiveSession = () => {
       {/* ── ABOUT JAMAL ── */}
       <section
         className="py-28 px-6 lg:px-12 relative overflow-hidden"
-        style={{ background: '#0B1020', borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        style={{ background: '#F2F1FB', borderTop: '1px solid #E4E3F0' }}
       >
         <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-20 items-center">
           {/* Photo placeholder */}
           <div className="relative order-2 lg:order-1">
             <div
               className="absolute inset-0 scale-110"
-              style={{ background: 'radial-gradient(ellipse at center, rgba(91,75,214,0.32) 0%, rgba(59,201,219,0.12) 55%, transparent 72%)' }}
+              style={{ background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.16) 0%, rgba(98,98,233,0.08) 55%, transparent 72%)' }}
             />
             <div
               className="relative rounded-2xl overflow-hidden"
@@ -509,10 +510,10 @@ const LiveSession = () => {
 
           {/* Copy */}
           <div className="order-1 lg:order-2">
-            <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-primary mb-4">
+            <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
               Your Host
             </p>
-            <h2 className="font-display text-[60px] text-foreground uppercase tracking-[-0.02em] mb-8">
+            <h2 className="font-display text-[60px] text-[#14141F] uppercase tracking-[-0.02em] mb-8">
               Jamal Reimer
             </h2>
 
@@ -522,7 +523,7 @@ const LiveSession = () => {
                 "After two decades in the field, Jamal built Whyzer — an AI platform designed for the specific complexity of mid-to-large enterprise deals. Not theory. Not a template library. The system he used to stop sounding like every other rep in the room.",
                 "His sessions aren't theory. Everything taught comes from deals he has personally run, lost, and closed at the highest levels of enterprise sales.",
               ].map((para, i) => (
-                <p key={i} className="font-body text-[17px] text-text-secondary leading-[1.85]">
+                <p key={i} className="font-body text-[17px] text-[#55556B] leading-[1.85]">
                   {para}
                 </p>
               ))}
@@ -531,7 +532,7 @@ const LiveSession = () => {
             {/* Stats */}
             <div
               className="grid grid-cols-3 gap-6 py-8 mb-10"
-              style={{ borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+              style={{ borderTop: '1px solid #E4E3F0', borderBottom: '1px solid #E4E3F0' }}
             >
               {[
                 { val: '$160M+', label: 'closed as an individual contributor' },
@@ -541,11 +542,11 @@ const LiveSession = () => {
                 <div key={i}>
                   <span
                     className="font-mono text-3xl font-bold block mb-1.5"
-                    style={{ color: '#A8A8FF' }}
+                    style={{ color: '#4A4AD1' }}
                   >
                     {s.val}
                   </span>
-                  <span className="font-body text-[13px] text-text-tertiary leading-tight">{s.label}</span>
+                  <span className="font-body text-[13px] text-[#8A8AA0] leading-tight">{s.label}</span>
                 </div>
               ))}
             </div>
@@ -561,23 +562,23 @@ const LiveSession = () => {
       {/* ── CLOSING CTA ── */}
       <section
         className="py-36 px-6 text-center relative overflow-hidden"
-        style={{ background: '#0A0E1A' }}
+        style={{ background: '#FAFAF9' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(91,75,214,0.18) 0%, rgba(59,201,219,0.08) 50%, transparent 72%)' }}
+          style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(98,98,233,0.10) 0%, rgba(98,98,233,0.06) 50%, transparent 72%)' }}
         />
         <div className="relative max-w-[640px] mx-auto">
-          <h2 className="font-display text-[56px] md:text-[70px] text-foreground uppercase tracking-[-0.02em] leading-[1.05] mb-6">
+          <h2 className="font-display text-[56px] md:text-[70px] text-[#14141F] uppercase tracking-[-0.02em] leading-[1.05] mb-6">
             Seats Are Limited.
             <br />
-            <span className="text-primary">Don't Miss Out.</span>
+            <span className="text-[#4A4AD1]">Don't Miss Out.</span>
           </h2>
-          <p className="font-body text-[17px] text-text-secondary leading-[1.8] mb-12 max-w-[420px] mx-auto">
+          <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-12 max-w-[420px] mx-auto">
             This session is capped to stay interactive. Seats lock when the room fills. Be there on time.
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
-          <p className="font-mono text-[13px] text-text-tertiary mt-7 tracking-wide">
+          <p className="font-mono text-[13px] text-[#8A8AA0] mt-7 tracking-wide">
             August 26 · 12PM ET
           </p>
         </div>
