@@ -1,46 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
-import { getNextSessionAt } from '@/lib/siteConfig';
-
-// Fast initial paint; replaced by the value from site_config once it loads.
-// June 24, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
-const FALLBACK_SESSION_DATE = new Date('2026-06-24T16:00:00Z');
-
-function useCountdown() {
-  const [target, setTarget] = useState<Date>(FALLBACK_SESSION_DATE);
-  const [t, setT] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    getNextSessionAt()
-      .then((iso) => {
-        if (!iso) return;
-        const d = new Date(iso);
-        if (!Number.isNaN(d.getTime())) setTarget(d);
-      })
-      .catch(() => {
-        // keep the fallback if the fetch fails
-      });
-  }, []);
-
-  useEffect(() => {
-    const tick = () => {
-      const diff = Math.max(0, target.getTime() - Date.now());
-      setT({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        minutes: Math.floor((diff % 3600000) / 60000),
-        seconds: Math.floor((diff % 60000) / 1000),
-      });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, [target]);
-
-  return t;
-}
-
-const pad = (n: number) => String(n).padStart(2, '0');
 
 const MinimalNav = () => (
   <nav
@@ -111,7 +70,7 @@ function loadScript(src: string): Promise<void> {
   });
 }
 
-const CONFIRMATION_HTML = `<style>@media (max-width: 1e+09px) {  #wk_element_5593219dd237183413d27d0e5acd74ac { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_5593219dd237183413d27d0e5acd74ac_calendar { background: rgb(51, 94, 234); }  #wk_element_45f8e93c3ca45229d03dbfdfd50fb418 { width: 540px; max-width: 100%; min-height: 16px; padding: 0px 16px 16px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_d1217a9bd4050e903e6ed0eb69757d18 { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.35; letter-spacing: 0px; }  #wk_element_d1217a9bd4050e903e6ed0eb69757d18 :not(:last-child) { margin-bottom: 0px; }  #wk_element_3faa4a3b321e808bea1bb2a1728b1a2b { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto 16px; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_ef686ab4d9d28244630f2a52414694f4 { max-width: 540px; min-height: 16px; padding: 16px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(255, 255, 255); }  #wk_element_c6dd61bac74fea356fdc37879dfce67d { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.5; letter-spacing: 0px; display: flex; }  #wk_element_c6dd61bac74fea356fdc37879dfce67d :not(:last-child) { margin-bottom: 0px; }  #wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_3faa4a3b321e808bea1bb2a1728b1a2b_calendar { background: rgb(51, 94, 234); }}@media (max-width: 992px) {}@media (max-width: 768px) {}</style><div class="wk_root" style="width: 100%; z-index: 100000;"><div class="wk_ascend_tree wk_editor_hide_tooltips col-12 col-md my-auto shadow wk_column" id="wk_element_ef686ab4d9d28244630f2a52414694f4" data-custom-css-classes="shadow" data-wk-background-type="solid" data-wk-border-style="solid" data-wk-border-style-desktop="solid" data-wk-background-type-desktop="solid"> <div class="wk_editor_hide_tooltips wk_thank_you_timer" calendar="show" data-classes="wk_thank_you_timer" data-wk-date-format-type="en-US" data-wk-days-label="days" data-wk-entering-label="Entering event watch room..." data-wk-expired-label="Sorry, this event session has ended!" data-wk-hours-label="hours" data-wk-minutes-label="minutes" data-wk-seconds-label="seconds" data-wk-starts-in-label="Webinar starts in:" data-wk-webinar-id="6a7b29be3db0318c2bcf6e6a" id="wk_element_3faa4a3b321e808bea1bb2a1728b1a2b" timer_size="small" data-wk-border-style-desktop="default" data-wk-background-type-desktop="default"><div class="wk_row_internal mx-0"><div class="col px-0 wk_timer"><div class="rounded-2 shadow mx-auto wk_calendar" style="max-width: 170px; background: #ffffff;"><div id="wk_element_3faa4a3b321e808bea1bb2a1728b1a2b_calendar" class="wk_calendar_color" style="border-top-left-radius: 0.375rem; border-top-right-radius: 0.375rem;"><h5 class="fw-bold text-white text-uppercase text-center py-2 wk_calendar_month">August</h5></div><h1 class="fw-bold text-center pb-2 mb-2 wk_calendar_day">18</h1></div><h5 class="text-center mt-5 mb-4 wk_calendar_header"><i class="fa-regular fa-clock"></i><span class="wk_calendar_time"> 11:25 AM GMT-3</span></h5><h6 class="text-center fw-bold wk_timer_header">Webinar starts in:</h6><div class="wk_row_internal mx-auto wk_timer_row"><div class="col-3 px-0"><h5 class="text-center mb-0 wk_timer_days">0</h5><h6 class="text-center mb-0 wk_timer_days_label">days</h6></div><div class="col-3 px-0"><h5 class="text-center mb-0 wk_timer_hours">0</h5><h6 class="text-center mb-0 wk_timer_hours_label">hours</h6></div><div class="col-3 px-0"><h5 class="text-center mb-0 wk_timer_minutes">0</h5><h6 class="text-center mb-0 wk_timer_minutes_label">minutes</h6></div><div class="col-3 px-0"><h5 class="text-center mb-0 wk_timer_seconds">0</h5><h6 class="text-center mb-0 wk_timer_seconds_label">seconds</h6></div></div></div></div></div> <div class="wk_thank_you_session_link" id="wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba" data-classes="wk_thank_you_session_link" data-wk-webinar-id="6a7b29be3db0318c2bcf6e6a" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div class="wk_ascend_tree wk_row_internal mx-0"> <div class="text-center col mx-auto px-0 wk_ascend_tree"> <div class="wk_ascend_tree wk_editor_hide_tooltips wk_text" id="wk_element_c6dd61bac74fea356fdc37879dfce67d" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <h6><b>Your webinar session link:</b></h6> </div> </div> <div class="input-group input-group-lg mt-1"><input class="form-control wk_webinar_session_link" style="background-color: #f1f4f8; border-color: #f1f4f8;" readonly=""><button class="btn wk_copy_link_button" data-bs-container="body" data-bs-content="Link copied to clipboard!" data-bs-original-title="" data-bs-placement="top" data-bs-toggle="popover" style="color: inherit; background-color: rgba(80,102,144,.1)" type="button"><i class="fa-copy far" style="width: 19.125px"></i></button></div> </div> </div> </div> </div></div>`;
+const CONFIRMATION_HTML = `<style>@media (max-width: 1e+09px) {  #wk_element_5593219dd237183413d27d0e5acd74ac { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_5593219dd237183413d27d0e5acd74ac_calendar { background: rgb(51, 94, 234); }  #wk_element_45f8e93c3ca45229d03dbfdfd50fb418 { width: 540px; max-width: 100%; min-height: 16px; padding: 0px 16px 16px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_d1217a9bd4050e903e6ed0eb69757d18 { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.35; letter-spacing: 0px; }  #wk_element_d1217a9bd4050e903e6ed0eb69757d18 :not(:last-child) { margin-bottom: 0px; }  #wk_element_3faa4a3b321e808bea1bb2a1728b1a2b { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto 16px; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_ef686ab4d9d28244630f2a52414694f4 { max-width: 540px; min-height: 16px; padding: 16px; margin: 0px auto; border-style: solid; border-color: rgb(255, 255, 255); border-width: 0px; border-radius: 16px; background: rgb(255, 255, 255); }  #wk_element_c6dd61bac74fea356fdc37879dfce67d { width: 100%; max-width: 100%; min-height: 0px; padding: 0px; margin: 0px; border-style: none; background: rgba(0, 0, 0, 0); font-family: HKGroteskPro, serif; font-size: 16px; line-height: 1.5; letter-spacing: 0px; display: flex; }  #wk_element_c6dd61bac74fea356fdc37879dfce67d :not(:last-child) { margin-bottom: 0px; }  #wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba { width: 540px; max-width: 100%; min-height: 16px; padding: 0px; margin: 0px auto; border-style: none; background: rgba(0, 0, 0, 0); }  #wk_element_3faa4a3b321e808bea1bb2a1728b1a2b_calendar { background: rgb(51, 94, 234); }}@media (max-width: 992px) {}@media (max-width: 768px) {}</style><div class="wk_root" style="width: 100%; z-index: 100000;"><div class="wk_ascend_tree wk_editor_hide_tooltips col-12 col-md my-auto shadow wk_column" id="wk_element_ef686ab4d9d28244630f2a52414694f4" data-custom-css-classes="shadow" data-wk-background-type="solid" data-wk-border-style="solid" data-wk-border-style-desktop="solid" data-wk-background-type-desktop="solid"> <div class="wk_editor_hide_tooltips wk_thank_you_timer" calendar="hide" data-classes="wk_thank_you_timer" data-wk-date-format-type="en-US" data-wk-days-label="days" data-wk-entering-label="Entering event watch room..." data-wk-expired-label="Sorry, this event session has ended!" data-wk-hours-label="hours" data-wk-minutes-label="minutes" data-wk-seconds-label="seconds" data-wk-starts-in-label="Webinar starts in:" data-wk-webinar-id="6a7b29be3db0318c2bcf6e6a" id="wk_element_3faa4a3b321e808bea1bb2a1728b1a2b" timer_size="large" data-wk-border-style-desktop="default" data-wk-background-type-desktop="default"><div class="wk_row_internal mx-0"><div class="col px-0 wk_timer"><div class="rounded-2 shadow mx-auto wk_calendar" style="max-width: 170px; background: rgb(255, 255, 255); display: none;"><div id="wk_element_3faa4a3b321e808bea1bb2a1728b1a2b_calendar" class="wk_calendar_color" style="border-top-left-radius: 0.375rem; border-top-right-radius: 0.375rem;"><h5 class="fw-bold text-white text-uppercase text-center py-2 wk_calendar_month">August</h5></div><h1 class="fw-bold text-center pb-2 mb-2 wk_calendar_day">18</h1></div><h4 class="text-center mt-5 mb-4 wk_calendar_header" style="display: none;"><i class="fa-regular fa-clock"></i><span class="wk_calendar_time"> 12:09 PM GMT-3</span></h4><h4 class="text-center fw-bold wk_timer_header">Webinar starts in:</h4><div class="wk_row_internal mx-auto wk_timer_row"><div class="col-3"><h2 class="text-center mt-3 mb-0 wk_timer_days">0</h2><h3 class="text-center wk_timer_days_label">days</h3></div><div class="col-3"><h2 class="text-center mt-3 mb-0 wk_timer_hours">0</h2><h3 class="text-center wk_timer_hours_label">hours</h3></div><div class="col-3"><h2 class="text-center mt-3 mb-0 wk_timer_minutes">0</h2><h3 class="text-center wk_timer_minutes_label">minutes</h3></div><div class="col-3"><h2 class="text-center mt-3 mb-0 wk_timer_seconds">0</h2><h3 class="text-center wk_timer_seconds_label">seconds</h3></div></div></div></div></div> <div class="wk_thank_you_session_link" id="wk_element_e8f171a2c4dca2835f2cf81ff6b3ccba" data-classes="wk_thank_you_session_link" data-wk-webinar-id="6a7b29be3db0318c2bcf6e6a" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div class="wk_ascend_tree wk_row_internal mx-0"> <div class="text-center col mx-auto px-0 wk_ascend_tree"> <div class="wk_ascend_tree wk_editor_hide_tooltips wk_text" id="wk_element_c6dd61bac74fea356fdc37879dfce67d" data-wk-background-type-desktop="default" data-wk-border-style-desktop="default"> <div contenteditable="false" style="width: 100%; margin-top: auto; margin-bottom: auto;"> <h6><b>Your webinar session link:</b></h6> </div> </div> <div class="input-group input-group-lg mt-1"><input class="form-control wk_webinar_session_link" style="background-color: #f1f4f8; border-color: #f1f4f8;" readonly=""><button class="btn wk_copy_link_button" data-bs-container="body" data-bs-content="Link copied to clipboard!" data-bs-original-title="" data-bs-placement="top" data-bs-toggle="popover" style="color: inherit; background-color: rgba(80,102,144,.1)" type="button"><i class="fa-copy far" style="width: 19.125px"></i></button></div> </div> </div> </div> </div></div>`;
 
 const WebinarKitConfirmation = () => {
   useEffect(() => {
@@ -126,7 +85,6 @@ const WebinarKitConfirmation = () => {
 };
 
 const LiveSessionConfirmed = () => {
-  const t = useCountdown();
 
   return (
     <div className="min-h-screen" style={{ background: '#FAFAF9' }}>
@@ -184,53 +142,16 @@ const LiveSessionConfirmed = () => {
             </span>
           </h1>
 
-          <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-5 max-w-[480px] mx-auto">
+          <p className="font-body text-[17px] text-[#55556B] leading-[1.8] max-w-[480px] mx-auto">
             Check your inbox — a confirmation with your session link is on its way. Complete the
-            steps below before June 24 to get the most out of this session.
-          </p>
-
-          <p className="font-mono text-[13px] text-[#8A8AA0] tracking-wide">
-            June 24 · 12PM ET · The Strategic Seller's AI Stack
+            steps below before August 26 to get the most out of this session.
           </p>
         </div>
       </section>
 
-      {/* ── WEBINARKIT WIDGET ── */}
+      {/* ── WEBINARKIT WIDGET (carries its own countdown) ── */}
       <div className="max-w-2xl mx-auto px-6 pb-16">
         <WebinarKitConfirmation />
-      </div>
-
-      {/* ── COUNTDOWN ── */}
-      <div
-        className="py-14 px-6 text-center"
-        style={{ background: '#F2F1FB', borderTop: '1px solid #E4E3F0', borderBottom: '1px solid #E4E3F0' }}
-      >
-        <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-[#8A8AA0] mb-8">
-          Your Session Starts In
-        </p>
-        <div className="flex items-end justify-center gap-6 sm:gap-10">
-          {[
-            { val: t.days, label: 'Days' },
-            { val: t.hours, label: 'Hours' },
-            { val: t.minutes, label: 'Minutes' },
-            { val: t.seconds, label: 'Seconds' },
-          ].map(({ val, label }, i) => (
-            <div key={i} className="flex flex-col items-center">
-              <span
-                className="font-mono text-[56px] sm:text-[70px] leading-none font-bold"
-                style={{ color: '#4A4AD1' }}
-              >
-                {pad(val)}
-              </span>
-              <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-[#8A8AA0] mt-2">
-                {label}
-              </span>
-            </div>
-          ))}
-        </div>
-        <p className="font-mono text-[13px] text-[#8A8AA0] mt-8 tracking-wide">
-          June 24, 2026 · 12:00 PM ET
-        </p>
       </div>
 
       {/* ── NEXT STEPS ── */}
@@ -308,7 +229,7 @@ const LiveSessionConfirmed = () => {
                   }}
                 >
                   <span className="font-mono text-sm text-[#4A4AD1]">
-                    "You're registered: The Strategic Seller's AI Stack"
+                    "You're registered: Stop Sounding Like Everybody Else"
                   </span>
                 </div>
               </div>
@@ -326,58 +247,11 @@ const LiveSessionConfirmed = () => {
                 <div className="h-px flex-1" style={{ background: '#E4E3F0' }} />
               </div>
               <h3 className="font-display text-[28px] text-[#14141F] uppercase mb-3">
-                Watch This First. Direct Message from Jamal.
-              </h3>
-              <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-7">
-                Jamal walks you through how to prep, what to expect, and how to get the most out of
-                this session. There's a bonus inside — don't skip it.
-              </p>
-              {/* 16:9 video placeholder */}
-              <div
-                className="glass-card rounded-2xl overflow-hidden relative"
-                style={{ aspectRatio: '16/9' }}
-              >
-                <div
-                  className="absolute inset-0"
-                  style={{ background: 'radial-gradient(ellipse at center, rgba(40,24,73,0.4) 0%, transparent 70%)' }}
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
-                  <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
-                    style={{
-                      background: 'rgba(89,89,212,0.28)',
-                      border: '2px solid rgba(89,89,212,0.5)',
-                      boxShadow: '0 0 28px rgba(89,89,212,0.3)',
-                    }}
-                  >
-                    <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
-                      <path d="M2 2l14 9-14 9V2z" fill="#6262E9" />
-                    </svg>
-                  </div>
-                  <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-[#8A8AA0]">
-                    Video message from Jamal — loading soon
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div>
-              <div className="flex items-center gap-4 mb-7">
-                <span
-                  className="font-mono text-[13px] uppercase tracking-[0.22em] font-semibold"
-                  style={{ color: '#6262E9' }}
-                >
-                  Step 3
-                </span>
-                <div className="h-px flex-1" style={{ background: '#E4E3F0' }} />
-              </div>
-              <h3 className="font-display text-[28px] text-[#14141F] uppercase mb-3">
                 Add It to Your Calendar and Be There Live.
               </h3>
               <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-7">
-                Block June 24 at 12PM ET now, before you forget. We're going deep on the five AI
-                workflows that separate elite sellers from the rest. This isn't a recording you'll
+                Block August 26 at 12PM ET now, before you forget. We're going deep on the three-part
+                framework elite sellers use to build a Point of View. This isn't a recording you'll
                 catch up on later — the live session is where the value is.
               </p>
               {/* Calendar info block */}
@@ -396,7 +270,7 @@ const LiveSessionConfirmed = () => {
                         Date
                       </p>
                       <p className="font-display text-lg text-[#14141F] uppercase">
-                        Wednesday, June 24, 2026
+                        Wednesday, August 26, 2026
                       </p>
                     </div>
                   </div>
@@ -424,7 +298,7 @@ const LiveSessionConfirmed = () => {
                         Platform
                       </p>
                       <p className="font-display text-lg text-[#14141F] uppercase">
-                        Live on Whyzer
+                        Live on this link
                       </p>
                       <p className="font-mono text-[12px] text-[#8A8AA0] mt-0.5">
                         Link in your confirmation email
@@ -451,27 +325,27 @@ const LiveSessionConfirmed = () => {
           <div
             className="rounded-2xl overflow-hidden"
             style={{
-              border: '1px solid rgba(89,89,212,0.22)',
-              boxShadow: '0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(67,67,168,0.12)',
+              border: '1px solid rgba(98,98,233,0.28)',
+              boxShadow: '0 24px 60px -28px rgba(20,20,31,0.28)',
             }}
           >
             {/* Top strip */}
             <div
               className="p-8 relative"
-              style={{ background: 'linear-gradient(160deg, rgba(89,89,212,0.1) 0%, rgba(89,89,212,0.05) 100%)' }}
+              style={{ background: 'linear-gradient(160deg, #EEEEFC 0%, #F7F7FE 100%)' }}
             >
               <div
                 className="absolute inset-x-0 top-0 h-px"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(196,168,255,0.7), transparent)' }}
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(98,98,233,0.55), transparent)' }}
               />
               <div className="flex items-start justify-between mb-8">
                 <span
                   className="font-mono text-[12px] uppercase tracking-[0.2em] px-3 py-1 rounded-full"
-                  style={{ border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }}
+                  style={{ border: '1px solid rgba(98,98,233,0.28)', color: '#4A4AD1' }}
                 >
                   Admit One
                 </span>
-                <div className="opacity-15">
+                <div className="opacity-40">
                   <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
                     <rect x="1" y="1" width="10" height="10" stroke="#6262E9" strokeWidth="1.5"/>
                     <rect x="17" y="1" width="10" height="10" stroke="#6262E9" strokeWidth="1.5"/>
@@ -482,11 +356,14 @@ const LiveSessionConfirmed = () => {
                   </svg>
                 </div>
               </div>
-              <h2 className="font-display text-[36px] text-[#14141F] uppercase leading-[1.1] mb-3">
-                The Strategic
+              <h2 className="font-display text-[30px] text-[#14141F] uppercase leading-[1.15] mb-3">
+                Stop Sounding
                 <br />
-                <span className="text-[#4A4AD1]">Seller's AI Stack</span>
+                <span className="text-[#4A4AD1]">Like Everybody Else</span>
               </h2>
+              <p className="font-body text-[13px] text-[#55556B] leading-[1.6] mb-3">
+                How top enterprise sellers build a Point of View that opens doors a demo can't
+              </p>
               <p className="font-body text-sm text-[#55556B]">Hosted by Jamal Reimer</p>
             </div>
 
@@ -497,26 +374,26 @@ const LiveSessionConfirmed = () => {
             >
               <div
                 className="absolute -left-3 w-6 h-6 rounded-full"
-                style={{ background: '#FAFAF9', border: '1px solid rgba(89,89,212,0.22)' }}
+                style={{ background: '#F2F1FB', border: '1px solid rgba(98,98,233,0.28)' }}
               />
               <div
                 className="flex-1 border-t-2 border-dashed mx-5"
-                style={{ borderColor: 'rgba(89,89,212,0.22)' }}
+                style={{ borderColor: 'rgba(98,98,233,0.28)' }}
               />
               <div
                 className="absolute -right-3 w-6 h-6 rounded-full"
-                style={{ background: '#FAFAF9', border: '1px solid rgba(89,89,212,0.22)' }}
+                style={{ background: '#F2F1FB', border: '1px solid rgba(98,98,233,0.28)' }}
               />
             </div>
 
             {/* Bottom strip */}
-            <div className="p-8" style={{ background: '#111111' }}>
+            <div className="p-8" style={{ background: '#FFFFFF' }}>
               <div className="grid grid-cols-2 gap-6 mb-6">
                 <div>
                   <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1.5">
                     Date
                   </p>
-                  <p className="font-display text-[25px] text-[#14141F] uppercase">June 24, 2026</p>
+                  <p className="font-display text-[25px] text-[#14141F] uppercase">August 26, 2026</p>
                 </div>
                 <div>
                   <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1.5">
