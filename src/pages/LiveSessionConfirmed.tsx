@@ -92,23 +92,23 @@ const LiveSessionConfirmed = () => {
       <MinimalNav />
 
       {/* ── HERO ── */}
-      <section className="relative pt-32 pb-20 text-center overflow-hidden">
+      <section className="wkc-hero relative pt-24 pb-10 text-center overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 75% 60% at 50% 30%, rgba(98,98,233,0.12) 0%, transparent 65%)' }}
         />
         <div className="relative z-10 max-w-[600px] mx-auto px-6">
           {/* Check icon */}
-          <div className="flex justify-center mb-7">
+          <div className="wkc-check flex justify-center mb-5">
             <div
-              className="w-16 h-16 rounded-full flex items-center justify-center"
+              className="w-14 h-14 rounded-full flex items-center justify-center"
               style={{
                 background: 'rgba(98,98,233,0.10)',
                 border: '2px solid rgba(89,89,212,0.38)',
                 boxShadow: '0 0 32px rgba(89,89,212,0.2)',
               }}
             >
-              <svg width="26" height="20" viewBox="0 0 26 20" fill="none">
+              <svg width="24" height="18" viewBox="0 0 26 20" fill="none">
                 <path
                   d="M2 10l7 7L24 2"
                   stroke="#6262E9"
@@ -120,37 +120,21 @@ const LiveSessionConfirmed = () => {
             </div>
           </div>
 
-          {/* Pill */}
-          <div
-            className="inline-flex items-center gap-2 mb-7 px-4 py-1.5 rounded-full"
-            style={{
-              background: 'rgba(98,98,233,0.10)',
-              border: '1px solid rgba(89,89,212,0.28)',
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-            <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-[#4A4AD1] font-semibold">
-              You're In.
-            </span>
-          </div>
-
-          <h1 className="font-display text-[52px] sm:text-[70px] leading-[1.0] tracking-[-0.02em] text-[#14141F] uppercase mb-7">
+          <h1 className="wkc-h1 font-display text-[44px] sm:text-[60px] leading-[1.0] tracking-[-0.02em] text-[#14141F] uppercase mb-5">
             You're officially
             <br />
-            <span className="bg-gradient-to-br from-[#4A4AD1] to-[#4A4AD1] bg-clip-text text-transparent">
-              registered.
-            </span>
+            <span className="text-[#4A4AD1]">registered.</span>
           </h1>
 
-          <p className="font-body text-[17px] text-[#55556B] leading-[1.8] max-w-[480px] mx-auto">
-            Check your inbox — a confirmation with your session link is on its way. Complete the
+          <p className="wkc-sub font-body text-[16px] text-[#55556B] leading-[1.7] max-w-[480px] mx-auto">
+            Check your inbox. A confirmation with your session link is on its way. Complete the
             steps below before August 26 to get the most out of this session.
           </p>
         </div>
       </section>
 
       {/* ── WEBINARKIT WIDGET (carries its own countdown) ── */}
-      <div className="max-w-2xl mx-auto px-6 pb-16">
+      <div className="wkc-widget max-w-2xl mx-auto px-6 pb-12">
         <WebinarKitConfirmation />
       </div>
 
@@ -252,7 +236,7 @@ const LiveSessionConfirmed = () => {
               <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-7">
                 Block August 26 at 12PM ET now, before you forget. We're going deep on the three-part
                 framework elite sellers use to build a Point of View. This isn't a recording you'll
-                catch up on later — the live session is where the value is.
+                catch up on later. The live session is where the value is.
               </p>
               {/* Calendar info block */}
               <div
@@ -456,7 +440,7 @@ const LiveSessionConfirmed = () => {
               </h3>
             </div>
             <p className="font-body text-[17px] text-[#55556B] leading-[1.8]">
-              Seats lock when the room fills — be there on time. If you miss the live session, the
+              Seats lock when the room fills, so be there on time. If you miss the live session, the
               replay is available exclusively to{' '}
               <span className="text-[#14141F] font-medium">Whyzer Elite members</span>.
             </p>
@@ -468,6 +452,33 @@ const LiveSessionConfirmed = () => {
       <UrgencyStrip />
 
       <MinimalFooter />
+
+      <style>{`
+        /* Keep the confirmation above the fold: the headline, the sub, and the
+           WebinarKit timer should all land on the first screen. Short landscape
+           viewports (laptops) are the tight case, so they scale down hardest. */
+        @media (orientation: landscape) and (max-height: 900px) {
+          .wkc-hero { padding-top: 76px !important; padding-bottom: 20px !important; }
+          .wkc-check { margin-bottom: 12px !important; }
+          .wkc-check > div { width: 44px !important; height: 44px !important; }
+          .wkc-h1 { font-size: 40px !important; margin-bottom: 12px !important; }
+          .wkc-sub { font-size: 15px !important; line-height: 1.6 !important; }
+          .wkc-widget { padding-bottom: 24px !important; }
+        }
+        @media (orientation: landscape) and (max-height: 760px) {
+          .wkc-hero { padding-top: 68px !important; padding-bottom: 14px !important; }
+          .wkc-check { margin-bottom: 10px !important; }
+          .wkc-h1 { font-size: 34px !important; margin-bottom: 10px !important; }
+          .wkc-sub { font-size: 14px !important; }
+        }
+        /* Portrait phones: trim the generous top padding so the timer is visible
+           without scrolling on a short screen. */
+        @media (orientation: portrait) and (max-width: 640px) {
+          .wkc-hero { padding-top: 88px !important; padding-bottom: 16px !important; }
+          .wkc-h1 { font-size: 38px !important; }
+          .wkc-widget { padding-bottom: 28px !important; }
+        }
+      `}</style>
     </div>
   );
 };
