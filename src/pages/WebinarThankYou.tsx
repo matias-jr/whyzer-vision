@@ -52,9 +52,7 @@ const CARD_PRIMARY = WHITE;
 const GLASS_LIGHT = 'rgba(255,255,255,0.58)';
 const GLASS_LIGHT_BORDER = 'rgba(255,255,255,0.75)';
 const GLASS_LIGHT_SHADOW = '0 8px 32px -12px rgba(11,16,32,0.16)';
-const GLASS_DARK = 'rgba(255,255,255,0.06)';
 const GLASS_DARK_BORDER = 'rgba(255,255,255,0.14)';
-const GLASS_DARK_SHADOW = '0 8px 32px -12px rgba(0,0,0,0.55)';
 const GLASS_BLUR = 'blur(12px) saturate(140%)';
 const HEADING: React.CSSProperties = { fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.035em' };
 
@@ -358,14 +356,11 @@ const WebinarThankYou = () => {
               ))}
             </ul>
 
-            {/* Required disclosures: card capture, auto-renewal, how to cancel,
-                and the no-refund policy, per TermsAndConditions.tsx §Free Trials. */}
+            {/* Required disclosures: card capture, how to cancel, and the
+                no-refund policy, per TermsAndConditions.tsx §Free Trials. */}
             <div style={{ margin: '0 0 20px', padding: '14px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.04)', border: `1px solid ${GLASS_DARK_BORDER}`, textAlign: 'left' }}>
-              <p style={{ ...HEADING, fontSize: 12, letterSpacing: '0.06em', textTransform: 'uppercase', margin: '0 0 8px', color: D_EYEBROW }}>
-                Trial terms
-              </p>
               <p style={{ fontSize: 12.5, lineHeight: 1.65, margin: 0, color: D_MUTED }}>
-                Payment method required. Your trial runs 14 days from signup, and unless you cancel before it ends your account converts to a paid monthly subscription automatically. Cancel free anytime from your Client Portal. All purchases are final &mdash; see the{' '}
+                Payment method required. Cancel free anytime from your Client Portal. All purchases are final &mdash; see the{' '}
                 <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: D_EYEBROW, textDecoration: 'underline' }}>Terms &amp; Conditions</a>.
               </p>
             </div>
