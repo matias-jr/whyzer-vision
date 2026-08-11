@@ -92,14 +92,14 @@ const LiveSessionConfirmed = () => {
       <MinimalNav />
 
       {/* ── HERO ── */}
-      <section className="wkc-hero relative pt-24 pb-10 text-center overflow-hidden">
+      <section className="wkc-hero relative pt-32 pb-14 text-center overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 75% 60% at 50% 30%, rgba(98,98,233,0.12) 0%, transparent 65%)' }}
         />
         <div className="relative z-10 max-w-[600px] mx-auto px-6">
           {/* Check icon */}
-          <div className="wkc-check flex justify-center mb-5">
+          <div className="wkc-check flex justify-center mb-8">
             <div
               className="w-14 h-14 rounded-full flex items-center justify-center"
               style={{
@@ -120,13 +120,13 @@ const LiveSessionConfirmed = () => {
             </div>
           </div>
 
-          <h1 className="wkc-h1 font-display text-[44px] sm:text-[60px] leading-[1.0] tracking-[-0.02em] text-[#14141F] uppercase mb-5">
+          <h1 className="wkc-h1 font-display text-[52px] sm:text-[68px] leading-[1.02] tracking-[-0.02em] text-[#14141F] uppercase mb-7">
             You're officially
             <br />
             <span className="text-[#4A4AD1]">registered.</span>
           </h1>
 
-          <p className="wkc-sub font-body text-[16px] text-[#55556B] leading-[1.7] max-w-[480px] mx-auto">
+          <p className="wkc-sub font-body text-[17px] text-[#55556B] leading-[1.75] max-w-[480px] mx-auto">
             Check your inbox. A confirmation with your session link is on its way. Complete the
             steps below before August 26 to get the most out of this session.
           </p>
@@ -134,7 +134,7 @@ const LiveSessionConfirmed = () => {
       </section>
 
       {/* ── WEBINARKIT WIDGET (carries its own countdown) ── */}
-      <div className="wkc-widget max-w-2xl mx-auto px-6 pb-12">
+      <div className="wkc-widget max-w-2xl mx-auto px-6 pt-4 pb-16">
         <WebinarKitConfirmation />
       </div>
 
@@ -463,36 +463,30 @@ const LiveSessionConfirmed = () => {
         .wkc-widget .wk_timer_row h3 { font-size: 13px !important; letter-spacing: 0.04em !important; }
         .wkc-widget .wk_thank_you_session_link h6 { font-size: 14px !important; }
 
-        /* Keep the confirmation above the fold: the headline, the sub, and the
-           WebinarKit timer should all land on the first screen. Short landscape
-           viewports (laptops) are the tight case, so they scale down hardest. */
+        /* The hero h1 is the largest type on the page and stays that way: the
+           "Do these now." h2 below runs 46/58px, so the h1 never drops under
+           it. On short viewports the widget scales instead and the hero is
+           allowed to run past the fold rather than shrinking the headline. */
         @media (orientation: landscape) and (max-height: 900px) {
-          .wkc-hero { padding-top: 76px !important; padding-bottom: 18px !important; }
-          .wkc-check { margin-bottom: 12px !important; }
-          .wkc-check > div { width: 44px !important; height: 44px !important; }
-          .wkc-h1 { font-size: 46px !important; margin-bottom: 12px !important; }
-          .wkc-sub { font-size: 15px !important; line-height: 1.6 !important; }
-          .wkc-widget { padding-bottom: 24px !important; }
+          .wkc-hero { padding-top: 84px !important; padding-bottom: 28px !important; }
+          .wkc-check { margin-bottom: 18px !important; }
+          .wkc-widget { padding-bottom: 32px !important; }
           .wkc-widget .wk_timer_header { font-size: 16px !important; }
           .wkc-widget .wk_timer_row h2 { font-size: 30px !important; margin-top: 8px !important; }
           .wkc-widget .wk_timer_row h3 { font-size: 12px !important; }
         }
         @media (orientation: landscape) and (max-height: 760px) {
-          .wkc-hero { padding-top: 68px !important; padding-bottom: 12px !important; }
-          .wkc-check { margin-bottom: 8px !important; }
-          .wkc-check > div { width: 38px !important; height: 38px !important; }
-          .wkc-h1 { font-size: 40px !important; margin-bottom: 10px !important; }
-          .wkc-sub { font-size: 14px !important; }
+          .wkc-hero { padding-top: 80px !important; padding-bottom: 24px !important; }
+          .wkc-check { margin-bottom: 16px !important; }
           .wkc-widget .wk_timer_header { font-size: 15px !important; }
           .wkc-widget .wk_timer_row h2 { font-size: 26px !important; margin-top: 6px !important; }
           .wkc-widget .wk_timer_row h3 { font-size: 11px !important; }
         }
-        /* Portrait phones: trim the generous top padding so the timer is visible
-           without scrolling on a short screen. */
+        /* Portrait phones: the h1 stays the dominant heading; only the widget
+           and the surrounding padding come down. */
         @media (orientation: portrait) and (max-width: 640px) {
-          .wkc-hero { padding-top: 88px !important; padding-bottom: 16px !important; }
-          .wkc-h1 { font-size: 40px !important; }
-          .wkc-widget { padding-bottom: 28px !important; }
+          .wkc-hero { padding-top: 96px !important; padding-bottom: 24px !important; }
+          .wkc-widget { padding-bottom: 32px !important; }
           .wkc-widget .wk_timer_row h2 { font-size: 28px !important; }
           .wkc-widget .wk_timer_row h3 { font-size: 11px !important; }
         }
