@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
 // ── Calendar event. August 26, 2026 12:00 PM ET; that date is inside EDT
@@ -13,20 +13,20 @@ const EVENT = {
   endUtc: '20260826T170000Z',
 };
 
-const googleCalendarUrl = () => {
+const googleCalendarUrl = (location: string) => {
   const p = new URLSearchParams({
     action: 'TEMPLATE',
     text: EVENT.title,
     dates: `${EVENT.startUtc}/${EVENT.endUtc}`,
-    details: EVENT.description,
-    location: EVENT.location,
+    details: `${EVENT.description}\n\nJoin here: ${location}`,
+    location,
     trp: 'false',
   });
   return `https://calendar.google.com/calendar/render?${p.toString()}`;
 };
 
 // Outlook Web wants ISO timestamps rather than the compact iCal form.
-const outlookCalendarUrl = () => {
+const outlookCalendarUrl = (location: string) => {
   const iso = (s: string) =>
     `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 11)}:${s.slice(11, 13)}:${s.slice(13, 15)}Z`;
   const p = new URLSearchParams({
@@ -35,15 +35,15 @@ const outlookCalendarUrl = () => {
     subject: EVENT.title,
     startdt: iso(EVENT.startUtc),
     enddt: iso(EVENT.endUtc),
-    body: EVENT.description,
-    location: EVENT.location,
+    body: `${EVENT.description}\n\nJoin here: ${location}`,
+    location,
   });
   return `https://outlook.live.com/calendar/0/deeplink/compose?${p.toString()}`;
 };
 
 // Apple Calendar (and any desktop client) opens a downloaded .ics file.
 // Built as a data URL so no server round-trip is needed.
-const icsDataUrl = () => {
+const icsDataUrl = (location: string) => {
   const esc = (s: string) => s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
   const lines = [
     'BEGIN:VCALENDAR',
@@ -57,9 +57,9 @@ const icsDataUrl = () => {
     `DTSTART:${EVENT.startUtc}`,
     `DTEND:${EVENT.endUtc}`,
     `SUMMARY:${esc(EVENT.title)}`,
-    `DESCRIPTION:${esc(EVENT.description)}`,
-    `LOCATION:${esc(EVENT.location)}`,
-    `URL:${EVENT.location}`,
+    `DESCRIPTION:${esc(`${EVENT.description}\n\nJoin here: ${location}`)}`,
+    `LOCATION:${esc(location)}`,
+    `URL:${location}`,
     `ORGANIZER;CN=Jamal Reimer:mailto:${EVENT.organizer}`,
     'BEGIN:VALARM',
     'TRIGGER:-PT15M',
@@ -71,6 +71,53 @@ const icsDataUrl = () => {
   ];
   return `data:text/calendar;charset=utf-8,${encodeURIComponent(lines.join('\r\n'))}`;
 };
+
+// ── Per-attendee session link.
+//
+// WebinarKit redirects registrants here with ?t=<time>&r=<registrant id>, and
+// its script sets the "your webinar session link" input to window.location.href
+// (see wk_page_url in ewk_v7.js). So the current URL, with those params intact,
+// IS the attendee's unique link.
+//
+// Gate on `r` being present: without it the URL is just the generic page and
+// would send everyone to an unparametrised confirmation screen, so fall back to
+// the public watch URL instead. Read the input when it is populated, since that
+// is the value WebinarKit itself vouches for, and use the live URL otherwise.
+function useSessionLink() {
+  const [link, setLink] = useState(EVENT.location);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.get('r')) return; // no registrant: keep the generic watch URL
+
+    const pageUrl = window.location.href;
+    setLink(pageUrl);
+
+    let stop = false;
+    const read = () => {
+      const el = document.querySelector<HTMLInputElement>('input.wk_webinar_session_link');
+      const v = el?.value?.trim();
+      if (v && /^https?:\/\//i.test(v)) {
+        setLink(v);
+        return true;
+      }
+      return false;
+    };
+
+    if (read()) return;
+    const id = setInterval(() => {
+      if (stop || read()) clearInterval(id);
+    }, 400);
+    const timeout = setTimeout(() => clearInterval(id), 12000);
+    return () => {
+      stop = true;
+      clearInterval(id);
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  return link;
+}
 
 const MinimalNav = () => (
   <nav
@@ -156,6 +203,7 @@ const WebinarKitConfirmation = () => {
 };
 
 const LiveSessionConfirmed = () => {
+  const sessionLink = useSessionLink();
 
   return (
     <div className="min-h-screen" style={{ background: '#FAFAF9' }}>
@@ -369,9 +417,9 @@ const LiveSessionConfirmed = () => {
                   </p>
                   <div className="flex flex-wrap gap-2.5">
                     {[
-                      { label: 'Google', href: googleCalendarUrl(), download: false },
-                      { label: 'Outlook', href: outlookCalendarUrl(), download: false },
-                      { label: 'Apple', href: icsDataUrl(), download: true },
+                      { label: 'Google', href: googleCalendarUrl(sessionLink), download: false },
+                      { label: 'Outlook', href: outlookCalendarUrl(sessionLink), download: false },
+                      { label: 'Apple', href: icsDataUrl(sessionLink), download: true },
                     ].map(({ label, href, download }) => (
                       <a
                         key={label}
