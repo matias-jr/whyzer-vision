@@ -356,20 +356,14 @@ const WebinarThankYou = () => {
               ))}
             </ul>
 
-            {/* Required disclosures: card capture, how to cancel, and the
-                no-refund policy, per TermsAndConditions.tsx §Free Trials. */}
-            <div style={{ margin: '0 0 20px', padding: '14px 16px', borderRadius: 10, background: 'rgba(255,255,255,0.04)', border: `1px solid ${GLASS_DARK_BORDER}`, textAlign: 'left' }}>
-              <p style={{ fontSize: 12.5, lineHeight: 1.65, margin: 0, color: D_MUTED }}>
-                Payment method required. Cancel free anytime from your Client Portal. All purchases are final &mdash; see the{' '}
-                <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: D_EYEBROW, textDecoration: 'underline' }}>Terms &amp; Conditions</a>.
-              </p>
-            </div>
-
             <a href={trialUrl} className="wty-cta" style={{ display: 'block', width: '100%', boxSizing: 'border-box', background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 16, padding: '16px 20px', borderRadius: 10, textDecoration: 'none', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
               Start My Free Trial &rarr;
             </a>
-            <p style={{ fontSize: 12.5, lineHeight: 1.6, margin: '12px 0 0', color: D_MUTED }}>
-              No charge today. Cancel anytime before your trial ends.
+            {/* Required disclosures: card capture, how to cancel, and the
+                no-refund policy, per TermsAndConditions.tsx §Free Trials. */}
+            <p style={{ fontSize: 12.5, lineHeight: 1.65, margin: '12px 0 0', color: D_MUTED }}>
+              Payment method required. Cancel free anytime from your Client Portal. All purchases are final &mdash; see the{' '}
+              <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: D_EYEBROW, textDecoration: 'underline' }}>Terms &amp; Conditions</a>.
             </p>
           </div>
         </div>
