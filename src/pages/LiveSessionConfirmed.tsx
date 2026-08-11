@@ -1,6 +1,77 @@
 import { useEffect } from 'react';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
+// ── Calendar event. August 26, 2026 12:00 PM ET; that date is inside EDT
+// (UTC-4), so 16:00 UTC. 60 minutes long.
+const EVENT = {
+  title: "Stop Sounding Like Everybody Else: How top enterprise sellers build a Point of View that opens doors a demo can't",
+  description:
+    'Stop pitching the same use cases as every other rep in the deal. Learn the three-part framework elite sellers use to build a Point of View sharp enough to get you back in the room with the people who can actually say yes.',
+  location: 'https://webinarkit.com/webinar/watch/6a7b29be3db0318c2bcf6e6a',
+  organizer: 'jamal@whyzer.ai',
+  startUtc: '20260826T160000Z',
+  endUtc: '20260826T170000Z',
+};
+
+const googleCalendarUrl = () => {
+  const p = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: EVENT.title,
+    dates: `${EVENT.startUtc}/${EVENT.endUtc}`,
+    details: EVENT.description,
+    location: EVENT.location,
+    trp: 'false',
+  });
+  return `https://calendar.google.com/calendar/render?${p.toString()}`;
+};
+
+// Outlook Web wants ISO timestamps rather than the compact iCal form.
+const outlookCalendarUrl = () => {
+  const iso = (s: string) =>
+    `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 11)}:${s.slice(11, 13)}:${s.slice(13, 15)}Z`;
+  const p = new URLSearchParams({
+    path: '/calendar/action/compose',
+    rru: 'addevent',
+    subject: EVENT.title,
+    startdt: iso(EVENT.startUtc),
+    enddt: iso(EVENT.endUtc),
+    body: EVENT.description,
+    location: EVENT.location,
+  });
+  return `https://outlook.live.com/calendar/0/deeplink/compose?${p.toString()}`;
+};
+
+// Apple Calendar (and any desktop client) opens a downloaded .ics file.
+// Built as a data URL so no server round-trip is needed.
+const icsDataUrl = () => {
+  const esc = (s: string) => s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Whyzer//Live Session//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    'BEGIN:VEVENT',
+    `UID:${EVENT.startUtc}-whyzer-live-session@whyzer.ai`,
+    `DTSTAMP:${EVENT.startUtc}`,
+    `DTSTART:${EVENT.startUtc}`,
+    `DTEND:${EVENT.endUtc}`,
+    `SUMMARY:${esc(EVENT.title)}`,
+    `DESCRIPTION:${esc(EVENT.description)}`,
+    `LOCATION:${esc(EVENT.location)}`,
+    `URL:${EVENT.location}`,
+    `ORGANIZER;CN=Jamal Reimer:mailto:${EVENT.organizer}`,
+    'BEGIN:VALARM',
+    'TRIGGER:-PT15M',
+    'ACTION:DISPLAY',
+    'DESCRIPTION:Reminder',
+    'END:VALARM',
+    'END:VEVENT',
+    'END:VCALENDAR',
+  ];
+  return `data:text/calendar;charset=utf-8,${encodeURIComponent(lines.join('\r\n'))}`;
+};
+
 const MinimalNav = () => (
   <nav
     className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-center px-6"
@@ -290,6 +361,36 @@ const LiveSessionConfirmed = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Add to calendar */}
+                <div className="mt-6 pt-6" style={{ borderTop: '1px solid #E4E3F0' }}>
+                  <p className="font-mono text-[12px] uppercase tracking-wider text-[#8A8AA0] mb-3">
+                    Add to calendar
+                  </p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {[
+                      { label: 'Google', href: googleCalendarUrl(), download: false },
+                      { label: 'Outlook', href: outlookCalendarUrl(), download: false },
+                      { label: 'Apple', href: icsDataUrl(), download: true },
+                    ].map(({ label, href, download }) => (
+                      <a
+                        key={label}
+                        href={href}
+                        {...(download
+                          ? { download: 'whyzer-live-session.ics' }
+                          : { target: '_blank', rel: 'noopener noreferrer' })}
+                        className="wkc-cal inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-body text-sm font-medium transition-colors duration-200"
+                        style={{
+                          background: '#FFFFFF',
+                          border: '1px solid #E4E3F0',
+                          color: '#14141F',
+                        }}
+                      >
+                        {label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -462,6 +563,9 @@ const LiveSessionConfirmed = () => {
         .wkc-widget .wk_timer_row h2 { font-size: 34px !important; line-height: 1.1 !important; margin-top: 10px !important; }
         .wkc-widget .wk_timer_row h3 { font-size: 13px !important; letter-spacing: 0.04em !important; }
         .wkc-widget .wk_thank_you_session_link h6 { font-size: 14px !important; }
+
+        .wkc-cal:hover { border-color: rgba(98,98,233,0.45) !important; background: #F7F7FE !important; color: #4A4AD1 !important; }
+        .wkc-cal:focus-visible { outline: 2px solid #6262E9; outline-offset: 2px; }
 
         /* The hero h1 is the largest type on the page and stays that way: the
            "Do these now." h2 below runs 46/58px, so the h1 never drops under
