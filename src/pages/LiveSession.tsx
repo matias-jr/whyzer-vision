@@ -273,35 +273,38 @@ const LiveSession = () => {
         </div>
       </section>
 
-      {/* ── THE PREMISE + WHAT YOU'LL LEARN ──
-          The credibility paragraph now opens this section as a pull quote
-          instead of sitting in a band of its own. */}
+      {/* ── PREMISE CALLOUT ──
+          A dark band with a curved top edge, so the page reads hero → dark
+          callout → light rather than three near-identical tints in a row. */}
+      <section className="ls-callout relative overflow-hidden" style={{ background: '#0B0B18' }}>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 25%, rgba(98,98,233,0.30) 0%, transparent 68%)' }}
+        />
+        <div className="relative max-w-[760px] mx-auto px-6 lg:px-12 pt-32 pb-28 text-center">
+          <p className="font-body text-[18px] md:text-[20px] leading-[1.7] mb-7" style={{ color: '#DADAF2' }}>
+            Most sellers open with a pitch.{' '}
+            <span style={{ color: '#9C9CE0' }}>Elite sellers open with a Point of View.</span>
+          </p>
+          <p className="font-display text-[22px] md:text-[27px] leading-[1.45]" style={{ color: '#FFFFFF' }}>
+            In this free live session, Jamal Reimer, who has personally closed $160M as an individual
+            contributor after getting fired twice for pitching exactly like everyone else, breaks
+            down the exact framework that separates reps who get delegated down from the ones who get
+            invited back.
+          </p>
+        </div>
+      </section>
+
+      {/* ── WHAT YOU'LL LEARN ── */}
       <section
         className="py-28 px-6 lg:px-12 relative overflow-hidden"
-        style={{ background: '#F2F1FB', borderTop: '1px solid #E4E3F0' }}
+        style={{ background: '#FAFAF9' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 60% 50% at 100% 40%, rgba(98,98,233,0.10) 0%, transparent 68%)' }}
         />
         <div className="max-w-[1000px] mx-auto relative">
-          {/* Premise — set large, as the section's opening statement */}
-          <div className="max-w-[760px] mb-20">
-            <p className="font-display text-[26px] md:text-[34px] leading-[1.35] text-[#14141F] mb-6">
-              Most sellers open with a pitch.{' '}
-              <span className="text-[#4A4AD1]">Elite sellers open with a Point of View.</span>
-            </p>
-            <p className="font-body text-[17px] text-[#55556B] leading-[1.85]">
-              In this free live session, Jamal Reimer,{' '}
-              <span className="text-[#14141F] font-semibold">
-                who has personally closed $160M as an individual contributor after getting fired twice
-                for pitching exactly like everyone else,
-              </span>{' '}
-              breaks down the exact framework that separates reps who get delegated down from the ones
-              who get invited back.
-            </p>
-          </div>
-
           <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
             What You'll Learn
           </p>
@@ -359,17 +362,22 @@ const LiveSession = () => {
             </p>
           </div>
           <div>
-            {/* Numbered cards rather than another rule-separated list */}
-            <div className="ls-takeaways mb-12">
+            {/* Oversized numerals against a hairline rule — no card wrappers, so
+                this reads differently from the grids above and below. */}
+            <div className="mb-12">
               {walkAwayPoints.map((item, i) => (
-                <div key={i} className="ls-glass rounded-xl p-6 flex gap-4">
+                <div
+                  key={i}
+                  className="flex gap-6 items-baseline py-7"
+                  style={{ borderTop: i === 0 ? 'none' : '1px solid rgba(98,98,233,0.18)' }}
+                >
                   <span
-                    className="font-mono text-[15px] font-bold flex-shrink-0 leading-none pt-1"
-                    style={{ color: '#6262E9' }}
+                    className="font-display text-[38px] leading-none flex-shrink-0 w-[52px]"
+                    style={{ color: 'rgba(98,98,233,0.42)' }}
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="font-body text-[16px] text-[#55556B] leading-[1.75]">{item}</p>
+                  <p className="font-body text-[17px] text-[#55556B] leading-[1.8]">{item}</p>
                 </div>
               ))}
             </div>
@@ -431,28 +439,20 @@ const LiveSession = () => {
             deals. You'll get the most out of this if you are:
           </p>
 
-          {/* Checklist chips, two across, rather than a fourth stacked list */}
-          <div className="ls-who mb-14 text-left">
+          {/* Centred list, no card wrappers — just a checkmark and the phrase */}
+          <div className="max-w-[680px] mx-auto mb-14 flex flex-col gap-6">
             {whoItems.map((item, i) => (
-              <div key={i} className="ls-glass rounded-xl p-5 flex items-start gap-4">
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  style={{
-                    background: 'rgba(98,98,233,0.12)',
-                    border: '1px solid rgba(98,98,233,0.30)',
-                  }}
-                >
-                  <svg width="10" height="8" viewBox="0 0 12 10" fill="none">
-                    <path
-                      d="M1 5l3.5 3.5L11 1"
-                      stroke="#6262E9"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <p className="font-body text-[16px] text-[#55556B] leading-[1.75]">{item}</p>
+              <div key={i} className="flex items-start justify-center gap-3.5">
+                <svg width="16" height="13" viewBox="0 0 12 10" fill="none" className="flex-shrink-0 mt-[7px]">
+                  <path
+                    d="M1 5l3.5 3.5L11 1"
+                    stroke="#6262E9"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <p className="font-body text-[17px] text-[#55556B] leading-[1.75] text-left">{item}</p>
               </div>
             ))}
           </div>
@@ -602,10 +602,19 @@ const LiveSession = () => {
           border: 1px solid rgba(98,98,233,0.28);
         }
 
+        /* Dark callout: a shallow arc across the top edge, so the band rises out
+           of the hero rather than butting against it with a straight seam. */
+        .ls-callout {
+          border-top-left-radius: 50% 90px;
+          border-top-right-radius: 50% 90px;
+          margin-top: -60px;
+        }
+        @media (max-width: 640px) {
+          .ls-callout { border-top-left-radius: 50% 46px; border-top-right-radius: 50% 46px; margin-top: -30px; }
+        }
+
         /* Each list section gets its own shape so they stop reading alike. */
         .ls-steps { display: grid; grid-template-columns: 1fr; gap: 18px; }
-        .ls-takeaways { display: grid; grid-template-columns: 1fr; gap: 14px; }
-        .ls-who { display: grid; grid-template-columns: 1fr; gap: 14px; }
         @media (min-width: 768px) {
           /* Five cards: three on the first row, the last two widened to close
              the second row instead of leaving a ragged gap. */
@@ -613,8 +622,6 @@ const LiveSession = () => {
           .ls-steps > * { grid-column: span 2; }
           .ls-steps > :nth-child(4):nth-last-child(2),
           .ls-steps > :nth-child(5):nth-last-child(1) { grid-column: span 3; }
-          .ls-takeaways { grid-template-columns: repeat(2, 1fr); }
-          .ls-who { grid-template-columns: repeat(2, 1fr); }
         }
       `}</style>
     </div>
