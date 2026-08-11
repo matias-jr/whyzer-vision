@@ -288,8 +288,7 @@ const LiveSessionConfirmed = () => {
               </p>
               <div className="space-y-3 mb-7">
                 <div
-                  className="flex items-start gap-4 p-5 rounded-xl"
-                  style={{ background: '#FFFFFF', border: '1px solid #E4E3F0' }}
+                  className="wkc-glass flex items-start gap-4 p-5 rounded-xl"
                 >
                   <span
                     className="font-mono text-[12px] uppercase tracking-wider flex-shrink-0 mt-0.5 px-2 py-0.5 rounded"
@@ -304,8 +303,7 @@ const LiveSessionConfirmed = () => {
                   </p>
                 </div>
                 <div
-                  className="flex items-start gap-4 p-5 rounded-xl"
-                  style={{ background: '#FFFFFF', border: '1px solid #E4E3F0' }}
+                  className="wkc-glass flex items-start gap-4 p-5 rounded-xl"
                 >
                   <span
                     className="font-mono text-[12px] uppercase tracking-wider flex-shrink-0 mt-0.5 px-2 py-0.5 rounded"
@@ -359,11 +357,7 @@ const LiveSessionConfirmed = () => {
               </p>
               {/* Calendar info block */}
               <div
-                className="rounded-2xl p-6"
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(255,255,255,0.07)',
-                }}
+                className="wkc-glass rounded-2xl p-6"
               >
                 <div className="flex flex-col sm:flex-row gap-7 items-start">
                   <div className="flex items-start gap-3">
@@ -611,6 +605,26 @@ const LiveSessionConfirmed = () => {
         .wkc-widget .wk_timer_row h2 { font-size: 34px !important; line-height: 1.1 !important; margin-top: 10px !important; }
         .wkc-widget .wk_timer_row h3 { font-size: 13px !important; letter-spacing: 0.04em !important; }
         .wkc-widget .wk_thank_you_session_link h6 { font-size: 14px !important; }
+
+        /* Frosted glass, matching the financial-fluency pages. */
+        .wkc-glass {
+          position: relative;
+          background: rgba(255,255,255,0.58);
+          border: 1px solid rgba(255,255,255,0.75);
+          box-shadow: 0 8px 32px -12px rgba(20,20,31,0.14);
+          backdrop-filter: blur(12px) saturate(140%);
+          -webkit-backdrop-filter: blur(12px) saturate(140%);
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .wkc-glass::before {
+          content: ''; position: absolute; inset: 0; border-radius: inherit;
+          pointer-events: none;
+          background: linear-gradient(160deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%);
+        }
+        .wkc-glass > * { position: relative; z-index: 1; }
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+          .wkc-glass { background: #FFFFFF; border-color: #E4E3F0; }
+        }
 
         .wkc-cal:hover { border-color: rgba(98,98,233,0.45) !important; background: #F7F7FE !important; color: #4A4AD1 !important; }
         .wkc-cal:focus-visible { outline: 2px solid #6262E9; outline-offset: 2px; }

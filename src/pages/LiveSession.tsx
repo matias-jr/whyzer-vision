@@ -213,23 +213,25 @@ const LiveSession = () => {
           style={{ background: 'radial-gradient(ellipse 55% 50% at 55% 45%, rgba(98,98,233,0.08) 0%, transparent 65%)' }}
         />
 
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 py-24 grid lg:grid-cols-2 gap-16 items-center w-full">
-          {/* Left — copy */}
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 py-24 grid lg:grid-cols-2 gap-16 items-start w-full">
+          {/* Left — copy. Both columns open on the same eyebrow baseline. */}
           <div>
-            <div className="inline-flex items-center gap-2.5 mb-5">
-              <span className="w-2 h-2 rounded-full bg-primary" style={{ animation: 'pulse 2s ease-in-out infinite' }} />
-              <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-[#4A4AD1] font-semibold">
+            <div className="ls-eyebrow inline-flex items-center gap-2.5 mb-5 px-3.5 py-1.5 rounded-full">
+              <span className="w-2 h-2 rounded-full" style={{ background: '#6262E9', animation: 'pulse 2s ease-in-out infinite' }} />
+              <span className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] font-semibold">
                 Free Live Webinar
               </span>
             </div>
 
-            <h1 className="font-display text-[60px] sm:text-[64px] lg:text-[78px] leading-[1.0] tracking-[-0.02em] text-[#14141F] uppercase mb-7">
+            <h1 className="font-display text-[54px] sm:text-[60px] lg:text-[70px] leading-[1.0] tracking-[-0.02em] text-[#14141F] uppercase mb-5">
               Stop Sounding
               <br />
-              <span className="bg-gradient-to-r from-[#4A4AD1] via-[#6262E9] to-[#4A4AD1] bg-clip-text text-transparent">
-                Like Everybody Else
-              </span>
+              <span className="text-[#4A4AD1]">Like Everybody Else</span>
             </h1>
+
+            <p className="font-display text-[20px] lg:text-[23px] text-[#14141F] leading-[1.35] mb-6 max-w-[500px]">
+              How top enterprise sellers build a Point of View that opens doors a demo can't
+            </p>
 
             <p className="font-body text-[17px] text-[#55556B] leading-[1.8] max-w-[500px]">
               Stop pitching the same use cases as every other rep in the deal. Learn the three-part
@@ -238,11 +240,10 @@ const LiveSession = () => {
             </p>
           </div>
 
-          {/* Right — countdown + form */}
-          <div className="flex flex-col gap-8">
-            {/* Countdown */}
+          {/* Right — countdown + form, opening on the same line as the eyebrow */}
+          <div className="flex flex-col gap-7">
             <div>
-              <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#8A8AA0] mb-5">
+              <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#8A8AA0] mb-4">
                 Session Starts In
               </p>
               <div className="flex items-end gap-6">
@@ -254,12 +255,12 @@ const LiveSession = () => {
                 ].map(({ val, label }, i) => (
                   <div key={i} className="flex flex-col items-center">
                     <span
-                      className="font-mono text-[60px] sm:text-[70px] leading-none font-bold"
+                      className="font-mono text-[52px] sm:text-[60px] leading-none font-bold"
                       style={{ color: '#4A4AD1' }}
                     >
                       {pad(val)}
                     </span>
-                    <span className="font-mono text-[13px] uppercase tracking-[0.22em] text-[#8A8AA0] mt-2">
+                    <span className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#8A8AA0] mt-2">
                       {label}
                     </span>
                   </div>
@@ -267,45 +268,40 @@ const LiveSession = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-5">
-              <WebinarKitRegistration />
-              <p className="text-center font-mono text-[13px] text-[#8A8AA0] tracking-wide leading-relaxed">
-                One framework. 60 minutes. One session that changes how you sell.
-              </p>
-            </div>
+            <WebinarKitRegistration />
           </div>
         </div>
       </section>
 
-      {/* ── CREDIBILITY ── */}
+      {/* ── THE PREMISE + WHAT YOU'LL LEARN ──
+          The credibility paragraph now opens this section as a pull quote
+          instead of sitting in a band of its own. */}
       <section
-        className="py-20 relative overflow-hidden"
+        className="py-28 px-6 lg:px-12 relative overflow-hidden"
         style={{ background: '#F2F1FB', borderTop: '1px solid #E4E3F0' }}
-      >
-        <div className="max-w-[680px] mx-auto px-6 text-center">
-          <p className="font-body text-[17px] text-[#55556B] leading-[1.85]">
-            Most sellers open with a pitch. Elite sellers open with a Point of View.
-            In this free live session, Jamal Reimer,{' '}
-            <span className="text-[#14141F] font-semibold">
-              who has personally closed $160M as an individual contributor after getting fired twice
-              for pitching exactly like everyone else,
-            </span>{' '}
-            breaks down the exact framework that separates reps who get delegated down from the ones
-            who get invited back.
-          </p>
-        </div>
-      </section>
-
-      {/* ── WHAT YOU'LL LEARN ── */}
-      <section
-        className="py-28 px-6 lg:px-12 relative"
-        style={{ background: '#FAFAF9', borderTop: '1px solid #E4E3F0' }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 50% at 100% 50%, rgba(98,98,233,0.07) 0%, rgba(98,98,233,0.07) 45%, transparent 68%)' }}
+          style={{ background: 'radial-gradient(ellipse 60% 50% at 100% 40%, rgba(98,98,233,0.10) 0%, transparent 68%)' }}
         />
         <div className="max-w-[1000px] mx-auto relative">
+          {/* Premise — set large, as the section's opening statement */}
+          <div className="max-w-[760px] mb-20">
+            <p className="font-display text-[26px] md:text-[34px] leading-[1.35] text-[#14141F] mb-6">
+              Most sellers open with a pitch.{' '}
+              <span className="text-[#4A4AD1]">Elite sellers open with a Point of View.</span>
+            </p>
+            <p className="font-body text-[17px] text-[#55556B] leading-[1.85]">
+              In this free live session, Jamal Reimer,{' '}
+              <span className="text-[#14141F] font-semibold">
+                who has personally closed $160M as an individual contributor after getting fired twice
+                for pitching exactly like everyone else,
+              </span>{' '}
+              breaks down the exact framework that separates reps who get delegated down from the ones
+              who get invited back.
+            </p>
+          </div>
+
           <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
             What You'll Learn
           </p>
@@ -313,29 +309,25 @@ const LiveSession = () => {
             3 Components.{' '}
             <span className="text-[#4A4AD1]">One Point of View.</span>
           </h2>
-          <p className="font-body text-[17px] text-[#55556B] max-w-[520px] leading-[1.8] mb-16">
-            Each piece builds on the last. By the end, you won't just have talking points — you'll
+          <p className="font-body text-[17px] text-[#55556B] max-w-[520px] leading-[1.8] mb-14">
+            Each piece builds on the last. By the end, you won't just have talking points. You'll
             have a repeatable structure for standing out on any account.
           </p>
 
-          <div className="mb-12 space-y-0">
+          {/* Three stacked cards, each numbered — a build, not a bulleted list */}
+          <div className="ls-steps mb-14">
             {workflows.map((w, i) => (
-              <div
-                key={i}
-                className="group flex gap-8 py-8 border-b border-foreground/[0.06] hover:border-primary/[0.18] transition-colors duration-300 cursor-default"
-              >
+              <div key={i} className="ls-glass rounded-2xl p-7">
                 <span
-                  className="font-mono text-3xl font-bold flex-shrink-0 leading-none mt-1"
+                  className="font-mono text-[34px] font-bold leading-none block mb-5"
                   style={{ color: '#6262E9' }}
                 >
                   {w.num}
                 </span>
-                <div>
-                  <h3 className="font-display text-[22px] text-[#14141F] uppercase tracking-wide mb-3 group-hover:text-[#4A4AD1] transition-colors duration-300">
-                    {w.title}
-                  </h3>
-                  <p className="font-body text-[16px] text-[#55556B] leading-[1.8]">{w.body}</p>
-                </div>
+                <h3 className="font-display text-[21px] text-[#14141F] uppercase tracking-wide mb-3">
+                  {w.title}
+                </h3>
+                <p className="font-body text-[15.5px] text-[#55556B] leading-[1.75]">{w.body}</p>
               </div>
             ))}
           </div>
@@ -367,19 +359,17 @@ const LiveSession = () => {
             </p>
           </div>
           <div>
-            <div className="space-y-0 mb-12">
+            {/* Numbered cards rather than another rule-separated list */}
+            <div className="ls-takeaways mb-12">
               {walkAwayPoints.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-5 py-6 border-b border-foreground/[0.06]"
-                >
+                <div key={i} className="ls-glass rounded-xl p-6 flex gap-4">
                   <span
-                    className="font-display text-xl flex-shrink-0 mt-0.5"
+                    className="font-mono text-[15px] font-bold flex-shrink-0 leading-none pt-1"
                     style={{ color: '#6262E9' }}
                   >
-                    →
+                    {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="font-body text-[17px] text-[#55556B] leading-[1.8]">{item}</p>
+                  <p className="font-body text-[16px] text-[#55556B] leading-[1.75]">{item}</p>
                 </div>
               ))}
             </div>
@@ -429,29 +419,27 @@ const LiveSession = () => {
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(98,98,233,0.14) 0%, rgba(98,98,233,0.06) 45%, transparent 62%)' }}
         />
-        <div className="max-w-[800px] mx-auto relative">
+        <div className="max-w-[900px] mx-auto relative text-center">
           <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
             Who This Is For
           </p>
           <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] uppercase tracking-[-0.02em] mb-5">
             Built for <span className="text-[#4A4AD1]">Enterprise Sellers.</span>
           </h2>
-          <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-14 max-w-[540px]">
+          <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-14 max-w-[540px] mx-auto">
             This session is built for individual enterprise sellers navigating complex, mid-to-large
             deals. You'll get the most out of this if you are:
           </p>
 
-          <div className="space-y-0 mb-14">
+          {/* Checklist chips, two across, rather than a fourth stacked list */}
+          <div className="ls-who mb-14 text-left">
             {whoItems.map((item, i) => (
-              <div
-                key={i}
-                className="group flex items-start gap-5 py-5 border-b border-foreground/[0.06] hover:border-primary/[0.15] transition-colors cursor-default"
-              >
+              <div key={i} className="ls-glass rounded-xl p-5 flex items-start gap-4">
                 <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors duration-300"
+                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                   style={{
-                    background: 'rgba(89,89,212,0.12)',
-                    border: '1px solid rgba(89,89,212,0.28)',
+                    background: 'rgba(98,98,233,0.12)',
+                    border: '1px solid rgba(98,98,233,0.30)',
                   }}
                 >
                   <svg width="10" height="8" viewBox="0 0 12 10" fill="none">
@@ -464,16 +452,12 @@ const LiveSession = () => {
                     />
                   </svg>
                 </div>
-                <p className="font-body text-[17px] text-[#55556B] leading-[1.8] group-hover:text-[#55556B] transition-colors duration-300">
-                  {item}
-                </p>
+                <p className="font-body text-[16px] text-[#55556B] leading-[1.75]">{item}</p>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
-            <CtaButton>I'm In — Register for Free →</CtaButton>
-          </div>
+          <CtaButton>I'm In — Register for Free →</CtaButton>
         </div>
       </section>
 
@@ -585,6 +569,54 @@ const LiveSession = () => {
       </section>
 
       <MinimalFooter />
+
+      <style>{`
+        /* Frosted glass, matching the financial-fluency pages: translucent fill,
+           backdrop blur, and a lit top-left edge. */
+        .ls-glass {
+          position: relative;
+          background: rgba(255,255,255,0.58);
+          border: 1px solid rgba(255,255,255,0.75);
+          box-shadow: 0 8px 32px -12px rgba(20,20,31,0.14);
+          backdrop-filter: blur(12px) saturate(140%);
+          -webkit-backdrop-filter: blur(12px) saturate(140%);
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .ls-glass::before {
+          content: ''; position: absolute; inset: 0; border-radius: inherit;
+          pointer-events: none;
+          background: linear-gradient(160deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%);
+        }
+        .ls-glass > * { position: relative; z-index: 1; }
+        .ls-glass:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 14px 40px -12px rgba(20,20,31,0.20);
+          border-color: rgba(98,98,233,0.35);
+        }
+        @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+          .ls-glass { background: #FFFFFF; border-color: #E4E3F0; }
+        }
+
+        .ls-eyebrow {
+          background: rgba(98,98,233,0.10);
+          border: 1px solid rgba(98,98,233,0.28);
+        }
+
+        /* Each list section gets its own shape so they stop reading alike. */
+        .ls-steps { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        .ls-takeaways { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        .ls-who { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        @media (min-width: 768px) {
+          /* Five cards: three on the first row, the last two widened to close
+             the second row instead of leaving a ragged gap. */
+          .ls-steps { grid-template-columns: repeat(6, 1fr); }
+          .ls-steps > * { grid-column: span 2; }
+          .ls-steps > :nth-child(4):nth-last-child(2),
+          .ls-steps > :nth-child(5):nth-last-child(1) { grid-column: span 3; }
+          .ls-takeaways { grid-template-columns: repeat(2, 1fr); }
+          .ls-who { grid-template-columns: repeat(2, 1fr); }
+        }
+      `}</style>
     </div>
   );
 };
