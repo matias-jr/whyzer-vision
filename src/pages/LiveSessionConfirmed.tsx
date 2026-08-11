@@ -454,29 +454,47 @@ const LiveSessionConfirmed = () => {
       <MinimalFooter />
 
       <style>{`
+        /* Type hierarchy against the embed. WebinarKit renders "Webinar starts
+           in:" as an h4 and the digits as h2, sized by its own stylesheet, so
+           the widget competes with the page h1. Pin the widget's internal type
+           below the headline and keep it there as everything scales down. */
+        .wkc-widget .wk_timer_header { font-size: 17px !important; font-weight: 600 !important; }
+        .wkc-widget .wk_timer_row h2 { font-size: 34px !important; line-height: 1.1 !important; margin-top: 10px !important; }
+        .wkc-widget .wk_timer_row h3 { font-size: 13px !important; letter-spacing: 0.04em !important; }
+        .wkc-widget .wk_thank_you_session_link h6 { font-size: 14px !important; }
+
         /* Keep the confirmation above the fold: the headline, the sub, and the
            WebinarKit timer should all land on the first screen. Short landscape
            viewports (laptops) are the tight case, so they scale down hardest. */
         @media (orientation: landscape) and (max-height: 900px) {
-          .wkc-hero { padding-top: 76px !important; padding-bottom: 20px !important; }
+          .wkc-hero { padding-top: 76px !important; padding-bottom: 18px !important; }
           .wkc-check { margin-bottom: 12px !important; }
           .wkc-check > div { width: 44px !important; height: 44px !important; }
-          .wkc-h1 { font-size: 40px !important; margin-bottom: 12px !important; }
+          .wkc-h1 { font-size: 46px !important; margin-bottom: 12px !important; }
           .wkc-sub { font-size: 15px !important; line-height: 1.6 !important; }
           .wkc-widget { padding-bottom: 24px !important; }
+          .wkc-widget .wk_timer_header { font-size: 16px !important; }
+          .wkc-widget .wk_timer_row h2 { font-size: 30px !important; margin-top: 8px !important; }
+          .wkc-widget .wk_timer_row h3 { font-size: 12px !important; }
         }
         @media (orientation: landscape) and (max-height: 760px) {
-          .wkc-hero { padding-top: 68px !important; padding-bottom: 14px !important; }
-          .wkc-check { margin-bottom: 10px !important; }
-          .wkc-h1 { font-size: 34px !important; margin-bottom: 10px !important; }
+          .wkc-hero { padding-top: 68px !important; padding-bottom: 12px !important; }
+          .wkc-check { margin-bottom: 8px !important; }
+          .wkc-check > div { width: 38px !important; height: 38px !important; }
+          .wkc-h1 { font-size: 40px !important; margin-bottom: 10px !important; }
           .wkc-sub { font-size: 14px !important; }
+          .wkc-widget .wk_timer_header { font-size: 15px !important; }
+          .wkc-widget .wk_timer_row h2 { font-size: 26px !important; margin-top: 6px !important; }
+          .wkc-widget .wk_timer_row h3 { font-size: 11px !important; }
         }
         /* Portrait phones: trim the generous top padding so the timer is visible
            without scrolling on a short screen. */
         @media (orientation: portrait) and (max-width: 640px) {
           .wkc-hero { padding-top: 88px !important; padding-bottom: 16px !important; }
-          .wkc-h1 { font-size: 38px !important; }
+          .wkc-h1 { font-size: 40px !important; }
           .wkc-widget { padding-bottom: 28px !important; }
+          .wkc-widget .wk_timer_row h2 { font-size: 28px !important; }
+          .wkc-widget .wk_timer_row h3 { font-size: 11px !important; }
         }
       `}</style>
     </div>
