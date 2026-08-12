@@ -61,67 +61,46 @@ const EYEBROW = ACCENT_DARK;
 const DISPLAY = "'Space Grotesk', sans-serif";
 const CTA_LABEL = 'Take me to the webinar!';
 
-// ── "The real problem" row: four ways sellers misdiagnose the silence.
+// ── "The real problem": internal dialogue, not a checklist. Each card pairs
+// the seller's self-talk with the reflex it triggers, so the icons are gone.
 const problemItems = [
   {
-    title: 'Your outreach gets ignored.',
-    body: "You're not saying what matters.",
-    // Envelope, sent but unopened — flap folded down, no overlapping marks.
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
-        <rect x="2" y="5" width="20" height="14" rx="2" /><path d="m2 7.5 10 6.5 10-6.5" />
-      </svg>
-    ),
+    title: 'My outreach isn’t sharp enough.',
+    body: 'So you rewrite the subject line.',
   },
   {
-    title: 'Your timing is off.',
-    body: 'You engage too early or too late.',
-    // Clock with hands past the hour — timing, not aim.
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
-        <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.5 2" />
-      </svg>
-    ),
+    title: 'My timing was off.',
+    body: 'So you wait for a better moment.',
   },
   {
-    title: 'Your message is weak.',
-    body: "It doesn't connect to what they care about.",
-    // Speech bubble with a closed outline and tail, text lines drawn inside it.
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
-        <path d="M4 4h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V5a1 1 0 0 1 1-1z" /><path d="M8 8.5h9M8 12h5.5" />
-      </svg>
-    ),
+    title: 'My message isn’t landing.',
+    body: 'So you try a different angle.',
   },
   {
-    title: 'Your product is not the priority.',
-    body: "You're solving the wrong problem.",
-    // Stacked list with the top item flagged — ranking, not a shipping box.
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
-        <path d="M4 6h8M4 12h10M4 18h6" /><path d="M17 4v8l2.5-2 2.5 2V4z" />
-      </svg>
-    ),
+    title: 'My product isn’t the priority.',
+    body: 'So you build a better business case.',
   },
 ];
 
 // ── "Who this is for": each card now leads with a large typographic stat
 // (display font) in place of the icon it used to carry.
+// ── "Who this is for": three sequential nodes, not parallel cards. Each one
+// is the consequence of the one before it, so they render as a chain.
 const whoItems = [
   {
     stat: '$100K+',
-    statNote: 'deal size',
-    body: 'You’re working deals over $100K that take four to nine months to close.',
+    statNote: 'Deal size',
+    body: 'You’re working deals big enough that a committee has to sign off, not just one buyer.',
   },
   {
-    stat: '4–9 mo',
-    statNote: 'to close',
-    body: 'You’re selling to CFOs, VP of Finance, or executives.',
+    stat: '4–9 months',
+    statNote: 'Time to close',
+    body: 'Long enough for priorities to shift, budgets to freeze, and champions to go quiet, without you ever finding out why.',
   },
   {
     stat: 'Silence',
-    statNote: 'what you get back',
-    body: 'You don’t know how to get them to pay attention.',
+    statNote: 'What you’re left with',
+    body: 'And when it happens, you don’t know how to get them to pay attention again.',
   },
 ];
 
@@ -219,18 +198,29 @@ const WebinarRegistration = () => {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: '4%', right: '4%', width: 380, height: 300, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.14) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 1000, margin: '0 auto', position: 'relative' }}>
           <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: EYEBROW, margin: '0 0 16px' }}>The Real Problem</p>
-          <h2 style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 'clamp(26px, 3.4vw, 36px)', lineHeight: 1.25, margin: '0 0 48px', color: INK }}>
+          <h2 style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 'clamp(26px, 3.4vw, 36px)', lineHeight: 1.25, margin: '0 0 18px', color: INK }}>
             You&rsquo;re doing the work.<br />But you&rsquo;re not getting the response.
           </h2>
+          <p style={{ fontSize: 17.5, lineHeight: 1.6, margin: '0 0 44px', color: BODY }}>
+            So you tell yourself it&rsquo;s one of these.
+          </p>
           <div className="wr-problem-grid">
             {problemItems.map((item, i) => (
-              <div key={i} className="wr-glass" style={{ borderRadius: 14, padding: '26px 20px' }}>
-                <div style={{ color: ACCENT, display: 'flex', justifyContent: 'center', marginBottom: 16 }}>{item.icon}</div>
-                <h3 style={{ fontFamily: DISPLAY, fontSize: 15.5, fontWeight: 700, margin: '0 0 8px', color: INK }}>{item.title}</h3>
-                <p style={{ fontSize: 13.5, color: BODY, margin: 0, lineHeight: 1.55 }}>{item.body}</p>
+              <div key={i} className="wr-glass" style={{ borderRadius: 14, padding: '28px 22px' }}>
+                <h3 style={{ fontFamily: DISPLAY, fontSize: 'clamp(17px, 1.6vw, 19px)', fontWeight: 700, margin: '0 0 12px', color: INK, lineHeight: 1.3 }}>
+                  &ldquo;{item.title}&rdquo;
+                </h3>
+                <p style={{ fontSize: 13.5, color: MUTED, margin: 0, lineHeight: 1.55 }}>{item.body}</p>
               </div>
             ))}
           </div>
+          {/* The reveal: everything above is a misdiagnosis. */}
+          <p style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 'clamp(21px, 2.6vw, 28px)', lineHeight: 1.4, margin: '52px auto 0', maxWidth: 760, color: INK }}>
+            None of that is it.{' '}
+            <span style={{ color: ACCENT }}>
+              You&rsquo;re solving a problem the executive never asked about.
+            </span>
+          </p>
         </div>
       </section>
 
@@ -242,15 +232,20 @@ const WebinarRegistration = () => {
             <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: EYEBROW, margin: '0 0 12px' }}>Who this is for</p>
             <h2 style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 'clamp(26px, 3.2vw, 34px)', lineHeight: 1.2, margin: 0, color: INK }}>This webinar is for you if&hellip;</h2>
           </div>
-          <div className="wr-who-grid">
+          {/* Chain: the three points are sequential, so a single connecting
+              line runs through them. The line is functional here, showing
+              cause and consequence, so it carries the accent colour. */}
+          <div className="wr-chain">
             {whoItems.map((item, i) => (
-              <div key={i} className="wr-glass" style={{ borderRadius: 16, padding: '26px 24px' }}>
-                {/* Large typographic stat replaces the former icon */}
-                <div style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 'clamp(30px, 3.6vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', color: ACCENT, marginBottom: 6 }}>
-                  {item.stat}
+              <div key={i} className="wr-node">
+                <span className="wr-node-dot" aria-hidden="true" />
+                <div className="wr-node-body">
+                  <div style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 'clamp(28px, 3.4vw, 38px)', lineHeight: 1.05, letterSpacing: '-0.02em', color: ACCENT, marginBottom: 6 }}>
+                    {item.stat}
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginBottom: 14 }}>{item.statNote}</div>
+                  <p style={{ fontSize: 15, color: BODY, margin: 0, lineHeight: 1.6 }}>{item.body}</p>
                 </div>
-                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: MUTED, marginBottom: 18 }}>{item.statNote}</div>
-                <p style={{ fontSize: 15, color: BODY, margin: 0, lineHeight: 1.6 }}>{item.body}</p>
               </div>
             ))}
           </div>
@@ -405,7 +400,36 @@ const WebinarRegistration = () => {
         .wr-cred-photo { align-self: stretch; }
         .wr-problem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
         .wr-who-head { text-align: left; margin-bottom: 36px; }
-        .wr-who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        /* ── Chain. Nodes sit on a single accent line: horizontal on desktop,
+           vertical on mobile. The dot marks each node on the line. */
+        .wr-chain { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; position: relative; }
+        /* One continuous line behind the nodes, inset so it starts and ends on
+           the first and last dot rather than overhanging. */
+        /* Columns are (100% - 2*28px)/3 wide. The last dot sits at the start of
+           the third column, i.e. 2 columns + 2 gaps from the left edge, so the
+           line spans from the first dot to there. */
+        .wr-chain::before {
+          content: ''; position: absolute; top: 5px; height: 2px; left: 6px;
+          width: calc((100% - 56px) / 3 * 2 + 56px);
+          background: rgba(98,98,233,0.28);
+        }
+        .wr-node { position: relative; padding-top: 30px; }
+        .wr-node-dot {
+          position: absolute; top: 0; left: 0; z-index: 1;
+          width: 12px; height: 12px; border-radius: 50%;
+          background: ${ACCENT};
+          box-shadow: 0 0 0 4px rgba(98,98,233,0.16);
+        }
+        @media (max-width: 900px) {
+          .wr-chain { grid-template-columns: 1fr; gap: 0; }
+          .wr-chain::before {
+            top: 6px; bottom: auto; left: 5px; right: auto;
+            width: 2px; height: auto;
+          }
+          .wr-node { padding-top: 0; padding-left: 30px; padding-bottom: 30px; }
+          .wr-node:last-child { padding-bottom: 0; }
+          .wr-node-dot { top: 0; left: 0; }
+        }
         .wr-walk-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
         .wr-walk-col { padding: 4px 28px; }
         .wr-walk-col:first-child { padding-left: 0; }
@@ -428,7 +452,6 @@ const WebinarRegistration = () => {
         }
         @media (max-width: 900px) {
           .wr-problem-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-          .wr-who-grid { grid-template-columns: 1fr; }
           .wr-walk-grid { grid-template-columns: 1fr; }
           .wr-walk-col { padding: 24px 0 !important; border-left: none !important; border-top: 1px solid ${LINE}; }
           .wr-walk-col:first-child { border-top: none; padding-top: 0 !important; }
