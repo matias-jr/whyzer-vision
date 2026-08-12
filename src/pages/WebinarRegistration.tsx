@@ -61,24 +61,48 @@ const EYEBROW = ACCENT_DARK;
 const DISPLAY = "'Space Grotesk', sans-serif";
 const CTA_LABEL = 'Take me to the webinar!';
 
-// ── "The real problem": internal dialogue, not a checklist. Each card pairs
-// the seller's self-talk with the reflex it triggers, so the icons are gone.
+// ── "The real problem": the seller's self-talk paired with the reflex it
+// triggers. Each icon depicts the reflex, not the complaint.
 const problemItems = [
   {
     title: 'My outreach isn’t sharp enough.',
     body: 'So you rewrite the subject line.',
+    // Pencil rewriting a line of text.
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
+        <path d="M4 18h6" /><path d="M14.5 4.5l3.5 3.5-8 8H6.5v-3.5z" />
+      </svg>
+    ),
   },
   {
     title: 'My timing was off.',
     body: 'So you wait for a better moment.',
+    // Hourglass: waiting, rather than a clock face reading the hour.
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
+        <path d="M7 3h10M7 21h10" /><path d="M7 3c0 4 5 5 5 9s-5 5-5 9" /><path d="M17 3c0 4-5 5-5 9s5 5 5 9" />
+      </svg>
+    ),
   },
   {
     title: 'My message isn’t landing.',
     body: 'So you try a different angle.',
+    // Arrow redirected onto a new path.
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
+        <path d="M3 18c4 0 7-2 9-6s5-6 9-6" /><path d="M17 3.5L21 6l-4 2.5" />
+      </svg>
+    ),
   },
   {
     title: 'My product isn’t the priority.',
     body: 'So you build a better business case.',
+    // Document with a rising bar chart: the business case being built.
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={{ width: 26, height: 26 }}>
+        <path d="M5 3h9l5 5v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" /><path d="M14 3v5h5" /><path d="M8 17v-3M12 17v-5M16 17v-2" />
+      </svg>
+    ),
   },
 ];
 
@@ -206,7 +230,8 @@ const WebinarRegistration = () => {
           </p>
           <div className="wr-problem-grid">
             {problemItems.map((item, i) => (
-              <div key={i} className="wr-glass" style={{ borderRadius: 14, padding: '28px 22px' }}>
+              <div key={i} className="wr-glass" style={{ borderRadius: 14, padding: '26px 22px 28px' }}>
+                <div style={{ color: ACCENT, display: 'flex', justifyContent: 'center', marginBottom: 16 }}>{item.icon}</div>
                 <h3 style={{ fontFamily: DISPLAY, fontSize: 'clamp(17px, 1.6vw, 19px)', fontWeight: 700, margin: '0 0 12px', color: INK, lineHeight: 1.3 }}>
                   &ldquo;{item.title}&rdquo;
                 </h3>
