@@ -267,6 +267,11 @@ const WebinarThankYou = () => {
             <p style={{ fontSize: 19, lineHeight: 1.7, margin: 0, color: BODY }}>
               That's the only reason Whyzer exists: the same read you just watched me build, sourced and verified against the actual filings and calls, in under two minutes, on any company you sell to.
             </p>
+            {/* Live-session offer — set fully bold, per the copy spec, and given
+                an accent rule so it reads as the block's payoff. */}
+            <p style={{ fontSize: 19, lineHeight: 1.7, margin: '6px 0 0', paddingLeft: 20, borderLeft: `3px solid ${ACCENT}`, fontWeight: 700, color: INK }}>
+              To ensure you see results FAST, with your free trial you can bring your POV to a live session with me. Once a week. And we'll analyze it together, plus decide how to move forward on your biggest deals. I want to support your decision of becoming a strategic seller. Start now.
+            </p>
           </div>
         </section>
 
@@ -456,7 +461,9 @@ const WebinarThankYou = () => {
       <div style={{ background: DARK, position: 'relative', overflow: 'hidden' }}>
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '84px 24px 100px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 20, position: 'relative' }}>
           <div style={{ position: 'absolute', bottom: -160, left: '50%', transform: 'translateX(-50%)', width: 700, height: 400, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.32) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
-          <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.8vw, 34px)', lineHeight: 1.25, maxWidth: 560, margin: 0, color: D_INK, position: 'relative' }}>
+          {/* maxWidth 560 forced this onto two lines at 34px; widened and set
+              nowrap above 640px so it holds a single line. */}
+          <h2 className="wty-final-h2" style={{ ...HEADING, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.25, maxWidth: 820, margin: 0, color: D_INK, position: 'relative' }}>
             Run it on the account that's gone quiet.
           </h2>
           <p style={{ fontSize: 17, lineHeight: 1.7, maxWidth: 560, margin: 0, color: D_BODY, position: 'relative' }}>
@@ -505,6 +512,8 @@ const WebinarThankYou = () => {
         @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
           .wty-glass { background: ${CARD_PRIMARY}; border-color: ${LINE}; }
         }
+        /* Single line on anything wider than a phone; wraps naturally below. */
+        @media (min-width: 641px) { .wty-final-h2 { white-space: nowrap; } }
         .wty-testimonial { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
         .wty-faq-btn:focus-visible, .wty-cta:focus-visible { outline: 2px solid ${ACCENT}; outline-offset: 3px; }
         /* Mobile-first: single column, widening at the 768px breakpoint. */

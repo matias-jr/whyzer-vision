@@ -130,15 +130,31 @@ const whoItems = [
 const walkOutItems = [
   {
     num: '01',
-    body: "The handful of financial metrics executives actually track, and why they outweigh anything you're currently pitching.",
+    body: (
+      <>
+        The handful of <b>financial metrics executives</b> actually <b>track,</b> and why they
+        outweigh anything you&rsquo;re currently pitching.
+      </>
+    ),
   },
   {
     num: '02',
-    body: 'How those metrics turn into financial triggers: specific, timely reasons a company is primed to buy.',
+    body: (
+      <>
+        How those metrics <b>turn into financial triggers</b>: specific, timely reasons a company is
+        primed to buy.
+      </>
+    ),
   },
   {
     num: '03',
-    body: 'How you turn a trigger into a point of view you can say out loud, in a meeting or an email, using a five-part structure you can run on any account in about fifteen minutes.',
+    body: (
+      <>
+        How you <b>turn</b> a trigger into a <b>point of view</b> you can say out loud, in a meeting
+        or an email, using a five-part structure you can <b>run on any account</b> in about{' '}
+        <b>fifteen minutes</b>.
+      </>
+    ),
   },
 ];
 
@@ -210,7 +226,7 @@ const WebinarRegistration = () => {
             {problemItems.map((item, i) => (
               <div key={i} className="wr-glass" style={{ borderRadius: 14, padding: '26px 20px' }}>
                 <div style={{ color: ACCENT, display: 'flex', justifyContent: 'center', marginBottom: 16 }}>{item.icon}</div>
-                <h3 style={{ fontSize: 15.5, fontWeight: 700, margin: '0 0 8px', color: INK }}>{item.title}</h3>
+                <h3 style={{ fontFamily: DISPLAY, fontSize: 15.5, fontWeight: 700, margin: '0 0 8px', color: INK }}>{item.title}</h3>
                 <p style={{ fontSize: 13.5, color: BODY, margin: 0, lineHeight: 1.55 }}>{item.body}</p>
               </div>
             ))}
@@ -281,7 +297,7 @@ const WebinarRegistration = () => {
             <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: D_EYEBROW, margin: 0 }}>Jamal Reimer</p>
             <h2 style={{ fontFamily: DISPLAY, fontWeight: 700, fontSize: 'clamp(24px, 3vw, 32px)', lineHeight: 1.2, margin: 0, color: D_INK }}>I&rsquo;ve been there.<br />I&rsquo;ll show you exactly what I do now.</h2>
             <p style={{ fontSize: 16.5, lineHeight: 1.7, margin: 0, color: D_BODY }}>
-              Before I closed $160 million in enterprise deals, some of those $50 million on their own, I got fired. Twice. Both times for underperformance. The gap between that low point and everything that came after is one skill. I&rsquo;ve since coached hundreds of sellers through the same shift, and I want to show you what it looked like on three of them, live, in twenty minutes.
+              Before I <b>closed $160 million</b> in enterprise deals, some of those <b>$50 million on their own</b>, I got fired. <b>Twice.</b> Both times for underperformance. <b>The gap</b> between that low point and everything that came after <b>is one skill.</b> I&rsquo;ve since coached hundreds of sellers through the same shift, and I want to show you <b>what it looked like</b> on three of them, <b>live, in twenty minutes.</b>
             </p>
           </div>
         </div>
