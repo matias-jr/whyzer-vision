@@ -150,6 +150,31 @@ const grid2 = [
   },
 ];
 
+// ── Testimonial grid #3, under the How It Works section. Surnames reduced to
+// an initial, matching the other two grids.
+const grid3 = [
+  {
+    quote: '"Awesome product. It’s like OpenAI and Perplexity’s deep research had a baby who gives a shit about enterprise selling."',
+    name: 'Kyle G.',
+    detail: '',
+  },
+  {
+    quote: '"I need to be top of my game when speaking to executives, with data, with metrics. That’s really what motivated me to use Whyzer and join this conversation."',
+    name: 'Kent',
+    detail: '',
+  },
+  {
+    quote: '"Feels like a business analyst is watching your back… all the context is laid out."',
+    name: 'Matt B.',
+    detail: '',
+  },
+  {
+    quote: '"Amazing prompts. First tool I’ve found that resonates with the way I dig into clients."',
+    name: 'Bill N.',
+    detail: '',
+  },
+];
+
 // ── §9 FAQ
 const faqs = [
   {
@@ -304,6 +329,19 @@ const WebinarThankYou = () => {
                 <h3 style={{ ...HEADING, fontSize: 20, margin: '0 0 10px', color: INK }}>{s.step}</h3>
                 <p style={{ fontSize: 15, lineHeight: 1.65, margin: 0, color: BODY }}>{s.body}</p>
               </div>
+            ))}
+          </div>
+
+          {/* Testimonials — 2-up so four cards fill two even rows. */}
+          <div className="wty-quotes" style={{ marginTop: 56 }}>
+            {grid3.map((t, i) => (
+              <figure key={i} className="wty-testimonial wty-glass" style={{ borderRadius: 16, padding: 26, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+                <blockquote style={{ fontSize: 16, lineHeight: 1.6, margin: 0, color: BODY }}>{t.quote}</blockquote>
+                <figcaption style={{ fontSize: 14, color: MUTED, marginTop: 'auto' }}>
+                  <span style={{ ...HEADING, color: EYEBROW, fontSize: 14 }}>{t.name}</span>
+                  {t.detail && <span>, {t.detail}</span>}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
@@ -529,9 +567,10 @@ const WebinarThankYou = () => {
         .wty-faq-btn:focus-visible, .wty-cta:focus-visible { outline: 2px solid ${ACCENT}; outline-offset: 3px; }
         /* Mobile-first: single column, widening at the 768px breakpoint. */
         /* position:relative keeps grids above the decorative section blooms */
-        .wty-grid, .wty-steps, .wty-features { display: grid; grid-template-columns: 1fr; gap: 18px; position: relative; }
+        .wty-grid, .wty-steps, .wty-features, .wty-quotes { display: grid; grid-template-columns: 1fr; gap: 18px; position: relative; }
         @media (min-width: 768px) {
           .wty-grid, .wty-steps { grid-template-columns: repeat(3, 1fr); }
+          .wty-quotes { grid-template-columns: repeat(2, 1fr); }
           /* Features in two columns. An odd one out spans so the row closes. */
           .wty-features { grid-template-columns: repeat(2, 1fr); gap: 16px; }
           .wty-features > :last-child:nth-child(odd) { grid-column: 1 / -1; }
