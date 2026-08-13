@@ -2,6 +2,16 @@ import { useEffect, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { useUtmParams } from '@/hooks/useUtmParams';
 
+// Vimeo's player API script. Not required for playback — the iframe plays on
+// its own — but it enables the JS player API if we ever need events.
+function loadScript(src: string) {
+  if (document.querySelector(`script[src="${src}"]`)) return;
+  const s = document.createElement('script');
+  s.src = src;
+  s.async = true;
+  document.head.appendChild(s);
+}
+
 function loadCss(href: string) {
   if (document.querySelector(`link[href="${href}"]`)) return;
   const l = document.createElement('link');
@@ -175,6 +185,7 @@ const WebinarThankYou = () => {
 
   useEffect(() => {
     loadCss('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+    loadScript('https://player.vimeo.com/api/player.js');
   }, []);
 
   useEffect(() => {
@@ -224,16 +235,16 @@ const WebinarThankYou = () => {
 
           {/* VIDEO */}
           <section style={{ padding: '16px 24px 28px', display: 'flex', justifyContent: 'center' }}>
-            <div className="wty-video" style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: 'repeating-linear-gradient(135deg, #0E1526, #0E1526 12px, #141D33 12px, #141D33 24px)', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(59,111,240,0.45)' }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 40%, rgba(59,111,240,0.20) 0%, transparent 65%)' }} />
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
-                <div style={{ width: 76, height: 76, borderRadius: '50%', background: ACCENT, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px -6px rgba(59,111,240,0.7)' }}>
-                  <div style={{ width: 0, height: 0, borderTop: '14px solid transparent', borderBottom: '14px solid transparent', borderLeft: '22px solid #FFFFFF', marginLeft: 5 }} />
-                </div>
-                <div style={{ fontFamily: "'Inter', monospace", fontSize: 13, letterSpacing: '0.06em', color: D_MUTED, textTransform: 'uppercase' }}>
-                  webinar video
-                </div>
-              </div>
+            {/* Vimeo embed. The 16/9 wrapper keeps the frame styling that the
+                placeholder carried; the iframe fills it absolutely. */}
+            <div className="wty-video" style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: '#0E1526', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(59,111,240,0.45)' }}>
+              <iframe
+                src="https://player.vimeo.com/video/1218095253?badge=0&autopause=0&player_id=0&app_id=58479"
+                title="Financial Fluency &ndash; Webinar"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+              />
             </div>
           </section>
 
