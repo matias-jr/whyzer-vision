@@ -212,9 +212,9 @@ const Pricing = () => {
               <ul className="space-y-3 mb-8 text-[14px]">
                 {[
                   'Everything in Premium',
-                  'Add unlimited new companies each month',
-                  'Unlimited podcast generation',
-                  'Unlimited Executive POV Dossiers',
+                  'Add up to 500 new companies each month',
+                  '30 podcast generations',
+                  '100 Executive POV Dossiers',
                   'The Vault: Jamal\'s full enterprise selling playbook',
                   'Coach Jamal AI, your sales co-pilot',
                   'Pipeline Flywheel & MDA Masterclass',
