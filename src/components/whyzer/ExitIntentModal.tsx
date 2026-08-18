@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 const STORAGE_KEY = 'whyzer_exit_intent_seen';
-const WEBINAR_PATH = '/financial-fluency';
+const WEBINAR_URL = 'https://www.whyzer.ai/financial-fluency';
 
 /**
  * Exit-intent modal for the home page.
@@ -114,7 +114,7 @@ const ExitIntentModal = () => {
         </p>
 
         <div className="wxi-actions">
-          <a className="wxi-cta" href={WEBINAR_PATH}>Show Me The Framework</a>
+          <a className="wxi-cta" href={WEBINAR_URL}>Show Me The Framework</a>
           <button className="wxi-dismiss" onClick={dismiss}>Not now</button>
         </div>
       </div>

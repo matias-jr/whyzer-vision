@@ -6,6 +6,7 @@ const navLinks = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'The Vault', href: '#vault' },
+  { label: 'Financial Fluency Webinar', href: '/financial-fluency' },
   { label: 'Newsletter', href: '/newsletter' },
 ];
 
@@ -46,23 +47,23 @@ const Navigation = () => {
           </span>
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden xl:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm text-text-secondary hover:text-foreground transition-colors duration-200 tracking-wide"
+              className="text-sm text-text-secondary hover:text-foreground transition-colors duration-200 tracking-wide whitespace-nowrap"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-4">
-          <a href="https://app.whyzer.ai/login" target="_top" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
+        <div className="hidden xl:flex items-center gap-4">
+          <a href="https://app.whyzer.ai/login" target="_top" className="text-sm text-foreground hover:text-primary transition-colors duration-200 whitespace-nowrap">
             Log In
           </a>
-          <a href="https://members.whyzer.ai/login" target="_top" className="text-sm text-foreground hover:text-primary transition-colors duration-200">
+          <a href="https://members.whyzer.ai/login" target="_top" className="text-sm text-foreground hover:text-primary transition-colors duration-200 whitespace-nowrap">
             Members Area
           </a>
           <a
@@ -76,7 +77,7 @@ const Navigation = () => {
         </div>
 
         <button
-          className="md:hidden text-foreground"
+          className="xl:hidden text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
