@@ -14,6 +14,7 @@ import FAQ from '@/components/whyzer/FAQ';
 import FinalCTA from '@/components/whyzer/FinalCTA';
 import Footer from '@/components/whyzer/Footer';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
+import ExitIntentModal from '@/components/whyzer/ExitIntentModal';
 
 const Index = () => {
   return (
@@ -34,6 +35,7 @@ const Index = () => {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <ExitIntentModal />
     </div>
   );
 };
