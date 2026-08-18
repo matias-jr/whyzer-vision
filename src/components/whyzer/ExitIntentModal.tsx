@@ -6,10 +6,9 @@ const WEBINAR_URL = 'https://www.whyzer.ai/financial-fluency';
 /**
  * Exit-intent modal for the home page.
  *
- * Fires once per browser (localStorage) when the pointer leaves through the top
- * of the viewport, which is the cursor heading for the tab bar or address bar.
- * Pointer-based intent has no touch equivalent, so this stays desktop-only
- * rather than guessing at a mobile trigger like scroll-up or a timer.
+ * Fires once per session when the visitor signals they are leaving: the pointer
+ * exits through the top of the viewport, or the tab is hidden. Armed after a
+ * short dwell so an instant bounce is not interrupted.
  */
 const ExitIntentModal = () => {
   const [open, setOpen] = useState(false);
@@ -23,31 +22,56 @@ const ExitIntentModal = () => {
   };
 
   useEffect(() => {
+    // Session-scoped, not permanent: the modal shows once per browsing session
+    // so a returning visitor can see it again, but it never nags twice in a row.
     let seen = false;
     try {
-      seen = localStorage.getItem(STORAGE_KEY) === '1';
+      seen = sessionStorage.getItem(STORAGE_KEY) === '1';
     } catch {
       /* private mode: fall back to once per page load */
     }
     if (seen) return;
 
-    // Only arm once the visitor has been around long enough to have read
-    // something; an instant bounce is not an exit intent worth interrupting.
+    // Arm after a short dwell so an instant bounce is not interrupted.
     let armed = false;
-    const armTimer = window.setTimeout(() => { armed = true; }, 8000);
+    const armTimer = window.setTimeout(() => { armed = true; }, 3000);
 
-    const onLeave = (e: MouseEvent) => {
-      if (!armed || e.clientY > 0 || e.relatedTarget) return;
+    const fire = () => {
+      if (!armed) return;
       lastFocused.current = document.activeElement;
       setOpen(true);
-      try { localStorage.setItem(STORAGE_KEY, '1'); } catch { /* ignore */ }
-      document.removeEventListener('mouseout', onLeave);
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch { /* ignore */ }
+      teardown();
     };
 
-    document.addEventListener('mouseout', onLeave);
+    // Pointer leaving through the top of the viewport: the cursor heading for
+    // the tab bar, address bar, or a bookmark.
+    const onMouseOut = (e: MouseEvent) => {
+      if (e.clientY <= 4) fire();
+    };
+    // Some browsers report the departure as mouseleave on the document rather
+    // than mouseout, so listen for both.
+    const onMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 4) fire();
+    };
+    // Switching tabs or minimising is the same intent without a pointer path,
+    // which also covers trackpad gestures that never cross the top edge.
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') fire();
+    };
+
+    function teardown() {
+      document.removeEventListener('mouseout', onMouseOut);
+      document.removeEventListener('mouseleave', onMouseLeave);
+      document.removeEventListener('visibilitychange', onVisibility);
+    }
+
+    document.addEventListener('mouseout', onMouseOut);
+    document.addEventListener('mouseleave', onMouseLeave);
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
       window.clearTimeout(armTimer);
-      document.removeEventListener('mouseout', onLeave);
+      teardown();
     };
   }, []);
 
@@ -98,8 +122,6 @@ const ExitIntentModal = () => {
             <path d="M1 1l13 13M14 1L1 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </button>
-
-        <p className="wxi-eyebrow">Free 20-minute webinar</p>
 
         <h2 id="wxi-title" className="wxi-title">
           Before you go: the number one thing CFOs wish sellers understood.

@@ -389,15 +389,6 @@ html {
 }
 .wxi-x:hover { color: #E8E5E3; background: rgba(255, 255, 255, 0.06); }
 
-.wxi-eyebrow {
-  margin: 0 0 18px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #8F8FE0;
-}
-
 .wxi-title {
   margin: 0;
   font-family: 'Oswald', sans-serif;
@@ -427,11 +418,11 @@ html {
   color: #A3A2A6;
 }
 
-.wxi-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+/* Stacked: the CTA is the action, "Not now" is the quiet way out beneath it. */
+.wxi-actions { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
 
 .wxi-cta {
-  flex: 1 1 auto;
-  min-width: 220px;
+  display: block;
   padding: 15px 26px;
   border-radius: 9px;
   background: #5959D4;
@@ -451,7 +442,7 @@ html {
 }
 
 .wxi-dismiss {
-  padding: 6px 2px;
+  padding: 13px 2px 2px;
   border: none;
   background: none;
   color: #6E6E76;
@@ -478,9 +469,6 @@ html {
 
 @media (max-width: 520px) {
   .wxi-card { padding: 38px 26px 30px; }
-  .wxi-actions { gap: 12px; }
-  .wxi-cta { flex: 1 1 100%; }
-  .wxi-dismiss { width: 100%; padding: 10px 0 2px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

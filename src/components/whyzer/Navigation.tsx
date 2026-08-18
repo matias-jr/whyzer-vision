@@ -6,8 +6,8 @@ const navLinks = [
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'The Vault', href: '#vault' },
-  { label: 'Financial Fluency Webinar', href: '/financial-fluency' },
   { label: 'Newsletter', href: '/newsletter' },
+  { label: 'Free Webinar', href: '/financial-fluency' },
 ];
 
 const Navigation = () => {
