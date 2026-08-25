@@ -99,6 +99,35 @@ type SubsReport = {
   pendingTrialList: PendingTrial[];
 };
 
+type ChannelRow = {
+  channel: string;
+  contacts: number;
+  customers: number;
+  revenue: number;
+  conversionRate: number;
+  exampleSignals: string[];
+  isAcquisition: boolean;
+};
+
+type ChannelReport = {
+  model: 'first' | 'last';
+  currency: string;
+  windowDays: number;
+  paidUnderReporting: boolean;
+  summary: {
+    paidContacts: number;
+    organicContacts: number;
+    acquisitionContacts: number;
+    paidShare: number;
+    organicShare: number;
+    paidRevenue: number;
+    organicRevenue: number;
+    paidRevenueShare: number;
+    totalContacts: number;
+  };
+  byChannel: ChannelRow[];
+};
+
 type Report = {
   model: 'first' | 'last';
   windowDays: number;
@@ -164,7 +193,9 @@ export default function Attribution() {
   const [subs, setSubs] = useState<SubsReport | null>(null);
   const [subsError, setSubsError] = useState<string | null>(null);
   const [trialCvr, setTrialCvr] = useState(0.5);
-  const [tab, setTab] = useState<'revenue' | 'subscriptions' | 'contacts'>('revenue');
+  const [channels, setChannels] = useState<ChannelReport | null>(null);
+  const [channelsError, setChannelsError] = useState<string | null>(null);
+  const [tab, setTab] = useState<'channels' | 'revenue' | 'subscriptions' | 'contacts'>('channels');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [days, setDays] = useState(30);
@@ -185,10 +216,11 @@ export default function Attribution() {
 
       // Revenue is the slower call (it resolves every payer), so both run in
       // parallel and each surfaces its own error.
-      const [contactsRes, revenueRes, subsRes] = await Promise.allSettled([
+      const [contactsRes, revenueRes, subsRes, channelsRes] = await Promise.allSettled([
         fetch(`/api/attribution?${qs}`, { headers }),
         fetch(`/api/attribution-revenue?${qs}`, { headers }),
         fetch(`/api/attribution-subscriptions?model=${model}&trialCvr=${trialCvr}`, { headers }),
+        fetch(`/api/attribution-channels?${qs}`, { headers }),
       ]);
 
       if (contactsRes.status === 'fulfilled' && contactsRes.value.ok) {
@@ -223,6 +255,18 @@ export default function Attribution() {
             : {};
         setSubs(null);
         setSubsError(body.error ?? 'Failed to load subscription report');
+      }
+
+      if (channelsRes.status === 'fulfilled' && channelsRes.value.ok) {
+        setChannels(await channelsRes.value.json());
+        setChannelsError(null);
+      } else {
+        const body =
+          channelsRes.status === 'fulfilled'
+            ? await channelsRes.value.json().catch(() => ({}))
+            : {};
+        setChannels(null);
+        setChannelsError(body.error ?? 'Failed to load channel report');
       }
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Failed to load report');
@@ -286,7 +330,7 @@ export default function Attribution() {
             ))}
           </div>
           <div className="flex items-center gap-1 border border-foreground/15 rounded p-1">
-            {(['revenue', 'subscriptions', 'contacts'] as const).map((v) => (
+            {(['channels', 'revenue', 'subscriptions', 'contacts'] as const).map((v) => (
               <button
                 key={v}
                 onClick={() => setTab(v)}
@@ -316,6 +360,126 @@ export default function Attribution() {
 
         {loading && !report && (
           <p className="font-mono text-sm text-text-secondary">Loading attribution data…</p>
+        )}
+
+        {tab === 'channels' && channelsError && (
+          <div className="border border-amber-500/30 bg-amber-500/5 rounded p-4 mb-8">
+            <p className="font-mono text-xs uppercase tracking-wider text-amber-500 mb-1">
+              Channels unavailable
+            </p>
+            <p className="text-sm text-text-secondary">{channelsError}</p>
+          </div>
+        )}
+
+        {tab === 'channels' && channels && (
+          <>
+            {/* Paid vs organic split bar */}
+            <section className="mb-8">
+              <div className="flex items-baseline justify-between mb-3">
+                <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary">
+                  Paid vs organic · {channels.model} touch
+                </h2>
+                <span className="font-mono text-[10px] uppercase tracking-wider text-text-secondary">
+                  {channels.summary.acquisitionContacts} acquisition contacts
+                </span>
+              </div>
+
+              <div className="flex h-3 rounded overflow-hidden border border-foreground/10 mb-3">
+                <div
+                  className="bg-primary"
+                  style={{ width: `${channels.summary.paidShare * 100}%` }}
+                  title={`Paid ${pct(channels.summary.paidShare)}`}
+                />
+                <div
+                  className="bg-foreground/25"
+                  style={{ width: `${channels.summary.organicShare * 100}%` }}
+                  title={`Organic ${pct(channels.summary.organicShare)}`}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <Stat
+                  label="Paid"
+                  value={pct(channels.summary.paidShare)}
+                  hint={`${channels.summary.paidContacts} contacts · ${money(channels.summary.paidRevenue, channels.currency)}`}
+                />
+                <Stat
+                  label="Organic"
+                  value={pct(channels.summary.organicShare)}
+                  hint={`${channels.summary.organicContacts} contacts · ${money(channels.summary.organicRevenue, channels.currency)}`}
+                />
+                <Stat
+                  label="Paid share of revenue"
+                  value={pct(channels.summary.paidRevenueShare)}
+                  hint="Of attributed acquisition revenue"
+                />
+                <Stat
+                  label="Not acquisition"
+                  value={String(channels.summary.totalContacts - channels.summary.acquisitionContacts)}
+                  hint="Imports, CRM workflows, unattributed — excluded from the split"
+                />
+              </div>
+            </section>
+
+            {channels.paidUnderReporting && (
+              <div className="border border-amber-500/30 bg-amber-500/5 rounded p-4 mb-10">
+                <p className="font-mono text-xs uppercase tracking-wider text-amber-500 mb-2">
+                  Read paid conversion with care
+                </p>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  Paid brings in the most contacts but shows a far lower conversion rate than
+                  organic channels. That is the signature of attribution loss rather than ad
+                  performance: paid visitors arrive with UTMs, then convert at checkout without
+                  them, so the sale is credited to Referral or Internal instead. The capture fix
+                  addresses this going forward — treat paid conversion counts as a floor until
+                  the data has rebuilt.
+                </p>
+              </div>
+            )}
+
+            <section className="mb-12">
+              <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary mb-4">
+                By channel
+              </h2>
+              <div className="border border-foreground/10 rounded overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-foreground/10 text-left">
+                      <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3">Channel</th>
+                      <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3 text-right">Contacts</th>
+                      <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3 text-right">Customers</th>
+                      <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3 text-right">Conv.</th>
+                      <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3 text-right">Revenue</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {channels.byChannel.map((row) => (
+                      <tr key={row.channel} className="border-b border-foreground/5 last:border-0">
+                        <td className="p-3">
+                          <span className={row.isAcquisition ? '' : 'text-text-secondary italic'}>
+                            {row.channel}
+                          </span>
+                          <span className="block text-xs text-text-secondary font-mono mt-0.5">
+                            {row.exampleSignals.join(' · ')}
+                          </span>
+                        </td>
+                        <td className="p-3 text-right font-mono">{row.contacts}</td>
+                        <td className="p-3 text-right font-mono">{row.customers}</td>
+                        <td className="p-3 text-right font-mono">{pct(row.conversionRate)}</td>
+                        <td className="p-3 text-right font-mono">{money(row.revenue, channels.currency)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-text-secondary mt-3 leading-relaxed">
+                Channels in <span className="italic">italics</span> are not marketing acquisition —
+                CRM imports, Zapier syncs and contacts with no signal. They are shown for
+                reconciliation but excluded from the paid-vs-organic split. The small type under
+                each channel is the signal that classified it.
+              </p>
+            </section>
+          </>
         )}
 
         {tab === 'revenue' && revenueError && (

@@ -784,3 +784,210 @@ export function buildSubscriptionReport(
     subscriptions: details.sort((a, b) => b.revenue - a.revenue),
   };
 }
+
+/* ============================================================
+ * Channel classification (paid vs organic)
+ * ============================================================
+ *
+ * Rolls the long tail of source/medium pairs into a handful of channels a
+ * marketer can act on. Three signals are combined, in priority order:
+ *
+ *   1. medium  — separates real acquisition (form, order_form) from internal
+ *      operations (manual, csv_import, zapier). Roughly 30% of contacts in a
+ *      90-day window are imports or CRM workflows, not marketing at all.
+ *   2. utm_source / utm_medium — the explicit campaign markers we control.
+ *   3. utmSessionSource — GHL's own classification, present on ~86% of
+ *      contacts, used as the fallback when no UTMs survived.
+ *
+ * LinkedIn needs the medium to disambiguate: it is the ad platform AND an
+ * organic channel (dm, post, jamalprofile). Source alone cannot tell them
+ * apart.
+ */
+
+export const CHANNELS = {
+  PAID: 'Paid',
+  ORGANIC_SOCIAL: 'Organic Social',
+  ORGANIC_SEARCH: 'Organic Search',
+  REFERRAL: 'Referral',
+  DIRECT: 'Direct',
+  EMAIL: 'Email',
+  INTERNAL: 'Internal',
+  UNKNOWN: 'Unattributed',
+};
+
+/** Mediums that mean "someone put this contact into the CRM", not a campaign. */
+const INTERNAL_MEDIUMS = new Set([
+  'manual', 'csv_import', 'zapier', 'api', 'import', 'bulk_import',
+]);
+
+/** Mediums that indicate a paid click, regardless of source. */
+const PAID_MEDIUMS = new Set([
+  'cpc', 'ppc', 'paid', 'paidsocial', 'paid_social', 'display', 'banner',
+  'linkedin', 'facebook', 'instagram', 'google', 'ads', 'retargeting',
+]);
+
+/** Mediums that indicate unpaid social activity. */
+const ORGANIC_SOCIAL_MEDIUMS = new Set([
+  'dm', 'post', 'social', 'organic_social', 'profile', 'jamalprofile', 'bio',
+]);
+
+const EMAIL_MEDIUMS = new Set(['email', 'newsletter', 'e-mail']);
+
+/** GHL's own session classification -> channel, used when UTMs are absent. */
+const SESSION_SOURCE_CHANNEL = {
+  'paid social': CHANNELS.PAID,
+  'paid search': CHANNELS.PAID,
+  'organic search': CHANNELS.ORGANIC_SEARCH,
+  'social media': CHANNELS.ORGANIC_SOCIAL,
+  referral: CHANNELS.REFERRAL,
+  'direct traffic': CHANNELS.DIRECT,
+  email: CHANNELS.EMAIL,
+  'crm workflows': CHANNELS.INTERNAL,
+  'crm ui': CHANNELS.INTERNAL,
+  'third party': CHANNELS.INTERNAL,
+};
+
+/**
+ * Classify one contact's attribution into a channel.
+ *
+ * Returns the channel plus the signal that decided it, so the UI can show why
+ * a contact landed where it did rather than being a black box.
+ */
+export function classifyChannel(resolved, model = 'first') {
+  const touch = model === 'last' ? resolved.last : resolved.first;
+  const eff = effectiveAttribution(resolved, model);
+
+  const source = normalize(eff.source || '').replace(/^\(|\)$/g, '');
+  const medium = normalize(eff.medium || '');
+  const sessionSource = normalize(
+    touch?.raw?.utmSessionSource || resolved.last?.raw?.utmSessionSource || '',
+  );
+
+  // 1. Internal operations never count as marketing acquisition.
+  if (INTERNAL_MEDIUMS.has(medium)) {
+    return { channel: CHANNELS.INTERNAL, signal: `medium=${medium}` };
+  }
+  if (SESSION_SOURCE_CHANNEL[sessionSource] === CHANNELS.INTERNAL) {
+    return { channel: CHANNELS.INTERNAL, signal: `session=${sessionSource}` };
+  }
+
+  // 2. Explicit paid markers. utm_source=paid is this account's convention;
+  //    the conventional form (utm_medium=cpc) is handled too.
+  if (source === 'paid' || PAID_MEDIUMS.has(medium)) {
+    // Guard: an organic LinkedIn medium must not be caught by source=linkedin.
+    if (!ORGANIC_SOCIAL_MEDIUMS.has(medium)) {
+      return {
+        channel: CHANNELS.PAID,
+        signal: source === 'paid' ? 'utm_source=paid' : `utm_medium=${medium}`,
+      };
+    }
+  }
+
+  if (EMAIL_MEDIUMS.has(medium)) {
+    return { channel: CHANNELS.EMAIL, signal: `medium=${medium}` };
+  }
+
+  if (ORGANIC_SOCIAL_MEDIUMS.has(medium)) {
+    return { channel: CHANNELS.ORGANIC_SOCIAL, signal: `medium=${medium}` };
+  }
+
+  // 3. Fall back to GHL's classification when no UTMs survived.
+  const fromSession = SESSION_SOURCE_CHANNEL[sessionSource];
+  if (fromSession) return { channel: fromSession, signal: `session=${sessionSource}` };
+
+  return { channel: CHANNELS.UNKNOWN, signal: 'no signal' };
+}
+
+/** True for channels that represent real marketing acquisition. */
+export function isAcquisitionChannel(channel) {
+  return channel !== CHANNELS.INTERNAL && channel !== CHANNELS.UNKNOWN;
+}
+
+/**
+ * Paid-vs-organic breakdown across contacts, with optional revenue.
+ *
+ * Internal and unattributed contacts are reported but excluded from the
+ * paid/organic ratio, so the headline number reflects acquisition only.
+ */
+export function buildChannelReport(
+  resolvedContacts,
+  transactions = [],
+  { model = 'first', currency = 'usd', customerTags = [] } = {},
+) {
+  const revenueByContact = new Map();
+  for (const t of transactions) {
+    if (t.currency !== currency || !isRevenue(t) || !t.contactId) continue;
+    revenueByContact.set(
+      t.contactId,
+      (revenueByContact.get(t.contactId) || 0) + netAmount(t),
+    );
+  }
+
+  const rows = new Map();
+  const isCustomer = (r) =>
+    r.type === 'customer' ||
+    (customerTags.length > 0 && r.tags.some((tag) => customerTags.includes(normalize(tag))));
+
+  let paidContacts = 0;
+  let organicContacts = 0;
+  let paidRevenue = 0;
+  let organicRevenue = 0;
+
+  for (const r of resolvedContacts) {
+    const { channel, signal } = classifyChannel(r, model);
+    const revenue = revenueByContact.get(r.contactId) || 0;
+    const customer = isCustomer(r);
+
+    if (!rows.has(channel)) {
+      rows.set(channel, {
+        channel,
+        contacts: 0,
+        customers: 0,
+        revenue: 0,
+        exampleSignals: new Set(),
+      });
+    }
+    const row = rows.get(channel);
+    row.contacts += 1;
+    if (customer) row.customers += 1;
+    row.revenue += revenue;
+    if (row.exampleSignals.size < 4) row.exampleSignals.add(signal);
+
+    if (channel === CHANNELS.PAID) {
+      paidContacts += 1;
+      paidRevenue += revenue;
+    } else if (isAcquisitionChannel(channel)) {
+      organicContacts += 1;
+      organicRevenue += revenue;
+    }
+  }
+
+  const round = (n) => Math.round(n * 100) / 100;
+  const acquisitionContacts = paidContacts + organicContacts;
+  const acquisitionRevenue = paidRevenue + organicRevenue;
+
+  return {
+    model,
+    currency,
+    summary: {
+      paidContacts,
+      organicContacts,
+      acquisitionContacts,
+      paidShare: acquisitionContacts > 0 ? paidContacts / acquisitionContacts : 0,
+      organicShare: acquisitionContacts > 0 ? organicContacts / acquisitionContacts : 0,
+      paidRevenue: round(paidRevenue),
+      organicRevenue: round(organicRevenue),
+      paidRevenueShare: acquisitionRevenue > 0 ? paidRevenue / acquisitionRevenue : 0,
+      totalContacts: resolvedContacts.length,
+    },
+    byChannel: [...rows.values()]
+      .map((r) => ({
+        ...r,
+        revenue: round(r.revenue),
+        conversionRate: r.contacts > 0 ? r.customers / r.contacts : 0,
+        exampleSignals: [...r.exampleSignals],
+        isAcquisition: isAcquisitionChannel(r.channel),
+      }))
+      .sort((a, b) => b.contacts - a.contacts),
+  };
+}
