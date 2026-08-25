@@ -17,6 +17,7 @@ import AdminLogin from './pages/admin/Login';
 import AdminArticlesList from './pages/admin/ArticlesList';
 import AdminArticleEditor from './pages/admin/ArticleEditor';
 import AdminLiveSessionConfig from './pages/admin/LiveSessionConfig';
+import AdminAttribution from './pages/admin/Attribution';
 import RequireAuth from './components/admin/RequireAuth';
 import NotFound from './pages/NotFound';
 import LiveCentralize from './pages/LiveCentralize';
@@ -68,6 +69,14 @@ export const routes: RouteObject[] = [
         element: (
           <RequireAuth>
             <AdminArticleEditor />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'admin/attribution',
+        element: (
+          <RequireAuth>
+            <AdminAttribution />
           </RequireAuth>
         ),
       },

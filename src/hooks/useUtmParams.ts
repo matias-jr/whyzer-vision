@@ -1,32 +1,30 @@
 import { useState, useEffect } from 'react';
+import {
+  captureAttribution,
+  buildOutboundParams,
+  appendParamsToUrl,
+} from '@/lib/attribution';
 
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-
-function getCookie(name: string): string | null {
-  const match = document.cookie.split('; ').find(row => row.startsWith(`${name}=`));
-  return match ? decodeURIComponent(match.split('=')[1]) : null;
-}
-
+/**
+ * Returns a function that appends captured attribution to an outbound URL.
+ *
+ * Attribution is persisted (see lib/attribution.ts), so UTMs survive a visitor
+ * navigating across pages before clicking a checkout CTA. Previously this read
+ * window.location.search directly, which silently dropped attribution for any
+ * multi-page journey.
+ *
+ * The returned function keeps its original `(url: string) => string` shape, so
+ * existing call sites need no changes.
+ */
 export function useUtmParams(): (url: string) => string {
   const [paramString, setParamString] = useState('');
 
   useEffect(() => {
-    const search = new URLSearchParams(window.location.search);
-    const out = new URLSearchParams();
-
-    // UTM params — read from URL
-    UTM_KEYS.forEach(key => {
-      const val = search.get(key);
-      if (val) out.set(key, val);
-    });
-
-    // am_id — prefer URL param (user just arrived via affiliate link),
-    // fall back to cookie (user arrived in a previous session)
-    const amId = search.get('am_id') ?? getCookie('am_id');
-    if (amId) out.set('am_id', amId);
-
-    setParamString(out.toString());
+    // Runs in an effect: keeps this SSG-safe, since localStorage and document
+    // are unavailable during prerender.
+    const attribution = captureAttribution(window.location.href, document.referrer);
+    setParamString(buildOutboundParams(attribution));
   }, []);
 
-  return (url: string) => paramString ? `${url}?${paramString}` : url;
+  return (url: string) => appendParamsToUrl(url, paramString);
 }

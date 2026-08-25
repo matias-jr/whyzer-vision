@@ -49,6 +49,12 @@ export default function ArticlesList() {
         </div>
         <div className="flex items-center gap-3">
           <Link
+            to="/admin/attribution"
+            className="border border-foreground/15 font-mono text-xs uppercase tracking-wider px-4 py-2 rounded hover:bg-foreground/5 transition-colors"
+          >
+            Attribution
+          </Link>
+          <Link
             to="/admin/live-session"
             className="border border-foreground/15 font-mono text-xs uppercase tracking-wider px-4 py-2 rounded hover:bg-foreground/5 transition-colors"
           >
