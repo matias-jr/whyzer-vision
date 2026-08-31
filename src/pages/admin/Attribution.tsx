@@ -128,6 +128,28 @@ type ChannelReport = {
   byChannel: ChannelRow[];
 };
 
+type ContactRow = {
+  name: string;
+  email: string;
+  channel: string;
+  source: string;
+  campaign: string;
+  landingPage: string;
+  customer: string;
+  revenue: number;
+  dateAdded: string;
+  contactId: string;
+};
+
+type ContactList = {
+  channel: string;
+  total: number;
+  customers: number;
+  revenue: number;
+  returned: number;
+  contacts: ContactRow[];
+};
+
 type Report = {
   model: 'first' | 'last';
   windowDays: number;
@@ -195,6 +217,9 @@ export default function Attribution() {
   const [trialCvr, setTrialCvr] = useState(0.5);
   const [channels, setChannels] = useState<ChannelReport | null>(null);
   const [channelsError, setChannelsError] = useState<string | null>(null);
+  const [drill, setDrill] = useState<string | null>(null);
+  const [drillList, setDrillList] = useState<ContactList | null>(null);
+  const [drillLoading, setDrillLoading] = useState(false);
   const [tab, setTab] = useState<'channels' | 'revenue' | 'subscriptions' | 'contacts'>('channels');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -278,6 +303,52 @@ export default function Attribution() {
   useEffect(() => {
     load();
   }, [load]);
+
+  const openDrill = useCallback(
+    async (channel: string) => {
+      setDrill(channel);
+      setDrillList(null);
+      setDrillLoading(true);
+      try {
+        const { data } = await supabase.auth.getSession();
+        const token = data.session?.access_token;
+        if (!token) return;
+        const res = await fetch(
+          `/api/attribution-contacts?channel=${encodeURIComponent(channel)}&days=${days}&model=${model}`,
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+        if (res.ok) setDrillList(await res.json());
+      } finally {
+        setDrillLoading(false);
+      }
+    },
+    [days, model],
+  );
+
+  // The CSV endpoint needs the bearer token, so fetch it as a blob rather than
+  // linking directly — a plain <a href> cannot carry the Authorization header.
+  const downloadCsv = useCallback(
+    async (channel: string) => {
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      if (!token) return;
+      const res = await fetch(
+        `/api/attribution-contacts?channel=${encodeURIComponent(channel)}&days=${days}&model=${model}&format=csv`,
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `whyzer-${channel.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-contacts.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    },
+    [days, model],
+  );
 
   const t = report?.totals;
 
@@ -456,9 +527,14 @@ export default function Attribution() {
                     {channels.byChannel.map((row) => (
                       <tr key={row.channel} className="border-b border-foreground/5 last:border-0">
                         <td className="p-3">
-                          <span className={row.isAcquisition ? '' : 'text-text-secondary italic'}>
+                          <button
+                            onClick={() => openDrill(row.channel)}
+                            className={`text-left hover:text-primary transition-colors underline decoration-dotted underline-offset-4 ${
+                              row.isAcquisition ? '' : 'text-text-secondary italic'
+                            }`}
+                          >
                             {row.channel}
-                          </span>
+                          </button>
                           <span className="block text-xs text-text-secondary font-mono mt-0.5">
                             {row.exampleSignals.join(' · ')}
                           </span>
@@ -472,6 +548,7 @@ export default function Attribution() {
                   </tbody>
                 </table>
               </div>
+
               <p className="text-xs text-text-secondary mt-3 leading-relaxed">
                 Channels in <span className="italic">italics</span> are not marketing acquisition —
                 CRM imports, Zapier syncs and contacts with no signal. They are shown for
@@ -479,6 +556,75 @@ export default function Attribution() {
                 each channel is the signal that classified it.
               </p>
             </section>
+
+            {drill && (
+              <section className="mb-12">
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                  <h2 className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary">
+                    {drill} contacts
+                    {drillList && ` · ${drillList.total}`}
+                  </h2>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => downloadCsv(drill)}
+                      className="border border-foreground/15 font-mono text-xs uppercase tracking-wider px-3 py-1.5 rounded hover:bg-foreground/5 transition-colors"
+                    >
+                      Export CSV
+                    </button>
+                    <button
+                      onClick={() => { setDrill(null); setDrillList(null); }}
+                      className="border border-foreground/15 font-mono text-xs uppercase tracking-wider px-3 py-1.5 rounded hover:bg-foreground/5 transition-colors"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+
+                {drillLoading && (
+                  <p className="font-mono text-sm text-text-secondary">Loading contacts…</p>
+                )}
+
+                {drillList && (
+                  <>
+                    <p className="text-xs text-text-secondary mb-4 leading-relaxed">
+                      {drillList.customers} customer{drillList.customers === 1 ? '' : 's'} ·{' '}
+                      {money(drillList.revenue, channels.currency)} revenue
+                      {drillList.total > drillList.returned &&
+                        ` · showing first ${drillList.returned}, export for all ${drillList.total}`}
+                    </p>
+                    <div className="border border-foreground/10 rounded overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-foreground/10 text-left">
+                            <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3">Contact</th>
+                            <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3">Campaign</th>
+                            <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3">Landing page</th>
+                            <th className="font-mono text-[10px] uppercase tracking-wider text-text-secondary p-3 text-right">Revenue</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {drillList.contacts.slice(0, 100).map((c) => (
+                            <tr key={c.contactId} className="border-b border-foreground/5 last:border-0">
+                              <td className="p-3">
+                                <span className="block">{c.name || '—'}</span>
+                                <span className="text-xs text-text-secondary">{c.email}</span>
+                              </td>
+                              <td className="p-3 text-text-secondary">{c.campaign}</td>
+                              <td className="p-3 text-text-secondary font-mono text-xs break-all">
+                                {c.landingPage || '—'}
+                              </td>
+                              <td className="p-3 text-right font-mono">
+                                {c.revenue > 0 ? money(c.revenue, channels.currency) : '—'}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                )}
+              </section>
+            )}
           </>
         )}
 
