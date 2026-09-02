@@ -84,6 +84,14 @@
   ],
   "rewrites": [
     {
+      "source": "/newsletter/:slug",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin/articles/:id/edit",
+      "destination": "/index.html"
+    },
+    {
       "source": "/((?!api/)(?!.*\\.[^/]+$).*)",
       "destination": "/index.html"
     }
