@@ -54,13 +54,28 @@ export async function upsert(table, rows, onConflict, batchSize = 500) {
   return { written };
 }
 
-export async function select(table, query = '') {
+/**
+ * Select rows, paging past PostgREST's row cap.
+ *
+ * PostgREST caps a response at its configured maximum (1000 by default) and
+ * returns the truncated page WITHOUT error, so a caller that assumes it has
+ * every row silently works on a subset. This pages with Range headers until
+ * the server stops returning full pages.
+ */
+export async function select(table, query = '', pageSize = 1000) {
   assertConfigured();
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, { headers: headers() });
-  if (!res.ok) {
-    throw new Error(`select ${table} ${res.status}: ${(await res.text()).slice(0, 400)}`);
+  const out = [];
+  for (let from = 0; ; from += pageSize) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${query}`, {
+      headers: headers({ Range: `${from}-${from + pageSize - 1}` }),
+    });
+    if (!res.ok) {
+      throw new Error(`select ${table} ${res.status}: ${(await res.text()).slice(0, 400)}`);
+    }
+    const batch = await res.json();
+    out.push(...batch);
+    if (batch.length < pageSize) return out;
   }
-  return res.json();
 }
 
 /** Open a sync_runs row. Returns its id so it can be closed. */
@@ -93,4 +108,39 @@ export function normalizeEmail(email) {
 /** Stripe returns unix seconds; Postgres wants ISO. */
 export function tsToIso(unixSeconds) {
   return unixSeconds ? new Date(unixSeconds * 1000).toISOString() : null;
+}
+
+/**
+ * PATCH existing rows only, matched on a unique key.
+ *
+ * Distinct from upsert(): an upsert INSERTS rows whose key is absent, which
+ * fails here because a GHL transaction may reference a Stripe subscription the
+ * warehouse has never loaded, and the insert would violate NOT NULL columns
+ * that only the Stripe sync can supply. Updating in place also guarantees a
+ * partial run never blanks a field a previous run populated.
+ */
+export async function patchByKey(table, keyColumn, rows) {
+  assertConfigured();
+  let updated = 0;
+  let missing = 0;
+
+  for (const row of rows) {
+    const { [keyColumn]: key, ...fields } = row;
+    const url =
+      `${SUPABASE_URL}/rest/v1/${table}` +
+      `?${keyColumn}=eq.${encodeURIComponent(key)}`;
+    const res = await fetch(url, {
+      method: 'PATCH',
+      headers: headers({ Prefer: 'return=headers-only,count=exact' }),
+      body: JSON.stringify(fields),
+    });
+    if (!res.ok) {
+      throw new Error(`patch ${table} ${res.status}: ${(await res.text()).slice(0, 300)}`);
+    }
+    // content-range is "0-0/1" when a row matched, "*/0" when none did.
+    const matched = (res.headers.get('content-range') ?? '').split('/')[1];
+    if (matched === '0') missing += 1;
+    else updated += 1;
+  }
+  return { updated, missing };
 }
