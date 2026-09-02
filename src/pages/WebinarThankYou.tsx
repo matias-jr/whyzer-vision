@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { useUtmParams } from '@/hooks/useUtmParams';
 
+import { Head } from 'vite-react-ssg';
 // Vimeo's player API script. Not required for playback — the iframe plays on
 // its own — but it enables the JS player API if we ever need events.
 function loadScript(src: string) {
@@ -239,6 +240,16 @@ const WebinarThankYou = () => {
         position: 'relative',
       }}
     >
+      <Head>
+        <title>Watch the Financial Fluency Webinar | Whyzer</title>
+        <link rel="canonical" href="https://www.whyzer.ai/financial-fluency-watch" />
+        <meta property="og:url" content="https://www.whyzer.ai/financial-fluency-watch" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Your Financial Fluency Webinar" />
+        <meta property="og:description" content="Watch the Financial Fluency webinar and learn why the C-suite ignores most sellers." />
+        <meta name="description" content="Watch the Financial Fluency webinar and learn why the C-suite ignores most sellers." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       {/* The wrapper is light; the hero/video block below keeps the dark
           treatment and spans full width behind the centred column. */}
       {/* HERO + VIDEO — kept dark, full-width band */}

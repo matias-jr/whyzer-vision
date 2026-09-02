@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useUtmParams } from '@/hooks/useUtmParams';
 
+import { Head } from 'vite-react-ssg';
 const EU_COUNTRIES = new Set([
   'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE',
   'IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE',
@@ -292,6 +293,16 @@ export default function EliteUpgrade() {
 
   return (
     <div ref={rootRef} className="eu-root">
+      <Head>
+        <title>Upgrade to Whyzer Elite | Whyzer</title>
+        <link rel="canonical" href="https://www.whyzer.ai/elite-upgrade" />
+        <meta property="og:url" content="https://www.whyzer.ai/elite-upgrade" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Upgrade to Whyzer Elite" />
+        <meta property="og:description" content="Upgrade your Whyzer plan for deeper financial narrative research across more accounts." />
+        <meta name="description" content="Upgrade your Whyzer plan for deeper financial narrative research across more accounts." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <style>{STYLES}</style>
 
       <header className={`nav${stuck ? ' stuck' : ''}`}>

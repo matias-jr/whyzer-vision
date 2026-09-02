@@ -5,6 +5,7 @@ import ArticleCard from '@/components/whyzer/ArticleCard';
 import { listPublishedArticles } from '@/lib/articles';
 import type { ArticleSummary } from '@/types/article';
 
+import { Head } from 'vite-react-ssg';
 type State =
   | { kind: 'loading' }
   | { kind: 'ready'; articles: ArticleSummary[] }
@@ -31,6 +32,15 @@ const NewsletterArchive = () => {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
+      <Head>
+        <title>Newsletter Archive · AI Secrets for Strategic Sellers | Whyzer</title>
+        <link rel="canonical" href="https://www.whyzer.ai/newsletter/archive" />
+        <meta property="og:url" content="https://www.whyzer.ai/newsletter/archive" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Newsletter Archive | Whyzer" />
+        <meta property="og:description" content="Every past issue of AI Secrets for Strategic Sellers, the newsletter for B2B sellers working the AI shift." />
+        <meta name="description" content="Every past issue of AI Secrets for Strategic Sellers, the newsletter for B2B sellers working the AI shift." />
+      </Head>
       <GrainOverlay />
 
       <header className="relative z-10 px-6 py-6 md:px-12 flex items-center justify-between">

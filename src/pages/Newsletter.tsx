@@ -7,6 +7,7 @@ import { listPublishedArticles } from '@/lib/articles';
 import type { ArticleSummary } from '@/types/article';
 import { Zap, Eye, BookOpen } from 'lucide-react';
 
+import { Head } from 'vite-react-ssg';
 const valueProps = [
   {
     icon: Eye,
@@ -106,6 +107,15 @@ const Newsletter = () => {
 
   return (
     <div className="min-h-screen overflow-hidden" style={{ background: '#0A0E1A', color: '#F9FAFB' }}>
+      <Head>
+        <title>AI Secrets for Strategic Sellers · Newsletter | Whyzer</title>
+        <link rel="canonical" href="https://www.whyzer.ai/newsletter" />
+        <meta property="og:url" content="https://www.whyzer.ai/newsletter" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="AI Secrets for Strategic Sellers" />
+        <meta property="og:description" content="The newsletter strategic sellers use to level up in the AI world. No spam, no tools to set up, unsubscribe anytime." />
+        <meta name="description" content="The newsletter strategic sellers use to level up in the AI world. No spam, no tools to set up, unsubscribe anytime." />
+      </Head>
 
       {/* ── Keyframe definitions ── */}
       <style>{`

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Head } from 'vite-react-ssg';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 import { getNextSessionAt } from '@/lib/siteConfig';
 
 // Fast initial paint; replaced by the value from site_config once it loads.
-// August 26, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
-const FALLBACK_SESSION_DATE = new Date('2026-08-26T16:00:00Z');
+// September 16, 2026 11:00 AM ET (EDT, UTC-4) = 15:00 UTC
+const FALLBACK_SESSION_DATE = new Date('2026-09-16T15:00:00Z');
 
 function useCountdown() {
   const [target, setTarget] = useState<Date>(FALLBACK_SESSION_DATE);
@@ -191,6 +192,27 @@ const LiveSession = () => {
 
   return (
     <div className="min-h-screen" style={{ background: '#FAFAF9' }}>
+      {/* Per-route metadata. Without this the page inherits index.html's
+          homepage canonical, which made LinkedIn record the Featured link's
+          identity as https://www.whyzer.ai rather than this page. */}
+      <Head>
+        <title>Live Session · Build a Point of View That Opens Doors | Whyzer</title>
+        <link rel="canonical" href="https://www.whyzer.ai/live-session" />
+        <meta property="og:url" content="https://www.whyzer.ai/live-session" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Stop Sounding Like Everybody Else — Free Live Session, September 16"
+        />
+        <meta
+          property="og:description"
+          content="The three-part framework elite sellers use to build a Point of View sharp enough to get back in the room with the people who can actually say yes. September 16, 11AM ET."
+        />
+        <meta
+          name="description"
+          content="Free live session with Jamal Reimer. Learn the three-part framework elite sellers use to build a Point of View that opens doors a demo can't. September 16, 11AM ET."
+        />
+      </Head>
       <GrainOverlay />
       <MinimalNav />
 
@@ -567,7 +589,7 @@ const LiveSession = () => {
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
           <p className="font-mono text-[13px] text-[#8A8AA0] mt-7 tracking-wide">
-            August 26 · 12PM ET
+            September 16 · 11AM ET
           </p>
         </div>
       </section>

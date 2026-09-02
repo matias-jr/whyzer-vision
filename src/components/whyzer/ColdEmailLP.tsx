@@ -1,3 +1,4 @@
+import { Head } from 'vite-react-ssg';
 import { FileText, FileSearch, Users } from 'lucide-react';
 import ColdEmailTestimonials from './ColdEmailTestimonials';
 
@@ -7,6 +8,8 @@ type Offer = 'a' | 'b';
 interface Props {
   direction: Direction;
   offer: Offer;
+  /** Route slug, used for this page's canonical URL. */
+  slug: string;
 }
 
 const WORDMARK_SRC =
@@ -48,7 +51,7 @@ function Wordmark({ dark }: { dark: boolean }) {
   );
 }
 
-export default function ColdEmailLP({ direction, offer }: Props) {
+export default function ColdEmailLP({ direction, offer, slug }: Props) {
   const isDark = direction === 'd2';
   const isOfferA = offer === 'a';
 
@@ -372,9 +375,21 @@ export default function ColdEmailLP({ direction, offer }: Props) {
   );
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
+    <>
+      {/* Cold-email landing pages: their own canonical, kept out of search. */}
+      <Head>
+        <title>Whyzer</title>
+        <link rel="canonical" href={`https://www.whyzer.ai/${slug}`} />
+        <meta property="og:url" content={`https://www.whyzer.ai/${slug}`} />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta
+          name="description"
+          content="Turn SEC filings and earnings calls into boardroom-ready Points of View."
+        />
+      </Head>
+      <div
+        style={{
+          minHeight: '100vh',
         background: palette.page,
         color: palette.text,
         fontFamily: fontStack.body,
@@ -777,7 +792,8 @@ export default function ColdEmailLP({ direction, offer }: Props) {
       >
         Privacy and Terms · Help · Whyzer 2026
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
 

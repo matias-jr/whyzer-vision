@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Head } from 'vite-react-ssg';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
 function loadCss(href: string) {
@@ -144,6 +145,15 @@ const MUTED = '#9CA3AF';
 
 const LiveCentralize = () => (
   <div className="min-h-screen" style={{ background: '#0A0E1A', color: '#F9FAFB', fontFamily: 'Inter, system-ui, sans-serif', WebkitFontSmoothing: 'antialiased', overflowX: 'hidden' }}>
+    <Head>
+      <title>Centralize Your Account Research · Live Session | Whyzer</title>
+      <link rel="canonical" href="https://www.whyzer.ai/live-centralize" />
+      <meta property="og:url" content="https://www.whyzer.ai/live-centralize" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Centralize Your Account Research" />
+      <meta property="og:description" content="A live working session on pulling your account research into one place so it is usable in the deal." />
+      <meta name="description" content="A live working session on pulling your account research into one place so it is usable in the deal." />
+    </Head>
     <GrainOverlay />
 
     {/* NAV */}

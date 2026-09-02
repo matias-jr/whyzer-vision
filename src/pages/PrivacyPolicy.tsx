@@ -1,3 +1,5 @@
+import { Head } from 'vite-react-ssg';
+
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-10">
     <h2 className="font-display text-lg text-foreground uppercase tracking-wide mb-4">{title}</h2>
@@ -22,6 +24,15 @@ const UL = ({ items }: { items: string[] }) => (
 
 const PrivacyPolicy = () => (
   <div className="min-h-screen bg-background text-foreground">
+    <Head>
+      <title>Privacy Policy | Whyzer</title>
+      <link rel="canonical" href="https://www.whyzer.ai/privacy-policy" />
+      <meta property="og:url" content="https://www.whyzer.ai/privacy-policy" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Privacy Policy | Whyzer" />
+      <meta property="og:description" content="How Whyzer collects, uses, and protects your personal information." />
+      <meta name="description" content="How Whyzer collects, uses, and protects your personal information." />
+    </Head>
 
     {/* Header */}
     <header className="border-b border-foreground/[0.06] px-6 lg:px-12 py-5 flex items-center justify-between">

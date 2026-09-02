@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Head } from 'vite-react-ssg';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
 function loadCss(href: string) {
@@ -70,6 +71,16 @@ const coverItems = [
 
 const LiveCentralizeRegistered = () => (
   <div className="min-h-screen" style={{ background: '#0A0E1A', color: '#F9FAFB', fontFamily: 'Inter, system-ui, sans-serif', WebkitFontSmoothing: 'antialiased', overflowX: 'hidden' }}>
+    <Head>
+      <title>You&rsquo;re Registered · Live Session | Whyzer</title>
+      <link rel="canonical" href="https://www.whyzer.ai/live-centralize-registered" />
+      <meta property="og:url" content="https://www.whyzer.ai/live-centralize-registered" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="You're Registered" />
+      <meta property="og:description" content="Your seat is confirmed. Add the session to your calendar and be there live." />
+      <meta name="description" content="Your seat is confirmed. Add the session to your calendar and be there live." />
+      <meta name="robots" content="noindex, nofollow" />
+    </Head>
     <GrainOverlay />
 
     {/* NAV */}

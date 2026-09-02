@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { Head } from 'vite-react-ssg';
 function loadCss(href: string) {
   if (document.querySelector(`link[href="${href}"]`)) return;
   const l = document.createElement('link');
@@ -186,6 +187,15 @@ const WebinarRegistration = () => {
         position: 'relative',
       }}
     >
+      <Head>
+        <title>Why the C-Suite Ignores You · Financial Fluency Webinar | Whyzer</title>
+        <link rel="canonical" href="https://www.whyzer.ai/financial-fluency" />
+        <meta property="og:url" content="https://www.whyzer.ai/financial-fluency" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Why the C-Suite Ignores You — and It’s Not Your Outreach, Your Timing, or Your Product" />
+        <meta property="og:description" content="Jamal Reimer closed $160M+ in enterprise SaaS after learning this the hard way. A free Financial Fluency webinar for sellers who keep getting delegated back down." />
+        <meta name="description" content="Jamal Reimer closed $160M+ in enterprise SaaS after learning this the hard way. A free Financial Fluency webinar for sellers who keep getting delegated back down." />
+      </Head>
       {/* NAV — stays navy, as in the mockup */}
       <div style={{ background: NAVY }}>
         <header className="wr-nav" style={{ maxWidth: 1140, margin: '0 auto', padding: '20px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'nowrap', position: 'relative', zIndex: 5 }}>
