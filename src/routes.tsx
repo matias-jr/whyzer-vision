@@ -1,6 +1,7 @@
 import type { RouteObject } from 'react-router-dom';
 import App from './App';
 import Index from './pages/Index';
+import HomeV8 from './pages/HomeV8';
 import Newsletter from './pages/Newsletter';
 import LiveSession from './pages/LiveSession';
 import LiveSessionConfirmed from './pages/LiveSessionConfirmed';
@@ -31,6 +32,8 @@ export const routes: RouteObject[] = [
     element: <App />,
     children: [
       { index: true, element: <Index /> },
+      // Staging preview of the v8 homepage redesign; becomes `/` when approved.
+      { path: 'v8', element: <HomeV8 /> },
       { path: 'newsletter', element: <Newsletter /> },
       { path: 'live-session', element: <LiveSession /> },
       { path: 'live-session-confirmed', element: <LiveSessionConfirmed /> },
