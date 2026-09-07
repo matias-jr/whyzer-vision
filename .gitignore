@@ -26,4 +26,4 @@ dist-ssr
 .env*
 
 # Claude Design export for the v8 homepage redesign (source art, not shipped)
-Whyzer webpage v8 redesign/
+Whyzer webpage v8 redesign*/
