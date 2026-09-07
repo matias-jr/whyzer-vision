@@ -123,21 +123,71 @@ const ExitIntentModal = () => {
           </svg>
         </button>
 
-        <h2 id="wxi-title" className="wxi-title">
-          Before you go: the number one thing CFOs wish sellers understood.
-        </h2>
+        {/* Left: the pitch. */}
+        <div className="wxi-pitch">
+          <span className="wxi-pill">
+            <span className="wxi-pill-dot" aria-hidden="true" />
+            Free · 20 minutes · watch anytime
+          </span>
 
-        {/* Signature: a ledger rule, drawn on open — the line under a figure. */}
-        <span className="wxi-rule" aria-hidden="true" />
+          <h2 id="wxi-title" className="wxi-title">
+            Before you go: the number one thing CFOs wish sellers understood.
+          </h2>
 
-        <p id="wxi-body" className="wxi-body">
-          A free 20-minute webinar on the financial fluency framework enterprise sellers use to get
-          taken seriously in the room. Takes less time than the meeting you&rsquo;re about to prep for.
-        </p>
+          {/* Signature: a ledger rule, drawn on open — the line under a figure. */}
+          <span className="wxi-rule" aria-hidden="true" />
 
-        <div className="wxi-actions">
-          <a className="wxi-cta" href={WEBINAR_URL}>Show Me The Framework</a>
-          <button className="wxi-dismiss" onClick={dismiss}>Not now</button>
+          <p id="wxi-body" className="wxi-body">
+            Jamal walks the financial fluency framework enterprise sellers use to get taken
+            seriously in the room &mdash; with a real 10-K on screen. Takes less time than the
+            meeting you&rsquo;re about to prep for.
+          </p>
+
+          <ul className="wxi-list">
+            <li>Where CFOs actually look first in a filing</li>
+            <li>The three numbers that reframe your whole pitch</li>
+            <li>No signup, no seat limit &mdash; starts when you press play</li>
+          </ul>
+
+          <div className="wxi-actions">
+            <a className="wxi-cta" href={WEBINAR_URL}>
+              <span className="wxi-cta-play" aria-hidden="true">&#9654;</span>
+              Watch It Now &mdash; Free
+            </a>
+            <button className="wxi-dismiss" onClick={dismiss}>Not now</button>
+          </div>
+        </div>
+
+        {/* Right: what they are being handed. The whole panel is one link so the
+            thumbnail is clickable, not decorative. */}
+        <div className="wxi-aside">
+          <a className="wxi-thumb" href={WEBINAR_URL} tabIndex={-1} aria-hidden="true">
+            <img src="/exit-session-preview.png" alt="" loading="lazy" />
+            <span className="wxi-thumb-veil" />
+            <span className="wxi-live">
+              <span className="wxi-live-dot" />
+              Live anytime
+            </span>
+            <span className="wxi-play"><span className="wxi-play-ring" />&#9654;</span>
+            <span className="wxi-meta">
+              <span className="wxi-meta-title">Financial Fluency for Sellers &mdash; full session</span>
+              <span className="wxi-bar"><span /></span>
+              <span className="wxi-times"><span>0:00</span><span>20:14</span></span>
+            </span>
+          </a>
+
+          <div className="wxi-host">
+            <img className="wxi-host-face" src="/jr_headshot.webp" alt="" loading="lazy" width={38} height={38} />
+            <div>
+              <div className="wxi-host-name">Jamal Reimer</div>
+              <div className="wxi-host-role">$160M+ closed · author of Mega Deal Secrets</div>
+            </div>
+          </div>
+
+          <div className="wxi-count">
+            <span className="wxi-count-dot" aria-hidden="true" />
+            4,100+ sellers have watched it
+          </div>
         </div>
       </div>
     </div>
