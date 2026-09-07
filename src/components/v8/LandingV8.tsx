@@ -120,7 +120,9 @@ export default function LandingV8() {
 
   const { tab, select } = useTour(TOUR_TABS.length, motionOk);
   const hero = useHeroDemo(motionOk);
-  const exit = useExitIntent(motionOk);
+  // Exit intent is a content trigger, not decoration: a visitor who prefers
+  // reduced motion should still be offered the webinar.
+  const exit = useExitIntent(true);
   const [qi, setQi] = useState(0);
   const [annual, setAnnual] = useState(false);
   const gauge = useGauge(GAUGE_TIERS.length, motionOk);
@@ -1319,45 +1321,176 @@ export default function LandingV8() {
               backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)',
             }}
           />
-          <div style={{
-            position: 'relative', width: '100%', maxWidth: 620, borderRadius: 26,
-            padding: '44px 46px 38px',
-            background: 'linear-gradient(165deg, rgba(28,28,48,.96), rgba(13,13,26,.97))',
+          <div className="wz8-exit-card" style={{
+            position: 'relative', width: '100%', maxWidth: 940, margin: 'auto',
+            maxHeight: 'calc(100vh - 48px)', overflowY: 'auto', borderRadius: 26,
+            display: 'grid', gridTemplateColumns: '1.02fr .98fr', alignItems: 'stretch',
+            background: 'linear-gradient(165deg, rgba(28,28,48,.97), rgba(13,13,26,.98))',
             backdropFilter: 'blur(26px) saturate(160%)', WebkitBackdropFilter: 'blur(26px) saturate(160%)',
             border: '1px solid rgba(255,255,255,.1)', boxShadow: '0 60px 120px -40px rgba(0,0,0,.8)',
-            maxHeight: '90vh', overflowY: 'auto',
           }}>
             <button
               onClick={() => exit.setOpen(false)} aria-label="Close"
               style={{
-                position: 'absolute', top: 22, right: 22, width: 46, height: 46, borderRadius: 14,
-                background: 'transparent', border: '1px solid var(--wz-brand)', color: '#DADAF2',
-                cursor: 'pointer', fontSize: 20, lineHeight: 1, display: 'flex',
-                alignItems: 'center', justifyContent: 'center',
+                position: 'absolute', top: 16, right: 16, zIndex: 3, width: 38, height: 38,
+                borderRadius: 12, background: 'rgba(11,11,24,.5)', border: '1px solid var(--wz-brand)',
+                color: '#DADAF2', cursor: 'pointer', fontSize: 18, lineHeight: 1,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}
             >✕</button>
-            <h3 id="wz8-exit-title" style={{
-              fontSize: 38, fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.01em',
-              textTransform: 'uppercase', color: '#F5F3EE', maxWidth: 460, marginBottom: 26, textWrap: 'pretty',
+
+            {/* left: the pitch */}
+            <div style={{ minHeight: 0, padding: '30px 34px 28px', display: 'flex', flexDirection: 'column' }}>
+              <div style={{
+                display: 'inline-flex', alignSelf: 'flex-start', alignItems: 'center', gap: 8,
+                fontSize: 11, fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase',
+                color: '#C9C6FF', background: 'rgba(98,98,233,.2)',
+                border: '1px solid rgba(140,135,240,.35)', padding: '6px 12px',
+                borderRadius: 100, marginBottom: 16,
+              }}>
+                <span className="wz8-pulse" style={{ width: 6, height: 6, borderRadius: '50%', background: '#33D69F' }} />
+                Free · 20 minutes · watch anytime
+              </div>
+              <h3 id="wz8-exit-title" style={{
+                fontSize: 29, fontWeight: 700, lineHeight: 1.08, letterSpacing: '-.01em',
+                textTransform: 'uppercase', color: '#F5F3EE', marginBottom: 16, textWrap: 'pretty',
+              }}>
+                Before you go: the number one thing CFOs wish sellers understood.
+              </h3>
+              <div style={{ height: 2, background: 'var(--wz-brand)', marginBottom: 16 }} />
+              <p style={{ fontSize: 14, lineHeight: 1.65, color: '#A9A9BE', marginBottom: 18, textWrap: 'pretty' }}>
+                Jamal walks the financial fluency framework enterprise sellers use to get taken
+                seriously in the room — with a real 10-K on screen. Takes less time than the
+                meeting you're about to prep for.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 20 }}>
+                {[
+                  'Where CFOs actually look first in a filing',
+                  'The three numbers that reframe your whole pitch',
+                  'No signup, no seat limit — starts when you press play',
+                ].map((t) => (
+                  <div key={t} style={{ fontSize: 13.5, color: '#B9B9E8', display: 'flex', gap: 10 }}>
+                    <span style={{ color: 'var(--wz-brand)', fontWeight: 700 }}>✓</span>{t}
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 'auto' }}>
+                <a
+                  href="/financial-fluency" className="wz8-btn wz8-btn-primary"
+                  style={{
+                    width: '100%', fontSize: 16, fontWeight: 700, padding: '16px 24px',
+                    borderRadius: 12, display: 'flex', alignItems: 'center',
+                    justifyContent: 'center', gap: 10,
+                  }}
+                >
+                  <span style={{ fontSize: 12 }}>▶</span>Watch It Now — Free
+                </a>
+                <button
+                  onClick={() => exit.setOpen(false)}
+                  style={{
+                    width: '100%', marginTop: 12, border: 0, background: 'transparent',
+                    cursor: 'pointer', fontFamily: 'inherit', fontSize: 15,
+                    color: 'var(--wz-soft)', padding: 8,
+                  }}
+                >Not now</button>
+              </div>
+            </div>
+
+            {/* right: the session preview */}
+            <div style={{
+              position: 'relative', background: '#07070F',
+              backgroundImage: 'radial-gradient(ellipse 420px 320px at 22% 88%, rgba(99,73,198,.55), transparent 66%), radial-gradient(ellipse 340px 280px at 92% 6%, rgba(22,105,143,.5), transparent 66%)',
+              padding: '30px 30px 26px', minHeight: 0, display: 'flex',
+              flexDirection: 'column', justifyContent: 'center', gap: 14,
             }}>
-              Before you go: the number one thing CFOs wish sellers understood.
-            </h3>
-            <div style={{ height: 2, background: 'var(--wz-brand)', marginBottom: 26 }} />
-            <p style={{ fontSize: 16, lineHeight: 1.75, color: '#A9A9BE', marginBottom: 30, textWrap: 'pretty' }}>
-              A free 20-minute webinar on the financial fluency framework enterprise sellers use to
-              get taken seriously in the room. Takes less time than the meeting you're about to prep for.
-            </p>
-            <a
-              href="/financial-fluency" className="wz8-btn wz8-btn-primary"
-              style={{ display: 'block', width: '100%', fontSize: 16, fontWeight: 700, padding: '20px 24px', borderRadius: 12 }}
-            >Show Me The Framework</a>
-            <button
-              onClick={() => exit.setOpen(false)}
-              style={{
-                width: '100%', marginTop: 14, border: 0, background: 'transparent', cursor: 'pointer',
-                fontFamily: 'inherit', fontSize: 16, color: 'var(--wz-soft)', padding: 8,
-              }}
-            >Not now</button>
+              <a
+                href="/financial-fluency" aria-label="Watch the financial fluency session"
+                className="wz8-exit-thumb"
+                style={{
+                  position: 'relative', display: 'block', borderRadius: 16, overflow: 'hidden',
+                  border: '1px solid rgba(255,255,255,.14)',
+                  boxShadow: '0 34px 64px -26px rgba(0,0,0,.85)', aspectRatio: '16 / 10',
+                  background: 'linear-gradient(150deg,#2A2352,#0F1230)',
+                }}
+              >
+                <img
+                  src="/v8/app-earnings.png" alt="" aria-hidden="true" loading="lazy"
+                  style={{
+                    position: 'absolute', inset: 0, width: '100%', height: '100%',
+                    objectFit: 'cover', objectPosition: 'top left', opacity: .34,
+                  }}
+                />
+                <span style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(180deg, rgba(7,7,15,.25), rgba(7,7,15,.82))',
+                }} />
+                <span style={{
+                  position: 'absolute', top: 14, left: 14, display: 'inline-flex',
+                  alignItems: 'center', gap: 7, fontSize: 10, fontWeight: 700,
+                  letterSpacing: '.08em', textTransform: 'uppercase', color: '#fff',
+                  background: 'rgba(179,65,63,.9)', padding: '5px 10px', borderRadius: 6,
+                }}>
+                  <span className="wz8-pulse" style={{ width: 6, height: 6, borderRadius: '50%', background: '#fff' }} />
+                  Live anytime
+                </span>
+                <span style={{
+                  position: 'absolute', inset: 0, display: 'flex',
+                  alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <span style={{
+                    position: 'relative', width: 74, height: 74, borderRadius: '50%',
+                    background: 'rgba(255,255,255,.96)', display: 'flex', alignItems: 'center',
+                    justifyContent: 'center', boxShadow: '0 18px 40px -14px rgba(0,0,0,.8)',
+                  }}>
+                    <span className="wz8-pulse" style={{
+                      position: 'absolute', inset: -10, borderRadius: '50%',
+                      border: '2px solid rgba(255,255,255,.35)',
+                    }} />
+                    <span style={{ color: 'var(--wz-ink)', fontSize: 21, marginLeft: 4 }}>▶</span>
+                  </span>
+                </span>
+                <span style={{ position: 'absolute', left: 14, right: 14, bottom: 12 }}>
+                  <span style={{
+                    display: 'block', fontSize: 12.5, fontWeight: 700, color: '#fff', marginBottom: 8,
+                  }}>Financial Fluency for Sellers — full session</span>
+                  <span style={{
+                    display: 'block', height: 4, borderRadius: 100,
+                    background: 'rgba(255,255,255,.22)', overflow: 'hidden',
+                  }}>
+                    <span style={{ display: 'block', width: '0%', height: '100%', background: 'var(--wz-brand)' }} />
+                  </span>
+                  <span style={{
+                    display: 'flex', justifyContent: 'space-between', fontSize: 10,
+                    color: '#C9C6FF', marginTop: 6,
+                  }}>
+                    <span>0:00</span><span>20:14</span>
+                  </span>
+                </span>
+              </a>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{
+                  width: 38, height: 38, borderRadius: '50%', background: 'var(--wz-brand)',
+                  color: '#fff', fontSize: 12, fontWeight: 700, display: 'flex',
+                  alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                }}>JR</div>
+                <div>
+                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#fff', fontSize: 14 }}>
+                    Jamal Reimer
+                  </div>
+                  <div style={{ fontSize: 11.5, color: '#8F8FD0' }}>
+                    $160M+ closed · author of Mega Deal Secrets
+                  </div>
+                </div>
+              </div>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 9, fontSize: 11.5, color: '#8F8FD0',
+                borderTop: '1px solid rgba(255,255,255,.1)', paddingTop: 14,
+              }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#33D69F' }} />
+                4,100+ sellers have watched it
+              </div>
+            </div>
           </div>
         </div>
       )}
