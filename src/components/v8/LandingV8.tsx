@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import {
   TOUR_TABS, TOUR_CAPTIONS, QUOTE_SETS, MARQUEE_CHIPS, FAQ_GROUPS,
+  GAUGE_TIERS, VIDEOS, PROOF_STATS,
 } from './data';
 import {
   useReveal, useCountUp, useTour, useHeroDemo, useExitIntent, useMediaQuery,
+  useGauge, useVideoCarousel,
 } from './hooks';
 import './v8.css';
 
@@ -121,11 +123,18 @@ export default function LandingV8() {
   const exit = useExitIntent(motionOk);
   const [qi, setQi] = useState(0);
   const [annual, setAnnual] = useState(false);
+  const gauge = useGauge(GAUGE_TIERS.length, motionOk);
+  // Both queries run unconditionally; the carousel shows one card on phones,
+  // two on tablets, three on desktop, matching the CSS flex-basis breakpoints.
+  const isPhone = useMediaQuery('(max-width: 620px)');
+  const isTablet = useMediaQuery('(max-width: 980px)');
+  const perPage = isPhone ? 1 : isTablet ? 2 : 3;
+  const vid = useVideoCarousel(VIDEOS.length, perPage);
 
   const quotes = QUOTE_SETS[qi];
-  const price = { premium: annual ? '$41' : '$47', elite: annual ? '$83' : '$97' };
+  const price = { premium: annual ? '$47' : '$57', elite: annual ? '$83' : '$97' };
   const note = {
-    premium: annual ? '$497/year, billed annually' : '$570/year if you stay monthly',
+    premium: annual ? '$567/year, billed annually' : '$684/year if you stay monthly',
     elite: annual ? '$997/year, billed annually' : '$1,164/year if you stay monthly',
   };
   const ctaLabel = annual ? 'Get annual access' : 'Start your free trial';
@@ -142,20 +151,8 @@ export default function LandingV8() {
           padding: '14px 32px', display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', gap: 24,
         }}>
-          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 11 }} aria-label="Whyzer home">
-            <span style={{
-              width: 30, height: 30, borderRadius: '50%', background: 'var(--wz-night)',
-              border: '1px solid rgba(255,255,255,.18)', display: 'flex',
-              alignItems: 'center', justifyContent: 'center',
-            }}>
-              <svg width="18" height="10" viewBox="0 0 24 12" fill="none" aria-hidden="true">
-                <path d="M1 1.5l4.5 9L12 3l6.5 7.5L23 1.5" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-            <span style={{
-              fontFamily: "'Space Grotesk', sans-serif", color: '#fff', fontWeight: 700,
-              fontSize: 19, letterSpacing: '.02em',
-            }}>WHYZER</span>
+          <a href="/" style={{ display: 'flex', alignItems: 'center' }} aria-label="Whyzer home">
+            <img src="/v8/whyzer-logo-white.png" alt="Whyzer" width={104} height={26} style={{ height: 26, width: 'auto' }} />
           </a>
           <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
             <div className="wz8-nav-links" style={{ display: 'flex', gap: 26 }}>
@@ -560,68 +557,86 @@ export default function LandingV8() {
                   <path d="M30 200 A170 170 0 0 1 96 68" fill="none" stroke="url(#wzArcL)" strokeWidth="22" strokeLinecap="round" />
                   <path d="M118 52 A170 170 0 0 1 282 52" fill="none" stroke="url(#wzArcM)" strokeWidth="26" strokeLinecap="round" />
                   <path d="M304 68 A170 170 0 0 1 370 200" fill="none" stroke="url(#wzArcR)" strokeWidth="22" strokeLinecap="round" />
-                  <text x="34" y="222" fill="#8F8FD0" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="700">$0 / mo</text>
-                  <text x="322" y="222" fill="#8F8FD0" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="700">$44K / yr</text>
-                  <g className="wz8-needle">
+                  <text x="30" y="222" fill="#8F8FD0" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="700">$20 / mo</text>
+                  <text x="318" y="222" fill="#8F8FD0" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="700">$44K / yr</text>
+                  <g style={{
+                    transformOrigin: '200px 200px',
+                    transition: 'transform 1.15s cubic-bezier(.34,1.06,.32,1)',
+                    transform: `rotate(${GAUGE_TIERS[gauge.tier].deg}deg)`,
+                  }}>
                     <path d="M200 200 L200 62" stroke="#fff" strokeWidth="5" strokeLinecap="round" />
                     <circle cx="200" cy="200" r="13" fill="#fff" />
-                    <circle cx="200" cy="200" r="6" fill="#6262e9" />
+                    <circle cx="200" cy="200" r="6" fill={GAUGE_TIERS[gauge.tier].hub} />
                   </g>
                 </svg>
                 <div style={{ textAlign: 'center', marginTop: -6 }}>
                   <div style={{
                     fontFamily: "'Space Grotesk', sans-serif", fontSize: 56, fontWeight: 700,
-                    color: '#fff', lineHeight: 1,
+                    lineHeight: 1, transition: 'color .5s ease', color: GAUGE_TIERS[gauge.tier].color,
                   }}>
-                    $47<span style={{ fontSize: 17, color: '#8F8FD0', fontWeight: 500 }}> /seat/mo</span>
+                    {GAUGE_TIERS[gauge.tier].amount}
+                    <span style={{ fontSize: 17, color: '#8F8FD0', fontWeight: 500 }}> {GAUGE_TIERS[gauge.tier].unit}</span>
                   </div>
-                  <div style={{ fontSize: 13, color: '#B9B9E8', marginTop: 8 }}>
-                    The smart middle. Sourced like an analyst, priced like software.
+                  <div style={{ fontSize: 13, color: '#B9B9E8', marginTop: 8, minHeight: 38 }}>
+                    {GAUGE_TIERS[gauge.tier].caption}
                   </div>
                 </div>
               </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              {[
-                {
-                  k: 'Generic AI', price: 'Free–$20', unit: ' /mo', highlight: false,
-                  body: <>A summary you have to verify yourself. No sourcing, no fact-labeling, nothing that survives a room looking for the hole in it.</>,
-                },
-                {
-                  k: 'Whyzer', price: '$47', unit: ' /seat/mo', highlight: true,
-                  body: <>Same earnings-call intelligence, sourced and fact-labeled. <b style={{ color: '#fff' }}>5× faster prep</b>, no contract, no demo, no approval cycle — start today.</>,
-                },
-                {
-                  k: 'Enterprise tools', price: '$44,000', unit: ' /yr', highlight: false,
-                  body: <>Sold through procurement. Six-week approval cycle, annual commitment, built for analyst teams with enterprise budgets — not for the rep with a call on Thursday.</>,
-                },
-              ].map((row) => (
-                <div key={row.k} style={{
-                  borderRadius: 14, padding: '20px 22px',
-                  background: row.highlight ? 'rgba(98,98,233,.16)' : 'rgba(255,255,255,.05)',
-                  border: row.highlight ? '1px solid rgba(140,135,240,.5)' : '1px solid rgba(255,255,255,.1)',
-                  boxShadow: row.highlight ? '0 20px 46px -24px rgba(98,98,233,.7)' : undefined,
-                }}>
-                  <div style={{
-                    display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
-                    gap: 12, marginBottom: 8, flexWrap: 'wrap',
-                  }}>
+              {GAUGE_TIERS.map((row, i) => {
+                const on = gauge.tier === i;
+                const mid = i === 1;
+                return (
+                  <button
+                    key={row.key}
+                    className="wz8-tier"
+                    aria-pressed={on}
+                    onClick={() => gauge.select(i)}
+                    style={{
+                      background: on
+                        ? (mid ? 'rgba(98,98,233,.24)' : 'rgba(255,255,255,.11)')
+                        : (mid ? 'rgba(98,98,233,.14)' : 'rgba(255,255,255,.05)'),
+                      border: `1px solid ${on
+                        ? (mid ? 'rgba(150,145,255,.85)' : 'rgba(255,255,255,.32)')
+                        : (mid ? 'rgba(140,135,240,.4)' : 'rgba(255,255,255,.1)')}`,
+                      boxShadow: on
+                        ? (mid ? '0 26px 54px -22px rgba(98,98,233,.85)' : '0 22px 46px -26px rgba(0,0,0,.7)')
+                        : 'none',
+                      transform: on ? 'translateX(-6px)' : 'translateX(0)',
+                    }}
+                  >
                     <div style={{
-                      fontSize: 11.5, fontWeight: 700, letterSpacing: '.05em', textTransform: 'uppercase',
-                      color: row.highlight ? '#C9C6FF' : '#8F8FD0',
-                    }}>{row.k}</div>
-                    <div style={{
-                      fontFamily: "'Space Grotesk', sans-serif", fontSize: 26, fontWeight: 700,
-                      color: row.highlight ? '#fff' : '#DADAF2',
+                      display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
+                      gap: 12, marginBottom: 8, flexWrap: 'wrap',
                     }}>
-                      {row.price}
-                      <span style={{ fontSize: 12, color: row.highlight ? '#C9C6FF' : '#8F8FD0', fontWeight: 500 }}>{row.unit}</span>
+                      <div style={{
+                        fontSize: 11.5, fontWeight: 700, letterSpacing: '.05em',
+                        textTransform: 'uppercase', color: mid ? '#C9C6FF' : '#8F8FD0',
+                      }}>{row.key}</div>
+                      <div style={{
+                        fontFamily: "'Space Grotesk', sans-serif", fontSize: 26, fontWeight: 700,
+                        color: mid ? '#fff' : '#DADAF2',
+                      }}>
+                        {mid ? '$57' : row.key === 'Generic AI' ? 'Free–$20' : '$44,000'}
+                        <span style={{ fontSize: 12, color: mid ? '#C9C6FF' : '#8F8FD0', fontWeight: 500 }}>
+                          {mid ? ' /seat/mo' : row.key === 'Generic AI' ? ' /mo' : ' /yr'}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <div style={{ fontSize: 13.5, color: row.highlight ? '#E4E3FF' : '#B9B9E8' }}>{row.body}</div>
-                </div>
-              ))}
+                    <div style={{ fontSize: 13.5, color: mid ? '#E4E3FF' : '#B9B9E8' }}>
+                      {mid ? (
+                        <>
+                          Same earnings-call intelligence, sourced and fact-labeled.{' '}
+                          <b style={{ color: '#fff' }}>5× faster prep</b>, no contract, no demo,
+                          no approval cycle — start today.
+                        </>
+                      ) : row.body}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -635,29 +650,88 @@ export default function LandingV8() {
             <h2 className="wz8-h2">Don't take our word for it.</h2>
           </div>
 
-          <div className="wz8-danny" style={{
-            borderRadius: 20, padding: 42, marginBottom: 44, background: 'var(--wz-night)',
+          {/* Video testimonials. Cards are buttons so the lightbox is keyboard
+              reachable; the track is paged rather than wrapped. */}
+          <div style={{
+            borderRadius: 20, padding: 36, marginBottom: 28, background: 'var(--wz-night)',
             backgroundImage: 'radial-gradient(ellipse 420px 300px at 14% 86%, rgba(99,73,198,.5), transparent 66%), radial-gradient(ellipse 350px 280px at 90% 8%, rgba(22,105,143,.45), transparent 66%)',
           }}>
-            <div>
-              <p style={{ color: '#DADAF2', fontSize: 15, lineHeight: 1.7, marginBottom: 16, textWrap: 'pretty' }}>
-                Danny had three minutes before an executive call. He pulled a line from a Q3 earnings
-                call — the CEO's own promise to investors — and built a talk track on the spot. Six
-                weeks later, it closed. His third-biggest deal of the year.
-              </p>
-              <div style={{ color: '#fff', fontWeight: 700, fontSize: 15 }}>Danny H.</div>
-              <div style={{ color: '#8F8FD0', fontSize: 12.5 }}>Enterprise AE</div>
-            </div>
             <div style={{
-              textAlign: 'center', background: 'rgba(255,255,255,.07)', backdropFilter: 'blur(14px)',
-              border: '1px solid rgba(255,255,255,.12)', borderRadius: 16, padding: '26px 34px',
+              display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+              gap: 16, marginBottom: 22, flexWrap: 'wrap',
             }}>
-              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 40, fontWeight: 700, color: '#fff' }}>65%</div>
-              <div style={{
-                fontSize: 11.5, color: '#8F8FD0', textTransform: 'uppercase',
-                letterSpacing: '.04em', marginTop: 4,
-              }}>Of annual quota<br />traceable to Whyzer</div>
+              <div>
+                <h3 style={{ color: '#fff', fontSize: 24, lineHeight: 1.2, marginBottom: 8, textWrap: 'pretty' }}>
+                  Hear it from the reps carrying the quota.
+                </h3>
+                <p style={{ fontSize: 13.5, color: '#B9B9E8' }}>
+                  Unscripted, 60–90 seconds each. Pick one and press play.
+                </p>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <button className="wz8-vnav" aria-label="Previous videos" onClick={vid.prev}>←</button>
+                <div style={{
+                  fontSize: 12, color: '#8F8FD0', fontVariantNumeric: 'tabular-nums',
+                  minWidth: 52, textAlign: 'center',
+                }}>{vid.page + 1} / {vid.pages}</div>
+                <button className="wz8-vnav" aria-label="Next videos" onClick={vid.next}>→</button>
+              </div>
             </div>
+
+            <div style={{ overflow: 'hidden' }}>
+              <div
+                className="wz8-vtrack"
+                style={{ transform: `translateX(calc(${-vid.page} * ((100% - ${(perPage - 1) * 18}px) / ${perPage} + 18px)))` }}
+              >
+                {VIDEOS.map((v) => (
+                  <button key={v.i} className="wz8-vcard" onClick={() => vid.setOpen(v.i)}>
+                    <div style={{
+                      position: 'relative', aspectRatio: '16 / 10', background: v.poster,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <span style={{
+                        width: 56, height: 56, borderRadius: '50%', background: 'rgba(255,255,255,.94)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        boxShadow: '0 14px 32px -12px rgba(0,0,0,.7)',
+                      }}>
+                        <span style={{ color: 'var(--wz-ink)', fontSize: 16, marginLeft: 3 }}>▶</span>
+                      </span>
+                      <span style={{
+                        position: 'absolute', bottom: 10, right: 10, fontSize: 10.5, fontWeight: 700,
+                        color: '#fff', background: 'rgba(11,11,24,.72)', padding: '3px 8px', borderRadius: 6,
+                      }}>{v.length}</span>
+                    </div>
+                    <div style={{ padding: '16px 18px 18px' }}>
+                      <div style={{
+                        fontSize: 13.5, color: '#DADAF2', lineHeight: 1.5, marginBottom: 12,
+                        minHeight: 60, textWrap: 'pretty',
+                      }}>“{v.quote}”</div>
+                      <div style={{ fontSize: 12.5, fontWeight: 700, color: '#fff' }}>{v.name}</div>
+                      <div style={{ fontSize: 11.5, color: '#8F8FD0' }}>{v.role}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="wz8-proof-stats">
+            {PROOF_STATS.map((st) => (
+              <div key={st.v} style={{
+                textAlign: 'center', background: 'rgba(255,255,255,.72)', backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(255,255,255,.9)', borderRadius: 16, padding: 24,
+                boxShadow: '0 26px 54px -34px rgba(20,20,40,.34)',
+              }}>
+                <div style={{
+                  fontFamily: "'Space Grotesk', sans-serif", fontSize: 36, fontWeight: 700,
+                  color: 'var(--wz-brand-dark)',
+                }}>{st.v}</div>
+                <div style={{
+                  fontSize: 12, color: 'var(--wz-muted)', textTransform: 'uppercase',
+                  letterSpacing: '.04em', marginTop: 4,
+                }}>{st.l}</div>
+              </div>
+            ))}
           </div>
 
           <div style={{
@@ -908,7 +982,7 @@ export default function LandingV8() {
                   paddingTop: 10, borderTop: '1px solid rgba(255,255,255,.08)',
                 }}>
                   <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#BFE0FD', flex: 'none' }} />
-                  Next live session: <b style={{ color: '#fff' }}>Sept 18 — reading a 10-K in 20 minutes</b>
+                  Next live session: <b style={{ color: '#fff' }}>22 Sept — reading a 10-K in 20 minutes</b>
                 </div>
               </div>
             </Reveal>
@@ -1157,6 +1231,77 @@ export default function LandingV8() {
           </a>
         </div>
       </section>
+
+      {/* ---------------- footer ---------------- */}
+      <footer style={{
+        padding: '34px 0', display: 'flex', flexDirection: 'column', alignItems: 'center',
+        gap: 12, fontSize: 12, color: 'var(--wz-soft)', background: 'var(--wz-paper)',
+      }}>
+        <img src="/v8/whyzer-logo-dark.png" alt="Whyzer" width={88} height={22} style={{ height: 22, width: 'auto', opacity: .8 }} />
+        <div>© {new Date().getFullYear()} Whyzer.ai</div>
+      </footer>
+
+      {/* ---------------- video lightbox ---------------- */}
+      {vid.open !== null && (
+        <div
+          role="dialog" aria-modal="true" aria-label={`Video testimonial: ${VIDEOS[vid.open].name}`}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 95, display: 'flex',
+            alignItems: 'center', justifyContent: 'center', padding: 28,
+          }}
+        >
+          <div
+            onClick={() => vid.setOpen(null)}
+            style={{
+              position: 'absolute', inset: 0, background: 'rgba(6,6,14,.82)',
+              backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+            }}
+          />
+          <div style={{ position: 'relative', width: '100%', maxWidth: 940 }}>
+            <div style={{
+              display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+              gap: 16, marginBottom: 14,
+            }}>
+              <div>
+                <div style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#fff', fontSize: 19 }}>
+                  {VIDEOS[vid.open].name}
+                </div>
+                <div style={{ fontSize: 12.5, color: '#8F8FD0' }}>{VIDEOS[vid.open].role}</div>
+              </div>
+              <button
+                onClick={() => vid.setOpen(null)} aria-label="Close video"
+                style={{
+                  width: 42, height: 42, borderRadius: 12, background: 'transparent',
+                  border: '1px solid var(--wz-brand)', color: '#DADAF2', cursor: 'pointer', fontSize: 17,
+                }}
+              >✕</button>
+            </div>
+            <div style={{
+              position: 'relative', borderRadius: 16, overflow: 'hidden',
+              border: '1px solid rgba(255,255,255,.14)',
+              boxShadow: '0 60px 120px -40px rgba(0,0,0,.85)', aspectRatio: '16 / 9', background: '#000',
+            }}>
+              <iframe
+                key={vid.open}
+                src={VIDEOS[vid.open].src}
+                title={`Video testimonial: ${VIDEOS[vid.open].name}`}
+                allow="autoplay; fullscreen" allowFullScreen
+                style={{ width: '100%', height: '100%', border: 0, display: 'block' }}
+              />
+            </div>
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              gap: 16, marginTop: 14,
+            }}>
+              <button className="wz8-vstep" onClick={() => vid.step(-1)}>← Previous</button>
+              <div style={{ fontSize: 12, color: '#8F8FD0' }}>
+                Video {vid.open + 1} of {VIDEOS.length}
+              </div>
+              <button className="wz8-vstep" onClick={() => vid.step(1)}>Next →</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ---------------- exit intent ---------------- */}
       {exit.open && (

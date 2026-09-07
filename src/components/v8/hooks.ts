@@ -168,3 +168,65 @@ export function useMediaQuery(query: string) {
   }, [query]);
   return matches;
 }
+
+/**
+ * Cycles the pricing gauge through its three tiers. Clicking a tier pins it
+ * for a while, same courtesy as the product tour.
+ */
+export function useGauge(count: number, enabled: boolean) {
+  const [tier, setTier] = useState(1);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (!enabled || paused) return;
+    const t = setTimeout(() => setTier((i) => (i + 1) % count), 2600);
+    return () => clearTimeout(t);
+  }, [tier, paused, count, enabled]);
+
+  useEffect(() => {
+    if (!paused) return;
+    const t = setTimeout(() => setPaused(false), 9000);
+    return () => clearTimeout(t);
+  }, [paused, tier]);
+
+  return {
+    tier,
+    select: (i: number) => { setTier(i); setPaused(true); },
+  };
+}
+
+/**
+ * Paged carousel that shows `perPage` cards at a time, plus a lightbox index.
+ * Paging is clamped rather than wrapped so the track never shows dead space
+ * past the last card.
+ */
+export function useVideoCarousel(total: number, perPage: number) {
+  const pages = Math.max(1, total - perPage + 1);
+  const [page, setPage] = useState(0);
+  const [open, setOpen] = useState<number | null>(null);
+
+  // Close on Escape and lock the page behind the lightbox while it is up.
+  useEffect(() => {
+    if (open === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(null);
+      if (e.key === 'ArrowRight') setOpen((i) => (i === null ? i : (i + 1) % total));
+      if (e.key === 'ArrowLeft') setOpen((i) => (i === null ? i : (i - 1 + total) % total));
+    };
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, total]);
+
+  return {
+    page, pages,
+    prev: () => setPage((p) => (p - 1 + pages) % pages),
+    next: () => setPage((p) => (p + 1) % pages),
+    open, setOpen,
+    step: (d: number) => setOpen((i) => (i === null ? i : (i + d + total) % total)),
+  };
+}

@@ -54,3 +54,77 @@ export const FAQ_GROUPS = [
   { title: 'Getting started', items: ['How long to generate my first POV?', 'Do I need a credit card to try it?'] },
   { title: 'Security', items: ['Is my research shared with anyone?', 'Where does the financial data come from?'] },
 ];
+
+/** Pricing tiers for the animated gauge in the "Why Whyzer" section. */
+export const GAUGE_TIERS = [
+  {
+    key: 'Generic AI', deg: -58, hub: '#7C7FA0', color: '#DADAF2',
+    amount: '$20', unit: '/mo',
+    caption: 'Generic AI. Cheap, unsourced, and you still verify every line yourself.',
+    body: 'A summary you have to verify yourself. No sourcing, no fact-labeling, nothing that survives a room looking for the hole in it.',
+  },
+  {
+    key: 'Whyzer', deg: 2, hub: '#6262e9', color: '#ffffff',
+    amount: '$57', unit: '/seat/mo',
+    caption: 'The smart middle. Sourced like an analyst, priced like software.',
+    body: null, // rendered with inline emphasis, see LandingV8
+  },
+  {
+    key: 'Enterprise tools', deg: 64, hub: '#B3413F', color: '#F0C9C8',
+    amount: '$44K', unit: '/yr',
+    caption: 'Enterprise tools. Procurement, annual commitment, six-week approval.',
+    body: 'Sold through procurement. Six-week approval cycle, annual commitment, built for analyst teams with enterprise budgets — not for the rep with a call on Thursday.',
+  },
+] as const;
+
+/**
+ * Video testimonials. The mockup embedded Google Drive preview URLs; the ids
+ * are kept separate so they can be swapped for a real host without touching
+ * the component.
+ */
+const VIDEO_IDS = [
+  '17SSz4dFPsQfu45ZDA2E75aB5IPY_cUy0',
+  '1VVgPIVPlUtmQf--VtGTEYlJ8r6XQvRLC',
+  '13zEpUa8VW_H3MGpCvTXyPhnesR9HhMug',
+  '1AY3WDzA1YJPrxBwafOhAZfWth7lDEeze',
+  '1zdsD-_TGVYMU9Xm1WwVvSrtW0gE9L7av',
+  '1F3bzUUKVm_E-iZ-nEFCujS7KHvKMPiP7',
+  '18nsTfMy_kRv2ShYL_5zNuX_lavqq5PfM',
+  '1bVcNNEdgGik76e0to5RTKpaJ_4Ur5wfU',
+];
+
+const VIDEO_POSTERS = [
+  'linear-gradient(150deg,#2A2352,#0F1230)',
+  'linear-gradient(150deg,#123049,#0C1226)',
+  'linear-gradient(150deg,#33224A,#120F28)',
+  'linear-gradient(150deg,#1B3350,#0B1224)',
+  'linear-gradient(150deg,#2E2148,#100E24)',
+  'linear-gradient(150deg,#14344A,#0A1122)',
+  'linear-gradient(150deg,#302049,#120E26)',
+  'linear-gradient(150deg,#1A2E4C,#0B1024)',
+];
+
+const VIDEO_META = [
+  { name: 'Danny H.', role: 'Enterprise AE', length: '1:12', quote: 'Three minutes before an exec call I pulled the CEO’s own promise to investors. Six weeks later it closed.' },
+  { name: 'Kyle G.', role: 'Enterprise AE', length: '0:58', quote: 'Like OpenAI and Perplexity’s deep research had a baby who gives a damn about enterprise selling.' },
+  { name: 'David Inukpuk', role: 'Strategic Accounts', length: '1:24', quote: 'What used to take a rep a year, I can do in two weeks with Whyzer.' },
+  { name: 'Lee Winer', role: 'Sales Director', length: '1:05', quote: 'It makes 10-Ks, 10-Qs and earnings reports actually usable for salespeople.' },
+  { name: 'Paul Hammond', role: 'Enterprise AE', length: '0:47', quote: 'Whyzer flagged a breach that got me a CISO meeting on my first try.' },
+  { name: 'Matt Brown', role: 'Account Executive', length: '1:16', quote: 'Feels like a business analyst is watching your back before every call.' },
+  { name: 'Jeff Clarke', role: 'Enterprise AE', length: '1:02', quote: 'Even on accounts I follow closely it surfaces things that make me think: how did I not know that?' },
+  { name: 'Rob Sader', role: 'Sales Leader', length: '1:09', quote: 'I need data and metrics when I speak to executives. This is necessary in our profession.' },
+];
+
+export const VIDEOS = VIDEO_META.map((m, i) => ({
+  ...m,
+  i,
+  poster: VIDEO_POSTERS[i],
+  src: `https://drive.google.com/file/d/${VIDEO_IDS[i]}/preview`,
+}));
+
+/** Headline numbers shown under the video carousel. */
+export const PROOF_STATS = [
+  { v: '65%', l: "Of Danny's annual quota traceable to Whyzer" },
+  { v: '$5.7M', l: 'Closed this year using Whyzer POVs' },
+  { v: '2 weeks', l: 'To do what used to take a rep a year' },
+];
