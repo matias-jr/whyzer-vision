@@ -263,7 +263,8 @@ const STYLES = `
 .et-root .inc-card h3{font-weight:700;letter-spacing:-0.025em;font-size:clamp(17px,1.6vw,20px);line-height:1.3}
 .et-root .inc-card p{font-size:14px;line-height:1.6;color:rgba(11,16,32,0.66)}
 
-.et-root .pricing{background:var(--bg-tint);border-top:1px solid rgba(11,16,32,0.08);
+.et-root .pricing{scroll-margin-top:24px;
+  background:var(--bg-tint);border-top:1px solid rgba(11,16,32,0.08);
   border-bottom:1px solid rgba(11,16,32,0.08);padding:clamp(60px,8vw,120px) var(--pad)}
 .et-root .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:clamp(30px,4vw,64px);align-items:center}
@@ -353,6 +354,19 @@ export default function FreeTrial() {
   const toggle = (i: number) =>
     setOpen((prev) => (prev[i] ? {} : { [i]: true }));
 
+  // Smooth-scroll the in-page CTAs. Set on the document element rather than in
+  // the scoped stylesheet (which cannot reach the scrolling root) and unset on
+  // unmount so other routes keep their default jump behaviour.
+  useEffect(() => {
+    if (!motionOk) return;
+    const root = document.documentElement;
+    const previous = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'smooth';
+    return () => {
+      root.style.scrollBehavior = previous;
+    };
+  }, [motionOk]);
+
   const price = `${currency.symbol}97`;
   const FAQS = faqs(price);
   const ctaHref = useMemo(
@@ -360,7 +374,15 @@ export default function FreeTrial() {
     [appendUtm, regionSuffix],
   );
 
+  // Nav, hero and footer send the visitor to the pricing module so they see
+  // the terms before checkout; only the pricing card itself links straight out.
   const cta = (className: string) => (
+    <a href="#pricing" className={className}>
+      {CTA_LABEL}
+    </a>
+  );
+
+  const checkoutCta = (className: string) => (
     <a href={ctaHref} className={className}>
       {CTA_LABEL}
     </a>
@@ -528,7 +550,7 @@ export default function FreeTrial() {
         </div>
       </section>
 
-      <section className="pricing">
+      <section className="pricing" id="pricing">
         <div className="wrap pricing-grid">
           <div>
             <span className="eyebrow">pricing and terms</span>
@@ -546,7 +568,7 @@ export default function FreeTrial() {
               <span>/month after day 14</span>
             </div>
             <div className="card-cta">
-              {cta('btn')}
+              {checkoutCta('btn')}
               <span className="micro">{CTA_MICRO}</span>
             </div>
           </div>
