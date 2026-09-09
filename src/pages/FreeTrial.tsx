@@ -80,6 +80,10 @@ const CURRENCIES: Record<string, Currency> = {
 const trialUrl = (regionSuffix: string) =>
   `https://subscribe.whyzer.ai/elite-monthly${regionSuffix}`;
 
+// Same white wordmark EliteUpgrade.tsx uses; both nav and footer sit on dark.
+const LOGO_SRC =
+  'https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png';
+
 const CTA_LABEL = 'start your free trial';
 const CTA_MICRO = '14 days. Full access. Card on file, nothing charged until day 14.';
 
@@ -170,10 +174,7 @@ const STYLES = `
 .et-root .nav{background:var(--ink-deep);padding:0 var(--pad)}
 .et-root .nav-inner{max-width:var(--maxw);margin:0 auto;height:60px;display:flex;
   align-items:center;justify-content:space-between;gap:20px}
-.et-root .brand{display:flex;align-items:baseline;gap:9px}
-.et-root .brand b{font-weight:800;font-size:17px;letter-spacing:-0.035em;color:var(--on-dark)}
-.et-root .brand i{font-weight:500;font-size:10px;font-style:normal;letter-spacing:0.18em;
-  text-transform:uppercase;color:rgba(240,244,255,0.62)}
+.et-root .brand-logo{height:24px;width:auto;display:block}
 
 .et-root .hero{background:linear-gradient(180deg,var(--bg-tint) 0%,var(--bg) 100%);
   border-bottom:1px solid rgba(11,16,32,0.08);
@@ -305,7 +306,7 @@ const STYLES = `
 .et-root .foot-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
   gap:16px;margin-top:clamp(64px,8vw,108px);padding-top:26px;
   border-top:1px solid rgba(240,244,255,0.12)}
-.et-root .foot-bar .brand b{font-size:15px}
+.et-root .foot-bar .brand-logo{height:20px}
 .et-root .foot-bar>span{font-size:12px;color:rgba(240,244,255,0.58)}
 
 @media (prefers-reduced-motion: reduce){
@@ -387,10 +388,7 @@ export default function FreeTrial() {
 
       <nav className="nav">
         <div className="nav-inner">
-          <div className="brand">
-            <b>whyzer</b>
-            <i>elite</i>
-          </div>
+          <img className="brand-logo" src={LOGO_SRC} alt="Whyzer" />
           {cta('btn btn-sm')}
         </div>
       </nav>
@@ -592,10 +590,7 @@ export default function FreeTrial() {
             <span className="micro">{CTA_MICRO}</span>
           </div>
           <div className="foot-bar">
-            <div className="brand">
-              <b>whyzer</b>
-              <i>elite</i>
-            </div>
+            <img className="brand-logo" src={LOGO_SRC} alt="Whyzer" />
             <span>© {new Date().getFullYear()} Whyzer. All rights reserved.</span>
           </div>
         </div>
