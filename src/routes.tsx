@@ -13,6 +13,7 @@ import ColdEmailD2B from './pages/ColdEmailD2B';
 import NewsletterPost from './pages/NewsletterPost';
 import NewsletterArchive from './pages/NewsletterArchive';
 import EliteUpgrade from './pages/EliteUpgrade';
+import FreeTrial from './pages/FreeTrial';
 import AdminLogin from './pages/admin/Login';
 import AdminArticlesList from './pages/admin/ArticlesList';
 import AdminArticleEditor from './pages/admin/ArticleEditor';
@@ -41,6 +42,7 @@ export const routes: RouteObject[] = [
       { path: 'd2a', element: <ColdEmailD2A /> },
       { path: 'd2b', element: <ColdEmailD2B /> },
       { path: 'elite-upgrade', element: <EliteUpgrade /> },
+      { path: 'free-trial', element: <FreeTrial /> },
       { path: 'live-centralize', element: <LiveCentralize /> },
       { path: 'live-centralize-registered', element: <LiveCentralizeRegistered /> },
       { path: 'financial-fluency', element: <WebinarRegistration /> },
