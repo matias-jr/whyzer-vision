@@ -686,30 +686,29 @@ export default function LandingV8() {
                 style={{ transform: `translateX(calc(${-vid.page} * ((100% - ${(perPage - 1) * 18}px) / ${perPage} + 18px)))` }}
               >
                 {VIDEOS.map((v) => (
-                  <button key={v.i} className="wz8-vcard" onClick={() => vid.setOpen(v.i)}>
-                    <div style={{
-                      position: 'relative', aspectRatio: '16 / 10', background: v.poster,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    }}>
+                  <button
+                    key={v.i} className="wz8-vcard" onClick={() => vid.setOpen(v.i)}
+                    aria-label={`Play: ${v.name} — ${v.title}`}
+                  >
+                    <div style={{ position: 'relative', aspectRatio: '16 / 9', background: '#0F1230' }}>
+                      {/* The seller's name and talk title are part of the artwork. */}
+                      <img
+                        src={v.poster} alt="" loading="lazy"
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
                       <span style={{
-                        width: 56, height: 56, borderRadius: '50%', background: 'rgba(255,255,255,.94)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        boxShadow: '0 14px 32px -12px rgba(0,0,0,.7)',
+                        position: 'absolute', inset: 0, display: 'flex',
+                        alignItems: 'center', justifyContent: 'center',
+                        background: 'rgba(7,7,15,.28)',
                       }}>
-                        <span style={{ color: 'var(--wz-ink)', fontSize: 16, marginLeft: 3 }}>▶</span>
+                        <span style={{
+                          width: 56, height: 56, borderRadius: '50%', background: 'rgba(255,255,255,.94)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          boxShadow: '0 14px 32px -12px rgba(0,0,0,.7)',
+                        }}>
+                          <span style={{ color: 'var(--wz-ink)', fontSize: 16, marginLeft: 3 }}>▶</span>
+                        </span>
                       </span>
-                      <span style={{
-                        position: 'absolute', bottom: 10, right: 10, fontSize: 10.5, fontWeight: 700,
-                        color: '#fff', background: 'rgba(11,11,24,.72)', padding: '3px 8px', borderRadius: 6,
-                      }}>{v.length}</span>
-                    </div>
-                    <div style={{ padding: '16px 18px 18px' }}>
-                      <div style={{
-                        fontSize: 13.5, color: '#DADAF2', lineHeight: 1.5, marginBottom: 12,
-                        minHeight: 60, textWrap: 'pretty',
-                      }}>“{v.quote}”</div>
-                      <div style={{ fontSize: 12.5, fontWeight: 700, color: '#fff' }}>{v.name}</div>
-                      <div style={{ fontSize: 11.5, color: '#8F8FD0' }}>{v.role}</div>
                     </div>
                   </button>
                 ))}
@@ -1267,7 +1266,7 @@ export default function LandingV8() {
                 <div style={{ fontFamily: "'Space Grotesk', sans-serif", color: '#fff', fontSize: 19 }}>
                   {VIDEOS[vid.open].name}
                 </div>
-                <div style={{ fontSize: 12.5, color: '#8F8FD0' }}>{VIDEOS[vid.open].role}</div>
+                <div style={{ fontSize: 12.5, color: '#8F8FD0' }}>{VIDEOS[vid.open].title}</div>
               </div>
               <button
                 onClick={() => vid.setOpen(null)} aria-label="Close video"

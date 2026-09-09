@@ -116,6 +116,23 @@ export const GAUGE_TIERS = [
  * are kept separate so they can be swapped for a real host without touching
  * the component.
  */
+
+/**
+ * Video testimonials, in running order. The seller's name and the talk title
+ * are burned into the thumbnail artwork, so the card shows the image and the
+ * attribution only — repeating the title underneath would say it twice.
+ *
+ * `id` is the Google Drive file the lightbox plays. Several sellers appear
+ * more than once, so the poster and the video are addressed separately.
+ */
+export type Video = {
+  i: number;
+  name: string;
+  title: string;
+  poster: string;
+  src: string;
+};
+
 const VIDEO_IDS = [
   '17SSz4dFPsQfu45ZDA2E75aB5IPY_cUy0',
   '1VVgPIVPlUtmQf--VtGTEYlJ8r6XQvRLC',
@@ -127,32 +144,22 @@ const VIDEO_IDS = [
   '1bVcNNEdgGik76e0to5RTKpaJ_4Ur5wfU',
 ];
 
-const VIDEO_POSTERS = [
-  'linear-gradient(150deg,#2A2352,#0F1230)',
-  'linear-gradient(150deg,#123049,#0C1226)',
-  'linear-gradient(150deg,#33224A,#120F28)',
-  'linear-gradient(150deg,#1B3350,#0B1224)',
-  'linear-gradient(150deg,#2E2148,#100E24)',
-  'linear-gradient(150deg,#14344A,#0A1122)',
-  'linear-gradient(150deg,#302049,#120E26)',
-  'linear-gradient(150deg,#1A2E4C,#0B1024)',
-];
-
 const VIDEO_META = [
-  { name: 'Danny H.', role: 'Enterprise AE', length: '1:12', quote: 'Three minutes before an exec call I pulled the CEO’s own promise to investors. Six weeks later it closed.' },
-  { name: 'Kyle G.', role: 'Enterprise AE', length: '0:58', quote: 'Like OpenAI and Perplexity’s deep research had a baby who gives a damn about enterprise selling.' },
-  { name: 'David Inukpuk', role: 'Strategic Accounts', length: '1:24', quote: 'What used to take a rep a year, I can do in two weeks with Whyzer.' },
-  { name: 'Lee Winer', role: 'Sales Director', length: '1:05', quote: 'It makes 10-Ks, 10-Qs and earnings reports actually usable for salespeople.' },
-  { name: 'Paul Hammond', role: 'Enterprise AE', length: '0:47', quote: 'Whyzer flagged a breach that got me a CISO meeting on my first try.' },
-  { name: 'Matt Brown', role: 'Account Executive', length: '1:16', quote: 'Feels like a business analyst is watching your back before every call.' },
-  { name: 'Jeff Clarke', role: 'Enterprise AE', length: '1:02', quote: 'Even on accounts I follow closely it surfaces things that make me think: how did I not know that?' },
-  { name: 'Rob Sader', role: 'Sales Leader', length: '1:09', quote: 'I need data and metrics when I speak to executives. This is necessary in our profession.' },
+  { name: 'Brody E.', slug: 'brody-elkins', title: 'The AI Test Every Seller Should Run' },
+  { name: 'Danny H.', slug: 'danny-higdon', title: 'How I got my first customer win in 3 minutes' },
+  { name: 'Grace M.', slug: 'grace-morello', title: 'I feel lucky to have access' },
+  { name: 'Spencer R.', slug: 'spencer-ross', title: 'The AI stack behind our sales team' },
+  { name: 'Michael S.', slug: 'michael-scott', title: 'Why I stopped thinking like a $50K seller' },
+  { name: 'Brody E.', slug: 'brody-elkins', title: 'The AI Test Every Seller Should Run' },
+  { name: 'Danny H.', slug: 'danny-higdon', title: 'How I got my first customer win in 3 minutes' },
+  { name: 'Michael S.', slug: 'michael-scott', title: 'Why I stopped thinking like a $50K seller' },
 ];
 
-export const VIDEOS = VIDEO_META.map((m, i) => ({
-  ...m,
+export const VIDEOS: Video[] = VIDEO_META.map((m, i) => ({
   i,
-  poster: VIDEO_POSTERS[i],
+  name: m.name,
+  title: m.title,
+  poster: `/v8/testimonials/${m.slug}.jpg`,
   src: `https://drive.google.com/file/d/${VIDEO_IDS[i]}/preview`,
 }));
 
