@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   TOUR_TABS, TOUR_CAPTIONS, QUOTE_SETS, MARQUEE_CHIPS, FAQ_GROUPS,
-  GAUGE_TIERS, VIDEOS, PROOF_STATS,
+  GAUGE_TIERS, VIDEOS, PROOF_STATS, QUOTE_CATEGORY_STYLE,
 } from './data';
 import {
   useReveal, useCountUp, useTour, useHeroDemo, useExitIntent, useMediaQuery,
@@ -773,32 +773,31 @@ export default function LandingV8() {
           </div>
 
           <div className="wz8-three">
-            {[
-              { label: 'The product', color: '#4a4ad1', bg: '#EEEEFC' },
-              { label: 'The results', color: '#1F9D6B', bg: '#E7F7EF' },
-              { label: 'The value', color: '#8A5A1F', bg: '#FBF1E4' },
-            ].map((meta, i) => (
-              <div key={meta.label} style={{
-                background: 'rgba(255,255,255,.72)', backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255,255,255,.9)', borderRadius: 16, padding: 26,
-                boxShadow: '0 26px 54px -34px rgba(20,20,40,.34)', display: 'flex', flexDirection: 'column',
-              }}>
-                <div style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase',
-                  color: meta.color, background: meta.bg, alignSelf: 'flex-start',
-                  padding: '5px 11px', borderRadius: 100, marginBottom: 16,
-                }}>{meta.label}</div>
-                <p style={{ fontSize: 14.5, color: 'var(--wz-ink)', lineHeight: 1.6, flex: 1, textWrap: 'pretty' }}>
-                  “{quotes[i].q}”
-                </p>
-                <div style={{ fontSize: 13, fontWeight: 700, marginTop: 16 }}>
-                  {quotes[i].n}
-                  <span style={{ display: 'block', fontWeight: 500, fontSize: 12, color: 'var(--wz-soft)' }}>
-                    {quotes[i].r}
-                  </span>
+            {quotes.map((quote, i) => {
+              const meta = QUOTE_CATEGORY_STYLE[quote.c];
+              return (
+                <div key={`${qi}-${i}`} style={{
+                  background: 'rgba(255,255,255,.72)', backdropFilter: 'blur(16px)',
+                  border: '1px solid rgba(255,255,255,.9)', borderRadius: 16, padding: 26,
+                  boxShadow: '0 26px 54px -34px rgba(20,20,40,.34)', display: 'flex', flexDirection: 'column',
+                }}>
+                  <div style={{
+                    fontSize: 11, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase',
+                    color: meta.color, background: meta.bg, alignSelf: 'flex-start',
+                    padding: '5px 11px', borderRadius: 100, marginBottom: 16,
+                  }}>{quote.c}</div>
+                  <p style={{ fontSize: 14.5, color: 'var(--wz-ink)', lineHeight: 1.6, flex: 1, textWrap: 'pretty' }}>
+                    “{quote.q}”
+                  </p>
+                  <div style={{ fontSize: 13, fontWeight: 700, marginTop: 16 }}>
+                    {quote.n}
+                    <span style={{ display: 'block', fontWeight: 500, fontSize: 12, color: 'var(--wz-soft)' }}>
+                      {quote.r}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

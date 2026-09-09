@@ -17,23 +17,57 @@ export const TOUR_CAPTIONS = [
   'Your accounts, watched for hires, funding and M&A.',
 ] as const;
 
-export type Quote = { q: string; n: string; r: string };
+/**
+ * A testimonial. `c` is the category badge shown on the card — it travels with
+ * the quote rather than the slot, so a quote is never filed under a heading
+ * that does not match it.
+ */
+export type Quote = { q: string; n: string; r: string; c: QuoteCategory };
 
+export type QuoteCategory = 'The product' | 'The results' | 'The value' | 'The fit';
+
+/** Badge colours per category. */
+export const QUOTE_CATEGORY_STYLE: Record<QuoteCategory, { color: string; bg: string }> = {
+  'The product': { color: '#4a4ad1', bg: '#EEEEFC' },
+  'The results': { color: '#1F9D6B', bg: '#E7F7EF' },
+  'The value': { color: '#8A5A1F', bg: '#FBF1E4' },
+  'The fit': { color: '#1F6D9D', bg: '#E4F1FB' },
+};
+
+/**
+ * Shown three at a time. Each row mixes categories so no single page reads as
+ * one note, and the arrows step through them.
+ */
 export const QUOTE_SETS: Quote[][] = [
   [
-    { q: "It's like OpenAI and Perplexity's deep research had a baby who gives a damn about enterprise selling.", n: 'Kyle G.', r: 'Enterprise AE' },
-    { q: 'What used to take a rep a year, I can do in two weeks with Whyzer. It helps us work on the right accounts.', n: 'David Inukpuk', r: 'Strategic Accounts' },
-    { q: 'Whyzer makes 10-Ks, 10-Qs and earnings reports actually usable for salespeople. Nothing else got close.', n: 'Lee Winer', r: 'Sales Director' },
+    { q: "It's like OpenAI and Perplexity's deep research had a baby who gives a damn about enterprise selling.", n: 'Kyle G.', r: 'Enterprise AE', c: 'The product' },
+    { q: 'What used to take a rep a year, I can do in two weeks with Whyzer. It helps us work on the right accounts.', n: 'David Inukpuk', r: 'Strategic Accounts', c: 'The results' },
+    { q: 'Whyzer makes 10-Ks, 10-Qs and earnings reports actually usable for salespeople. Nothing else got close.', n: 'Lee Winer', r: 'Sales Director', c: 'The value' },
   ],
   [
-    { q: 'Feels like a business analyst is watching your back — all the context is laid out before the call.', n: 'Matt Brown', r: 'Account Executive' },
-    { q: 'Whyzer flagged a cybersecurity breach that got me a CISO meeting on my first try. It worked immediately.', n: 'Paul Hammond', r: 'Enterprise AE' },
-    { q: 'The podcast gave me a really good idea of how to structure not just the deal, but the talk prep.', n: 'Mo', r: 'Mid-Market AE' },
+    { q: 'Feels like a business analyst is watching your back — all the context is laid out before the call.', n: 'Matt Brown', r: 'Account Executive', c: 'The product' },
+    { q: 'Whyzer flagged a cybersecurity breach that got me a CISO meeting on my first try. It worked immediately.', n: 'Paul Hammond', r: 'Enterprise AE', c: 'The results' },
+    { q: 'The podcast gave me a really good idea of how to structure not just the deal, but the talk prep.', n: 'Mo', r: 'Mid-Market AE', c: 'The value' },
   ],
   [
-    { q: 'First tool I have found that resonates with the way I actually dig into clients. Amazing prompts.', n: 'Bill Neal', r: 'Regional VP' },
-    { q: 'Even on accounts I follow closely, Whyzer surfaces things that make me think: how did I not know that?', n: 'Jeff Clarke', r: 'Enterprise AE' },
-    { q: 'I need data and metrics when I speak to executives. This is absolutely necessary in our profession.', n: 'Rob Sader', r: 'Sales Leader' },
+    { q: 'First tool I have found that resonates with the way I actually dig into clients. Amazing prompts.', n: 'Bill Neal', r: 'Regional VP', c: 'The fit' },
+    { q: 'Even on accounts I follow closely, Whyzer surfaces things that make me think: how did I not know that?', n: 'Jeff Clarke', r: 'Enterprise AE', c: 'The product' },
+    { q: 'I need data and metrics when I speak to executives. This is absolutely necessary in our profession.', n: 'Rob Sader', r: 'Sales Leader', c: 'The value' },
+  ],
+  [
+    { q: 'A single place to get all of my account financial details.', n: 'Michael S.', r: 'Senior Account Executive', c: 'The product' },
+    { q: 'Cutting research time on accounts by 80% easily.', n: 'Daniel B.', r: 'Senior Key Account Manager', c: 'The results' },
+    { q: 'Massive time savings, massive level up for sales skills and financial fluency.', n: 'Verified User', r: 'Computer Software, Mid-Market', c: 'The value' },
+  ],
+  [
+    { q: 'Tailored executive POVs that I can share with prospects.', n: 'Daniel F.', r: 'Enterprise Account Executive', c: 'The product' },
+    { q: 'Just 30 to 60 seconds, and I get a complete picture.', n: 'Tobia L.', r: 'General Sales Manager, Southern Europe', c: 'The results' },
+    { q: 'I can now confidently speak to the business.', n: 'Eric C.', r: 'Sr. Account Director', c: 'The value' },
+  ],
+  [
+    { q: 'A great tool that is a time saver — not a generic LLM.', n: 'Nick B.', r: 'Client Advocate', c: 'The fit' },
+    { q: 'It helped me walk into meetings well informed and deliver effective proposals quickly.', n: 'Alex P.', r: 'Sales Director – Major Accounts', c: 'The results' },
+    { q: 'Solving a challenge all reps face but there was never a holistic solution.', n: 'Daniel B.', r: 'Senior Key Account Manager', c: 'The fit' },
   ],
 ];
 
