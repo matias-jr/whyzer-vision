@@ -217,7 +217,7 @@ const STYLES = `
   text-transform:uppercase;color:var(--violet-deep)}
 .et-root .hero h1{font-family:var(--display);font-weight:700;letter-spacing:-0.035em;
   line-height:1.03;font-size:clamp(34px,4.8vw,62px);margin-top:clamp(20px,2.6vw,30px);
-  max-width:17ch;text-wrap:pretty}
+  max-width:20ch;text-wrap:pretty}
 .et-root .hero h1 em{font-style:normal;color:var(--violet-deep)}
 .et-root .hero .lede{font-size:clamp(15px,1.3vw,18px);line-height:1.65;color:var(--ink-60);
   max-width:50ch;margin-top:clamp(18px,2.2vw,24px)}
@@ -679,7 +679,8 @@ export default function FreeTrial() {
               <b>14 days · full Elite access</b>
             </div>
             <h1>
-              Their next board conversation is already written. <em>In the 10-K.</em>
+              Every account has a financial story.{' '}
+              <em>Sellers who know it close 5x more deals.</em>
             </h1>
             <p className="lede">
               Filings, earnings calls, analyst questions — read for you across 8,500+ companies.
