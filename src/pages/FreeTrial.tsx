@@ -87,7 +87,7 @@ const INCLUDED = [
   {
     n: '03',
     title: 'Weekly live deal coaching',
-    body: 'Jamal, every week, on real deals in flight — bring yours.',
+    body: 'Jamal, every week, on real deals in flight. Bring yours.',
   },
   {
     n: '04',
@@ -98,7 +98,7 @@ const INCLUDED = [
 
 const PLAN_POINTS = [
   'Everything above, no feature gates',
-  '$0 today — day 14 is the first charge',
+  '$0 today, first charge on day 14',
   'Cancel in two clicks, no call required',
 ];
 
@@ -122,7 +122,7 @@ const faqGroups = (price: string) => [
       },
       {
         q: 'What if my accounts are private companies?',
-        a: 'Coverage is strongest where public financial signal exists — 8,500+ companies across 150+ markets. For private accounts, Whyzer works the sector, the customers and the suppliers around them.',
+        a: 'Coverage is strongest where public financial signal exists, across 8,500+ companies in 150+ markets. For private accounts, Whyzer works the sector, the customers and the suppliers around them.',
       },
       {
         q: 'How is this different from asking an LLM?',
@@ -133,7 +133,7 @@ const faqGroups = (price: string) => [
   {
     group: 'Pricing',
     items: [
-      { q: 'Do I need a card to start?', a: 'Yes — but nothing is charged until day 14.' },
+      { q: 'Do I need a card to start?', a: 'Yes, but nothing is charged until day 14.' },
       {
         q: 'What happens after the trial?',
         a: `The same access continues at ${price}/month. Nothing changes except the trial clock.`,
@@ -157,7 +157,7 @@ const faqGroups = (price: string) => [
       },
       {
         q: 'Does it fit how I already sell?',
-        a: 'It sits on top of whatever methodology you run. Anchor, Shift, Pull changes what you open with — not your process.',
+        a: 'It sits on top of whatever methodology you run. Anchor, Shift, Pull changes what you open with, not your process.',
       },
     ],
   },
@@ -665,16 +665,16 @@ export default function FreeTrial() {
           <div>
             <div className="pill">
               <i />
-              <b>14 days · full Elite access</b>
+              <b>14 days, full Elite access</b>
             </div>
             <h1>
               Every account has a financial story.{' '}
               <em>Sellers who know it close 5x more deals.</em>
             </h1>
             <p className="lede">
-              Filings, earnings calls, analyst questions — read for you across 8,500+ companies.
-              You get the point of view, the framework to carry it, and Jamal in the room every
-              week. Unlocked for 14 days.
+              Filings, earnings calls, analyst questions, all read for you across 8,500+
+              companies. You get the point of view, the framework to carry it, and Jamal in the
+              room every week. Unlocked for 14 days.
             </p>
             <div className="hero-cta">
               {cta('btn')}
@@ -853,7 +853,7 @@ export default function FreeTrial() {
               <h3>One click. The asset builds itself.</h3>
               <p>
                 Hit Create Infographic or Generate Sales deck on any POV. Whyzer runs the research
-                and builds the deliverable in the chat — sourced, branded, ready to send.
+                and builds the deliverable in the chat. Sourced, branded, ready to send.
               </p>
             </div>
             <div className="oneclick-card">
@@ -902,7 +902,7 @@ export default function FreeTrial() {
             <h2>Less than one lost deal.</h2>
             <p className="lede">
               14 days, full access, card required today. Nothing is charged until day 14. After
-              that it's {price}/month. Cancel any time — including during the trial — and you
+              that it's {price}/month. Cancel any time, including during the trial, and you
               won't be charged.
             </p>
           </div>
