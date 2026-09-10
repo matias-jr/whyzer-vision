@@ -365,7 +365,9 @@ const STYLES = `
 .et-root .oneclick p{margin-top:14px;font-size:15px;line-height:1.65;color:var(--ink-60);max-width:44ch}
 .et-root .oneclick-card{background:var(--white);border:1px solid var(--line);border-radius:16px;
   padding:clamp(18px,2vw,26px);box-shadow:0 24px 56px rgba(11,11,24,0.1);
-  display:flex;flex-direction:column;gap:16px}
+  display:flex;flex-direction:column;gap:16px;
+  /* Held in place on the right, just eased down off full column width. */
+  max-width:520px;width:100%;margin-left:auto}
 .et-root .oneclick-shot{position:relative}
 .et-root .oneclick-shot img{width:100%;display:block}
 .et-root .cursor-dot{position:absolute;left:73.5%;top:52%;width:14px;height:14px;border-radius:50%;
@@ -397,10 +399,14 @@ const STYLES = `
   0%,40%{opacity:0.28;transform:translateY(8px)}
   56%,100%{opacity:1;transform:translateY(0)}
 }
-.et-root .deliverable{margin:clamp(28px,3.6vw,48px) 0 0;display:flex;flex-direction:column;gap:16px}
+/* The infographic is 662px wide at source; never scale it past that or the
+   text inside the image goes soft. */
+.et-root .deliverable{margin:clamp(28px,3.6vw,48px) auto 0;display:flex;flex-direction:column;
+  gap:16px;max-width:662px}
 .et-root .deliverable img{width:100%;display:block;border:1px solid var(--line);
   border-radius:16px;box-shadow:0 28px 64px rgba(11,11,24,0.14)}
-.et-root .deliverable figcaption{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.et-root .deliverable figcaption{display:flex;flex-wrap:wrap;align-items:baseline;
+  justify-content:center;text-align:center;gap:6px 12px}
 .et-root .deliverable b{font-family:var(--display);font-weight:600;letter-spacing:-0.02em;
   font-size:clamp(16px,1.5vw,19px)}
 .et-root .deliverable span{font-size:14px;line-height:1.6;color:var(--ink-60)}
