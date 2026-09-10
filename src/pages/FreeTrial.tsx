@@ -399,17 +399,6 @@ const STYLES = `
   0%,40%{opacity:0.28;transform:translateY(8px)}
   56%,100%{opacity:1;transform:translateY(0)}
 }
-/* The infographic is 662px wide at source; never scale it past that or the
-   text inside the image goes soft. */
-.et-root .deliverable{margin:clamp(28px,3.6vw,48px) auto 0;display:flex;flex-direction:column;
-  gap:16px;max-width:662px}
-.et-root .deliverable img{width:100%;display:block;border:1px solid var(--line);
-  border-radius:16px;box-shadow:0 28px 64px rgba(11,11,24,0.14)}
-.et-root .deliverable figcaption{display:flex;flex-wrap:wrap;align-items:baseline;
-  justify-content:center;text-align:center;gap:6px 12px}
-.et-root .deliverable b{font-family:var(--display);font-weight:600;letter-spacing:-0.02em;
-  font-size:clamp(16px,1.5vw,19px)}
-.et-root .deliverable span{font-size:14px;line-height:1.6;color:var(--ink-60)}
 
 /* ---- pricing ---- */
 .et-root .pricing{scroll-margin-top:88px;border-top:1px solid rgba(11,11,24,0.07);
@@ -903,21 +892,6 @@ export default function FreeTrial() {
               />
             </div>
           </div>
-
-          {/* Closes the section on the finished deliverable, per the brief. */}
-          <figure className="deliverable">
-            <img
-              src="/free-trial/infographic.png"
-              alt="A generated Whyzer infographic: Strategic Demand and Allocation Control Tower, briefing NVIDIA Corp on synchronising supply constraints with customer deployment velocity"
-              loading="lazy"
-            />
-            <figcaption>
-              <b>What comes out the other end.</b>
-              <span>
-                One POV, one click — a sourced executive briefing, built and branded in the chat.
-              </span>
-            </figcaption>
-          </figure>
         </div>
       </section>
 
