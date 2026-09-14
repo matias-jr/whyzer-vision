@@ -53,7 +53,7 @@ const STATS = [
   { value: '8,500+', label: 'companies already covered' },
   { value: '150+', label: 'markets worldwide' },
   { value: '< 2 min', label: 'from account name to a scored POV' },
-  { value: '$160M+', label: 'closed with the methodology inside' },
+  { value: '$160M+', label: 'closed with the framework inside' },
 ];
 
 const BIG_PROOF = [
@@ -82,7 +82,7 @@ const INCLUDED = [
   {
     n: '02',
     title: 'Coach Jamal',
-    body: 'An AI co-pilot trained on the methodology, on call at 11pm before the QBR.',
+    body: 'An AI co-pilot trained on the framework, on call at 11pm before the QBR.',
   },
   {
     n: '03',
@@ -157,7 +157,7 @@ const faqGroups = (price: string) => [
       },
       {
         q: 'Does it fit how I already sell?',
-        a: 'It sits on top of whatever methodology you run. Anchor, Shift, Pull changes what you open with, not your process.',
+        a: 'It sits on top of however you already sell. Anchor, Shift, Pull changes what you open with, not your process.',
       },
     ],
   },
@@ -300,12 +300,12 @@ const STYLES = `
 .et-root .flat span{font-family:var(--display);font-weight:600;font-size:clamp(16px,1.5vw,19px);
   letter-spacing:-0.02em;line-height:1.35}
 
-/* ---- methodology ---- */
+/* ---- framework ---- */
 .et-root .method{color:var(--on-dark);padding:clamp(60px,8vw,120px) var(--pad);overflow:hidden;
   background:radial-gradient(80% 70% at 15% 0%, rgba(98,98,233,0.32) 0%, rgba(98,98,233,0) 60%),
     radial-gradient(70% 60% at 90% 100%, rgba(86,200,240,0.14) 0%, rgba(86,200,240,0) 60%), var(--navy)}
 .et-root .method h2{font-family:var(--display);margin-top:14px;font-weight:700;
-  letter-spacing:-0.035em;line-height:1.04;font-size:clamp(28px,4.2vw,58px);max-width:18ch}
+  letter-spacing:-0.035em;line-height:1.04;font-size:clamp(28px,4.2vw,58px);max-width:24ch}
 .et-root .method .lede{margin-top:clamp(18px,2.2vw,26px);font-size:clamp(15px,1.3vw,18px);
   line-height:1.7;color:var(--dark-70);max-width:62ch}
 .et-root .method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -408,7 +408,7 @@ const STYLES = `
   gap:clamp(28px,4vw,64px);align-items:center}
 .et-root .pricing h2{font-family:var(--display);margin-top:14px;font-weight:700;
   letter-spacing:-0.035em;line-height:1.08;font-size:clamp(27px,3.5vw,46px);
-  max-width:16ch;text-wrap:pretty}
+  max-width:20ch;text-wrap:pretty}
 .et-root .pricing .lede{margin-top:18px;font-size:clamp(15px,1.3vw,17px);line-height:1.7;
   color:rgba(11,11,24,0.68);max-width:48ch}
 .et-root .card{background:var(--white);border:1px solid rgba(98,98,233,0.28);border-radius:18px;
@@ -764,8 +764,8 @@ export default function FreeTrial() {
 
       <section className="method">
         <div className="wrap">
-          <span className="eyebrow on-dark">the methodology</span>
-          <h2>Bigger deals. Faster rooms. Less guessing.</h2>
+          <span className="eyebrow on-dark">the framework</span>
+          <h2>Earlier executive access. Bigger deal sizes. Faster close rates.</h2>
           <p className="lede">
             Sellers using this aren't just researching better. They get into rooms faster, carry
             arguments that survive the first hard question, and turn single accounts into
@@ -832,7 +832,7 @@ export default function FreeTrial() {
           <div className="vault">
             <div>
               <span className="eyebrow on-dark">the vault</span>
-              <h3>The frameworks, methodology and courses behind $160M+ in closed deals.</h3>
+              <h3>The frameworks, playbooks and courses behind $160M+ in closed deals.</h3>
               <p className="tag">The Netflix of strategic selling.</p>
             </div>
             <div className="vault-list">
@@ -899,7 +899,7 @@ export default function FreeTrial() {
         <div className="wrap pricing-grid">
           <div>
             <span className="eyebrow">pricing and terms</span>
-            <h2>Less than one lost deal.</h2>
+            <h2>$97 a month versus getting ghosted every day.</h2>
             <p className="lede">
               14 days, full access, card required today. Nothing is charged until day 14. After
               that it's {price}/month. Cancel any time, including during the trial, and you
