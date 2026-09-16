@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { Head } from 'vite-react-ssg';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
-// ── Calendar event. September 16, 2026 11:00 AM ET; that date is inside EDT
-// (UTC-4), so 16:00 UTC. 60 minutes long.
+// ── Calendar event. September 30, 2026 11:00 AM ET; that date is inside EDT
+// (UTC-4), so 15:00 UTC. 60 minutes long.
 const EVENT = {
   title: "Stop Sounding Like Everybody Else: How top enterprise sellers build a Point of View that opens doors a demo can't",
   description:
     'Stop pitching the same use cases as every other rep in the deal. Learn the three-part framework elite sellers use to build a Point of View sharp enough to get you back in the room with the people who can actually say yes.',
   location: 'https://webinarkit.com/webinar/watch/6a7b29be3db0318c2bcf6e6a',
   organizer: 'jamal@whyzer.ai',
-  startUtc: '20260916T150000Z',
-  endUtc: '20260916T160000Z',
+  startUtc: '20260930T150000Z',
+  endUtc: '20260930T160000Z',
 };
 
 const googleCalendarUrl = (location: string) => {
@@ -215,10 +215,10 @@ const LiveSessionConfirmed = () => {
         <link rel="canonical" href="https://www.whyzer.ai/live-session-confirmed" />
         <meta name="robots" content="noindex, nofollow" />
         <meta property="og:url" content="https://www.whyzer.ai/live-session-confirmed" />
-        <meta property="og:title" content="You're Registered — Live Session, September 16" />
+        <meta property="og:title" content="You're Registered — Live Session, September 30" />
         <meta
           property="og:description"
-          content="Your seat is confirmed for September 16 at 11AM ET. Add it to your calendar and be there live."
+          content="Your seat is confirmed for September 30 at 11AM ET. Add it to your calendar and be there live."
         />
       </Head>
       <GrainOverlay />
@@ -261,7 +261,7 @@ const LiveSessionConfirmed = () => {
 
           <p className="wkc-sub font-body text-[17px] text-[#55556B] leading-[1.75] max-w-[480px] mx-auto">
             Check your inbox. A confirmation with your session link is on its way. Complete the
-            steps below before September 16 to get the most out of this session.
+            steps below before September 30 to get the most out of this session.
           </p>
         </div>
       </section>
@@ -365,7 +365,7 @@ const LiveSessionConfirmed = () => {
                 Add It to Your Calendar and Be There Live.
               </h3>
               <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-7">
-                Block September 16 at 11AM ET now, before you forget. We're going deep on the three-part
+                Block September 30 at 11AM ET now, before you forget. We're going deep on the three-part
                 framework elite sellers use to build a Point of View. This isn't a recording you'll
                 catch up on later. The live session is where the value is.
               </p>
@@ -381,7 +381,7 @@ const LiveSessionConfirmed = () => {
                         Date
                       </p>
                       <p className="font-display text-lg text-[#14141F] uppercase">
-                        Wednesday, September 16, 2026
+                        Wednesday, September 30, 2026
                       </p>
                     </div>
                   </div>
@@ -534,7 +534,7 @@ const LiveSessionConfirmed = () => {
                   <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1.5">
                     Date
                   </p>
-                  <p className="font-display text-[25px] text-[#14141F] uppercase">September 16, 2026</p>
+                  <p className="font-display text-[25px] text-[#14141F] uppercase">September 30, 2026</p>
                 </div>
                 <div>
                   <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1.5">
