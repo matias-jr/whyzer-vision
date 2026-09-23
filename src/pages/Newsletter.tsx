@@ -8,6 +8,7 @@ import type { ArticleSummary } from '@/types/article';
 import { Zap, Eye, BookOpen } from 'lucide-react';
 
 import { Head } from 'vite-react-ssg';
+import { trackLinkedInConversion } from '@/lib/linkedinConversion';
 const valueProps = [
   {
     icon: Eye,
@@ -84,20 +85,8 @@ const Newsletter = () => {
         (typeof payload?.message === 'string' && payload.message.toLowerCase().includes('submit'));
 
       if (isSubmit) {
-        // Client-side Insight Tag event
-        if (typeof (window as any).lintrk === 'function') {
-          (window as any).lintrk('track', { conversion_id: 27310609 });
-        }
-        // Server-side CAPI event (newsletter subscription)
-        const match = document.cookie.split('; ').find(row => row.startsWith('li_fat_id='));
-        const li_fat_id = match ? match.split('=')[1] : null;
-        if (li_fat_id) {
-          fetch('/api/track-newsletter', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ li_fat_id }),
-          }).catch(() => {});
-        }
+        // Insight Tag + server-side CAPI, both for the same subscription.
+        trackLinkedInConversion('newsletter', 27310609);
       }
     };
 

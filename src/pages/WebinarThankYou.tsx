@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { useUtmParams } from '@/hooks/useUtmParams';
+import { trackLinkedInConversion } from '@/lib/linkedinConversion';
 
 import { Head } from 'vite-react-ssg';
 // Vimeo's player API script. Not required for playback — the iframe plays on
 // its own — but it enables the JS player API if we ever need events.
+// LinkedIn Insight Tag conversion id for the webinar (Campaign Manager).
+// null until one is created; the CAPI event fires regardless.
+const WEBINAR_INSIGHT_TAG_ID: number | undefined = undefined;
+// Session-scoped guard so a re-render or back-navigation cannot double-fire.
+const CONVERSION_KEY = 'whyzer_webinar_conversion_sent';
+
 function loadScript(src: string) {
   if (document.querySelector(`script[src="${src}"]`)) return;
   const s = document.createElement('script');
@@ -212,6 +219,19 @@ const WebinarThankYou = () => {
   useEffect(() => {
     loadCss('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
     loadScript('https://player.vimeo.com/api/player.js');
+  }, []);
+
+  // Reaching this page is the conversion: registration completed and the
+  // visitor landed on the replay. Session-guarded so a re-render or a
+  // back-navigation does not send it twice.
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(CONVERSION_KEY)) return;
+      sessionStorage.setItem(CONVERSION_KEY, '1');
+    } catch {
+      /* private mode: no guard available, still sends once per load */
+    }
+    trackLinkedInConversion('webinar', WEBINAR_INSIGHT_TAG_ID);
   }, []);
 
   useEffect(() => {
