@@ -4,8 +4,8 @@ import GrainOverlay from '@/components/whyzer/GrainOverlay';
 import { getNextSessionAt } from '@/lib/siteConfig';
 
 // Fast initial paint; replaced by the value from site_config once it loads.
-// September 30, 2026 11:00 AM ET (EDT, UTC-4) = 15:00 UTC
-const FALLBACK_SESSION_DATE = new Date('2026-09-30T15:00:00Z');
+// September 30, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
+const FALLBACK_SESSION_DATE = new Date('2026-09-30T16:00:00Z');
 
 function useCountdown() {
   const [target, setTarget] = useState<Date>(FALLBACK_SESSION_DATE);
@@ -206,11 +206,11 @@ const LiveSession = () => {
         />
         <meta
           property="og:description"
-          content="The three-part framework elite sellers use to build a Point of View sharp enough to get back in the room with the people who can actually say yes. September 30, 11AM ET."
+          content="The three-part framework elite sellers use to build a Point of View sharp enough to get back in the room with the people who can actually say yes. September 30, 12PM ET."
         />
         <meta
           name="description"
-          content="Free live session with Jamal Reimer. Learn the three-part framework elite sellers use to build a Point of View that opens doors a demo can't. September 30, 11AM ET."
+          content="Free live session with Jamal Reimer. Learn the three-part framework elite sellers use to build a Point of View that opens doors a demo can't. September 30, 12PM ET."
         />
       </Head>
       <GrainOverlay />
@@ -589,7 +589,7 @@ const LiveSession = () => {
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
           <p className="font-mono text-[13px] text-[#8A8AA0] mt-7 tracking-wide">
-            September 30 · 11AM ET
+            September 30 · 12PM ET
           </p>
         </div>
       </section>

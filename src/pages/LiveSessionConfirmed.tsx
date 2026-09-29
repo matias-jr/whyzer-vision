@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { Head } from 'vite-react-ssg';
 import GrainOverlay from '@/components/whyzer/GrainOverlay';
 
-// ── Calendar event. September 30, 2026 11:00 AM ET; that date is inside EDT
-// (UTC-4), so 15:00 UTC. 60 minutes long.
+// ── Calendar event. September 30, 2026 12:00 PM ET; that date is inside EDT
+// (UTC-4), so 16:00 UTC. 60 minutes long.
 const EVENT = {
   title: "Stop Sounding Like Everybody Else: How top enterprise sellers build a Point of View that opens doors a demo can't",
   description:
     'Stop pitching the same use cases as every other rep in the deal. Learn the three-part framework elite sellers use to build a Point of View sharp enough to get you back in the room with the people who can actually say yes.',
   location: 'https://webinarkit.com/webinar/watch/6a7b29be3db0318c2bcf6e6a',
   organizer: 'jamal@whyzer.ai',
-  startUtc: '20260930T150000Z',
-  endUtc: '20260930T160000Z',
+  startUtc: '20260930T160000Z',
+  endUtc: '20260930T170000Z',
 };
 
 const googleCalendarUrl = (location: string) => {
@@ -218,7 +218,7 @@ const LiveSessionConfirmed = () => {
         <meta property="og:title" content="You're Registered — Live Session, September 30" />
         <meta
           property="og:description"
-          content="Your seat is confirmed for September 30 at 11AM ET. Add it to your calendar and be there live."
+          content="Your seat is confirmed for September 30 at 12PM ET. Add it to your calendar and be there live."
         />
       </Head>
       <GrainOverlay />
@@ -365,7 +365,7 @@ const LiveSessionConfirmed = () => {
                 Add It to Your Calendar and Be There Live.
               </h3>
               <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-7">
-                Block September 30 at 11AM ET now, before you forget. We're going deep on the three-part
+                Block September 30 at 12PM ET now, before you forget. We're going deep on the three-part
                 framework elite sellers use to build a Point of View. This isn't a recording you'll
                 catch up on later. The live session is where the value is.
               </p>
@@ -395,7 +395,7 @@ const LiveSessionConfirmed = () => {
                         Time
                       </p>
                       <p className="font-display text-lg text-[#14141F] uppercase">
-                        11:00 AM ET · 8:00 AM PT · 4:00 PM UK
+                        12:00 PM ET · 9:00 AM PT · 5:00 PM UK
                       </p>
                     </div>
                   </div>
@@ -541,9 +541,9 @@ const LiveSessionConfirmed = () => {
                     Time
                   </p>
                   <p className="font-display text-lg text-[#14141F] uppercase">
-                    11AM ET · 8AM PT
+                    12PM ET · 9AM PT
                     <br />
-                    4PM UK
+                    5PM UK
                   </p>
                 </div>
               </div>
