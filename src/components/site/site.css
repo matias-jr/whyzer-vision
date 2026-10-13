@@ -1,0 +1,46 @@
+/* v8 design language for content pages: light surface, Space Grotesk headings, indigo accent. */
+.wzsite{--wz-bg:#FAFAF9;--wz-ink:#14141F;--wz-muted:#55556B;--wz-soft:#8A8AA0;--wz-line:#E4E3F0;--wz-tint:#F2F1FB;--wz-brand:#6262e9;--wz-brand-dark:#4a4ad1;
+  min-height:100vh;background:var(--wz-bg);color:var(--wz-ink);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wzsite *{box-sizing:border-box}
+.wzsite ::selection{background:rgba(98,98,233,.18)}
+.wzsite a{color:var(--wz-brand-dark);text-decoration:none}
+.wzsite a:hover{color:var(--wz-brand)}
+.wzsite :is(h1,h2,h3,h4){font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--wz-ink);text-transform:none;letter-spacing:-.01em}
+.wzsite img{display:block;max-width:100%}
+.wzsite-wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.wzsite-narrow{max-width:760px;margin:0 auto;padding:72px 32px 96px}
+.wzsite-eyebrow{font-size:12.5px;font-weight:700;color:var(--wz-brand);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.wzsite-h1{font-size:44px;line-height:1.1;letter-spacing:-.02em;margin-bottom:12px}
+.wzsite-meta{font-size:14px;color:var(--wz-soft)}
+.wzsite-sec{margin-bottom:40px}
+.wzsite-sec>h2{font-size:21px;line-height:1.25;margin-bottom:14px}
+.wzsite-p{font-size:15.5px;line-height:1.8;color:var(--wz-muted);margin-bottom:16px}
+.wzsite-ul{list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:8px}
+.wzsite-ul li{display:flex;gap:12px;font-size:15.5px;line-height:1.75;color:var(--wz-muted)}
+.wzsite-ul li::before{content:'';flex:none;width:6px;height:6px;border-radius:50%;background:var(--wz-brand);margin-top:.8em}
+.wzsite-card{background:rgba(255,255,255,.72);border:1px solid rgba(228,227,240,.9);border-radius:16px;padding:26px;box-shadow:0 26px 54px -34px rgba(20,20,40,.34)}
+.wzsite-btn{display:inline-block;background:var(--wz-brand);color:#fff !important;font-weight:600;font-size:15px;padding:14px 26px;border-radius:9px;box-shadow:0 14px 30px -12px rgba(98,98,233,.7);transition:background .2s ease}
+.wzsite-btn:hover{background:var(--wz-brand-dark)}
+.wzsite-btn--ghost{background:transparent;color:var(--wz-ink) !important;border:1.5px solid var(--wz-line);box-shadow:none}
+.wzsite-btn--ghost:hover{background:#F7F7FE;border-color:var(--wz-brand)}
+@media (max-width:860px){.wzsite-wrap{padding:0 20px}.wzsite-narrow{padding:48px 20px 72px}.wzsite-h1{font-size:34px}}
+.wzsite-h3{font-size:16px;line-height:1.35;margin:26px 0 8px}
+
+/* Newsletter article body on the light surface (the admin editor preview keeps the dark rules in index.css). */
+.wzsite .article-body h2{font-family:'Space Grotesk',sans-serif;color:var(--wz-ink);font-size:clamp(22px,2.5vw,26px);letter-spacing:-.015em}
+.wzsite .article-body h3{font-family:'Space Grotesk',sans-serif;color:var(--wz-ink);font-size:19px}
+.wzsite .article-body p,.wzsite .article-body ul,.wzsite .article-body ol{color:var(--wz-muted)}
+.wzsite .article-body a{color:var(--wz-brand-dark);text-decoration:underline;text-underline-offset:3px}
+.wzsite .article-body blockquote{border-left-color:var(--wz-brand);background:#EEEEFC;color:var(--wz-ink)}
+.wzsite .article-body img{box-shadow:0 26px 54px -34px rgba(20,20,40,.4)}
+.wzsite .article-body code{background:#EEEEFC;border-color:var(--wz-line);color:var(--wz-brand-dark)}
+.wzsite .article-body pre{background:#14141F;border-color:#14141F}
+.wzsite .article-body pre code{background:transparent;color:#DADAF2}
+.wzsite .article-body hr{border-top-color:var(--wz-line)}
+.wzsite-article{position:relative;max-width:720px;margin:0 auto;padding:56px 32px 96px}
+.wzsite-article h1{font-size:clamp(30px,4.4vw,44px);line-height:1.12;letter-spacing:-.02em}
+@media (max-width:860px){.wzsite-article{padding:40px 20px 72px}}
+.wzsite-articlecard{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:rgba(255,255,255,.72);border:1px solid rgba(228,227,240,.9);box-shadow:0 26px 54px -34px rgba(20,20,40,.34);transition:transform .25s ease,border-color .2s ease}
+.wzsite-articlecard:hover{transform:translateY(-4px);border-color:rgba(98,98,233,.5)}
+.wzsite-articlecard img{transition:transform .3s ease}
+.wzsite-articlecard:hover img{transform:scale(1.03)}

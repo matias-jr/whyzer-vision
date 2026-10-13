@@ -10,64 +10,27 @@ function formatDate(iso: string | null): string {
   });
 }
 
+// Newsletter issue card in the v8 design (rendered inside a .wzsite page).
 export default function ArticleCard({ article }: { article: ArticleSummary }) {
   return (
-    <Link
-      to={`/newsletter/${article.slug}`}
-      className="group flex flex-col rounded-2xl overflow-hidden"
-      style={{
-        background: '#111827',
-        border: '1px solid rgba(255,255,255,0.08)',
-        textDecoration: 'none',
-        transition: 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.2s ease',
-      }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLElement;
-        el.style.transform = 'translateY(-3px)';
-        el.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(99,102,241,0.10)';
-        el.style.borderColor = 'rgba(255,255,255,0.16)';
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLElement;
-        el.style.transform = 'translateY(0)';
-        el.style.boxShadow = 'none';
-        el.style.borderColor = 'rgba(255,255,255,0.08)';
-      }}
-    >
+    <Link to={`/newsletter/${article.slug}`} className="wzsite-articlecard" style={{ textDecoration: 'none' }}>
       {article.cover_image_url && (
-        <div className="aspect-[16/9] overflow-hidden">
-          <img
-            src={article.cover_image_url}
-            alt=""
-            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
-          />
+        <div style={{ aspectRatio: '16 / 9', overflow: 'hidden' }}>
+          <img src={article.cover_image_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
       )}
-      <div className="p-6 flex flex-col flex-1">
-        <p
-          className="font-mono-brand text-[11px] uppercase tracking-[0.15em] mb-3"
-          style={{ color: '#555E75' }}
-        >
+      <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <p style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#8A8AA0', marginBottom: 10 }}>
           {formatDate(article.published_at)}
           {article.author ? ` · ${article.author}` : ''}
         </p>
-        <h3
-          className="text-xl leading-tight mb-2"
-          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#F9FAFB', letterSpacing: '-0.015em' }}
-        >
-          {article.title}
-        </h3>
+        <h3 style={{ fontSize: 20, lineHeight: 1.25, marginBottom: 8 }}>{article.title}</h3>
         {article.excerpt && (
-          <p className="font-body text-sm leading-[1.7] line-clamp-3" style={{ color: '#9CA3AF' }}>
+          <p className="line-clamp-3" style={{ fontSize: 14, lineHeight: 1.7, color: '#55556B' }}>
             {article.excerpt}
           </p>
         )}
-        <span
-          className="font-mono-brand text-xs uppercase tracking-wider mt-4"
-          style={{ color: '#818CF8' }}
-        >
-          Read →
-        </span>
+        <span style={{ fontSize: 13, fontWeight: 600, color: '#4a4ad1', marginTop: 16 }}>Read →</span>
       </div>
     </Link>
   );

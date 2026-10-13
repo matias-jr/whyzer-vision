@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import GrainOverlay from '@/components/whyzer/GrainOverlay';
+import SitePage from '@/components/site/SitePage';
 import ArticleCard from '@/components/whyzer/ArticleCard';
 import { listPublishedArticles } from '@/lib/articles';
 import type { ArticleSummary } from '@/types/article';
@@ -31,7 +31,7 @@ const NewsletterArchive = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background text-foreground">
+    <SitePage>
       <Head>
         <title>Newsletter Archive · AI Secrets for Strategic Sellers | Whyzer</title>
         <link rel="canonical" href="https://www.whyzer.ai/newsletter/archive" />
@@ -41,53 +41,26 @@ const NewsletterArchive = () => {
         <meta property="og:description" content="Every past issue of AI Secrets for Strategic Sellers, the newsletter for B2B sellers working the AI shift." />
         <meta name="description" content="Every past issue of AI Secrets for Strategic Sellers, the newsletter for B2B sellers working the AI shift." />
       </Head>
-      <GrainOverlay />
 
-      <header className="relative z-10 px-6 py-6 md:px-12 flex items-center justify-between">
-        <Link
-          to="/"
-          className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary hover:text-foreground transition-colors"
-        >
-          ← whyzer
-        </Link>
-        <Link
-          to="/newsletter"
-          className="font-mono text-xs uppercase tracking-[0.15em] text-primary hover:underline"
-        >
-          Subscribe →
-        </Link>
-      </header>
-
-      <main className="relative z-10 mx-auto max-w-[1100px] px-6 pb-24 pt-8 md:px-12">
-        <div className="mb-14 text-center">
-          <p className="font-mono-brand text-xs uppercase tracking-[0.2em] text-primary mb-4">
-            The Archive
-          </p>
-          <h1 className="font-display text-4xl md:text-6xl uppercase leading-[1.05] tracking-tight mb-4">
-            AI Secrets for Strategic Sellers
-          </h1>
-          <p className="font-body text-lg text-text-secondary max-w-[560px] mx-auto">
+      <main className="wzsite-wrap" style={{ paddingTop: 64, paddingBottom: 96 }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <p className="wzsite-eyebrow">The Archive</p>
+          <h1 className="wzsite-h1" style={{ maxWidth: 760, margin: '0 auto 14px' }}>AI Secrets for Strategic Sellers</h1>
+          <p className="wzsite-p" style={{ maxWidth: 560, margin: '0 auto 22px' }}>
             Every past issue. Curated AI insights that apply directly to your deals.
           </p>
+          <Link to="/newsletter" className="wzsite-btn">Subscribe →</Link>
         </div>
 
-        {state.kind === 'loading' && (
-          <p className="font-mono text-sm text-text-secondary text-center py-12">
-            Loading…
-          </p>
-        )}
+        {state.kind === 'loading' && <p className="wzsite-meta" style={{ textAlign: 'center', padding: '48px 0' }}>Loading…</p>}
 
         {state.kind === 'error' && (
-          <p className="font-mono text-sm text-destructive text-center py-12">
-            {state.message}
-          </p>
+          <p style={{ textAlign: 'center', padding: '48px 0', color: '#B3413F', fontSize: 14 }}>{state.message}</p>
         )}
 
         {state.kind === 'ready' && state.articles.length === 0 && (
-          <div className="border border-dashed border-foreground/15 rounded-xl p-16 text-center">
-            <p className="font-body text-text-secondary">
-              No issues published yet. Check back soon.
-            </p>
+          <div className="wzsite-card" style={{ textAlign: 'center', padding: 64, borderStyle: 'dashed' }}>
+            <p className="wzsite-p" style={{ marginBottom: 0 }}>No issues published yet. Check back soon.</p>
           </div>
         )}
 
@@ -99,7 +72,7 @@ const NewsletterArchive = () => {
           </div>
         )}
       </main>
-    </div>
+    </SitePage>
   );
 };
 

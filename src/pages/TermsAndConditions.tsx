@@ -1,33 +1,27 @@
 import { Head } from 'vite-react-ssg';
+import SitePage from '@/components/site/SitePage';
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-10">
-    <h2 className="font-display text-lg text-foreground uppercase tracking-wide mb-4">{title}</h2>
+  <div className="wzsite-sec">
+    <h2>{title}</h2>
     {children}
   </div>
 );
 
-const P = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-text-secondary text-[15px] leading-[1.8] mb-4">{children}</p>
-);
+const P = ({ children }: { children: React.ReactNode }) => <p className="wzsite-p">{children}</p>;
 
-const SubHead = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="font-display text-base text-foreground tracking-wide mt-8 mb-3">{children}</h3>
-);
+const SubHead = ({ children }: { children: React.ReactNode }) => <h3 className="wzsite-h3">{children}</h3>;
 
 const UL = ({ items }: { items: string[] }) => (
-  <ul className="space-y-2 mb-4">
+  <ul className="wzsite-ul">
     {items.map((item, i) => (
-      <li key={i} className="flex items-start gap-3 text-text-secondary text-[15px] leading-[1.8]">
-        <span className="text-primary mt-1 flex-shrink-0">—</span>
-        <span>{item}</span>
-      </li>
+      <li key={i}>{item}</li>
     ))}
   </ul>
 );
 
 const TermsAndConditions = () => (
-  <div className="min-h-screen bg-background text-foreground">
+  <SitePage>
     <Head>
       <title>Terms and Conditions | Whyzer</title>
       <link rel="canonical" href="https://www.whyzer.ai/terms-and-conditions" />
@@ -38,30 +32,16 @@ const TermsAndConditions = () => (
       <meta name="description" content="The terms governing your use of Whyzer." />
     </Head>
 
-    {/* Header */}
-    <header className="border-b border-foreground/[0.06] px-6 lg:px-12 py-5 flex items-center justify-between">
-      <a href="/" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
-        <img
-          src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
-          alt="Whyzer"
-          className="h-7"
-        />
-      </a>
-      <a href="/" className="text-sm text-text-secondary hover:text-foreground transition-colors duration-200">
-        ← Back to Whyzer AI
-      </a>
-    </header>
-
     {/* Content */}
-    <main className="max-w-[760px] mx-auto px-6 lg:px-12 py-20">
+    <main className="wzsite-narrow">
 
       {/* Title block */}
-      <div className="mb-14">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">Legal</p>
-        <h1 className="font-display text-[2rem] md:text-[2.6rem] text-foreground leading-[1.2] tracking-[-0.02em] uppercase mb-4">
+      <div style={{ marginBottom: 48 }}>
+        <p className="wzsite-eyebrow">Legal</p>
+        <h1 className="wzsite-h1">
           Terms &amp; Conditions
         </h1>
-        <p className="text-text-secondary text-sm">Whyzer · Last Updated: August 2026</p>
+        <p className="wzsite-meta">Whyzer · Last Updated: August 2026</p>
       </div>
 
       <Section title="Agreement to Terms">
@@ -88,14 +68,14 @@ const TermsAndConditions = () => (
 
         <SubHead>Free Trials</SubHead>
         <P>Whyzer AI may offer a free trial period on Premium or Elite plans ("Trial"). Unless a different length is stated at signup, the Trial lasts 14 days from the date you create your account.</P>
-        <P><strong className="text-foreground font-semibold">Automatic conversion.</strong> Unless you cancel before the Trial ends, your account will automatically convert to a paid subscription at the then-current price for the plan you selected, and we will begin charging the payment method on file on the date the Trial ends. By starting a Trial, you authorize us to store your payment method and to charge it on this basis.</P>
-        <P><strong className="text-foreground font-semibold">Notice before you're charged.</strong> We will send you at least one email reminder in advance of your Trial ending and before any charge is made, including instructions for cancelling. Reminder emails are a courtesy; it remains your responsibility to cancel before the Trial ends if you do not want to be charged.</P>
+        <P><strong style={{ color: "#14141F", fontWeight: 600 }}>Automatic conversion.</strong> Unless you cancel before the Trial ends, your account will automatically convert to a paid subscription at the then-current price for the plan you selected, and we will begin charging the payment method on file on the date the Trial ends. By starting a Trial, you authorize us to store your payment method and to charge it on this basis.</P>
+        <P><strong style={{ color: "#14141F", fontWeight: 600 }}>Notice before you're charged.</strong> We will send you at least one email reminder in advance of your Trial ending and before any charge is made, including instructions for cancelling. Reminder emails are a courtesy; it remains your responsibility to cancel before the Trial ends if you do not want to be charged.</P>
         <P>
-          <strong className="text-foreground font-semibold">How to cancel a Trial.</strong> You may cancel at any time during the Trial, at no cost, through your account settings at members.whyzer.ai, through the chatbot in app.whyzer.ai, or by contacting{' '}
-          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
+          <strong style={{ color: "#14141F", fontWeight: 600 }}>How to cancel a Trial.</strong> You may cancel at any time during the Trial, at no cost, through your account settings at members.whyzer.ai, through the chatbot in app.whyzer.ai, or by contacting{' '}
+          <a href="mailto:info@whyzer.ai">info@whyzer.ai</a>.
           {' '}Cancelling before the Trial ends means you will not be charged.
         </P>
-        <P><strong className="text-foreground font-semibold">Eligibility.</strong> We reserve the right to limit free trial eligibility to one per person, company, or payment method, and to determine eligibility at our discretion.</P>
+        <P><strong style={{ color: "#14141F", fontWeight: 600 }}>Eligibility.</strong> We reserve the right to limit free trial eligibility to one per person, company, or payment method, and to determine eligibility at our discretion.</P>
       </Section>
 
       <Section title="No Refunds">
@@ -113,7 +93,7 @@ const TermsAndConditions = () => (
       <Section title="Cancellation">
         <P>
           You may cancel your subscription at any time through your account settings or by contacting{' '}
-          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
+          <a href="mailto:info@whyzer.ai">info@whyzer.ai</a>.
           {' '}Cancellation takes effect at the end of your current billing period (or, for an active Trial, immediately — see Free Trials above). You will not be charged for the following period.
         </P>
         <P>Cancellation does not entitle you to a refund for any portion of the current billing period already paid.</P>
@@ -167,18 +147,13 @@ const TermsAndConditions = () => (
 
       <Section title="Contact">
         <P>Questions about these Terms:</P>
-        <p className="text-text-secondary text-[15px] leading-[1.8]">Whyzer</p>
-        <a href="mailto:info@whyzer.ai" className="text-primary hover:underline text-[15px]">info@whyzer.ai</a>
+        <p className="wzsite-p" style={{ marginBottom: 4 }}>Whyzer</p>
+        <a href="mailto:info@whyzer.ai">info@whyzer.ai</a>
       </Section>
 
     </main>
 
-    {/* Footer */}
-    <div className="border-t border-foreground/[0.06] px-6 lg:px-12 py-8 max-w-[760px] mx-auto">
-      <p className="text-text-tertiary text-[13px]">© {new Date().getFullYear()} Whyzer.ai · All rights reserved</p>
-    </div>
-
-  </div>
+  </SitePage>
 );
 
 export default TermsAndConditions;

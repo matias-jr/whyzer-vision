@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import GrainOverlay from '@/components/whyzer/GrainOverlay';
+import SitePage from '@/components/site/SitePage';
 import ArticleCard from '@/components/whyzer/ArticleCard';
 import { useScrollReveal, useStaggerReveal } from '@/hooks/useScrollReveal';
 import { listPublishedArticles } from '@/lib/articles';
@@ -95,7 +95,7 @@ const Newsletter = () => {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden" style={{ background: '#0A0E1A', color: '#F9FAFB' }}>
+    <SitePage>
       <Head>
         <title>AI Secrets for Strategic Sellers · Newsletter | Whyzer</title>
         <link rel="canonical" href="https://www.whyzer.ai/newsletter" />
@@ -106,284 +106,88 @@ const Newsletter = () => {
         <meta name="description" content="The newsletter strategic sellers use to level up in the AI world. No spam, no tools to set up, unsubscribe anytime." />
       </Head>
 
-      {/* ── Keyframe definitions ── */}
-      <style>{`
-        @keyframes nl-fade-up {
-          from { opacity: 0; transform: translateY(28px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes nl-orb-drift-a {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          40%       { transform: translate(60px, -40px) scale(1.08); }
-          70%       { transform: translate(-30px, 30px) scale(0.95); }
-        }
-        @keyframes nl-orb-drift-b {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          35%       { transform: translate(-50px, 50px) scale(1.06); }
-          65%       { transform: translate(40px, -20px) scale(0.97); }
-        }
-        @keyframes nl-orb-drift-c {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50%       { transform: translate(30px, 60px) scale(1.04); }
-        }
-        @keyframes nl-glow-pulse {
-          0%, 100% { box-shadow: 0 0 0px 0px rgba(99,102,241,0); }
-          50%       { box-shadow: 0 0 40px 2px rgba(99,102,241,0.08); }
-        }
-        @keyframes nl-shimmer {
-          0%   { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        @keyframes nl-cursor-blink {
-          0%, 100% { opacity: 1; }
-          50%       { opacity: 0; }
-        }
-        @keyframes nl-scan {
-          0%   { transform: translateX(-100%); opacity: 0; }
-          10%  { opacity: 1; }
-          90%  { opacity: 1; }
-          100% { transform: translateX(100%); opacity: 0; }
-        }
-
-        .nl-fade-up-1 { animation: nl-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
-        .nl-fade-up-2 { animation: nl-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.25s both; }
-        .nl-fade-up-3 { animation: nl-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both; }
-        .nl-fade-up-4 { animation: nl-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.55s both; }
-        .nl-fade-up-5 { animation: nl-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.7s both; }
-
-        .nl-logo   { animation: nl-fade-up 0.6s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
-
-        .nl-orb-a  { animation: nl-orb-drift-a 18s ease-in-out infinite; }
-        .nl-orb-b  { animation: nl-orb-drift-b 22s ease-in-out infinite; }
-        .nl-orb-c  { animation: nl-orb-drift-c 26s ease-in-out infinite; }
-
-        .nl-form-wrap { animation: nl-glow-pulse 4s ease-in-out infinite 1.2s; }
-
-        .nl-overline-cursor::after {
-          content: '|';
-          margin-left: 2px;
-          animation: nl-cursor-blink 1.1s step-end infinite;
-        }
-
-        .nl-card-shimmer {
-          position: relative;
-          overflow: hidden;
-        }
-        .nl-card-shimmer::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%);
-          background-size: 200% 100%;
-          opacity: 0;
-          transition: opacity 0.2s;
-        }
-        .nl-card-shimmer:hover::after {
-          opacity: 1;
-          animation: nl-scan 0.6s ease-in-out forwards;
-        }
-      `}</style>
-
-      <GrainOverlay />
-
-      {/* ── Background orbs ── */}
-      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }}>
-        <div
-          className="nl-orb-a absolute rounded-full"
-          style={{
-            width: 600, height: 600,
-            top: '-15%', left: '-10%',
-            background: 'radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%)',
-            filter: 'blur(40px)',
-          }}
-        />
-        <div
-          className="nl-orb-b absolute rounded-full"
-          style={{
-            width: 500, height: 500,
-            top: '20%', right: '-8%',
-            background: 'radial-gradient(circle, rgba(99,102,241,0.04) 0%, transparent 70%)',
-            filter: 'blur(50px)',
-          }}
-        />
-        <div
-          className="nl-orb-c absolute rounded-full"
-          style={{
-            width: 400, height: 400,
-            bottom: '10%', left: '30%',
-            background: 'radial-gradient(circle, rgba(99,102,241,0.03) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-          }}
-        />
-      </div>
-
-      {/* ── Logo ── */}
-      <header className="nl-logo relative" style={{ zIndex: 1 }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '22px 32px', display: 'flex', alignItems: 'center' }}>
-          <a href="/" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
-            <img
-              src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
-              alt="Whyzer"
-              style={{ height: 30, width: 'auto' }}
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
-                const fallback = (e.target as HTMLImageElement).nextElementSibling as HTMLElement;
-                if (fallback) fallback.classList.remove('hidden');
-              }}
-            />
-            <span className="hidden text-2xl" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, color: '#F9FAFB' }}>
-              Whyzer<span style={{ color: '#6366F1' }}>.</span>
-            </span>
-          </a>
-        </div>
-      </header>
-
       {/* ── Hero + Form ── */}
       <section
-        className="relative flex flex-col items-center px-6 lg:px-12 pt-12 pb-20"
         style={{
-          zIndex: 1,
-          background: 'radial-gradient(ellipse at 50% -10%, rgba(99,102,241,0.09) 0%, transparent 60%)',
+          padding: '72px 0 64px',
+          background:
+            'radial-gradient(ellipse 900px 520px at 78% 0%, rgba(191,224,253,.5), transparent 62%), radial-gradient(ellipse 760px 480px at 8% 100%, rgba(141,93,184,.22), transparent 60%), #FAFAF9',
         }}
       >
-        {/* Overline */}
-        <p
-          className="nl-fade-up-1 nl-overline-cursor font-mono-brand text-xs uppercase tracking-[0.2em] mb-6"
-          style={{ color: '#818CF8' }}
-        >
-          Join the Newsletter Strategic Sellers are using to level up in the AI world
-        </p>
+        <div className="wzsite-wrap" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <p className="wzsite-eyebrow" style={{ marginBottom: 16 }}>
+            Join the newsletter strategic sellers are using to level up in the AI world
+          </p>
+          <h1 className="wzsite-h1" style={{ fontSize: 'clamp(36px, 6vw, 60px)', marginBottom: 20 }}>
+            AI Secrets for<br />Strategic Sellers
+          </h1>
+          <p className="wzsite-p" style={{ maxWidth: 580, fontSize: 17, marginBottom: 36 }}>
+            Buyers are using AI in ways most sellers can't imagine. Reps get drowned in daily AI updates not knowing where to start. Every week, we close that gap — you'll receive curated AI insights that apply directly to your deals, not to AI in general.
+          </p>
 
-        {/* Headline */}
-        <h1
-          className="nl-fade-up-2 text-center text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6"
-          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, letterSpacing: '-0.035em', color: '#F9FAFB' }}
-        >
-          AI Secrets for<br />Strategic Sellers
-        </h1>
-
-        {/* Subhead */}
-        <p
-          className="nl-fade-up-3 font-body text-lg leading-[1.65] text-center max-w-[560px] mb-12"
-          style={{ color: '#9CA3AF', fontSize: 17 }}
-        >
-          Buyers are using AI in ways most sellers can't imagine. Reps get drowned in daily AI updates not knowing where to start. Every week, we close that gap — you'll receive curated AI insights that apply directly to your deals, not to AI in general.
-        </p>
-
-        {/* Form */}
-        <div
-          className="nl-fade-up-4 nl-form-wrap w-full max-w-[520px] rounded-xl overflow-hidden"
-          style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)' }}
-        >
-          <iframe
-            src="https://link.msgsndr.com/widget/form/DbN0tSSpu40MR5JB2Zbc"
-            style={{ width: '100%', height: '356px', border: 'none', borderRadius: '12px' }}
-            id="inline-DbN0tSSpu40MR5JB2Zbc"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="AI Newsletter Subscription – Whyzer"
-            data-height="356"
-            data-layout-iframe-id="inline-DbN0tSSpu40MR5JB2Zbc"
-            data-form-id="DbN0tSSpu40MR5JB2Zbc"
-            title="AI Newsletter Subscription – Whyzer"
-          />
-        </div>
-
-        <p className="nl-fade-up-5 font-mono-brand text-[11px] mt-4 tracking-wide" style={{ color: '#555E75' }}>
-          No spam. No tools to set up. Unsubscribe anytime.
-        </p>
-      </section>
-
-      {/* ── Divider ── */}
-      <div className="mx-6 lg:mx-12" style={{ zIndex: 1, position: 'relative', height: 1, background: 'rgba(255,255,255,0.08)' }} />
-
-      {/* ── Value Props ── */}
-      <section className="py-20 px-6 lg:px-12" style={{ zIndex: 1, position: 'relative' }}>
-        <div className="max-w-[1200px] mx-auto mb-10 text-center">
-          <p
-            className="font-mono-brand text-xs uppercase tracking-[0.2em] mb-3"
-            style={{ color: '#818CF8' }}
+          <div
+            style={{ width: '100%', maxWidth: 520, borderRadius: 16, overflow: 'hidden', boxShadow: '0 40px 90px -40px rgba(20,20,40,.55)', border: '1px solid rgba(255,255,255,.85)' }}
           >
-            Weekly AI nuggets to surface
+            <iframe
+              src="https://link.msgsndr.com/widget/form/DbN0tSSpu40MR5JB2Zbc"
+              style={{ width: '100%', height: '356px', border: 'none', display: 'block' }}
+              id="inline-DbN0tSSpu40MR5JB2Zbc"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="AI Newsletter Subscription – Whyzer"
+              data-height="356"
+              data-layout-iframe-id="inline-DbN0tSSpu40MR5JB2Zbc"
+              data-form-id="DbN0tSSpu40MR5JB2Zbc"
+              title="AI Newsletter Subscription – Whyzer"
+            />
+          </div>
+
+          <p className="wzsite-meta" style={{ marginTop: 16, fontSize: 12.5 }}>
+            No spam. No tools to set up. Unsubscribe anytime.
           </p>
         </div>
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-          {valueProps.map((prop, i) => {
-            const Icon = prop.icon;
-            return (
-              <div
-                key={prop.label}
-                ref={cardsRef(i)}
-                className="nl-card-shimmer p-8 rounded-2xl"
-                style={{
-                  background: '#111827',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  transition: 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.transform = 'translateY(-3px)';
-                  (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(99,102,241,0.10)';
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.16)';
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-                  (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                }}
-              >
-                <div
-                  className="w-10 h-10 rounded-md flex items-center justify-center mb-5"
-                  style={{ background: 'rgba(99,102,241,0.10)', border: '1px solid rgba(99,102,241,0.20)' }}
-                >
-                  <Icon size={18} style={{ color: '#818CF8' }} />
+      </section>
+
+      {/* ── Value Props ── */}
+      <section style={{ padding: '80px 0', background: '#F2F1FB', borderTop: '1px solid #E4E3F0', borderBottom: '1px solid #E4E3F0' }}>
+        <div className="wzsite-wrap">
+          <div style={{ textAlign: 'center', marginBottom: 36 }}>
+            <p className="wzsite-eyebrow">Weekly AI nuggets to surface</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {valueProps.map((prop, i) => {
+              const Icon = prop.icon;
+              return (
+                <div key={prop.label} ref={cardsRef(i)} className="wzsite-card" style={{ padding: 30 }}>
+                  <div
+                    style={{ width: 40, height: 40, borderRadius: 10, background: '#EEEEFC', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}
+                  >
+                    <Icon size={18} style={{ color: '#4a4ad1' }} />
+                  </div>
+                  <h3 style={{ fontSize: 19, lineHeight: 1.3, marginBottom: 10 }}>{prop.label}</h3>
+                  <p className="wzsite-p" style={{ fontSize: 14.5, lineHeight: 1.7, marginBottom: 0 }}>{prop.description}</p>
                 </div>
-                <h3
-                  className="text-lg mb-2"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#F9FAFB', letterSpacing: '-0.01em' }}
-                >
-                  {prop.label}
-                </h3>
-                <p className="font-body text-sm leading-[1.7]" style={{ color: '#9CA3AF' }}>
-                  {prop.description}
-                </p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* ── Recent Issues ── */}
       {recentIssues.length > 0 && (
-        <section
-          className="py-20 px-6 lg:px-12"
-          style={{ zIndex: 1, position: 'relative', borderTop: '1px solid rgba(255,255,255,0.08)' }}
-        >
-          <div className="max-w-[1200px] mx-auto">
-            <div className="flex items-end justify-between mb-10">
+        <section style={{ padding: '80px 0' }}>
+          <div className="wzsite-wrap">
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, marginBottom: 32, flexWrap: 'wrap' }}>
               <div>
-                <p
-                  className="font-mono-brand text-xs uppercase tracking-[0.2em] mb-3"
-                  style={{ color: '#818CF8' }}
-                >
-                  Recent Issues
-                </p>
-                <h2
-                  className="text-2xl md:text-3xl"
-                  style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, color: '#F9FAFB', letterSpacing: '-0.025em' }}
-                >
-                  Catch up on past editions
-                </h2>
+                <p className="wzsite-eyebrow">Recent Issues</p>
+                <h2 style={{ fontSize: 31, lineHeight: 1.18 }}>Catch up on past editions</h2>
               </div>
-              <Link
-                to="/newsletter/archive"
-                className="font-mono-brand text-xs uppercase tracking-wider whitespace-nowrap hover:underline"
-                style={{ color: '#6366F1' }}
-              >
+              <Link to="/newsletter/archive" style={{ fontSize: 14, fontWeight: 600 }}>
                 View all →
               </Link>
             </div>
@@ -397,31 +201,25 @@ const Newsletter = () => {
       )}
 
       {/* ── Social proof ── */}
-      <section className="pb-20 px-6 lg:px-12" style={{ zIndex: 1, position: 'relative' }}>
+      <section style={{ padding: '0 0 80px' }}>
         <div
           ref={proofRef}
-          className="max-w-[1200px] mx-auto flex flex-col items-center gap-6 pt-12"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
+          className="wzsite-wrap"
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, paddingTop: 48, borderTop: '1px solid #E4E3F0' }}
         >
-          <p className="font-mono-brand text-xs uppercase tracking-[0.2em]" style={{ color: '#555E75' }}>
+          <p className="wzsite-meta" style={{ textTransform: 'uppercase', letterSpacing: '.06em', fontWeight: 700, fontSize: 12.5, textAlign: 'center' }}>
             Built for sellers navigating a world where buyers are already AI-native
           </p>
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-3">
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px 40px' }}>
             {['Enterprise AEs', 'Strategic Account Managers', 'Revenue Leaders', 'Solution Engineers'].map((role) => (
-              <span
-                key={role}
-                className="font-body text-sm transition-colors duration-200 cursor-default"
-                style={{ color: '#9CA3AF' }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#F9FAFB'}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#9CA3AF'}
-              >
+              <span key={role} style={{ fontSize: 15, fontWeight: 500, color: '#55556B' }}>
                 {role}
               </span>
             ))}
           </div>
         </div>
       </section>
-    </div>
+    </SitePage>
   );
 };
 

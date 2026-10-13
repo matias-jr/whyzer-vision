@@ -1,29 +1,25 @@
 import { Head } from 'vite-react-ssg';
+import SitePage from '@/components/site/SitePage';
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="mb-10">
-    <h2 className="font-display text-lg text-foreground uppercase tracking-wide mb-4">{title}</h2>
+  <div className="wzsite-sec">
+    <h2>{title}</h2>
     {children}
   </div>
 );
 
-const P = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-text-secondary text-[15px] leading-[1.8] mb-4">{children}</p>
-);
+const P = ({ children }: { children: React.ReactNode }) => <p className="wzsite-p">{children}</p>;
 
 const UL = ({ items }: { items: string[] }) => (
-  <ul className="space-y-2 mb-4">
+  <ul className="wzsite-ul">
     {items.map((item, i) => (
-      <li key={i} className="flex items-start gap-3 text-text-secondary text-[15px] leading-[1.8]">
-        <span className="text-primary mt-1 flex-shrink-0">—</span>
-        <span>{item}</span>
-      </li>
+      <li key={i}>{item}</li>
     ))}
   </ul>
 );
 
 const PrivacyPolicy = () => (
-  <div className="min-h-screen bg-background text-foreground">
+  <SitePage>
     <Head>
       <title>Privacy Policy | Whyzer</title>
       <link rel="canonical" href="https://www.whyzer.ai/privacy-policy" />
@@ -34,51 +30,37 @@ const PrivacyPolicy = () => (
       <meta name="description" content="How Whyzer collects, uses, and protects your personal information." />
     </Head>
 
-    {/* Header */}
-    <header className="border-b border-foreground/[0.06] px-6 lg:px-12 py-5 flex items-center justify-between">
-      <a href="/" className="opacity-90 hover:opacity-100 transition-opacity duration-200">
-        <img
-          src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png"
-          alt="Whyzer"
-          className="h-7"
-        />
-      </a>
-      <a href="/" className="text-sm text-text-secondary hover:text-foreground transition-colors duration-200">
-        ← Back to Whyzer
-      </a>
-    </header>
-
     {/* Content */}
-    <main className="max-w-[760px] mx-auto px-6 lg:px-12 py-20">
+    <main className="wzsite-narrow">
 
       {/* Title block */}
-      <div className="mb-14">
-        <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary mb-4">Legal</p>
-        <h1 className="font-display text-[2rem] md:text-[2.6rem] text-foreground leading-[1.2] tracking-[-0.02em] uppercase mb-4">
+      <div style={{ marginBottom: 48 }}>
+        <p className="wzsite-eyebrow">Legal</p>
+        <h1 className="wzsite-h1">
           Privacy Policy
         </h1>
-        <p className="text-text-secondary text-sm">Whyzer · Last Updated: April 2026</p>
+        <p className="wzsite-meta">Whyzer · Last Updated: April 2026</p>
       </div>
 
       <Section title="What This Is">
         <P>
           This Privacy Policy explains what information Whyzer collects, how it's used, and what your rights are. If you have questions, contact us at{' '}
-          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
+          <a href="mailto:info@whyzer.ai">info@whyzer.ai</a>.
         </P>
         <P>By using whyzer.ai or any Whyzer product, you agree to this policy.</P>
       </Section>
 
       <Section title="What We Collect">
-        <h3 className="font-body font-semibold text-foreground text-[15px] mb-2">Account Information</h3>
+        <h3 className="wzsite-h3">Account Information</h3>
         <P>When you create an account, we collect your name, email address, and payment information. If you sign up through a third-party service (Google, LinkedIn), we receive the basic profile information you authorize.</P>
 
-        <h3 className="font-body font-semibold text-foreground text-[15px] mb-2">Usage Data</h3>
+        <h3 className="wzsite-h3">Usage Data</h3>
         <P>We collect information about how you use Whyzer — the companies you research, features you engage with, session frequency, and platform interactions. This helps us improve the product and your experience.</P>
 
-        <h3 className="font-body font-semibold text-foreground text-[15px] mb-2">Device and Technical Data</h3>
+        <h3 className="wzsite-h3">Device and Technical Data</h3>
         <P>We collect IP addresses, browser type, operating system, and referral URLs. This is standard across web platforms and helps us maintain security and performance.</P>
 
-        <h3 className="font-body font-semibold text-foreground text-[15px] mb-2">Communications</h3>
+        <h3 className="wzsite-h3">Communications</h3>
         <P>If you contact us or participate in Whyzer Community sessions, we may retain those communications for quality and support purposes.</P>
       </Section>
 
@@ -100,9 +82,9 @@ const PrivacyPolicy = () => (
 
       <Section title="Data Sharing">
         <P>We share data only in limited circumstances:</P>
-        <P><span className="text-foreground font-semibold">Service Providers.</span> We work with third-party vendors for payment processing (Stripe), email delivery, analytics, and infrastructure. These vendors are contractually bound to process your data only for the services they provide to us.</P>
-        <P><span className="text-foreground font-semibold">Legal Requirements.</span> We may disclose information if required by law, court order, or to protect the rights, property, or safety of Whyzer, our users, or the public.</P>
-        <P><span className="text-foreground font-semibold">Business Transfers.</span> If Whyzer is acquired or merges with another company, your information may transfer as part of that transaction. We will notify you before your data becomes subject to a materially different privacy policy.</P>
+        <P><span style={{ color: "#14141F", fontWeight: 600 }}>Service Providers.</span> We work with third-party vendors for payment processing (Stripe), email delivery, analytics, and infrastructure. These vendors are contractually bound to process your data only for the services they provide to us.</P>
+        <P><span style={{ color: "#14141F", fontWeight: 600 }}>Legal Requirements.</span> We may disclose information if required by law, court order, or to protect the rights, property, or safety of Whyzer, our users, or the public.</P>
+        <P><span style={{ color: "#14141F", fontWeight: 600 }}>Business Transfers.</span> If Whyzer is acquired or merges with another company, your information may transfer as part of that transaction. We will notify you before your data becomes subject to a materially different privacy policy.</P>
         <P>We do not share your data with third parties for their own marketing purposes.</P>
       </Section>
 
@@ -126,11 +108,11 @@ const PrivacyPolicy = () => (
         ]} />
         <P>
           To exercise any of these rights, email{' '}
-          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>.
+          <a href="mailto:info@whyzer.ai">info@whyzer.ai</a>.
           {' '}We will respond within 30 days.
         </P>
-        <P><span className="text-foreground font-semibold">For EU/UK residents:</span> Whyzer processes data under legitimate interest and contract performance as the primary legal bases. You have rights under GDPR including the right to lodge a complaint with your local supervisory authority.</P>
-        <P><span className="text-foreground font-semibold">For California residents:</span> Under CCPA, you have the right to know what personal information we collect, request deletion, and opt out of the sale of personal information. We do not sell personal information.</P>
+        <P><span style={{ color: "#14141F", fontWeight: 600 }}>For EU/UK residents:</span> Whyzer processes data under legitimate interest and contract performance as the primary legal bases. You have rights under GDPR including the right to lodge a complaint with your local supervisory authority.</P>
+        <P><span style={{ color: "#14141F", fontWeight: 600 }}>For California residents:</span> Under CCPA, you have the right to know what personal information we collect, request deletion, and opt out of the sale of personal information. We do not sell personal information.</P>
       </Section>
 
       <Section title="Cookies">
@@ -145,7 +127,7 @@ const PrivacyPolicy = () => (
       <Section title="Children">
         <P>
           Whyzer is not directed at anyone under 18. We do not knowingly collect data from minors. If you believe a minor has provided us with personal data, contact us at{' '}
-          <a href="mailto:info@whyzer.ai" className="text-primary hover:underline">info@whyzer.ai</a>
+          <a href="mailto:info@whyzer.ai">info@whyzer.ai</a>
           {' '}and we will delete it.
         </P>
       </Section>
@@ -156,17 +138,12 @@ const PrivacyPolicy = () => (
 
       <Section title="Contact">
         <P>Questions about this policy or your data:</P>
-        <a href="mailto:info@whyzer.ai" className="text-primary hover:underline text-[15px]">info@whyzer.ai</a>
+        <a href="mailto:info@whyzer.ai">info@whyzer.ai</a>
       </Section>
 
     </main>
 
-    {/* Footer */}
-    <div className="border-t border-foreground/[0.06] px-6 lg:px-12 py-8 max-w-[760px] mx-auto">
-      <p className="text-text-tertiary text-[13px]">© {new Date().getFullYear()} Whyzer.ai · All rights reserved</p>
-    </div>
-
-  </div>
+  </SitePage>
 );
 
 export default PrivacyPolicy;

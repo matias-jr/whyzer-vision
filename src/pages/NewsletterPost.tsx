@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import GrainOverlay from '@/components/whyzer/GrainOverlay';
+import SitePage from '@/components/site/SitePage';
 import { getArticleBySlug } from '@/lib/articles';
 import { sanitizeArticleHtml } from '@/lib/sanitize';
 import type { Article } from '@/types/article';
@@ -87,106 +87,35 @@ const NewsletterPost = () => {
   }, [slug]);
 
   return (
-    <div className="relative min-h-screen" style={{ background: '#0A0E1A', color: '#F9FAFB' }}>
-      <GrainOverlay />
-
-      <header className="relative z-10 px-6 py-6 md:px-12">
-        <Link
-          to="/"
-          className="font-mono text-xs uppercase tracking-[0.15em] transition-opacity duration-200 hover:opacity-80"
-          style={{ color: '#6366F1', textDecoration: 'none' }}
-        >
-          ← whyzer
-        </Link>
-      </header>
-
-      <main className="relative z-10 mx-auto max-w-[720px] px-6 pb-24 pt-8 md:px-0">
-        {state.kind === 'loading' && (
-          <p className="font-mono text-sm" style={{ color: '#9CA3AF' }}>Loading…</p>
-        )}
+    <SitePage>
+      <main className="wzsite-article">
+        {state.kind === 'loading' && <p className="wzsite-meta">Loading…</p>}
 
         {state.kind === 'not-found' && (
-          <div className="py-24 text-center">
-            <p
-              className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
-              style={{ color: '#555E75' }}
-            >
-              404
-            </p>
-            <h1
-              className="mb-6"
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: 800,
-                fontSize: 'clamp(28px, 4vw, 42px)',
-                letterSpacing: '-0.035em',
-                lineHeight: 1.15,
-                color: '#F9FAFB',
-              }}
-            >
-              Article not found
-            </h1>
-            <Link
-              to="/newsletter/archive"
-              className="font-mono text-sm uppercase tracking-wider hover:underline"
-              style={{ color: '#6366F1', textDecoration: 'none' }}
-            >
-              ← Browse all issues
-            </Link>
+          <div style={{ padding: '72px 0', textAlign: 'center' }}>
+            <p className="wzsite-eyebrow">404</p>
+            <h1 style={{ marginBottom: 20 }}>Article not found</h1>
+            <Link to="/newsletter/archive" className="wzsite-btn wzsite-btn--ghost">← Browse all issues</Link>
           </div>
         )}
 
         {state.kind === 'error' && (
-          <div className="py-24 text-center">
-            <p className="font-mono text-xs uppercase tracking-[0.15em] mb-4" style={{ color: '#555E75' }}>
-              Error
-            </p>
-            <p className="font-body" style={{ color: '#9CA3AF' }}>{state.message}</p>
+          <div style={{ padding: '72px 0', textAlign: 'center' }}>
+            <p className="wzsite-eyebrow">Error</p>
+            <p className="wzsite-p">{state.message}</p>
           </div>
         )}
 
         {state.kind === 'ready' && (
           <article>
-            {/* Hero glow behind headline */}
-            <div
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 900,
-                height: 400,
-                background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.09) 0%, transparent 65%)',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }}
-            />
-            <div className="mb-8" style={{ position: 'relative', zIndex: 1 }}>
-              <p
-                className="font-mono text-xs uppercase tracking-[0.15em] mb-4"
-                style={{ color: '#555E75', fontSize: 13 }}
-              >
+            <div style={{ marginBottom: 32 }}>
+              <p className="wzsite-eyebrow">
                 {formatDate(state.article.published_at)}
                 {state.article.author ? ` · ${state.article.author}` : ''}
               </p>
-              <h1
-                className="mb-6"
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: 800,
-                  fontSize: 'clamp(28px, 4vw, 42px)',
-                  letterSpacing: '-0.035em',
-                  lineHeight: 1.15,
-                  color: '#F9FAFB',
-                }}
-              >
-                {state.article.title}
-              </h1>
+              <h1 style={{ marginBottom: 18 }}>{state.article.title}</h1>
               {state.article.excerpt && (
-                <p className="font-body text-lg leading-relaxed" style={{ color: '#9CA3AF', fontSize: 17 }}>
-                  {state.article.excerpt}
-                </p>
+                <p className="wzsite-p" style={{ fontSize: 18, lineHeight: 1.65 }}>{state.article.excerpt}</p>
               )}
             </div>
 
@@ -194,31 +123,25 @@ const NewsletterPost = () => {
               <img
                 src={state.article.cover_image_url}
                 alt=""
-                className="w-full mb-12 aspect-[16/9] object-cover"
-                style={{ borderRadius: 12, boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}
+                style={{ width: '100%', aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: 16, marginBottom: 48, boxShadow: '0 26px 54px -34px rgba(20,20,40,.4)' }}
               />
             )}
 
             <div
-              className="article-body font-body text-[17px] leading-[1.75]"
+              className="article-body"
+              style={{ fontSize: 17, lineHeight: 1.75 }}
               dangerouslySetInnerHTML={{
                 __html: sanitizeArticleHtml(state.article.body),
               }}
             />
 
-            <div className="mt-16 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-              <Link
-                to="/newsletter"
-                className="font-mono text-sm uppercase tracking-wider hover:underline"
-                style={{ color: '#6366F1', textDecoration: 'none' }}
-              >
-                ← Subscribe to the newsletter
-              </Link>
+            <div style={{ marginTop: 64, paddingTop: 28, borderTop: '1px solid #E4E3F0' }}>
+              <Link to="/newsletter" className="wzsite-btn">Subscribe to the newsletter →</Link>
             </div>
           </article>
         )}
       </main>
-    </div>
+    </SitePage>
   );
 };
 

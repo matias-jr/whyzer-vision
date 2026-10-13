@@ -1,0 +1,36 @@
+/* Shared v8 navbar + footer (non-home pages). Mirrors the rules in home/home-v8.css. */
+.wz-nav a,.wz-nav a:hover{text-decoration:none}
+.wz-nav a{color:#C7C7EB}
+.wz-nav .wz-nav-cta,.wz-nav .wz-nav-cta:hover{color:#fff}
+.wz-nav-cta:hover{background:#4a4ad1 !important}
+.wz-nav-links a:hover{color:#fff !important}
+.wz-burger{display:none}
+.wz-dd{position:relative}
+.wz-dd-btn:hover{color:#fff !important}
+.wz-dd-menu{display:none;position:absolute;right:-12px;top:calc(100% + 14px);min-width:190px;padding:8px;border-radius:12px;background:rgba(9,17,39,.97);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 50px -20px rgba(0,0,0,.6);flex-direction:column;gap:2px}
+.wz-dd-menu::before{content:'';position:absolute;left:0;right:0;top:-16px;height:16px}
+.wz-dd:hover .wz-dd-menu,.wz-dd.wz-dd-open .wz-dd-menu{display:flex}
+.wz-dd-menu a{padding:10px 12px;border-radius:8px;font-size:14px !important;white-space:nowrap}
+.wz-dd-menu a:hover{background:rgba(255,255,255,.08);color:#fff !important}
+.wzsite-foot a{color:#55556B;text-decoration:none}
+.wzsite-foot a:hover{color:#4a4ad1}
+@media (max-width:1100px){
+  .wz-nav-in{padding:12px 20px !important;gap:12px !important}
+  .wz-burger{display:inline-flex !important}
+  .wz-nav-cta{padding:9px 13px !important;font-size:13px !important}
+  .wz-nav-links{display:none !important;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start !important;gap:16px !important;padding:18px 20px 22px;background:rgba(9,17,39,.97);border-bottom:1px solid rgba(255,255,255,.1)}
+  .wz-nav.wz-open .wz-nav-links{display:flex !important}
+  .wz-nav-links a{font-size:16px !important}
+  .wz-dd-btn{pointer-events:none;font-size:16px !important}
+  .wz-dd-btn span{display:none !important}
+  .wz-dd-menu{display:flex !important;position:static;min-width:0;padding:10px 0 0 14px;background:none;border:0;box-shadow:none;gap:12px}
+  .wz-dd-menu::before{display:none}
+  .wz-dd-menu a{padding:0;font-size:16px !important}
+  .wz-dd-menu a:hover{background:none}
+}
+@media (max-width:860px){
+  .wz-wrap{padding-left:20px !important;padding-right:20px !important}
+  .wz-foot-grid{grid-template-columns:1fr 1fr !important;gap:28px !important}
+  .wz-foot-grid>div:first-child{grid-column:1 / -1}
+}
+@media (max-width:420px){.wz-nav-cta{padding:8px 10px !important;font-size:12.5px !important}}
