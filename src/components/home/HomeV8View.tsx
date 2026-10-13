@@ -24,6 +24,9 @@ const LOGOS: { name: string; src: string; h?: number }[] = [
   { name: 'Grammarly', src: '/home-v8/logos/grammarly.svg', h: 26 },
   { name: 'Airtable', src: '/home-v8/logos/airtable.svg', h: 28 },
   { name: 'Cloudera', src: '/home-v8/logos/cloudera.webp', h: 22 },
+  { name: 'Astronomer', src: '/home-v8/logos/astronomer.svg', h: 18 },
+  { name: 'Sanity', src: '/home-v8/logos/sanity.svg', h: 24 },
+  { name: 'Zywave', src: '/home-v8/logos/zywave.svg', h: 20 },
 ];
 
 type Props = {
