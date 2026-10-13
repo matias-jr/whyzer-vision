@@ -98,3 +98,12 @@ html{scroll-behavior:smooth}
 .wzh9:hover{background:rgba(98,98,233,.32) !important}
 .wzh10:hover{color:#DADAF2 !important}
 .wzh11:hover{transform:translateY(-4px) !important}
+
+/* "Used by sellers at" logo strip */
+.wz-logos{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.wz-logos-track{display:flex;align-items:center;gap:56px;width:max-content;padding:0 28px;animation:wzMarqueeL 70s linear infinite}
+.wz-logos-track img{flex:none;filter:grayscale(1) brightness(.7) contrast(1.15);opacity:.72;transition:opacity .2s ease}
+.wz-logos:hover .wz-logos-track{animation-play-state:paused}
+.wz-logos-track img:hover{opacity:1}
+@media (max-width:860px){.wz-logos-track{gap:40px}}
+@media (prefers-reduced-motion:reduce){.wz-logos-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:24px 40px}.wz-logos-track img[aria-hidden="true"]{display:none}}

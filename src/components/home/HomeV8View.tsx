@@ -3,6 +3,29 @@
 // Presentational only: state and behaviour live in HomeV8.tsx.
 import { Fragment } from 'react';
 
+// Logos for the "Used by sellers at" strip (public/home-v8/logos). `h` tunes optical size.
+const LOGOS: { name: string; src: string; h?: number }[] = [
+  { name: 'BlackRock', src: '/home-v8/logos/blackrock.svg', h: 22 },
+  { name: 'Workday', src: '/home-v8/logos/workday.svg', h: 30 },
+  { name: 'Snowflake', src: '/home-v8/logos/snowflake.svg', h: 28 },
+  { name: 'Okta', src: '/home-v8/logos/okta.svg', h: 28 },
+  { name: 'DocuSign', src: '/home-v8/logos/docusign.svg', h: 22 },
+  { name: 'Check Point', src: '/home-v8/logos/checkpoint.svg', h: 28 },
+  { name: 'SAS', src: '/home-v8/logos/sas.svg', h: 28 },
+  { name: 'Revolut', src: '/home-v8/logos/revolut.svg', h: 24 },
+  { name: 'Wiz', src: '/home-v8/logos/wiz.svg', h: 28 },
+  { name: 'UiPath', src: '/home-v8/logos/uipath.svg', h: 30 },
+  { name: 'Confluent', src: '/home-v8/logos/confluent.svg', h: 24 },
+  { name: 'Infor', src: '/home-v8/logos/infor.svg', h: 28 },
+  { name: 'Rubrik', src: '/home-v8/logos/rubrik.svg', h: 28 },
+  { name: 'LexisNexis', src: '/home-v8/logos/lexisnexis.svg', h: 28 },
+  { name: 'Dayforce', src: '/home-v8/logos/dayforce.svg', h: 28 },
+  { name: 'New Relic', src: '/home-v8/logos/newrelic.svg', h: 26 },
+  { name: 'Grammarly', src: '/home-v8/logos/grammarly.svg', h: 26 },
+  { name: 'Airtable', src: '/home-v8/logos/airtable.svg', h: 28 },
+  { name: 'Cloudera', src: '/home-v8/logos/cloudera.webp', h: 22 },
+];
+
 type Props = {
   d: Record<string, any>;
   appendUtm: (url: string) => string;
@@ -182,17 +205,16 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
           </div>
         </div>
       </header>
-      <section style={{ background: "rgba(242,241,251,.85)", borderTop: "1px solid #E4E3F0", borderBottom: "1px solid #E4E3F0", padding: "24px 0" }}>
-        <div className="wz-wrap" style={{ maxWidth: "1160px", margin: "0 auto", padding: "0 32px", textAlign: "center", fontSize: "13.5px", fontWeight: "600" }}>
-          {"Danny H. closed "}
-          <b style={{ color: "#4a4ad1" }}>
-            {"$5.7M"}
-          </b>
-          {" this year — "}
-          <b style={{ color: "#4a4ad1" }}>
-            {"65%"}
-          </b>
-          {" traceable to Whyzer POVs."}
+      <section aria-label="Companies whose sellers use Whyzer" style={{ background: "rgba(242,241,251,.85)", borderTop: "1px solid #E4E3F0", borderBottom: "1px solid #E4E3F0", padding: "26px 0 28px" }}>
+        <div className="wz-wrap" style={{ maxWidth: "1160px", margin: "0 auto", padding: "0 32px", textAlign: "center", fontSize: "12px", fontWeight: "700", letterSpacing: ".08em", textTransform: "uppercase", color: "#8A8AA0", marginBottom: "20px" }}>
+          {"Used by sellers at"}
+        </div>
+        <div className="wz-logos">
+          <div className="wz-logos-track">
+            {[...LOGOS, ...LOGOS].map((l, i) => (
+              <img key={i} src={l.src} alt={i < LOGOS.length ? l.name : ""} aria-hidden={i >= LOGOS.length ? true : undefined} height={l.h ?? 26} decoding="async" style={{ height: `${l.h ?? 26}px`, width: "auto" }} />
+            ))}
+          </div>
         </div>
       </section>
       <section style={{ padding: "52px 0 12px" }}>
