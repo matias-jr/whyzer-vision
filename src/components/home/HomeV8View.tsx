@@ -27,14 +27,8 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <a href="#features" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 {"Features"}
               </a>
-              <a href="#value" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                {"Why Whyzer"}
-              </a>
               <a href="#pricing" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 {"Pricing"}
-              </a>
-              <a href="#elite" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                {"Elite"}
               </a>
               <a href="/compare/ai-account-intelligence-tools" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 {"Compare"}
@@ -42,15 +36,20 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <a href="/newsletter" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 {"Newsletter"}
               </a>
-              <a href="/financial-fluency" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                {"Free Webinar"}
-              </a>
-              <a href="https://app.whyzer.ai/login" target="_top" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                {"Log In"}
-              </a>
-              <a href="https://members.whyzer.ai/login" target="_top" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                {"Members Area"}
-              </a>
+              <div className="wz-dd">
+                <button type="button" className="wz-dd-btn" data-wz-dd="1" aria-haspopup="true" aria-expanded="false" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap", background: "none", border: 0, padding: 0, cursor: "pointer", fontFamily: "inherit", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+                  {"Log In"}
+                  <span aria-hidden="true" style={{ fontSize: "10px" }}>{"▾"}</span>
+                </button>
+                <div className="wz-dd-menu">
+                  <a href="https://app.whyzer.ai/login" target="_top" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
+                    {"Whyzer app"}
+                  </a>
+                  <a href="https://members.whyzer.ai/login" target="_top" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
+                    {"Members Area"}
+                  </a>
+                </div>
+              </div>
             </div>
             <a className="wz-nav-cta wzh1" href="#pricing-monthly" style={{ background: "#6262e9", color: "#fff", padding: "10px 18px", borderRadius: "8px", fontSize: "14px", fontWeight: "600", whiteSpace: "nowrap", boxShadow: "0 8px 22px -10px rgba(98,98,233,.9)" }}>
               {"Try Whyzer for Free"}

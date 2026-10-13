@@ -278,7 +278,13 @@ const HomeV8 = () => {
   // ---- exit intent: once per session, armed after 3s (same rules as the previous home page) ----
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') set({ exitOpen: false, vOpen: null });
+      if (e.key === 'Escape') {
+        set({ exitOpen: false, vOpen: null });
+        rootRef.current?.querySelectorAll('.wz-dd-open').forEach((w) => {
+          w.classList.remove('wz-dd-open');
+          w.querySelector('[data-wz-dd]')?.setAttribute('aria-expanded', 'false');
+        });
+      }
     };
     document.addEventListener('keydown', onKey);
 
@@ -363,6 +369,19 @@ const HomeV8 = () => {
     if (burger && nav) {
       const open = nav.classList.toggle('wz-open');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      return;
+    }
+    // "Log In" dropdown (Whyzer app / Members Area).
+    const ddBtn = target.closest('[data-wz-dd]');
+    root?.querySelectorAll('.wz-dd-open').forEach((w) => {
+      if (!ddBtn || w !== ddBtn.parentElement) {
+        w.classList.remove('wz-dd-open');
+        w.querySelector('[data-wz-dd]')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+    if (ddBtn?.parentElement) {
+      const open = ddBtn.parentElement.classList.toggle('wz-dd-open');
+      ddBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       return;
     }
     if (nav && target.closest('.wz-nav-links a')) nav.classList.remove('wz-open');

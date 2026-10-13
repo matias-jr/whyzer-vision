@@ -8,14 +8,25 @@ document.addEventListener('click',function(ev){
   var nav=document.querySelector('.wz-nav'); if(!nav||!ev.target.closest) return;
   var b=ev.target.closest('[data-wz-menu]');
   if(b){var o=nav.classList.toggle('wz-open'); b.setAttribute('aria-expanded',o?'true':'false'); return;}
+  var dd=ev.target.closest('[data-wz-dd]');
+  document.querySelectorAll('.wz-dd-open').forEach(function(w){ if(!dd||w!==dd.parentNode){ w.classList.remove('wz-dd-open'); var bb=w.querySelector('[data-wz-dd]'); if(bb) bb.setAttribute('aria-expanded','false'); } });
+  if(dd){ var o2=dd.parentNode.classList.toggle('wz-dd-open'); dd.setAttribute('aria-expanded',o2?'true':'false'); return; }
   if(ev.target.closest('.wz-nav-links a')) nav.classList.remove('wz-open');
 });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') document.querySelectorAll('.wz-dd-open').forEach(function(w){ w.classList.remove('wz-dd-open'); }); });
 </script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&amp;family=Inter:wght@300;400;500&amp;display=swap"><style>body{margin:0}html{scroll-behavior:smooth}a{color:var(--color-accent-text);text-decoration:none}a:hover{color:var(--color-accent-hover);text-decoration:underline}summary::-webkit-details-marker{display:none}</style><title>Rox AI vs Whyzer: An Honest Side-by-Side for Enterprise Sellers</title><meta name="description" content="Rox runs AI agents across your revenue workflow. Whyzer builds the financial argument that gets an executive to reply. Here's which one fits you."><link rel="canonical" href="https://www.whyzer.ai/compare/whyzer-vs-rox"><meta property="og:url" content="https://www.whyzer.ai/compare/whyzer-vs-rox"><meta property="og:type" content="article"><meta property="og:title" content="Rox AI vs Whyzer: An Honest Side-by-Side for Enterprise Sellers"><meta property="og:description" content="Rox runs AI agents across your revenue workflow. Whyzer builds the financial argument that gets an executive to reply. Here's which one fits you."><style>
 .wz-nav a,.wz-nav a:hover{text-decoration:none}
 .wz-nav-cta:hover{background:#4a4ad1 !important;color:#fff !important}
 .wz-nav-links a:hover{color:#fff !important}
 .wz-burger{display:none}
+.wz-dd{position:relative}
+.wz-dd-btn:hover{color:#fff !important}
+.wz-dd-menu{display:none;position:absolute;right:-12px;top:calc(100% + 14px);min-width:190px;padding:8px;border-radius:12px;background:rgba(9,17,39,.97);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 50px -20px rgba(0,0,0,.6);flex-direction:column;gap:2px}
+.wz-dd-menu::before{content:'';position:absolute;left:0;right:0;top:-16px;height:16px}
+.wz-dd:hover .wz-dd-menu,.wz-dd.wz-dd-open .wz-dd-menu{display:flex}
+.wz-dd-menu a{padding:10px 12px;border-radius:8px;font-size:14px !important;white-space:nowrap}
+.wz-dd-menu a:hover{background:rgba(255,255,255,.08);color:#fff !important}
 @media (max-width:1100px){
   .wz-nav-in{padding:12px 20px !important;gap:12px !important}
   .wz-burger{display:inline-flex !important}
@@ -23,6 +34,12 @@ document.addEventListener('click',function(ev){
   .wz-nav-links{display:none !important;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start !important;gap:16px !important;padding:18px 20px 22px;background:rgba(9,17,39,.97);border-bottom:1px solid rgba(255,255,255,.1)}
   .wz-nav.wz-open .wz-nav-links{display:flex !important}
   .wz-nav-links a{font-size:16px !important}
+  .wz-dd-btn{pointer-events:none;font-size:16px !important}
+  .wz-dd-btn span{display:none !important}
+  .wz-dd-menu{display:flex !important;position:static;min-width:0;padding:10px 0 0 14px;background:none;border:0;box-shadow:none;gap:12px}
+  .wz-dd-menu::before{display:none}
+  .wz-dd-menu a{padding:0;font-size:16px !important}
+  .wz-dd-menu a:hover{background:none}
 }
 @media (max-width:420px){.wz-nav-cta{padding:8px 10px !important;font-size:12.5px !important}}
 </style><link rel="stylesheet" href="/compare-assets/compare.css"><link rel="icon" href="/favicon.png"></head>
@@ -36,14 +53,16 @@ document.addEventListener('click',function(ev){
       <div class="wz-nav-links" style="display: flex; align-items: center; gap: 20px;">
         <a href="/#tour" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Product tour</a>
         <a href="/#features" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Features</a>
-        <a href="/#value" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Why Whyzer</a>
         <a href="/#pricing" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Pricing</a>
-        <a href="/#elite" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Elite</a>
         <a href="/compare/ai-account-intelligence-tools" style="color: rgb(255, 255, 255); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Compare</a>
         <a href="/newsletter" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Newsletter</a>
-        <a href="/financial-fluency" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Free Webinar</a>
-        <a href="https://app.whyzer.ai/login" target="_top" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Log In</a>
-        <a href="https://members.whyzer.ai/login" target="_top" style="color: rgb(199, 199, 235); font-size: 13.5px; font-weight: 500; white-space: nowrap;">Members Area</a>
+        <div class="wz-dd">
+          <button type="button" class="wz-dd-btn" data-wz-dd="1" aria-haspopup="true" aria-expanded="false" style="color:#C7C7EB;font-size:13.5px;font-weight:500;white-space:nowrap;background:none;border:0;padding:0;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;">Log In<span aria-hidden="true" style="font-size:10px;">▾</span></button>
+          <div class="wz-dd-menu">
+            <a href="https://app.whyzer.ai/login" target="_top" style="color:#C7C7EB;font-size:13.5px;font-weight:500;white-space:nowrap;">Whyzer app</a>
+            <a href="https://members.whyzer.ai/login" target="_top" style="color:#C7C7EB;font-size:13.5px;font-weight:500;white-space:nowrap;">Members Area</a>
+          </div>
+        </div>
       </div>
       <a class="wz-nav-cta" href="/#pricing-monthly" style="background: rgb(98, 98, 233); color: rgb(255, 255, 255); padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; white-space: nowrap; box-shadow: rgba(98, 98, 233, 0.9) 0px 8px 22px -10px;">Try Whyzer for Free</a>
       <button class="wz-burger" data-wz-menu="1" aria-label="Toggle menu" aria-expanded="false" style="display: none; width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.06); color: rgb(255, 255, 255); font-size: 18px; cursor: pointer; align-items: center; justify-content: center;">☰</button>
