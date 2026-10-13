@@ -84,6 +84,14 @@
   ],
   "rewrites": [
     {
+      "source": "/compare/ai-account-intelligence-tools",
+      "destination": "/compare/ai-account-intelligence-tools.html"
+    },
+    {
+      "source": "/compare/whyzer-vs-rox",
+      "destination": "/compare/whyzer-vs-rox.html"
+    },
+    {
       "source": "/newsletter/:slug",
       "destination": "/index.html"
     },

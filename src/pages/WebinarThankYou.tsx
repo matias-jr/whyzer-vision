@@ -78,7 +78,7 @@ const HEADING: React.CSSProperties = { fontFamily: "'Inter', sans-serif", fontWe
 const howItWorks = [
   {
     step: 'Search',
-    body: 'Pull up any of 8,500+ public and private companies, anywhere in the world. Whyzer reads the SEC filings, earnings calls, investor letters, and proxy statements the same way I just did on camera.',
+    body: 'Pull up any of 10,500+ public and private companies, anywhere in the world. Whyzer reads the SEC filings, earnings calls, investor letters, and proxy statements the same way I just did on camera.',
   },
   {
     step: 'Build',
@@ -94,7 +94,7 @@ const howItWorks = [
 const eliteFeatures = [
   {
     title: 'The full research and POV engine',
-    body: 'Unlimited research across 8,500+ global companies. Unlimited Deal Maps, Executive POV Dossiers, and podcast-style account briefings.',
+    body: 'Unlimited research across 10,500+ global companies. Unlimited Deal Maps, Executive POV Dossiers, and podcast-style account briefings.',
   },
   {
     title: 'The Vault',
@@ -195,7 +195,7 @@ const faqs = [
   },
   {
     q: 'Does Whyzer work on private and international companies?',
-    a: "Yes. Coverage spans 8,500+ public and private companies globally, including accounts most research tools can't reach.",
+    a: "Yes. Coverage spans 10,500+ public and private companies globally, including accounts most research tools can't reach.",
   },
   {
     q: 'Is my data secure?',

@@ -7,10 +7,10 @@ Whyzer is an AI-powered Point of View (POV) platform for enterprise B2B sellers,
 Whyzer transforms SEC filings, earnings call transcripts, investor letters, and other public and private financial and operational data into boardroom-ready Points of View — helping AEs speak to executive priorities instead of product features. The positioning wedge is compressing "time-to-executive-engagement": the gap between having research and being in a credible conversation with an executive.
 
 ## Global Coverage
-Whyzer covers 8,500+ companies in the public and private sectors across 150+ markets worldwide. This includes private companies (e.g. Stripe, Revolut, Monzo) that public-data-only competitors like Databook cannot research. General guideline: target companies should have roughly 100-150+ employees to ensure enough corporate/financial signal exists for analysis.
+Whyzer covers 10,500+ companies in the public and private sectors across 150+ markets worldwide. This includes private companies (e.g. Stripe, Revolut, Monzo) that public-data-only competitors like Databook cannot research. General guideline: target companies should have roughly 100-150+ employees to ensure enough corporate/financial signal exists for analysis.
 
 ## Key Features
-- AI-generated Master Dossier for any of the 8,500+ public or private companies in Whyzer's database
+- AI-generated Master Dossier for any of the 10,500+ public or private companies in Whyzer's database
 - Financial KPI extraction from 10-K/10-Q filings and equivalent private-company financial signals
 - 2-5 executive-ready Points of View per account
 - C-suite and board member executive quote extraction

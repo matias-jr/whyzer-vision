@@ -1,0 +1,448 @@
+/* ==========================================================================
+   Whyzer Design Tokens — single source of truth
+   Derived from "BrandBook Whyzer 2026.pdf" (12pp).
+
+   This file is framework-neutral by design. Tailwind maps FROM it
+   (see tailwind.theme.css); email/PDF/canvas pipelines can read the same
+   values without a build step.
+
+   Provenance is marked on every token:
+     [deck]    stated verbatim in the brand book
+     [derived] computed from a deck value (e.g. contrast-corrected)
+     [added]   not in the deck; agreed convention. Not brand law.
+   ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------------
+     1. BRAND PALETTE  [deck, p.4 — all 7 hexes verified against swatches]
+     Raw brand values. Do NOT consume these directly in components;
+     use the semantic roles in section 2 so light/dark swaps work.
+     --------------------------------------------------------------------- */
+  --wz-purple:          #6262e9;  /* Whyzer Purple      — primary brand */
+  --wz-midnight:        #091326;  /* Deep Midnight Blue — dark surface  */
+  --wz-ghost-white:     #f9fafc;  /* Ghost White        — light surface */
+  --wz-indigo:          #2a2665;  /* Deep Indigo        — deep accent   */
+  --wz-lilac:           #ead8ff;  /* Lilac Mist         — soft accent   */
+  --wz-aqua:            #cdfbf1;  /* Pale Aqua          — soft accent   */
+  --wz-mint:            #c6f6d6;  /* Soft Mint          — soft accent   */
+
+  /* Purple, lightened for legible text/links on dark surfaces.
+     #6262e9 on #091326 is only 3.92:1 (fails body text).      [derived] */
+  --wz-purple-on-dark:  #6f6feb;  /* 4.55:1 on midnight */
+
+  /* ---------------------------------------------------------------------
+     2. SEMANTIC COLOR ROLES
+     Light mode is the default; section 6 overrides for dark.
+     --------------------------------------------------------------------- */
+  --color-bg:               var(--wz-ghost-white);
+  --color-bg-elevated:      #ffffff;
+  --color-bg-sunken:        #f1f2f7;
+
+  --color-text:             var(--wz-midnight);      /* 17.75:1 [deck]    */
+  --color-text-muted:       #55607a;                 /*  7.02:1 [added]   */
+  --color-text-subtle:      #67718b;                 /*  4.66:1 [added]   */
+  --color-text-inverse:     var(--wz-ghost-white);
+  --color-text-on-accent:   #ffffff;                 /*  4.73:1 on purple */
+
+  --color-accent:           var(--wz-purple);
+  --color-accent-text:      var(--wz-purple);   /* 4.53:1 on light  */
+  --color-accent-hover:     #5151d8;
+  --color-accent-active:    #4444c4;
+  --color-accent-subtle:    var(--wz-lilac);         /* tint background   */
+  --color-on-accent-subtle: var(--wz-indigo);        /* text on that tint */
+
+  --color-border:           #e3e5ee;
+  --color-border-strong:    #c9cddb;
+  --color-focus-ring:       var(--wz-purple);
+
+  /* Status — per-mode values, each >= 4.5:1 on its own surface. [derived]
+     Base hexes supplied by design; corrected only where they failed. */
+  --color-success:          #1a8259;  /* 4.59:1 on ghost-white */
+  --color-warning:          #ae5f05;  /* 4.53:1 */
+  --color-error:            #b3413f;  /* 5.37:1 */
+  --color-info:             #6262e9;  /* 4.53:1 */
+
+  /* Status tint surfaces. The deck's mint/aqua live HERE, not as text:
+     at 1.15:1 on ghost-white they are unreadable as type, but they are
+     exactly right as soft fills — which is how p.4 presents them. */
+  --color-success-surface:  var(--wz-mint);
+  --color-warning-surface:  #fdf0d5;
+  --color-error-surface:    #fbe4e3;
+  --color-info-surface:     var(--wz-lilac);
+
+  /* Status text when it sits ON the tint above (badges). Darker than the
+     page-level status colours, which are measured against --color-bg. */
+  --color-on-success-surface: #187751;  /* 4.62:1 on mint    */
+  --color-on-warning-surface: #a45a05;  /* 4.60:1            */
+  --color-on-error-surface:   #b3413f;  /* 4.62:1            */
+  --color-on-info-surface:    #4949e6;  /* 4.67:1 on lilac   */
+
+  /* ---------------------------------------------------------------------
+     3. TYPOGRAPHY
+     Families + weights + scale RATIOS are [deck, p.5].
+     Absolute px are [derived]: the deck is a Canva slide deck, so its
+     body/caption sizes (10px/8px) are print-on-slide sizes that fall
+     below accessible minimums on web. Ratios preserved, base rebased
+     to 16px. Deck's literal value is noted on each step.
+     --------------------------------------------------------------------- */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
+
+  --font-weight-light:    300;  /* Inter Light          [deck] */
+  --font-weight-regular:  400;  /* both families        [deck] */
+  --font-weight-bold:     700;  /* Space Grotesk Bold   [deck] */
+
+  --text-h1:       3.5rem;   /* 56px — deck 50px, hero/page title       */
+  --text-h2:       2.25rem;  /* 36px — deck 30px, section heading       */
+  --text-h3:       1.5rem;   /* 24px — deck 20px, subsection heading    */
+  --text-subtitle: 1.125rem; /* 18px — deck 14px, supporting text       */
+  --text-body:     1rem;     /* 16px — deck 10px, paragraphs  <-- rebase */
+  --text-caption:  0.8125rem;/* 13px — deck  8px, labels/eyebrows       */
+
+  --leading-tight:   1.1;   /* display sizes            */
+  --leading-snug:    1.3;   /* h3 / subtitle            */
+  --leading-normal:  1.6;   /* body copy                */
+
+  /* Space Grotesk is wide; display sizes benefit from a slight pull-in. */
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.08em;  /* eyebrows / all-caps labels */
+
+  /* ---------------------------------------------------------------------
+     4. SPACING — base-4 scale  [added]
+     --------------------------------------------------------------------- */
+  --space-1:   0.25rem;  /*  4px */
+  --space-2:   0.5rem;   /*  8px */
+  --space-3:   0.75rem;  /* 12px */
+  --space-4:   1rem;     /* 16px */
+  --space-5:   1.25rem;  /* 20px */
+  --space-6:   1.5rem;   /* 24px */
+  --space-7:   1.75rem;  /* 28px */
+  --space-8:   2rem;     /* 32px */
+  --space-9:   2.25rem;  /* 36px */
+  --space-12:  3rem;     /* 48px */
+  --space-16:  4rem;     /* 64px */
+  --space-24:  6rem;     /* 96px */
+
+  /* ---------------------------------------------------------------------
+     5. RADIUS / SHADOW / MOTION  [added]
+     Radii match the rounded geometry visible on pp.3-4 and 8-9.
+     Shadows are navy-tinted rather than pure black, so elevation reads
+     as part of the palette instead of muddying it.
+     --------------------------------------------------------------------- */
+  --radius-sm:   0.75rem;   /* 12px — inputs, chips, small controls */
+  --radius-md:   1.25rem;   /* 20px — cards, panels                */
+  --radius-lg:   1.75rem;   /* 28px — large feature surfaces       */
+  --radius-full: 9999px;    /*      — buttons, pills, avatars      */
+
+  --shadow-sm: 0 4px 12px rgba(11, 11, 24, 0.08);
+  --shadow-md: 0 12px 32px rgba(11, 11, 24, 0.12);
+  --shadow-lg: 0 24px 60px rgba(11, 11, 24, 0.18);
+
+  --duration-fast: 120ms; /* @kind other */
+  --duration-base: 200ms; /* @kind other */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1); /* @kind other */
+
+  /* ---------------------------------------------------------------------
+     6. BRAND GRADIENT BACKGROUNDS
+     Deck p.6 ships these as flattened images with no stops. Stop colors
+     were eyedropped from the Canva source by design [added]; the CSS
+     mesh reconstruction below approximates the original — close, but
+     not pixel-identical to the exported image.
+     --------------------------------------------------------------------- */
+  --gradient-base-light:   #fafaf9;
+  --gradient-violet-light: #8d5db8;
+  --gradient-aqua-light:   #bfe0fd;
+
+  --gradient-base-dark:    #091127;
+  --gradient-violet-dark:  #6349c6;
+  --gradient-teal-dark:    #16698f;
+
+  --gradient-mesh: radial-gradient(60% 55% at 28% 42%, color-mix(in oklab, var(--gradient-violet-light) 42%, transparent) 0%, transparent 68%),
+                   radial-gradient(52% 48% at 68% 38%, color-mix(in oklab, var(--gradient-aqua-light) 62%, transparent) 0%, transparent 66%),
+                   radial-gradient(58% 52% at 48% 78%, color-mix(in oklab, var(--gradient-violet-light) 34%, transparent) 0%, transparent 70%),
+                   var(--gradient-base-light);
+
+  /* Logo lockup constraints  [added] */
+  --logo-min-height-mark:  24px;  /* icon-only    */
+  --logo-min-width-lockup: 120px; /* full lockup  */
+}
+
+/* ==========================================================================
+   DARK MODE
+   Applies on system preference, and on an explicit [data-theme] override
+   so a manual toggle can win in both directions.
+   ========================================================================== */
+/* Dark mode is applied by an explicit [data-theme="dark"] scope. ThemeProvider
+   resolves theme="system" to that attribute from prefers-color-scheme at
+   runtime, so OS-driven dark mode still works — and every token stays in a
+   scope tools can read. Plain HTML (cards, static pages) opts in by setting
+   data-theme="dark" on the element or <html>. */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg:             var(--wz-midnight);
+  --color-bg-elevated:    #101c33;
+  --color-bg-sunken:      #060d1b;
+
+  --color-text:           var(--wz-ghost-white);
+  --color-text-muted:     #a3adc2;
+  --color-text-subtle:    #7a8599;
+  --color-text-inverse:   var(--wz-midnight);
+
+  --color-accent:         var(--wz-purple);              /* fills only */
+  --color-accent-text:    #7878ec;                        /* 4.61:1 on elevated */
+  --color-accent-hover:   #7676ee;
+  --color-accent-active:  #8888f1;
+  --color-accent-subtle:  #1b2547;
+  --color-on-accent-subtle: #ead8ff;
+
+  --color-border:         #1e2a44;
+  --color-border-strong:  #33405e;
+
+  --color-success:        #1f9d6b;
+  --color-warning:        #d97706;
+  --color-error:          #c65e5c;
+  --color-info:           var(--wz-purple-on-dark);
+
+  --color-success-surface: #102e26;
+  --color-warning-surface: #33230a;
+  --color-error-surface:   #3a1c1e;
+  --color-info-surface:    #1b2547;
+  --color-on-success-surface: #21a570;
+  --color-on-warning-surface: #d97706;
+  --color-on-error-surface:   #cd7371;
+  --color-on-info-surface:    #8484ee;
+
+  --gradient-mesh: radial-gradient(58% 52% at 30% 46%, color-mix(in oklab, var(--gradient-violet-dark) 72%, transparent) 0%, transparent 66%),
+                   radial-gradient(50% 46% at 76% 34%, color-mix(in oklab, var(--gradient-teal-dark) 78%, transparent) 0%, transparent 64%),
+                   radial-gradient(54% 50% at 52% 80%, color-mix(in oklab, var(--gradient-violet-dark) 56%, transparent) 0%, transparent 70%),
+                   var(--gradient-base-dark);
+}
+
+[data-theme="light"] { color-scheme: light; }
+
+/* ==========================================================================
+   Whyzer component styles
+
+   Every declaration resolves from a token in tokens.css. No component
+   carries a literal color, radius, or size of its own — restyling the
+   system means editing tokens.css, nothing here.
+   ========================================================================== */
+
+/* --- Root ---------------------------------------------------------------- */
+
+.wz-root {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+}
+
+/* --- Focus ring (shared by every interactive primitive) ------------------- */
+
+.wz-button:focus-visible,
+.wz-input__field:focus-visible,
+.wz-link:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* --- Button -------------------------------------------------------------- */
+
+.wz-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.wz-button:disabled,
+.wz-button[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* sizes — every one clears the 44px minimum hit target */
+.wz-button--sm { min-height: 44px; padding: var(--space-3) var(--space-5); font-size: 0.875rem; }
+.wz-button--md { min-height: 48px; padding: 0.875rem var(--space-7); font-size: var(--text-body); }
+.wz-button--lg { min-height: 56px; padding: var(--space-4) var(--space-9); font-size: var(--text-subtitle); }
+
+/* variants */
+.wz-button--primary {
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+}
+.wz-button--primary:hover:not(:disabled) { background: var(--color-accent-hover); }
+.wz-button--primary:active:not(:disabled) { background: var(--color-accent-active); }
+
+.wz-button--secondary {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+}
+.wz-button--secondary:hover:not(:disabled) { background: var(--color-bg-sunken); }
+
+.wz-button--ghost {
+  background: transparent;
+  color: var(--color-accent-text);
+}
+.wz-button--ghost:hover:not(:disabled) { background: var(--color-accent-subtle); }
+
+.wz-button--full { width: 100%; }
+
+/* --- Input --------------------------------------------------------------- */
+
+.wz-input { display: flex; flex-direction: column; gap: var(--space-2); }
+
+.wz-input__label {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text);
+}
+
+.wz-input__control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-4);
+  min-height: 48px;
+  transition: border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.wz-input__control:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 22%, transparent);
+}
+
+.wz-input__field {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text);
+  padding: var(--space-3) 0;
+}
+
+.wz-input__field::placeholder { color: var(--color-text-subtle); }
+
+.wz-input__icon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--color-text-subtle);
+}
+
+.wz-input__control:focus-within .wz-input__icon { color: var(--color-accent); }
+
+.wz-input__hint { font-size: var(--text-caption); color: var(--color-text-subtle); }
+
+.wz-input--invalid .wz-input__control { border-color: var(--color-error); }
+.wz-input--invalid .wz-input__control:focus-within {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-error) 22%, transparent);
+}
+.wz-input--invalid .wz-input__hint { color: var(--color-error); }
+
+.wz-input--disabled .wz-input__control {
+  background: var(--color-bg-sunken);
+  border-color: var(--color-border);
+  opacity: 0.6;
+}
+
+/* --- Card ---------------------------------------------------------------- */
+
+.wz-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  border-radius: var(--radius-md);
+  padding: var(--space-7);
+  background: var(--color-bg-elevated);
+}
+
+.wz-card--flat { border: 1px solid var(--color-border); }
+.wz-card--elevated { box-shadow: var(--shadow-sm); }
+.wz-card--raised { box-shadow: var(--shadow-md); }
+.wz-card--accent { background: var(--color-accent-subtle); border: none; }
+
+.wz-card--interactive { cursor: pointer; transition: box-shadow var(--duration-base) var(--ease-out); }
+.wz-card--interactive:hover { box-shadow: var(--shadow-md); }
+
+/* --- Badge --------------------------------------------------------------- */
+
+.wz-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-full);
+  padding: 0.4375rem var(--space-4);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+}
+
+.wz-badge--sm { padding: 0.3125rem var(--space-3); font-size: var(--text-caption); }
+
+.wz-badge--neutral { background: var(--color-bg-sunken); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+.wz-badge--accent  { background: var(--color-accent-subtle);  color: var(--color-on-accent-subtle); }
+.wz-badge--success { background: var(--color-success-surface); color: var(--color-on-success-surface); }
+.wz-badge--warning { background: var(--color-warning-surface); color: var(--color-on-warning-surface); }
+.wz-badge--error   { background: var(--color-error-surface);   color: var(--color-on-error-surface); }
+.wz-badge--info    { background: var(--color-info-surface);    color: var(--color-on-info-surface); }
+
+/* --- Typography ---------------------------------------------------------- */
+
+.wz-text { margin: 0; }
+
+.wz-text--h1 { font-family: var(--font-display); font-weight: var(--font-weight-bold); font-size: var(--text-h1); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); }
+.wz-text--h2 { font-family: var(--font-display); font-weight: var(--font-weight-bold); font-size: var(--text-h2); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); }
+.wz-text--h3 { font-family: var(--font-display); font-weight: var(--font-weight-bold); font-size: var(--text-h3); line-height: var(--leading-snug); }
+.wz-text--subtitle { font-family: var(--font-display); font-weight: var(--font-weight-regular); font-size: var(--text-subtitle); line-height: var(--leading-snug); }
+.wz-text--body { font-family: var(--font-body); font-size: var(--text-body); line-height: var(--leading-normal); }
+.wz-text--caption { font-family: var(--font-body); font-size: var(--text-caption); line-height: 1.4; letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+
+.wz-text--default { color: var(--color-text); }
+.wz-text--muted   { color: var(--color-text-muted); }
+.wz-text--subtle  { color: var(--color-text-subtle); }
+.wz-text--accent  { color: var(--color-accent-text); }
+.wz-text--inverse { color: var(--color-text-inverse); }
+
+/* --- Link ---------------------------------------------------------------- */
+
+.wz-link {
+  color: var(--color-accent-text);
+  text-decoration: none;
+  border-radius: 2px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.wz-link:hover { color: var(--color-accent-hover); text-decoration: underline; }
+
+/* --- Icon ---------------------------------------------------------------- */
+
+.wz-icon { display: inline-flex; flex-shrink: 0; color: currentColor; }
+
+/* --- Stack (layout helper) ----------------------------------------------- */
+
+.wz-stack { display: flex; }
+.wz-stack--vertical { flex-direction: column; }
+.wz-stack--horizontal { flex-direction: row; align-items: center; }
+.wz-stack--wrap { flex-wrap: wrap; }

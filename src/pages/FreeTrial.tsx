@@ -50,7 +50,7 @@ const CTA_LABEL = 'Start your 14-day trial';
 const CTA_MICRO = 'Card on file. Nothing charged until day 14. Cancel any time before then.';
 
 const STATS = [
-  { value: '8,500+', label: 'companies already covered' },
+  { value: '10,500+', label: 'companies already covered' },
   { value: '150+', label: 'markets worldwide' },
   { value: '< 2 min', label: 'from account name to a scored POV' },
   { value: '$160M+', label: 'closed with the framework inside' },
@@ -77,7 +77,7 @@ const INCLUDED = [
   {
     n: '01',
     title: 'Unlimited research, POVs, deal maps and audio briefings',
-    body: 'Across 8,500+ companies in 150+ markets.',
+    body: 'Across 10,500+ companies in 150+ markets.',
   },
   {
     n: '02',
@@ -122,7 +122,7 @@ const faqGroups = (price: string) => [
       },
       {
         q: 'What if my accounts are private companies?',
-        a: 'Coverage is strongest where public financial signal exists, across 8,500+ companies in 150+ markets. For private accounts, Whyzer works the sector, the customers and the suppliers around them.',
+        a: 'Coverage is strongest where public financial signal exists, across 10,500+ companies in 150+ markets. For private accounts, Whyzer works the sector, the customers and the suppliers around them.',
       },
       {
         q: 'How is this different from asking an LLM?',
@@ -643,11 +643,11 @@ export default function FreeTrial() {
         <meta property="og:title" content="Start your Whyzer Elite free trial" />
         <meta
           property="og:description"
-          content="14 days of full Elite access: filings and earnings calls read for you across 8,500+ companies, the framework to carry the point of view, and Jamal in the room every week."
+          content="14 days of full Elite access: filings and earnings calls read for you across 10,500+ companies, the framework to carry the point of view, and Jamal in the room every week."
         />
         <meta
           name="description"
-          content="14 days of full Elite access: filings and earnings calls read for you across 8,500+ companies, the framework to carry the point of view, and Jamal in the room every week."
+          content="14 days of full Elite access: filings and earnings calls read for you across 10,500+ companies, the framework to carry the point of view, and Jamal in the room every week."
         />
         <meta name="robots" content="noindex, nofollow" />
       </Head>
@@ -672,7 +672,7 @@ export default function FreeTrial() {
               <em>Sellers who know it close 5x more deals.</em>
             </h1>
             <p className="lede">
-              Filings, earnings calls, analyst questions, all read for you across 8,500+
+              Filings, earnings calls, analyst questions, all read for you across 10,500+
               companies. You get the point of view, the framework to carry it, and Jamal in the
               room every week. Unlocked for 14 days.
             </p>

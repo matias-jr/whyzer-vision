@@ -482,7 +482,7 @@ export default function EliteUpgrade() {
             <p className="price-note">{priceNote}</p>
 
             <ul className="checklist">
-              <li>Unlimited POVs on 7,500+ global companies</li>
+              <li>Unlimited POVs on 10,500+ global companies</li>
               <li>The Vault: 11 courses across the full deal lifecycle</li>
               <li>Coach Jamal AI, trained on 100+ hours, available 24/7</li>
               <li>Foundations, Territory, Finding the Story, Prove It, Win It</li>
