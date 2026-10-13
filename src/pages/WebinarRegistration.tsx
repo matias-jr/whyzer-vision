@@ -197,7 +197,7 @@ const WebinarRegistration = () => {
         <meta name="description" content="Jamal Reimer closed $160M+ in enterprise SaaS after learning this the hard way. A free Financial Fluency webinar for sellers who keep getting delegated back down." />
       </Head>
       {/* NAV — stays navy, as in the mockup */}
-      <div style={{ background: NAVY }}>
+      <div style={{ background: 'rgba(9,17,39,.72)', backdropFilter: 'blur(20px) saturate(160%)', WebkitBackdropFilter: 'blur(20px) saturate(160%)', borderBottom: '1px solid rgba(255,255,255,.08)' }}>
         <header className="wr-nav" style={{ maxWidth: 1140, margin: '0 auto', padding: '20px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'nowrap', position: 'relative', zIndex: 5 }}>
           <img src="https://cdn.prod.website-files.com/680a71020a0f757d7ed55ed9/680a7fe0ebc42918cd0ce482_Group%2052.png" alt="Whyzer" style={{ height: 30, width: 'auto', flexShrink: 0 }} />
           <div className="wr-nav-meta" style={{ alignItems: 'center', gap: 20, fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#C7C7EB', flexShrink: 0 }}>

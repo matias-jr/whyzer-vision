@@ -48,10 +48,10 @@ const MinimalNav = () => (
   <nav
     className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-center px-6"
     style={{
-      backdropFilter: 'blur(24px)',
-      WebkitBackdropFilter: 'blur(24px)',
-      background: 'rgba(11,11,24,0.92)',
-      borderBottom: '1px solid #E4E3F0',
+      backdropFilter: 'blur(20px) saturate(160%)',
+      WebkitBackdropFilter: 'blur(20px) saturate(160%)',
+      background: 'rgba(9,17,39,.72)',
+      borderBottom: '1px solid rgba(255,255,255,.08)',
     }}
   >
     <a href="#hero">

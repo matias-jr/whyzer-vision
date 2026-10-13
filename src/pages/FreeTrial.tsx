@@ -198,7 +198,7 @@ const STYLES = `
   text-transform:uppercase;color:var(--violet-deep)}
 .et-root .eyebrow.on-dark{color:var(--violet-soft)}
 
-.et-root .nav{background:var(--navy);padding:0 var(--pad);position:sticky;top:0;z-index:50;
+.et-root .nav{background:rgba(9,17,39,.72);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);padding:0 var(--pad);position:sticky;top:0;z-index:50;
   border-bottom:1px solid rgba(255,255,255,0.08)}
 .et-root .nav-inner{max-width:var(--maxw);margin:0 auto;height:72px;display:flex;
   align-items:center;justify-content:space-between;gap:20px}

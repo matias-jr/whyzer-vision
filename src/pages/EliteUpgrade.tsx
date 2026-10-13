@@ -53,8 +53,8 @@ const STYLES = `
 .eu-root .btn-block{width:100%}
 .eu-root .cta-micro{font-size:13.5px;color:var(--muted-dim);margin-top:14px}
 .eu-root .cta-micro.center{text-align:center}
-.eu-root .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;transition:background .25s ease, border-color .25s ease, padding .25s ease;border-bottom:1px solid transparent}
-.eu-root .nav.stuck{background:rgba(11,11,24,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:10px 0}
+.eu-root .nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;transition:background .25s ease, border-color .25s ease, padding .25s ease;background:rgba(9,17,39,.72);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.08)}
+.eu-root .nav.stuck{padding:10px 0}
 .eu-root .nav-inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between}
 .eu-root .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .eu-root .brand-logo{height:26px;width:auto;display:block}
