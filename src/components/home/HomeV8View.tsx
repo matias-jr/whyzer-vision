@@ -108,26 +108,6 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
                 {"Watch the 90-second tour "}
               </a>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "14px", flexWrap: "wrap" }}>
-              <span style={{ fontSize: "13px", color: "#8A8AA0", fontWeight: "500" }}>
-                {"Trusted by AEs at"}
-              </span>
-              <span style={{ fontSize: "12px", fontWeight: "700", color: "#8A8AA0", background: "rgba(242,241,251,.9)", padding: "5px 10px", borderRadius: "6px" }}>
-                {"MSFT"}
-              </span>
-              <span style={{ fontSize: "12px", fontWeight: "700", color: "#8A8AA0", background: "rgba(242,241,251,.9)", padding: "5px 10px", borderRadius: "6px" }}>
-                {"ORCL"}
-              </span>
-              <span style={{ fontSize: "12px", fontWeight: "700", color: "#8A8AA0", background: "rgba(242,241,251,.9)", padding: "5px 10px", borderRadius: "6px" }}>
-                {"SAP"}
-              </span>
-              <span style={{ fontSize: "12px", fontWeight: "700", color: "#8A8AA0", background: "rgba(242,241,251,.9)", padding: "5px 10px", borderRadius: "6px" }}>
-                {"SFDC"}
-              </span>
-              <span style={{ fontSize: "12px", fontWeight: "700", color: "#8A8AA0", background: "rgba(242,241,251,.9)", padding: "5px 10px", borderRadius: "6px" }}>
-                {"SNOW"}
-              </span>
-            </div>
           </div>
           <div style={{ position: "relative" }}>
             <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "rgba(255,255,255,.55)", backdropFilter: "blur(22px) saturate(170%)", WebkitBackdropFilter: "blur(22px) saturate(170%)", border: "1px solid rgba(255,255,255,.85)", boxShadow: "0 40px 90px -40px rgba(20,20,40,.45)" }}>
