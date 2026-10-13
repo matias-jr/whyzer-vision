@@ -30,7 +30,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <a href="#pricing" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 {"Pricing"}
               </a>
-              <a href="/compare/ai-account-intelligence-tools" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
+              <a href="#value" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 {"Compare"}
               </a>
               <a href="/newsletter" style={{ color: "#C7C7EB", fontSize: "13.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
@@ -671,11 +671,6 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
           <div className="wz-darkcard" style={{ borderRadius: "22px", padding: "34px 34px 30px", marginBottom: "44px", background: "#0B0B18", backgroundImage: "radial-gradient(ellipse 420px 300px at 14% 86%, rgba(99,73,198,.5), transparent 66%), radial-gradient(ellipse 350px 280px at 90% 8%, rgba(22,105,143,.45), transparent 66%)" }}>
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "24px", flexWrap: "wrap", marginBottom: "22px" }}>
               <div style={{ maxWidth: "520px" }}>
-                <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", fontSize: "11px", fontWeight: "700", letterSpacing: ".06em", textTransform: "uppercase", color: "#C9C6FF", background: "rgba(98,98,233,.2)", padding: "5px 11px", borderRadius: "100px", marginBottom: "12px" }}>
-                  <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#33D69F", animation: "wzPulse 2.2s ease-out infinite" }}></span>
-                  {d.videoCount}
-                  {" sellers on camera"}
-                </div>
                 <h3 style={{ fontFamily: "'Space Grotesk',sans-serif", color: "#fff", fontSize: "24px", lineHeight: "1.2", marginBottom: "8px", textWrap: "pretty" }}>
                   {"Hear it from the reps carrying the quota."}
                 </h3>
@@ -699,29 +694,15 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <div className="wz-vtrack" style={{ display: "flex", gap: "18px", transition: "transform .65s cubic-bezier(.4,0,.2,1)", transform: `translateX(${d.videoTrackX})` }}>
                 {d.videos.map((v, _i) => (
                   <Fragment key={_i}>
-                    <div className="wz-vcard wzh5" data-wz-vid={v.i} style={{ flex: "0 0 calc((100% - 36px) / 3)", cursor: "pointer", borderRadius: "16px", overflow: "hidden", background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.13)", transition: "transform .35s ease, border-color .35s ease" }}>
-                      <div style={{ position: "relative", aspectRatio: "16/10", background: v.poster, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <div style={{ width: "56px", height: "56px", borderRadius: "50%", background: "rgba(255,255,255,.94)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 14px 32px -12px rgba(0,0,0,.7)" }}>
-                          <span style={{ color: "#14141F", fontSize: "16px", marginLeft: "3px" }}>
-                            {"▶"}
+                    <div className="wz-vcard wzh5" data-wz-vid={v.i} role="button" tabIndex={0} aria-label={`Play: ${v.name} — ${v.title}`} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.currentTarget.click(); } }} style={{ flex: "0 0 calc((100% - 36px) / 3)", cursor: "pointer", borderRadius: "16px", overflow: "hidden", background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.13)", transition: "transform .35s ease, border-color .35s ease" }}>
+                      <div style={{ position: "relative", aspectRatio: "16/9", background: "#0F1230" }}>
+                        {/* The seller's name and talk title are part of the artwork. */}
+                        <img src={v.poster} alt="" decoding="async" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                        <span style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(7,7,15,.28)" }}>
+                          <span style={{ width: "56px", height: "56px", borderRadius: "50%", background: "rgba(255,255,255,.94)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 14px 32px -12px rgba(0,0,0,.7)" }}>
+                            <span style={{ color: "#14141F", fontSize: "16px", marginLeft: "3px" }}>{"▶"}</span>
                           </span>
-                        </div>
-                        <div style={{ position: "absolute", bottom: "10px", right: "10px", fontSize: "10.5px", fontWeight: "700", color: "#fff", background: "rgba(11,11,24,.72)", padding: "3px 8px", borderRadius: "6px" }}>
-                          {v.length}
-                        </div>
-                      </div>
-                      <div style={{ padding: "16px 18px 18px" }}>
-                        <div style={{ fontSize: "13.5px", color: "#DADAF2", lineHeight: "1.5", marginBottom: "12px", minHeight: "60px", textWrap: "pretty" }}>
-                          {"“"}
-                          {v.quote}
-                          {"”"}
-                        </div>
-                        <div style={{ fontSize: "12.5px", fontWeight: "700", color: "#fff" }}>
-                          {v.name}
-                        </div>
-                        <div style={{ fontSize: "11.5px", color: "#8F8FD0" }}>
-                          {v.role}
-                        </div>
+                        </span>
                       </div>
                     </div>
                   </Fragment>
@@ -764,9 +745,9 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
                 {"←"}
               </button>
               <div style={{ display: "flex", gap: "7px", alignItems: "center" }}>
-                <span style={{ width: "22px", height: "6px", borderRadius: "100px", transition: "background .3s ease", background: d.dot0 }}></span>
-                <span style={{ width: "22px", height: "6px", borderRadius: "100px", transition: "background .3s ease", background: d.dot1 }}></span>
-                <span style={{ width: "22px", height: "6px", borderRadius: "100px", transition: "background .3s ease", background: d.dot2 }}></span>
+                {d.dots.map((c, k) => (
+                  <span key={k} style={{ width: "22px", height: "6px", borderRadius: "100px", transition: "background .3s ease", background: c }}></span>
+                ))}
               </div>
               <button className="wzh6" data-wz-quote="next" aria-label="Next testimonials" style={{ width: "38px", height: "38px", borderRadius: "50%", border: "1px solid #E4E3F0", background: "#fff", cursor: "pointer", fontSize: "14px", color: "#55556B" }}>
                 {"→"}
@@ -774,54 +755,16 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
             </div>
           </div>
           <div className="wz-g1" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "20px" }}>
-            <div style={{ background: "rgba(255,255,255,.72)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,.9)", borderRadius: "16px", padding: "26px", boxShadow: "0 26px 54px -34px rgba(20,20,40,.34)", display: "flex", flexDirection: "column" }}>
-              <div style={{ fontSize: "11px", fontWeight: "700", letterSpacing: ".06em", textTransform: "uppercase", color: "#4a4ad1", background: "#EEEEFC", alignSelf: "flex-start", padding: "5px 11px", borderRadius: "100px", marginBottom: "16px" }}>
-                {"The product"}
+            {d.quotes.map((quote, k) => (
+              <div key={d.qi + "-" + k} style={{ background: "rgba(255,255,255,.72)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,.9)", borderRadius: "16px", padding: "26px", boxShadow: "0 26px 54px -34px rgba(20,20,40,.34)", display: "flex", flexDirection: "column" }}>
+                <div style={{ fontSize: "11px", fontWeight: "700", letterSpacing: ".06em", textTransform: "uppercase", color: quote.color, background: quote.bg, alignSelf: "flex-start", padding: "5px 11px", borderRadius: "100px", marginBottom: "16px" }}>{quote.c}</div>
+                <p style={{ fontSize: "14.5px", color: "#14141F", lineHeight: "1.6", flex: 1, textWrap: "pretty" }}>{"“"}{quote.q}{"”"}</p>
+                <div style={{ fontSize: "13px", fontWeight: "700", marginTop: "16px" }}>
+                  {quote.n}
+                  <span style={{ display: "block", fontWeight: "500", fontSize: "12px", color: "#8A8AA0" }}>{quote.r}</span>
+                </div>
               </div>
-              <p style={{ fontSize: "14.5px", color: "#14141F", lineHeight: "1.6", flex: "1", textWrap: "pretty" }}>
-                {"“"}
-                {d.qA}
-                {"”"}
-              </p>
-              <div style={{ fontSize: "13px", fontWeight: "700", marginTop: "16px" }}>
-                {d.nA}
-                <span style={{ display: "block", fontWeight: "500", fontSize: "12px", color: "#8A8AA0" }}>
-                  {d.rA}
-                </span>
-              </div>
-            </div>
-            <div style={{ background: "rgba(255,255,255,.72)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,.9)", borderRadius: "16px", padding: "26px", boxShadow: "0 26px 54px -34px rgba(20,20,40,.34)", display: "flex", flexDirection: "column" }}>
-              <div style={{ fontSize: "11px", fontWeight: "700", letterSpacing: ".06em", textTransform: "uppercase", color: "#1F9D6B", background: "#E7F7EF", alignSelf: "flex-start", padding: "5px 11px", borderRadius: "100px", marginBottom: "16px" }}>
-                {"The results"}
-              </div>
-              <p style={{ fontSize: "14.5px", color: "#14141F", lineHeight: "1.6", flex: "1", textWrap: "pretty" }}>
-                {"“"}
-                {d.qB}
-                {"”"}
-              </p>
-              <div style={{ fontSize: "13px", fontWeight: "700", marginTop: "16px" }}>
-                {d.nB}
-                <span style={{ display: "block", fontWeight: "500", fontSize: "12px", color: "#8A8AA0" }}>
-                  {d.rB}
-                </span>
-              </div>
-            </div>
-            <div style={{ background: "rgba(255,255,255,.72)", backdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,.9)", borderRadius: "16px", padding: "26px", boxShadow: "0 26px 54px -34px rgba(20,20,40,.34)", display: "flex", flexDirection: "column" }}>
-              <div style={{ fontSize: "11px", fontWeight: "700", letterSpacing: ".06em", textTransform: "uppercase", color: "#8A5A1F", background: "#FBF1E4", alignSelf: "flex-start", padding: "5px 11px", borderRadius: "100px", marginBottom: "16px" }}>
-                {"The value"}
-              </div>
-              <p style={{ fontSize: "14.5px", color: "#14141F", lineHeight: "1.6", flex: "1", textWrap: "pretty" }}>
-                {"“"}
-                {d.qC}
-                {"”"}
-              </p>
-              <div style={{ fontSize: "13px", fontWeight: "700", marginTop: "16px" }}>
-                {d.nC}
-                <span style={{ display: "block", fontWeight: "500", fontSize: "12px", color: "#8A8AA0" }}>
-                  {d.rC}
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

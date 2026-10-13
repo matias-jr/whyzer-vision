@@ -17,26 +17,17 @@ const VIDEO_IDS = [
   '1bVcNNEdgGik76e0to5RTKpaJ_4Ur5wfU',
 ];
 
+// Poster artwork carries the seller's name and talk title, so cards show the image only.
+// Several sellers appear more than once: the poster and the Drive video are addressed separately.
 const VIDEO_META = [
-  { name: 'Danny H.', role: 'Enterprise AE', length: '1:12', quote: 'Three minutes before an exec call I pulled the CEO’s own promise to investors. Six weeks later it closed.' },
-  { name: 'Kyle G.', role: 'Enterprise AE', length: '0:58', quote: 'Like OpenAI and Perplexity’s deep research had a baby who gives a damn about enterprise selling.' },
-  { name: 'David Inukpuk', role: 'Strategic Accounts', length: '1:24', quote: 'What used to take a rep a year, I can do in two weeks with Whyzer.' },
-  { name: 'Lee Winer', role: 'Sales Director', length: '1:05', quote: 'It makes 10-Ks, 10-Qs and earnings reports actually usable for salespeople.' },
-  { name: 'Paul Hammond', role: 'Enterprise AE', length: '0:47', quote: 'Whyzer flagged a breach that got me a CISO meeting on my first try.' },
-  { name: 'Matt Brown', role: 'Account Executive', length: '1:16', quote: 'Feels like a business analyst is watching your back before every call.' },
-  { name: 'Jeff Clarke', role: 'Enterprise AE', length: '1:02', quote: 'Even on accounts I follow closely it surfaces things that make me think: how did I not know that?' },
-  { name: 'Rob Sader', role: 'Sales Leader', length: '1:09', quote: 'I need data and metrics when I speak to executives. This is necessary in our profession.' },
-];
-
-const POSTERS = [
-  'linear-gradient(150deg,#2A2352,#0F1230)',
-  'linear-gradient(150deg,#123049,#0C1226)',
-  'linear-gradient(150deg,#33224A,#120F28)',
-  'linear-gradient(150deg,#1B3350,#0B1224)',
-  'linear-gradient(150deg,#2E2148,#100E24)',
-  'linear-gradient(150deg,#14344A,#0A1122)',
-  'linear-gradient(150deg,#302049,#120E26)',
-  'linear-gradient(150deg,#1A2E4C,#0B1024)',
+  { name: 'Brody E.', slug: 'brody-elkins', title: 'The AI Test Every Seller Should Run' },
+  { name: 'Danny H.', slug: 'danny-higdon', title: 'How I got my first customer win in 3 minutes' },
+  { name: 'Grace M.', slug: 'grace-morello', title: 'I feel lucky to have access' },
+  { name: 'Spencer R.', slug: 'spencer-ross', title: 'The AI stack behind our sales team' },
+  { name: 'Michael S.', slug: 'michael-scott', title: 'Why I stopped thinking like a $50K seller' },
+  { name: 'Brody E.', slug: 'brody-elkins', title: 'The AI Test Every Seller Should Run' },
+  { name: 'Danny H.', slug: 'danny-higdon', title: 'How I got my first customer win in 3 minutes' },
+  { name: 'Michael S.', slug: 'michael-scott', title: 'Why I stopped thinking like a $50K seller' },
 ];
 
 const TIERS = [
@@ -53,21 +44,49 @@ const TOURS = [
   'Your accounts, watched for hires, funding and M&A.',
 ];
 
-const QUOTE_SETS = [
+type QuoteCategory = 'The product' | 'The results' | 'The value' | 'The fit';
+type Quote = { q: string; n: string; r: string; c: QuoteCategory };
+
+// The category badge travels with the quote, so a quote is never filed under a heading that
+// does not match it.
+const QUOTE_CATEGORY_STYLE: Record<QuoteCategory, { color: string; bg: string }> = {
+  'The product': { color: '#4a4ad1', bg: '#EEEEFC' },
+  'The results': { color: '#1F9D6B', bg: '#E7F7EF' },
+  'The value': { color: '#8A5A1F', bg: '#FBF1E4' },
+  'The fit': { color: '#1F6D9D', bg: '#E4F1FB' },
+};
+
+// Shown three at a time; the arrows step through the sets.
+const QUOTE_SETS: Quote[][] = [
   [
-    { q: "It's like OpenAI and Perplexity's deep research had a baby who gives a damn about enterprise selling.", n: 'Kyle G.', r: 'Enterprise AE' },
-    { q: 'What used to take a rep a year, I can do in two weeks with Whyzer. It helps us work on the right accounts.', n: 'David Inukpuk', r: 'Strategic Accounts' },
-    { q: 'Whyzer makes 10-Ks, 10-Qs and earnings reports actually usable for salespeople. Nothing else got close.', n: 'Lee Winer', r: 'Sales Director' },
+    { q: "It's like OpenAI and Perplexity's deep research had a baby who gives a damn about enterprise selling.", n: 'Kyle G.', r: 'Enterprise AE', c: 'The product' },
+    { q: 'What used to take a rep a year, I can do in two weeks with Whyzer. It helps us work on the right accounts.', n: 'David Inukpuk', r: 'Strategic Accounts', c: 'The results' },
+    { q: 'Whyzer makes 10-Ks, 10-Qs and earnings reports actually usable for salespeople. Nothing else got close.', n: 'Lee Winer', r: 'Sales Director', c: 'The value' },
   ],
   [
-    { q: 'Feels like a business analyst is watching your back — all the context is laid out before the call.', n: 'Matt Brown', r: 'Account Executive' },
-    { q: 'Whyzer flagged a cybersecurity breach that got me a CISO meeting on my first try. It worked immediately.', n: 'Paul Hammond', r: 'Enterprise AE' },
-    { q: 'The podcast gave me a really good idea of how to structure not just the deal, but the talk prep.', n: 'Mo', r: 'Mid-Market AE' },
+    { q: 'Feels like a business analyst is watching your back — all the context is laid out before the call.', n: 'Matt Brown', r: 'Account Executive', c: 'The product' },
+    { q: 'Whyzer flagged a cybersecurity breach that got me a CISO meeting on my first try. It worked immediately.', n: 'Paul Hammond', r: 'Enterprise AE', c: 'The results' },
+    { q: 'The podcast gave me a really good idea of how to structure not just the deal, but the talk prep.', n: 'Mo', r: 'Mid-Market AE', c: 'The value' },
   ],
   [
-    { q: 'First tool I have found that resonates with the way I actually dig into clients. Amazing prompts.', n: 'Bill Neal', r: 'Regional VP' },
-    { q: 'Even on accounts I follow closely, Whyzer surfaces things that make me think: how did I not know that?', n: 'Jeff Clarke', r: 'Enterprise AE' },
-    { q: 'I need data and metrics when I speak to executives. This is absolutely necessary in our profession.', n: 'Rob Sader', r: 'Sales Leader' },
+    { q: 'First tool I have found that resonates with the way I actually dig into clients. Amazing prompts.', n: 'Bill Neal', r: 'Regional VP', c: 'The fit' },
+    { q: 'Even on accounts I follow closely, Whyzer surfaces things that make me think: how did I not know that?', n: 'Jeff Clarke', r: 'Enterprise AE', c: 'The product' },
+    { q: 'I need data and metrics when I speak to executives. This is absolutely necessary in our profession.', n: 'Rob Sader', r: 'Sales Leader', c: 'The value' },
+  ],
+  [
+    { q: 'A single place to get all of my account financial details.', n: 'Michael S.', r: 'Senior Account Executive', c: 'The product' },
+    { q: 'Cutting research time on accounts by 80% easily.', n: 'Daniel B.', r: 'Senior Key Account Manager', c: 'The results' },
+    { q: 'Massive time savings, massive level up for sales skills and financial fluency.', n: 'Verified User', r: 'Computer Software, Mid-Market', c: 'The value' },
+  ],
+  [
+    { q: 'Tailored executive POVs that I can share with prospects.', n: 'Daniel F.', r: 'Enterprise Account Executive', c: 'The product' },
+    { q: 'Just 30 to 60 seconds, and I get a complete picture.', n: 'Tobia L.', r: 'General Sales Manager, Southern Europe', c: 'The results' },
+    { q: 'I can now confidently speak to the business.', n: 'Eric C.', r: 'Sr. Account Director', c: 'The value' },
+  ],
+  [
+    { q: 'A great tool that is a time saver — not a generic LLM.', n: 'Nick B.', r: 'Client Advocate', c: 'The fit' },
+    { q: 'It helped me walk into meetings well informed and deliver effective proposals quickly.', n: 'Alex P.', r: 'Sales Director – Major Accounts', c: 'The results' },
+    { q: 'Solving a challenge all reps face but there was never a holistic solution.', n: 'Daniel B.', r: 'Senior Key Account Manager', c: 'The fit' },
   ],
 ];
 
@@ -475,18 +494,17 @@ const HomeV8 = () => {
     needleDeg: TIERS[s.tier].deg, needleHub: TIERS[s.tier].hub,
     gaugeAmount: TIERS[s.tier].amount, gaugeUnit: TIERS[s.tier].unit,
     gaugeColor: TIERS[s.tier].color, gaugeCaption: TIERS[s.tier].caption,
-    videoCount: VIDEO_IDS.length,
     videoTrackX: `calc(${-s.vPage} * ((100% - 36px) / 3 + 18px))`,
     videoPage: `${s.vPage + 1} / ${Math.max(1, VIDEO_IDS.length - 2)}`,
-    videos: VIDEO_META.map((m, i) => ({ i, poster: POSTERS[i], ...m })),
+    videos: VIDEO_META.map((m, i) => ({ i, name: m.name, title: m.title, poster: `/home-v8/testimonials/${m.slug}.webp` })),
     vIsOpen: s.vOpen !== null,
     vSrc: s.vOpen === null ? '' : `https://drive.google.com/file/d/${VIDEO_IDS[s.vOpen]}/preview`,
     vName: s.vOpen === null ? '' : VIDEO_META[s.vOpen].name,
-    vRole: s.vOpen === null ? '' : VIDEO_META[s.vOpen].role,
+    vRole: s.vOpen === null ? '' : VIDEO_META[s.vOpen].title,
     vPosition: s.vOpen === null ? '' : `Video ${s.vOpen + 1} of ${VIDEO_IDS.length}`,
-    dot0: s.qi === 0 ? '#6262e9' : '#E4E3F0',
-    dot1: s.qi === 1 ? '#6262e9' : '#E4E3F0',
-    dot2: s.qi === 2 ? '#6262e9' : '#E4E3F0',
+    qi: s.qi,
+    dots: QUOTE_SETS.map((_, k) => (k === s.qi ? '#6262e9' : '#E4E3F0')),
+    quotes: QUOTE_SETS[s.qi].map((q) => ({ ...q, ...QUOTE_CATEGORY_STYLE[q.c] })),
   };
   for (let i = 0; i < 5; i++) {
     d['tabBg' + i] = on(i) ? '#6262e9' : 'rgba(255,255,255,.72)';
@@ -501,13 +519,6 @@ const HomeV8 = () => {
     d[`tier${i}Shadow`] = active ? (mid ? '0 26px 54px -22px rgba(98,98,233,.85)' : '0 22px 46px -26px rgba(0,0,0,.7)') : 'none';
     d[`tier${i}Scale`] = active ? 'translateX(-6px)' : 'translateX(0)';
   });
-  const set3 = QUOTE_SETS[s.qi];
-  (['A', 'B', 'C'] as const).forEach((k, i) => {
-    d['q' + k] = set3[i].q;
-    d['n' + k] = set3[i].n;
-    d['r' + k] = set3[i].r;
-  });
-
   return <HomeV8View d={d} appendUtm={appendUtm} chips={CHIPS} rootRef={rootRef} onClick={onClick} />;
 };
 
