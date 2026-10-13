@@ -59,7 +59,7 @@ export default function LiveSessionConfig() {
         >
           ← Articles
         </Link>
-        <h1 className="font-display text-3xl uppercase tracking-tight mt-2">
+        <h1 className="font-display text-3xl tracking-tight mt-2">
           Live Session
         </h1>
         <p className="font-body text-sm text-text-secondary mt-2">

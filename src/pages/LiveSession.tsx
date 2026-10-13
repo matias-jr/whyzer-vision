@@ -97,7 +97,7 @@ const MinimalFooter = () => (
 const CtaButton = ({ children, large = false }: { children: React.ReactNode; large?: boolean }) => (
   <a
     href="#hero"
-    className={`inline-flex items-center justify-center text-white font-display font-semibold uppercase tracking-[0.14em] rounded-lg hover:brightness-110 transition-all duration-200 active:scale-[0.98] ${large ? 'px-12 h-16 text-base' : 'px-8 h-13 text-sm'}`}
+    className={`inline-flex items-center justify-center text-white font-display font-semibold rounded-lg hover:brightness-110 transition-all duration-200 active:scale-[0.98] ${large ? 'px-12 h-16 text-base' : 'px-8 h-13 text-sm'}`}
     style={{
       background: 'linear-gradient(135deg, #6262E9, #4A4AD1)',
       boxShadow: '0 4px 24px rgba(98,98,233,0.16)',
@@ -245,7 +245,7 @@ const LiveSession = () => {
               </span>
             </div>
 
-            <h1 className="font-display text-[54px] sm:text-[60px] lg:text-[70px] leading-[1.0] tracking-[-0.02em] text-[#14141F] uppercase mb-5">
+            <h1 className="font-display text-[54px] sm:text-[60px] lg:text-[70px] leading-[1.0] tracking-[-0.02em] text-[#14141F] mb-5">
               Stop Sounding
               <br />
               <span className="text-[#4A4AD1]">Like Everybody Else</span>
@@ -330,7 +330,7 @@ const LiveSession = () => {
           <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
             What You'll Learn
           </p>
-          <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] uppercase tracking-[-0.02em] mb-4">
+          <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] tracking-[-0.02em] mb-4">
             3 Components.{' '}
             <span className="text-[#4A4AD1]">One Point of View.</span>
           </h2>
@@ -349,7 +349,7 @@ const LiveSession = () => {
                 >
                   {w.num}
                 </span>
-                <h3 className="font-display text-[21px] text-[#14141F] uppercase tracking-wide mb-3">
+                <h3 className="font-display text-[21px] text-[#14141F] tracking-wide mb-3">
                   {w.title}
                 </h3>
                 <p className="font-body text-[15.5px] text-[#55556B] leading-[1.75]">{w.body}</p>
@@ -373,7 +373,7 @@ const LiveSession = () => {
             <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
               What You'll Walk Away With
             </p>
-            <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] uppercase tracking-[-0.02em] mb-5">
+            <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] tracking-[-0.02em] mb-5">
               Not a Pitch.
               <br />
               <span className="text-[#4A4AD1]">A Point of View.</span>
@@ -430,7 +430,7 @@ const LiveSession = () => {
             >
               Exclusive Bonus
             </span>
-            <h3 className="font-display text-[23px] text-[#14141F] uppercase mb-3">
+            <h3 className="font-display text-[23px] text-[#14141F] mb-3">
               14 Days of Whyzer Elite, Free
             </h3>
             <p className="font-body text-[16px] text-[#55556B] leading-[1.8]">
@@ -457,7 +457,7 @@ const LiveSession = () => {
           <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
             Who This Is For
           </p>
-          <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] uppercase tracking-[-0.02em] mb-5">
+          <h2 className="font-display text-[42px] md:text-[56px] text-[#14141F] tracking-[-0.02em] mb-5">
             Built for <span className="text-[#4A4AD1]">Enterprise Sellers.</span>
           </h2>
           <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-14 max-w-[540px] mx-auto">
@@ -523,7 +523,7 @@ const LiveSession = () => {
             <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
               Your Host
             </p>
-            <h2 className="font-display text-[60px] text-[#14141F] uppercase tracking-[-0.02em] mb-8">
+            <h2 className="font-display text-[60px] text-[#14141F] tracking-[-0.02em] mb-8">
               Jamal Reimer
             </h2>
 
@@ -579,7 +579,7 @@ const LiveSession = () => {
           style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(98,98,233,0.10) 0%, rgba(98,98,233,0.06) 50%, transparent 72%)' }}
         />
         <div className="relative max-w-[640px] mx-auto">
-          <h2 className="font-display text-[56px] md:text-[70px] text-[#14141F] uppercase tracking-[-0.02em] leading-[1.05] mb-6">
+          <h2 className="font-display text-[56px] md:text-[70px] text-[#14141F] tracking-[-0.02em] leading-[1.05] mb-6">
             Seats Are Limited.
             <br />
             <span className="text-[#4A4AD1]">Don't Miss Out.</span>

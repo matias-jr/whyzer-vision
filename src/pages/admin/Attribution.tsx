@@ -359,7 +359,7 @@ export default function Attribution() {
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary mb-1">
             Admin
           </p>
-          <h1 className="font-display text-3xl uppercase tracking-tight">Attribution</h1>
+          <h1 className="font-display text-3xl tracking-tight">Attribution</h1>
         </div>
         <div className="flex items-center gap-3">
           <Link

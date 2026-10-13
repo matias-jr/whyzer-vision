@@ -149,7 +149,7 @@ export default function ArticleEditor() {
           >
             ← Articles
           </Link>
-          <h1 className="font-display text-3xl uppercase tracking-tight mt-2">
+          <h1 className="font-display text-3xl tracking-tight mt-2">
             {isNew ? 'New article' : 'Edit article'}
           </h1>
         </div>
@@ -185,7 +185,7 @@ export default function ArticleEditor() {
             required
             value={draft.title}
             onChange={(e) => handleTitle(e.target.value)}
-            className="w-full bg-background border border-foreground/15 rounded px-3 py-2 font-display text-2xl uppercase focus:outline-none focus:border-primary"
+            className="w-full bg-background border border-foreground/15 rounded px-3 py-2 font-display text-2xl focus:outline-none focus:border-primary"
           />
         </label>
 

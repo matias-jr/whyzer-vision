@@ -38,27 +38,27 @@ const EU_COUNTRIES = new Set([
 // ── v2 design system, inverted: a light page with #070B17 reserved for the two
 // sections that stay dark (hero/video priming, final CTA). Mirrors the
 // light-band rhythm used on the financial-fluency page.
-const DARK = '#070B17';
-const DARK2 = '#0E1526';
-const ACCENT = '#3B6FF0';
-const ACCENT_DARK = '#2F5FD8';
-const ACCENT_TINT = '#EAF0FE';
+const DARK = '#0B0B18';
+const DARK2 = '#14142B';
+const ACCENT = '#6262e9';
+const ACCENT_DARK = '#4a4ad1';
+const ACCENT_TINT = '#EEEEFC';
 
 // Light-section text + surfaces
-const INK = '#0B1020';
-const BODY = '#4A5570';
-const MUTED = '#7C88A4';
-const BG = '#FAFBFD';
-const BG_ALT = '#F1F4FB';
+const INK = '#14141F';
+const BODY = '#55556B';
+const MUTED = '#8A8AA0';
+const BG = '#FAFAF9';
+const BG_ALT = '#F2F1FB';
 const WHITE = '#FFFFFF';
-const LINE = '#E2E7F2';
+const LINE = '#E4E3F0';
 const EYEBROW = ACCENT_DARK;
 
 // Dark-section text (used only inside the two dark sections)
-const D_INK = '#F0F4FF';
-const D_BODY = '#C3CCE2';
-const D_MUTED = '#8A96B4';
-const D_EYEBROW = '#7FA0F5';
+const D_INK = '#FFFFFF';
+const D_BODY = '#DADAF2';
+const D_MUTED = '#B9B9E8';
+const D_EYEBROW = '#9C9CE0';
 const BORDER = 'rgba(255,255,255,0.08)';
 
 // Layered cards: white cards sit on the tinted section bands.
@@ -69,10 +69,10 @@ const CARD_PRIMARY = WHITE;
 // dark cards frost against the dark bands.
 const GLASS_LIGHT = 'rgba(255,255,255,0.58)';
 const GLASS_LIGHT_BORDER = 'rgba(255,255,255,0.75)';
-const GLASS_LIGHT_SHADOW = '0 8px 32px -12px rgba(11,16,32,0.16)';
+const GLASS_LIGHT_SHADOW = '0 8px 32px -12px rgba(20,20,31,0.16)';
 const GLASS_DARK_BORDER = 'rgba(255,255,255,0.14)';
 const GLASS_BLUR = 'blur(12px) saturate(140%)';
-const HEADING: React.CSSProperties = { fontFamily: "'Inter', sans-serif", fontWeight: 800, letterSpacing: '-0.035em' };
+const HEADING: React.CSSProperties = { fontFamily: "'Space Grotesk', 'Inter', sans-serif", fontWeight: 700, letterSpacing: '-0.02em' };
 
 // ── §5 How It Works
 const howItWorks = [
@@ -278,8 +278,8 @@ const WebinarThankYou = () => {
 
           {/* PRIMING LINE */}
           <section className="wty-priming" style={{ padding: '88px 24px 32px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 16, position: 'relative' }}>
-            <div style={{ position: 'absolute', top: -220, left: '50%', transform: 'translateX(-50%)', width: 800, height: 560, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.34) 0%, rgba(59,111,240,0.12) 40%, transparent 70%)', filter: 'blur(20px)', animation: 'wty-glowPulse 6s ease-in-out infinite', pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 420, backgroundImage: 'radial-gradient(rgba(127,160,245,0.5) 1px, transparent 1.5px)', backgroundSize: '28px 28px', WebkitMaskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', pointerEvents: 'none', zIndex: 0 }} />
+            <div style={{ position: 'absolute', top: -220, left: '50%', transform: 'translateX(-50%)', width: 800, height: 560, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.34) 0%, rgba(98,98,233,0.12) 40%, transparent 70%)', filter: 'blur(20px)', animation: 'wty-glowPulse 6s ease-in-out infinite', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 420, backgroundImage: 'radial-gradient(rgba(156,156,224,0.5) 1px, transparent 1.5px)', backgroundSize: '28px 28px', WebkitMaskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', maskImage: 'radial-gradient(ellipse 60% 55% at 50% 15%, black 0%, transparent 75%)', pointerEvents: 'none', zIndex: 0 }} />
 
             <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: D_EYEBROW, position: 'relative', animation: 'wty-fadeInUp 0.7s ease both' }}>
               You're in
@@ -293,7 +293,7 @@ const WebinarThankYou = () => {
           <section style={{ padding: '16px 24px 28px', display: 'flex', justifyContent: 'center' }}>
             {/* Vimeo embed. The 16/9 wrapper keeps the frame styling that the
                 placeholder carried; the iframe fills it absolutely. */}
-            <div className="wty-video" style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: '#0E1526', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(59,111,240,0.45)' }}>
+            <div className="wty-video" style={{ width: '100%', maxWidth: 800, aspectRatio: '16/9', borderRadius: 16, position: 'relative', overflow: 'hidden', background: '#0E1526', border: `1px solid ${BORDER}`, boxShadow: '0 30px 70px -30px rgba(98,98,233,0.45)' }}>
               <iframe
                 src="https://player.vimeo.com/video/1218095253?badge=0&autopause=0&player_id=0&app_id=58479"
                 title="Financial Fluency &ndash; Webinar"
@@ -306,7 +306,7 @@ const WebinarThankYou = () => {
 
           {/* POST-VIDEO CTA — scrolls to the pricing box, which carries checkout */}
           <section style={{ padding: '0 24px 30px', display: 'flex', justifyContent: 'center' }}>
-            <a href="#pricing" className="wty-cta" style={{ background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 38px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
+            <a href="#pricing" className="wty-cta" style={{ background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 38px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(98,98,233,0.7)' }}>
               Start My Free Trial Now &rarr;
             </a>
           </section>
@@ -326,7 +326,7 @@ const WebinarThankYou = () => {
 
       {/* WALL / BRIDGE TO OFFER */}
       <section style={{ padding: '76px 24px', display: 'flex', justifyContent: 'center', position: 'relative', background: BG }}>
-        <div style={{ position: 'absolute', top: '10%', right: '6%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(59,111,240,0.12) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '10%', right: '6%', width: 320, height: 320, background: 'radial-gradient(circle, rgba(98,98,233,0.12) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 640, display: 'flex', flexDirection: 'column', gap: 20, position: 'relative' }}>
             <p style={{ fontSize: 19, lineHeight: 1.7, margin: 0, color: BODY }}>
               You just watched what fifteen minutes of reading looks like on one account. Now multiply that by the twenty, forty, sixty accounts you're actually carrying. That's not a skill problem anymore. That's a leverage problem.
@@ -345,8 +345,8 @@ const WebinarThankYou = () => {
       {/* HOW IT WORKS */}
       <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
         {/* Soft accent blooms give the frosted cards something to refract */}
-        <div aria-hidden="true" style={{ position: 'absolute', top: '42%', left: '4%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.20) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: '2%', right: '3%', width: 380, height: 280, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.14) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', top: '42%', left: '4%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.20) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: '2%', right: '3%', width: 380, height: 280, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.14) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 40px', color: INK, textAlign: 'center' }}>
             From stalled account to boardroom-ready in under two minutes.
@@ -380,8 +380,8 @@ const WebinarThankYou = () => {
 
       {/* WHAT'S INCLUDED IN WHYZER ELITE + PRICING */}
       <section style={{ padding: '76px 24px', background: BG, position: 'relative', overflow: 'hidden' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: '18%', right: '2%', width: 460, height: 340, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: '6%', left: '2%', width: 400, height: 320, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.13) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', top: '18%', right: '2%', width: 460, height: 340, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: '6%', left: '2%', width: 400, height: 320, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.13) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(26px, 3.6vw, 34px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             Everything in Whyzer Elite
@@ -407,10 +407,10 @@ const WebinarThankYou = () => {
 
           {/* Pricing box — kept dark so the conversion moment stands out of the
               light section, the same role the form card plays on the reg page. */}
-          <div id="pricing" className="wty-price-box" style={{ maxWidth: 480, margin: '0 auto', background: DARK2, border: `1px solid rgba(59,111,240,0.45)`, borderRadius: 20, padding: '30px 26px 32px', textAlign: 'center', boxShadow: '0 24px 60px -28px rgba(11,16,32,0.55)', position: 'relative', scrollMarginTop: 24 }}>
+          <div id="pricing" className="wty-price-box" style={{ maxWidth: 480, margin: '0 auto', background: DARK2, border: `1px solid rgba(98,98,233,0.45)`, borderRadius: 20, padding: '30px 26px 32px', textAlign: 'center', boxShadow: '0 24px 60px -28px rgba(20,20,31,0.55)', position: 'relative', scrollMarginTop: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, marginBottom: 18 }}>
               <span style={{ ...HEADING, fontSize: 15, color: D_EYEBROW, letterSpacing: '0.04em', textTransform: 'uppercase' }}>Whyzer Elite</span>
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', padding: '4px 10px', borderRadius: 999, border: '1px solid rgba(59,111,240,0.45)', background: 'rgba(59,111,240,0.16)', color: D_EYEBROW, whiteSpace: 'nowrap' }}>FULL ACCESS</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', padding: '4px 10px', borderRadius: 999, border: '1px solid rgba(98,98,233,0.45)', background: 'rgba(98,98,233,0.16)', color: D_EYEBROW, whiteSpace: 'nowrap' }}>FULL ACCESS</span>
             </div>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'center', gap: 10, marginBottom: 4 }}>
@@ -422,7 +422,7 @@ const WebinarThankYou = () => {
 
             {/* Value signals */}
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 8, marginBottom: 20 }}>
-              <span style={{ fontSize: 12, fontWeight: 700, padding: '5px 11px', borderRadius: 999, background: 'rgba(59,111,240,0.16)', color: D_EYEBROW, border: '1px solid rgba(59,111,240,0.35)' }}>Save $120 over 3 months</span>
+              <span style={{ fontSize: 12, fontWeight: 700, padding: '5px 11px', borderRadius: 999, background: 'rgba(98,98,233,0.16)', color: D_EYEBROW, border: '1px solid rgba(98,98,233,0.35)' }}>Save $120 over 3 months</span>
               <span style={{ fontSize: 12, fontWeight: 700, padding: '5px 11px', borderRadius: 999, background: 'rgba(255,255,255,0.06)', color: D_BODY, border: `1px solid ${GLASS_DARK_BORDER}` }}>Code FLUENCY57</span>
             </div>
 
@@ -441,7 +441,7 @@ const WebinarThankYou = () => {
               ))}
             </ul>
 
-            <a href={trialUrl} className="wty-cta" style={{ display: 'block', width: '100%', boxSizing: 'border-box', background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 16, padding: '16px 20px', borderRadius: 10, textDecoration: 'none', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)' }}>
+            <a href={trialUrl} className="wty-cta" style={{ display: 'block', width: '100%', boxSizing: 'border-box', background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 16, padding: '16px 20px', borderRadius: 10, textDecoration: 'none', boxShadow: '0 10px 30px -8px rgba(98,98,233,0.7)' }}>
               Start My Free Trial &rarr;
             </a>
             {/* Required disclosures: card capture, how to cancel, and the
@@ -456,7 +456,7 @@ const WebinarThankYou = () => {
 
       {/* TESTIMONIAL GRID #1 */}
       <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: '30%', left: '6%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', top: '30%', left: '6%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             More revenue, not just more replies
@@ -518,7 +518,7 @@ const WebinarThankYou = () => {
 
       {/* TESTIMONIAL GRID #2 */}
       <section style={{ padding: '76px 24px', background: BG_ALT, borderTop: `1px solid ${LINE}`, position: 'relative', overflow: 'hidden' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', top: '28%', right: '5%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', top: '28%', right: '5%', width: 420, height: 300, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.16) 0%, transparent 70%)', filter: 'blur(10px)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: 1080, margin: '0 auto', position: 'relative' }}>
           <h2 style={{ ...HEADING, fontSize: 'clamp(24px, 3.4vw, 32px)', lineHeight: 1.2, margin: '0 0 36px', color: INK, textAlign: 'center' }}>
             Proof it changes the numbers, not just the pitch
@@ -540,7 +540,7 @@ const WebinarThankYou = () => {
       {/* FINAL CTA BAND — kept dark, full-width */}
       <div style={{ background: DARK, position: 'relative', overflow: 'hidden' }}>
         <section style={{ maxWidth: 900, margin: '0 auto', padding: '84px 24px 100px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 20, position: 'relative' }}>
-          <div style={{ position: 'absolute', bottom: -160, left: '50%', transform: 'translateX(-50%)', width: 700, height: 400, background: 'radial-gradient(ellipse at center, rgba(59,111,240,0.32) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', bottom: -160, left: '50%', transform: 'translateX(-50%)', width: 700, height: 400, background: 'radial-gradient(ellipse at center, rgba(98,98,233,0.32) 0%, transparent 70%)', filter: 'blur(20px)', pointerEvents: 'none' }} />
           {/* maxWidth 560 forced this onto two lines at 34px; widened and set
               nowrap above 640px so it holds a single line. */}
           <h2 className="wty-final-h2" style={{ ...HEADING, fontSize: 'clamp(24px, 3.6vw, 34px)', lineHeight: 1.25, maxWidth: 820, margin: 0, color: D_INK, position: 'relative' }}>
@@ -552,7 +552,7 @@ const WebinarThankYou = () => {
           <a
             href="#pricing"
             className="wty-cta"
-            style={{ marginTop: 4, background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 36px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(59,111,240,0.7)', position: 'relative' }}
+            style={{ marginTop: 4, background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 36px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(98,98,233,0.7)', position: 'relative' }}
           >
             Start My Free Trial &rarr;
           </a>
@@ -563,7 +563,7 @@ const WebinarThankYou = () => {
         @keyframes wty-fadeInUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes wty-glowPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 0.85; } }
         .wty-cta { transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease; }
-        .wty-cta:hover { background: #2F5FD8; box-shadow: 0 12px 34px -6px rgba(59,111,240,0.85); transform: translateY(-1px); }
+        .wty-cta:hover { background: #2F5FD8; box-shadow: 0 12px 34px -6px rgba(98,98,233,0.85); transform: translateY(-1px); }
         /* Glass surfaces: translucent fill + backdrop blur, with a bright top
            edge so the panel reads as a lit sheet rather than a flat tint. */
         .wty-glass {
@@ -581,7 +581,7 @@ const WebinarThankYou = () => {
           background: linear-gradient(160deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%);
         }
         .wty-glass > * { position: relative; z-index: 1; }
-        .wty-glass:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -12px rgba(11,16,32,0.22); border-color: rgba(59,111,240,0.35); }
+        .wty-glass:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -12px rgba(20,20,31,0.22); border-color: rgba(98,98,233,0.35); }
         /* The dark pricing box frosts against the section behind it. */
         .wty-price-box {
           backdrop-filter: ${GLASS_BLUR};

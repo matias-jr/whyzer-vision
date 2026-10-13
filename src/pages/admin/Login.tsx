@@ -41,7 +41,7 @@ export default function AdminLogin() {
         <p className="font-mono text-xs uppercase tracking-[0.15em] text-text-secondary mb-2">
           Admin
         </p>
-        <h1 className="font-display text-3xl uppercase tracking-tight mb-8">Sign in</h1>
+        <h1 className="font-display text-3xl tracking-tight mb-8">Sign in</h1>
 
         <label className="block mb-4">
           <span className="font-mono text-xs uppercase tracking-wider text-text-secondary block mb-2">

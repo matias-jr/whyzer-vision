@@ -253,7 +253,7 @@ const LiveSessionConfirmed = () => {
             </div>
           </div>
 
-          <h1 className="wkc-h1 font-display text-[52px] sm:text-[68px] leading-[1.02] tracking-[-0.02em] text-[#14141F] uppercase mb-7">
+          <h1 className="wkc-h1 font-display text-[52px] sm:text-[68px] leading-[1.02] tracking-[-0.02em] text-[#14141F] mb-7">
             You're officially
             <br />
             <span className="text-[#4A4AD1]">registered.</span>
@@ -277,7 +277,7 @@ const LiveSessionConfirmed = () => {
           <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-[#4A4AD1] mb-4">
             Next Steps
           </p>
-          <h2 className="font-display text-[46px] md:text-[58px] text-[#14141F] uppercase tracking-[-0.02em] mb-16">
+          <h2 className="font-display text-[46px] md:text-[58px] text-[#14141F] tracking-[-0.02em] mb-16">
             Do These <span className="text-[#4A4AD1]">Now.</span>
           </h2>
 
@@ -293,7 +293,7 @@ const LiveSessionConfirmed = () => {
                 </span>
                 <div className="h-px flex-1" style={{ background: '#E4E3F0' }} />
               </div>
-              <h3 className="font-display text-[28px] text-[#14141F] uppercase mb-5">
+              <h3 className="font-display text-[28px] text-[#14141F] mb-5">
                 Check Your Inbox.
               </h3>
               <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-6">
@@ -361,7 +361,7 @@ const LiveSessionConfirmed = () => {
                 </span>
                 <div className="h-px flex-1" style={{ background: '#E4E3F0' }} />
               </div>
-              <h3 className="font-display text-[28px] text-[#14141F] uppercase mb-3">
+              <h3 className="font-display text-[28px] text-[#14141F] mb-3">
                 Add It to Your Calendar and Be There Live.
               </h3>
               <p className="font-body text-[17px] text-[#55556B] leading-[1.8] mb-7">
@@ -380,7 +380,7 @@ const LiveSessionConfirmed = () => {
                       <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1">
                         Date
                       </p>
-                      <p className="font-display text-lg text-[#14141F] uppercase">
+                      <p className="font-display text-lg text-[#14141F]">
                         Wednesday, September 30, 2026
                       </p>
                     </div>
@@ -394,7 +394,7 @@ const LiveSessionConfirmed = () => {
                       <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1">
                         Time
                       </p>
-                      <p className="font-display text-lg text-[#14141F] uppercase">
+                      <p className="font-display text-lg text-[#14141F]">
                         12:00 PM ET · 9:00 AM PT · 5:00 PM UK
                       </p>
                     </div>
@@ -408,7 +408,7 @@ const LiveSessionConfirmed = () => {
                       <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1">
                         Platform
                       </p>
-                      <p className="font-display text-lg text-[#14141F] uppercase">
+                      <p className="font-display text-lg text-[#14141F]">
                         Live on this link
                       </p>
                       <p className="font-mono text-[12px] text-[#8A8AA0] mt-0.5">
@@ -497,7 +497,7 @@ const LiveSessionConfirmed = () => {
                   </svg>
                 </div>
               </div>
-              <h2 className="font-display text-[30px] text-[#14141F] uppercase leading-[1.15] mb-3">
+              <h2 className="font-display text-[30px] text-[#14141F] leading-[1.15] mb-3">
                 Stop Sounding
                 <br />
                 <span className="text-[#4A4AD1]">Like Everybody Else</span>
@@ -534,13 +534,13 @@ const LiveSessionConfirmed = () => {
                   <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1.5">
                     Date
                   </p>
-                  <p className="font-display text-[25px] text-[#14141F] uppercase">September 30, 2026</p>
+                  <p className="font-display text-[25px] text-[#14141F]">September 30, 2026</p>
                 </div>
                 <div>
                   <p className="font-mono text-[13px] uppercase tracking-wider text-[#8A8AA0] mb-1.5">
                     Time
                   </p>
-                  <p className="font-display text-lg text-[#14141F] uppercase">
+                  <p className="font-display text-lg text-[#14141F]">
                     12PM ET · 9AM PT
                     <br />
                     5PM UK
@@ -552,7 +552,7 @@ const LiveSessionConfirmed = () => {
               </p>
               <a
                 href="#"
-                className="block w-full py-4 text-center text-white font-display uppercase tracking-[0.14em] text-sm rounded-xl transition-all duration-200 hover:brightness-110"
+                className="block w-full py-4 text-center text-white font-display text-sm rounded-xl transition-all duration-200 hover:brightness-110"
                 style={{
                   background: 'linear-gradient(135deg, #6262E9, #4A4AD1)',
                   boxShadow: '0 4px 20px rgba(98,98,233,0.16)',
@@ -592,7 +592,7 @@ const LiveSessionConfirmed = () => {
                   <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                 </svg>
               </div>
-              <h3 className="font-display text-[23px] text-[#14141F] uppercase leading-tight">
+              <h3 className="font-display text-[23px] text-[#14141F] leading-tight">
                 This session is capped to stay interactive.
               </h3>
             </div>
