@@ -309,6 +309,8 @@ const HomeV8 = () => {
 
     let seen = false;
     try { seen = sessionStorage.getItem(EXIT_KEY) === '1'; } catch { /* private mode */ }
+    // QA aid: /?exit=1 ignores the once-per-session flag so the pop-up can be re-tested.
+    if (new URLSearchParams(window.location.search).has('exit')) seen = false;
     let armTimer: number | undefined;
     let teardown = () => {};
     if (!seen) {
@@ -320,7 +322,10 @@ const HomeV8 = () => {
         try { sessionStorage.setItem(EXIT_KEY, '1'); } catch { /* ignore */ }
         teardown();
       };
-      const onOut = (e: MouseEvent) => { if (e.clientY <= 4) fire(); };
+      // The pointer leaving the page toward the browser chrome. A fast exit often reports the last
+      // in-page position 10-30px from the top, so the old 4px threshold missed many real exits;
+      // relatedTarget === null means the pointer left the document, not just moved between elements.
+      const onOut = (e: MouseEvent) => { if (!e.relatedTarget && e.clientY <= 40) fire(); };
       const onVis = () => { if (document.visibilityState === 'hidden') fire(); };
       teardown = () => {
         document.removeEventListener('mouseout', onOut);

@@ -92,6 +92,26 @@
       "destination": "/compare/whyzer-vs-rox.html"
     },
     {
+      "source": "/compare/whyzer-vs-pg-ai",
+      "destination": "/compare/whyzer-vs-pg-ai.html"
+    },
+    {
+      "source": "/compare/whyzer-vs-fluint",
+      "destination": "/compare/whyzer-vs-fluint.html"
+    },
+    {
+      "source": "/compare/whyzer-vs-databook",
+      "destination": "/compare/whyzer-vs-databook.html"
+    },
+    {
+      "source": "/compare/whyzer-vs-salesmotion",
+      "destination": "/compare/whyzer-vs-salesmotion.html"
+    },
+    {
+      "source": "/compare/whyzer-vs-orbitshift",
+      "destination": "/compare/whyzer-vs-orbitshift.html"
+    },
+    {
       "source": "/newsletter/:slug",
       "destination": "/index.html"
     },

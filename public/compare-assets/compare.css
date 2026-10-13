@@ -446,3 +446,9 @@
 .wz-stack--vertical { flex-direction: column; }
 .wz-stack--horizontal { flex-direction: row; align-items: center; }
 .wz-stack--wrap { flex-wrap: wrap; }
+
+/* Link-based buttons (the CTAs navigate, so they are anchors styled as .wz-button) */
+a.wz-button,a.wz-button:hover{text-decoration:none}
+a.wz-button--primary,a.wz-button--primary:hover{color:var(--color-text-on-accent)}
+a.wz-button--secondary,a.wz-button--secondary:hover{color:var(--color-text)}
+section[id]{scroll-margin-top:72px}

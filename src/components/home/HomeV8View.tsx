@@ -1644,7 +1644,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               </div>
               <div className="wz-exit-aside" style={{ position: "relative", background: "#07070F", backgroundImage: "radial-gradient(ellipse 420px 320px at 22% 88%, rgba(99,73,198,.55), transparent 66%), radial-gradient(ellipse 340px 280px at 92% 6%, rgba(22,105,143,.5), transparent 66%)", padding: "30px 30px 26px", minHeight: "0", display: "flex", flexDirection: "column", justifyContent: "center", gap: "14px" }}>
                 <a className="wzh11" href="https://www.whyzer.ai/financial-fluency" style={{ display: "block", position: "relative", borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(255,255,255,.14)", boxShadow: "0 34px 64px -26px rgba(0,0,0,.85)", aspectRatio: "16/10", background: "linear-gradient(150deg,#2A2352,#0F1230)", cursor: "pointer", transition: "transform .35s ease" }}>
-                  <img src="/home-v8/app-earnings.webp" alt="Jamal reading a 10-K on screen during the session" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left", opacity: ".34" }} />
+                  <img src="/exit-session-preview.png" alt="" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left", opacity: ".34" }} />
                   <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg, rgba(7,7,15,.25), rgba(7,7,15,.82))" }}></div>
                   <div style={{ position: "absolute", top: "14px", left: "14px", display: "inline-flex", alignItems: "center", gap: "7px", fontSize: "10px", fontWeight: "700", letterSpacing: ".08em", textTransform: "uppercase", color: "#fff", background: "rgba(179,65,63,.9)", padding: "5px 10px", borderRadius: "6px" }}>
                     <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#fff", animation: "wzPulse 2.2s ease-out infinite" }}></span>
@@ -1676,9 +1676,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
                   </div>
                 </a>
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#6262e9", color: "#fff", fontSize: "12px", fontWeight: "700", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: "0" }}>
-                    {"JR"}
-                  </div>
+                  <img src="/jr_headshot.webp" alt="" width={38} height={38} style={{ width: "38px", height: "38px", borderRadius: "50%", objectFit: "cover", flexShrink: 0 }} />
                   <div>
                     <div style={{ fontFamily: "'Space Grotesk',sans-serif", color: "#fff", fontSize: "14px" }}>
                       {"Jamal Reimer"}
