@@ -1,10 +1,13 @@
 /**
  * Scheduled ETL: refreshes the warehouse from GHL and Stripe.
  *
- * Runs incrementally (last 30 days) rather than backfilling. A full sync takes
- * minutes and re-reads two years of history that cannot change; the incremental
- * path finishes in about 6 seconds, which comfortably fits a serverless
+ * Runs incrementally rather than backfilling. A full sync takes minutes and
+ * re-reads two years of history; the incremental path fits a serverless
  * invocation. Backfills stay manual: `node etl/sync-ghl.js --full`.
+ *
+ * "Incremental" is not "created in the last 30 days" for Stripe: a
+ * subscription's state keeps changing for as long as it is live, so the
+ * Stripe step also refreshes every live subscription (see sync-stripe.js).
  *
  * The dashboard is only worth having if its numbers are current -- the previous
  * dashboard was abandoned partly because nobody refreshed it. This is what
