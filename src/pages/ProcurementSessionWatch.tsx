@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Head } from 'vite-react-ssg';
 import { FunnelPage } from '@/components/site/FunnelChrome';
-import { useUtmParams } from '@/hooks/useUtmParams';
 
 // Fill these in when the recording and the live session are confirmed.
-// Until then the player shows a placeholder and the live-session card omits the date.
+// Until the video is set the player shows a placeholder.
 const VIDEO_EMBED_URL = ''; // e.g. a Vimeo player URL: https://player.vimeo.com/video/<id>?badge=0&autopause=0
-const SESSION_DATE = ''; // e.g. 'Tue, Oct 21 · 12:00 PM ET'
+const SESSION_DATE = 'Every Tuesday · 12:00 PM EST';
 
 const NUMBERS = ['Cost Savings', 'Cost Avoidance', 'Total Cost of Ownership', 'Savings Realization Rate', 'Vendor Risk Score'];
 
 const ProcurementSessionWatch = () => {
-  const appendUtm = useUtmParams();
   // Read after mount so the prerendered markup and first client render match.
   const [name, setName] = useState('');
   useEffect(() => {
@@ -28,7 +26,7 @@ const ProcurementSessionWatch = () => {
     <>
       <Head>
         <title>Watch: The Five Numbers Procurement Lives By | Whyzer</title>
-        <link rel="canonical" href="https://www.whyzer.ai/procurement-metrics-watch" />
+        <link rel="canonical" href="https://www.whyzer.ai/procurement-session-watch" />
         <meta name="robots" content="noindex, nofollow" />
         <meta name="description" content="25 minutes on the math behind every procurement decision." />
       </Head>
@@ -117,7 +115,7 @@ const ProcurementSessionWatch = () => {
               <span className="ps-step-n">Step 2</span>
               <h3>Start your free trial</h3>
               <p>Live Deal Coaching is part of Whyzer Elite. Your 14-day free trial includes full access, Tuesday's session included.</p>
-              <a href={appendUtm('/free-trial')} className="ps-btn ps-btn--primary ps-btn--full">Start your free trial</a>
+              <a href="/#pricing-monthly" className="ps-btn ps-btn--primary ps-btn--full">Start your free trial</a>
             </div>
             <div className="ps-step">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
@@ -128,7 +126,7 @@ const ProcurementSessionWatch = () => {
               <p>
                 Deal Coaching{SESSION_DATE ? <> · <span style={{ fontFamily: 'ui-monospace, Menlo, monospace', color: '#14141F' }}>{SESSION_DATE}</span></> : null}
               </p>
-              <a href="/live-session" className="ps-btn ps-btn--secondary ps-btn--full">Save your seat</a>
+              <a href="/procurement-session#access" className="ps-btn ps-btn--secondary ps-btn--full">Save your seat</a>
             </div>
           </div>
           <div style={{ display: 'flex', gap: 16, alignItems: 'center', paddingTop: 32, borderTop: '1px solid #E4E3F0' }}>

@@ -37,8 +37,8 @@ const ProcurementSession = () => {
     <>
       <Head>
         <title>The Five Numbers Procurement Lives By | Whyzer</title>
-        <link rel="canonical" href="https://www.whyzer.ai/procurement-metrics" />
-        <meta property="og:url" content="https://www.whyzer.ai/procurement-metrics" />
+        <link rel="canonical" href="https://www.whyzer.ai/procurement-session" />
+        <meta property="og:url" content="https://www.whyzer.ai/procurement-session" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="The Five Numbers Procurement Lives By" />
         <meta property="og:description" content="A free 25-minute on-demand session with Jamal Reimer on the five metrics procurement uses to decide whether your project is a good place to put the company's money." />
