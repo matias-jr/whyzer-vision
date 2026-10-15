@@ -101,7 +101,7 @@ const ProcurementSessionWatch = () => {
             <span className="ps-eyebrow ps-eyebrow--muted">Your next step</span>
             <h2 className="ps-h2">Now put it on a live deal</h2>
             <p style={{ margin: 0, color: '#55556B', textWrap: 'pretty' }}>
-              On Tuesday I'll review submissions live in Deal Coaching and walk through how I'd handle that procurement conversation myself. The goal is to get you out of the discount conversation and into the one where you help them approve a bigger investment.
+              On Tuesdays I'll review submissions live in Deal Coaching and walk through how I'd handle that procurement conversation myself. The goal is to get you out of the discount conversation and into the one where you help them approve a bigger investment.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 24 }}>
@@ -114,7 +114,7 @@ const ProcurementSessionWatch = () => {
             <div className="ps-step ps-step--feat">
               <span className="ps-step-n">Step 2</span>
               <h3>Start your free trial</h3>
-              <p>Live Deal Coaching is part of Whyzer Elite. Your 14-day free trial includes full access, Tuesday's session included.</p>
+              <p>Live Deal Coaching is part of Whyzer Elite. Your 14-day free trial includes full access, the Tuesday sessions included.</p>
               <a href="/#pricing-monthly" className="ps-btn ps-btn--primary ps-btn--full">Start your free trial</a>
             </div>
             <div className="ps-step">
@@ -122,11 +122,11 @@ const ProcurementSessionWatch = () => {
                 <span className="ps-step-n">Step 3</span>
                 <span className="wz-badge wz-badge--accent wz-badge--sm" style={{ background: '#EEEEFC', color: '#2a2665', borderRadius: 9999, padding: '4px 12px', fontSize: 13 }}>Live</span>
               </div>
-              <h3>Join me Tuesday</h3>
+              <h3>Join me Tuesdays</h3>
               <p>
-                Deal Coaching{SESSION_DATE ? <> · <span style={{ fontFamily: 'ui-monospace, Menlo, monospace', color: '#14141F' }}>{SESSION_DATE}</span></> : null}
+                Deal Coaching{SESSION_DATE ? <><br /><span style={{ fontFamily: 'ui-monospace, Menlo, monospace', color: '#14141F', fontSize: 14 }}>{SESSION_DATE}</span></> : null}
               </p>
-              <a href="/procurement-session#access" className="ps-btn ps-btn--secondary ps-btn--full">Save your seat</a>
+              <p style={{ flex: 'none', color: '#14141F', fontWeight: 500 }}>Save your seat when you become a Whyzer member.</p>
             </div>
           </div>
           <div style={{ display: 'flex', gap: 16, alignItems: 'center', paddingTop: 32, borderTop: '1px solid #E4E3F0' }}>
