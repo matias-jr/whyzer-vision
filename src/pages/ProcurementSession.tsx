@@ -46,9 +46,9 @@ const ProcurementSession = () => {
       </Head>
       <FunnelPage>
         {/* Hero */}
-        <section className="wzf-hero" style={{ textAlign: 'left', padding: '40px 0 48px' }}>
+        <section className="wzf-hero" style={{ textAlign: 'left', padding: '20px 0 28px' }}>
           <div className="wzf-wrap ps-hero-grid">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <span className="ps-eyebrow">Free on-demand session</span>
               <h1 className="ps-h1">The Five Numbers Procurement Lives By</h1>
               <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 17, lineHeight: 1.5, color: '#55556B', margin: 0, maxWidth: '50ch', textWrap: 'pretty' }}>
@@ -62,7 +62,7 @@ const ProcurementSession = () => {
                 <span>With Jamal Reimer</span>
               </div>
               <div className="ps-still">
-                <img src="/jr_headshot.webp" alt="Jamal Reimer" />
+                <img src="/thumb.jpg" alt="Jamal Reimer on the Five Numbers session" />
                 <span className="wz-badge wz-badge--error wz-badge--sm" style={{ position: 'absolute', top: 20, left: 20, display: 'inline-flex', background: '#fbe4e3', color: '#b3413f', borderRadius: 9999, padding: '5px 12px', fontSize: 13 }}>
                   Recorded live
                 </span>
