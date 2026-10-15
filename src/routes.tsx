@@ -25,6 +25,8 @@ import LiveCentralize from './pages/LiveCentralize';
 import LiveCentralizeRegistered from './pages/LiveCentralizeRegistered';
 import WebinarRegistration from './pages/WebinarRegistration';
 import WebinarThankYou from './pages/WebinarThankYou';
+import ProcurementSession from './pages/ProcurementSession';
+import ProcurementSessionWatch from './pages/ProcurementSessionWatch';
 
 export const routes: RouteObject[] = [
   {
@@ -47,6 +49,8 @@ export const routes: RouteObject[] = [
       { path: 'live-centralize-registered', element: <LiveCentralizeRegistered /> },
       { path: 'financial-fluency', element: <WebinarRegistration /> },
       { path: 'financial-fluency-watch', element: <WebinarThankYou /> },
+      { path: 'procurement-metrics', element: <ProcurementSession /> },
+      { path: 'procurement-metrics-watch', element: <ProcurementSessionWatch /> },
       { path: 'newsletter/archive', element: <NewsletterArchive /> },
       { path: 'newsletter/:slug', element: <NewsletterPost /> },
       { path: 'admin', element: <AdminLogin /> },
