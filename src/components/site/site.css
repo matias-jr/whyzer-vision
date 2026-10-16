@@ -107,7 +107,7 @@
 .ps-h1{font-size:clamp(36px,4.6vw,52px);line-height:1.06;letter-spacing:-.02em;text-wrap:balance;margin:0}
 .ps-h2{font-size:clamp(30px,3.4vw,40px);line-height:1.1;letter-spacing:-.02em;margin:0}
 .ps-meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;color:var(--wz-muted);font-size:14px}
-.ps-still{position:relative;width:100%;flex:1 1 auto;min-height:180px;border-radius:28px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(20,20,40,.45);background:#EEEEFC}
+.ps-still{position:relative;width:100%;flex:1 1 auto;min-height:300px;border-radius:28px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(20,20,40,.45);background:#EEEEFC}
 .ps-still img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%}
 .ps-formcard{align-self:stretch;background:#fff;border-radius:28px;padding:20px;box-shadow:0 30px 70px -34px rgba(20,20,40,.5);display:flex;flex-direction:column;justify-content:center;gap:16px}
 .ps-formcard iframe{width:100%;height:470px;border:0;border-radius:12px;display:block}

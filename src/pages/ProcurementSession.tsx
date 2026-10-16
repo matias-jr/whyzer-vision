@@ -46,7 +46,7 @@ const ProcurementSession = () => {
       </Head>
       <FunnelPage>
         {/* Hero */}
-        <section className="wzf-hero" style={{ textAlign: 'left', padding: '48px 0 40px' }}>
+        <section className="wzf-hero" style={{ textAlign: 'left', padding: '88px 0 72px' }}>
           <div className="wzf-wrap ps-hero-grid">
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <span className="ps-eyebrow">Free on-demand session</span>
