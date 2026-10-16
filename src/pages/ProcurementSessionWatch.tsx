@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import { Head } from 'vite-react-ssg';
 import { FunnelPage } from '@/components/site/FunnelChrome';
 
-// Fill these in when the recording and the live session are confirmed.
-// Until the video is set the player shows a placeholder.
-const VIDEO_EMBED_URL = ''; // e.g. a Vimeo player URL: https://player.vimeo.com/video/<id>?badge=0&autopause=0
+// Vimeo embed for the session. Leave empty to show a "coming soon" placeholder instead.
+const VIDEO_EMBED_URL = 'https://player.vimeo.com/video/1236544856?badge=0&autopause=0&player_id=0&app_id=58479';
 const SESSION_DATE = 'Every Tuesday · 12:00 PM EST';
 
 const NUMBERS = ['Cost Savings', 'Cost Avoidance', 'Total Cost of Ownership', 'Savings Realization Rate', 'Vendor Risk Score'];
