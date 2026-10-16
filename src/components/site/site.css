@@ -134,3 +134,6 @@
 .ps-btn--full{width:100%}
 @media (max-width:640px){.ps-num{grid-template-columns:40px minmax(0,1fr);gap:14px}}
 @media (max-width:760px){.ps-still{aspect-ratio:16/9;min-height:0;flex:none}}
+/* Watch page: size the player so the whole 16:9 frame fits in the first screen
+   (viewport height minus navbar, heading block and a little bottom room). */
+@media (min-width:761px){.ps-player--fold{width:min(100%,calc((100vh - 235px) * 16 / 9));min-width:480px;margin:0}}

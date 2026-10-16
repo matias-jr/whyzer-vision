@@ -31,16 +31,16 @@ const ProcurementSessionWatch = () => {
       </Head>
       <FunnelPage>
         {/* Player */}
-        <section className="wzf-hero" style={{ textAlign: 'left', padding: '64px 0 80px' }}>
-          <div className="wzf-wrap" style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 760 }}>
+        <section className="wzf-hero" style={{ textAlign: 'left', padding: '28px 0 56px' }}>
+          <div className="wzf-wrap" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <span className="ps-eyebrow">{greeting}</span>
-              <h1 className="ps-h1" style={{ fontSize: 'clamp(36px, 4.6vw, 52px)' }}>The Five Numbers Procurement Lives By</h1>
-              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 19, lineHeight: 1.45, color: '#55556B', margin: 0, maxWidth: '52ch' }}>
+              <h1 className="ps-h1" style={{ fontSize: 'clamp(30px, 3.6vw, 44px)', margin: 0 }}>The Five Numbers Procurement Lives By</h1>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 17, lineHeight: 1.4, color: '#55556B', margin: 0 }}>
                 25 minutes on the math behind every procurement decision.
               </p>
             </div>
-            <div className="ps-player">
+            <div className="ps-player ps-player--fold">
               {VIDEO_EMBED_URL ? (
                 <iframe
                   src={VIDEO_EMBED_URL}
