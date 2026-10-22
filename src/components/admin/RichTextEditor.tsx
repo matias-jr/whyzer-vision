@@ -11,6 +11,7 @@ import TaskList from '@tiptap/extension-task-list';
 import TaskItem from '@tiptap/extension-task-item';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { uploadCoverImage } from '@/lib/articles';
+import { cleanPastedHtml } from '@/lib/pasteClean';
 
 type Props = {
   value: string;
@@ -300,6 +301,8 @@ export default function RichTextEditor({ value, onChange }: Props) {
     ],
     content: value || '',
     editorProps: {
+      // Pasted rich text: drop the source's font sizes/families and emoji images, link bare URLs.
+      transformPastedHTML: cleanPastedHtml,
       attributes: {
         class:
           'article-body font-body text-[17px] leading-[1.75] text-foreground min-h-[460px] focus:outline-none px-5 py-6',
