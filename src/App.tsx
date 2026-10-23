@@ -6,6 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { trackVisit } from "@/lib/trackVisit";
+import { isCheckoutLink, trackCheckoutStarted } from "@/lib/linkedinConversion";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,16 @@ const App = () => {
   useEffect(() => {
     trackVisit();
   }, [location.pathname, location.search]);
+
+  // LinkedIn "checkout started": any click on a link to the checkout host, on any page.
+  // One listener here replaces per-button handlers, so a new CTA is tracked automatically.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (isCheckoutLink(e.target as Element | null)) trackCheckoutStarted();
+    };
+    document.addEventListener('click', onClick, true);
+    return () => document.removeEventListener('click', onClick, true);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

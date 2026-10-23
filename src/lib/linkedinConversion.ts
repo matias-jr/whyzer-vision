@@ -39,3 +39,41 @@ export function trackLinkedInConversion(event: ConversionEvent, insightTagId?: n
     /* never let analytics break the page */
   });
 }
+
+/** Host the live checkout (GHL order forms) runs on. */
+const CHECKOUT_HOST = 'subscribe.whyzer.ai';
+
+let lastCheckoutAt = 0;
+
+/**
+ * "Checkout started": a visitor clicked through to the checkout. Reported server-side only
+ * (the Insight Tag cannot see a click that leaves the site), matched on li_fat_id.
+ * Throttled so a double-click does not count twice.
+ */
+export function trackCheckoutStarted(): void {
+  if (typeof window === 'undefined') return;
+  const now = Date.now();
+  if (now - lastCheckoutAt < 3000) return;
+  const li_fat_id = readFatId();
+  if (!li_fat_id) return;
+  lastCheckoutAt = now;
+  fetch('/api/track-checkout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ li_fat_id }),
+    keepalive: true, // the click is navigating away
+  }).catch(() => {
+    /* never let analytics break the page */
+  });
+}
+
+/** True when an element sits inside a link to the checkout host. */
+export function isCheckoutLink(el: Element | null): boolean {
+  const a = el?.closest?.('a[href]') as HTMLAnchorElement | null;
+  if (!a) return false;
+  try {
+    return new URL(a.href, window.location.href).hostname === CHECKOUT_HOST;
+  } catch {
+    return false;
+  }
+}

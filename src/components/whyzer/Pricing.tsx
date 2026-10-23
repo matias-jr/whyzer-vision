@@ -166,11 +166,6 @@ const Pricing = () => {
               style={{ borderColor: 'rgba(89,89,212,0.3)', background: 'rgba(89,89,212,0.08)' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(89,89,212,0.18)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(89,89,212,0.08)'; }}
-              onClick={() => {
-                const match = document.cookie.split('; ').find(row => row.startsWith('li_fat_id='));
-                const li_fat_id = match ? match.split('=')[1] : null;
-                if (li_fat_id) fetch('/api/track-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ li_fat_id }) }).catch(() => {});
-              }}
             >
               {annual ? 'Get Started Now' : 'Start Your Free Trial'}
             </a>
@@ -232,11 +227,6 @@ const Pricing = () => {
                 href={eliteLink}
                 className="block w-full py-3 rounded-lg text-white font-bold text-center hover:brightness-110 hover:shadow-[0_0_28px_rgba(89,89,212,0.5)] transition-all text-sm"
                 style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
-                onClick={() => {
-                  const match = document.cookie.split('; ').find(row => row.startsWith('li_fat_id='));
-                  const li_fat_id = match ? match.split('=')[1] : null;
-                  if (li_fat_id) fetch('/api/track-checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ li_fat_id }) }).catch(() => {});
-                }}
               >
                 {annual ? 'Get Started' : 'Start Your Free Trial'}
               </a>

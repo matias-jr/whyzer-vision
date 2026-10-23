@@ -416,18 +416,7 @@ const HomeV8 = () => {
       api.current.showMonthly();
       return;
     }
-    // Checkout CTAs: forward the LinkedIn click id so the conversion can be matched server-side.
-    if (target.closest('[data-wz-checkout]')) {
-      const m = document.cookie.split('; ').find((r) => r.startsWith('li_fat_id='));
-      const li_fat_id = m ? m.split('=')[1] : null;
-      if (li_fat_id) {
-        fetch('/api/track-checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ li_fat_id }),
-        }).catch(() => {});
-      }
-    }
+    // Checkout clicks are reported to LinkedIn by the global listener in App.tsx.
 
     const t = target.closest(
       '[data-wz-tab],[data-wz-quote],[data-wz-bill],[data-wz-exit],[data-wz-tier],[data-wz-vnav],[data-wz-vid],[data-wz-vclose],[data-wz-vstep]',

@@ -1,5 +1,7 @@
 /**
- * LinkedIn conversion for a COMPLETED checkout (free-trial start or paid purchase).
+ * LinkedIn conversion for a COMPLETED checkout. The goal we measure is `trial_started`
+ * (free-trial signup); `purchase` is supported but optional (leave its conversion id unset to ignore it).
+ * "Checkout started" is a click, tracked separately via /api/track-checkout.
  *
  * Live checkouts finish on subscribe.whyzer.ai (GHL order forms), off this site, so the
  * browser cannot report them. A GHL workflow calls this endpoint when an order is
