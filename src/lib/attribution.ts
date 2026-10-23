@@ -182,6 +182,13 @@ export function captureAttribution(
     if (cookieAmId) touch.clickIds.am_id = cookieAmId;
   }
 
+  // li_fat_id: the Insight Tag stores it as a cookie, so it is still available when the visitor
+  // reaches checkout on a later page that no longer has it in the URL.
+  if (!touch.clickIds.li_fat_id) {
+    const cookieFat = getCookie('li_fat_id');
+    if (cookieFat) touch.clickIds.li_fat_id = cookieFat;
+  }
+
   const stored = parseStored(safeGetItem(STORAGE_KEY));
   const campaigned = hasCampaignData(touch);
 
