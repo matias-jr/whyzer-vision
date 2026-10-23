@@ -1,32 +1,21 @@
 /**
- * LinkedIn conversion for a COMPLETED checkout. The goal we measure is `trial_started`
- * (free-trial signup); `purchase` is supported but optional (leave its conversion id unset to ignore it).
- * "Checkout started" is a click, tracked separately via /api/track-checkout.
+ * LinkedIn conversion event 2: "Trial subscribed".
  *
- * Live checkouts finish on subscribe.whyzer.ai (GHL order forms), off this site, so the
- * browser cannot report them. A GHL workflow calls this endpoint when an order is
- * submitted / a payment succeeds, and we forward it to LinkedIn's Conversions API.
+ * The checkout finishes on subscribe.whyzer.ai (GHL order forms), off this site, so a GHL
+ * workflow calls this endpoint when a trial order is submitted and we forward it to
+ * LinkedIn's Conversions API. ("Checkout started" is /api/track-checkout.)
  *
  * POST /api/track-purchase
  *   Header  x-webhook-secret: <TRACK_PURCHASE_SECRET>
- *   Body    {
- *     event:    'trial_started' | 'purchase'      (required)
- *     email:    contact email                      (email and/or li_fat_id required)
- *     li_fat_id: LinkedIn click id, if GHL kept it
- *     orderId:  GHL order / transaction id         (recommended: makes retries idempotent)
- *     value:    amount paid, e.g. 97              (optional; 0 for a free trial)
- *     currency: 'USD' | 'GBP' | ...               (optional, with value)
- *   }
+ *   Body    { "event": "trial_started", "email": "...", "li_fat_id": "(optional)", "orderId": "..." }
  *
- * Env: LINKEDIN_ACCESS_TOKEN, TRACK_PURCHASE_SECRET, and one conversion id per event:
- *   LINKEDIN_TRIAL_CONVERSION_ID, LINKEDIN_PURCHASE_CONVERSION_ID
+ * Env: LINKEDIN_ACCESS_TOKEN, TRACK_PURCHASE_SECRET, LINKEDIN_TRIAL_CONVERSION_ID
  */
 import { timingSafeEqual } from 'node:crypto';
 import { buildConversionEvent, sendConversionEvent } from './_linkedin-capi.js';
 
 const CONVERSIONS = {
   trial_started: 'LINKEDIN_TRIAL_CONVERSION_ID',
-  purchase: 'LINKEDIN_PURCHASE_CONVERSION_ID',
 };
 
 function secretMatches(given, expected) {
@@ -51,7 +40,7 @@ export default async function handler(req, res) {
   const { event, email, li_fat_id: liFatId, orderId, value, currency } = body;
 
   const envKey = CONVERSIONS[event];
-  if (!envKey) return res.status(400).json({ error: `Unknown event: ${event}. Use trial_started or purchase.` });
+  if (!envKey) return res.status(400).json({ error: `Unknown event: ${event}. Use trial_started.` });
 
   const conversionId = process.env[envKey];
   const token = process.env.LINKEDIN_ACCESS_TOKEN;
