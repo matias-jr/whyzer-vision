@@ -1,4 +1,5 @@
 import { EditorContent, useEditor, useEditorState, type Editor } from '@tiptap/react';
+import { mergeAttributes } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import Image from '@tiptap/extension-image';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -11,12 +12,30 @@ import TaskList from '@tiptap/extension-task-list';
 import TaskItem from '@tiptap/extension-task-item';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { uploadCoverImage } from '@/lib/articles';
-import { cleanPastedHtml } from '@/lib/pasteClean';
+import { cleanPastedHtml, normalizeHref } from '@/lib/pasteClean';
 
 type Props = {
   value: string;
   onChange: (html: string) => void;
 };
+
+/** Image that remembers the link it was pasted inside (e.g. a banner image that links out). */
+const LinkedImage = Image.extend({
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      href: {
+        default: null,
+        parseHTML: (el: HTMLElement) => el.closest('a')?.getAttribute('href') ?? null,
+      },
+    };
+  },
+  renderHTML({ HTMLAttributes }) {
+    const { href, ...rest } = HTMLAttributes as Record<string, string | null>;
+    const img = ['img', mergeAttributes(this.options.HTMLAttributes, rest)] as const;
+    return href ? ['a', { href, target: '_blank', rel: 'noopener noreferrer' }, img] : img;
+  },
+});
 
 /* ---------- options ---------- */
 
@@ -185,7 +204,7 @@ function Toolbar({ editor }: { editor: Editor }) {
     const url = window.prompt('Link URL (leave empty to remove)', prev ?? 'https://');
     if (url === null) return;
     if (url.trim() === '') { run().extendMarkRange('link').unsetLink().run(); return; }
-    run().extendMarkRange('link').setLink({ href: url.trim() }).run();
+    run().extendMarkRange('link').setLink({ href: normalizeHref(url) }).run();
   };
 
   const insertImage = () => {
@@ -287,7 +306,7 @@ export default function RichTextEditor({ value, onChange }: Props) {
     extensions: [
       StarterKit.configure({
         heading: { levels: [1, 2, 3, 4] },
-        link: { openOnClick: false, HTMLAttributes: { rel: 'noopener noreferrer', target: '_blank' } },
+        link: { openOnClick: false, defaultProtocol: 'https', HTMLAttributes: { rel: 'noopener noreferrer', target: '_blank' } },
       }),
       TextStyleKit, // text-style + colour, font family, font size, background colour, line height
       Highlight.configure({ multicolor: true }),
@@ -296,13 +315,20 @@ export default function RichTextEditor({ value, onChange }: Props) {
       Superscript,
       TaskList,
       TaskItem.configure({ nested: true }),
-      Image,
+      LinkedImage,
       Placeholder.configure({ placeholder: 'Write your article…' }),
     ],
     content: value || '',
     editorProps: {
       // Pasted rich text: drop the source's font sizes/families and emoji images, link bare URLs.
       transformPastedHTML: cleanPastedHtml,
+      // Links inside the editor are edited, not followed (this also covers linked images).
+      handleDOMEvents: {
+        click: (_view, event) => {
+          if ((event.target as HTMLElement | null)?.closest('a')) event.preventDefault();
+          return false;
+        },
+      },
       attributes: {
         class:
           'article-body font-body text-[17px] leading-[1.75] text-foreground min-h-[460px] focus:outline-none px-5 py-6',

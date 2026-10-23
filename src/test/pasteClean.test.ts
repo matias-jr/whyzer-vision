@@ -40,3 +40,45 @@ describe('cleanPastedHtml', () => {
     expect(out).toBe('<p>x y</p>');
   });
 });
+
+describe('cleanPastedHtml: links and colours', () => {
+  it('gives protocol-less links https:// so the editor keeps them', async () => {
+    const { normalizeHref } = await import('@/lib/pasteClean');
+    expect(normalizeHref('example.com/page')).toBe('https://example.com/page');
+    expect(normalizeHref('www.example.com')).toBe('https://www.example.com');
+    expect(normalizeHref(' https://x.com/a b ')).toBe('https://x.com/a%20b');
+    expect(normalizeHref('mailto:a@b.co')).toBe('mailto:a@b.co');
+    expect(normalizeHref('/pricing')).toBe('/pricing');
+    expect(normalizeHref('#faq')).toBe('#faq');
+  });
+
+  it('keeps dark navy and near-black colours, drops only exact black/white', () => {
+    const out = cleanPastedHtml('<span style="color:#0b0b18">a</span><span style="color:#14141f">b</span><span style="color:rgb(0, 0, 0)">c</span><span style="color:#ffffff">d</span>');
+    expect(out).toContain('#0b0b18');
+    expect(out).toContain('#14141f');
+    expect(out).not.toMatch(/rgb\(0, 0, 0\)|#ffffff/);
+  });
+
+  it("drops the source's link styling but keeps the link", () => {
+    const out = cleanPastedHtml('<a href="example.com/x"><span style="color:#1155cc;text-decoration:underline">Read</span></a>');
+    expect(out).toContain('href="https://example.com/x"');
+    expect(out).not.toMatch(/1155cc|underline/);
+  });
+
+  it("leaves HTML copied from the editor itself untouched", () => {
+    const html = '<p data-pm-slice="1 1 []"><span style="color: rgb(11, 11, 24); font-size: 24px">x</span></p>';
+    expect(cleanPastedHtml(html)).toBe(html);
+  });
+});
+
+describe('cleanPastedHtml: block colours', () => {
+  it('moves a colour set on a paragraph onto its text', () => {
+    const out = cleanPastedHtml('<p style="color:#0b0b18;text-align:center">Navy paragraph</p>');
+    expect(out).toContain('<p style="text-align: center"><span style="color: #0b0b18">Navy paragraph</span></p>');
+  });
+  it('keeps white text that sits on a real background', () => {
+    const out = cleanPastedHtml('<span style="color:#ffffff;background-color:#6262e9">Buy</span>');
+    expect(out).toContain('color: #ffffff');
+    expect(out).toContain('#6262e9');
+  });
+});

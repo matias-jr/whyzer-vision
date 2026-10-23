@@ -22,47 +22,90 @@ const DROP_PROPS = new Set([
   'width', 'height', 'min-width', 'max-width', 'min-height', 'max-height', 'text-decoration-skip-ink',
 ]);
 
-function parseColor(v: string): [number, number, number] | null {
-  const s = v.trim().toLowerCase();
-  let m = s.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/);
-  if (m) {
-    const h = m[1].length === 3 ? m[1].split('').map((c) => c + c).join('') : m[1];
-    return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
-  }
-  m = s.match(/^rgba?\(\s*(\d+)[\s,]+(\d+)[\s,]+(\d+)/);
-  if (m) return [Number(m[1]), Number(m[2]), Number(m[3])];
-  if (s === 'black') return [0, 0, 0];
-  if (s === 'white') return [255, 255, 255];
-  return null;
+/**
+ * Only the source's *defaults* are dropped: exact black, exact white, transparent and
+ * "inherit"-style keywords. Everything else, including dark navy and near-blacks, is a
+ * deliberate colour and is kept.
+ */
+function isDefaultColor(v: string): boolean {
+  const s = v.trim().toLowerCase().replace(/\s+/g, '');
+  if (!s || ['transparent', 'inherit', 'initial', 'unset', 'windowtext', 'currentcolor', 'black', 'white', '#000', '#000000', '#fff', '#ffffff'].includes(s)) return true;
+  if (/^rgba?\(0,0,0(,1(\.0+)?)?\)$/.test(s) || /^rgba?\(255,255,255(,1(\.0+)?)?\)$/.test(s)) return true;
+  const alpha = s.match(/^rgba\([^)]*,(0(\.0+)?)\)$/);
+  return Boolean(alpha);
 }
 
-/** Near-black / near-white / transparent colours are the source's defaults, not a deliberate choice. */
-function isDefaultColor(v: string): boolean {
-  const s = v.trim().toLowerCase();
-  if (!s || s === 'transparent' || s === 'inherit' || s === 'initial' || s === 'windowtext' || s === 'currentcolor') return true;
-  const c = parseColor(s);
-  if (!c) return false;
-  const lum = (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255;
-  return lum < 0.16 || lum > 0.94;
+/**
+ * Makes a pasted href something the editor keeps. The link extension silently drops
+ * protocol-less links such as "example.com/page", so they are given https://.
+ */
+export function normalizeHref(raw: string): string {
+  const href = raw.trim();
+  if (!href) return href;
+  if (/^(https?:|mailto:|tel:|sms:|ftp:|ftps:|callto:|cid:|xmpp:|#|\/|\.)/i.test(href)) return href.replace(/\s/g, '%20');
+  if (/^[a-z][a-z0-9+.-]*:/i.test(href)) return href; // other schemes: leave to the editor's rules
+  if (/^www\./i.test(href) || /^[\w-]+(\.[\w-]+)+(?::\d+)?(\/|\?|#|$)/.test(href)) return `https://${href.replace(/\s/g, '%20')}`;
+  return href;
 }
 
 function cleanStyle(el: HTMLElement) {
   const style = el.getAttribute('style');
   if (!style) return;
+  const inLink = Boolean(el.closest('a'));
+  const decls = style.split(';').map((d) => {
+    const i = d.indexOf(':');
+    return i < 0 ? null : ([d.slice(0, i).trim().toLowerCase(), d.slice(i + 1).trim()] as const);
+  });
+  // White (or black) text paired with a real background colour is a deliberate pairing, e.g. a button.
+  const hasBg = decls.some((d) => d && (d[0] === 'background-color' || d[0] === 'background') && d[1] && !isDefaultColor(d[1]));
   const kept: string[] = [];
-  for (const decl of style.split(';')) {
-    const i = decl.indexOf(':');
-    if (i < 0) continue;
-    const prop = decl.slice(0, i).trim().toLowerCase();
-    const val = decl.slice(i + 1).trim();
+  for (const d of decls) {
+    if (!d) continue;
+    const [prop, val] = d;
     if (!prop || !val || DROP_PROPS.has(prop)) continue;
-    if ((prop === 'color' || prop === 'background-color' || prop === 'background') && isDefaultColor(val)) continue;
-    if (prop === 'text-align' || prop === 'color' || prop === 'background-color' || prop === 'font-weight' || prop === 'font-style' || prop === 'text-decoration') {
-      kept.push(`${prop}: ${val}`);
-    }
+    // Links get the article's own link styling, not the source's (e.g. Google Docs blue underline).
+    if (inLink && (prop === 'color' || prop === 'text-decoration')) continue;
+    if ((prop === 'color' && !hasBg && isDefaultColor(val)) || ((prop === 'background-color' || prop === 'background') && isDefaultColor(val))) continue;
+    if (['text-align', 'color', 'background-color', 'font-weight', 'font-style', 'text-decoration'].includes(prop)) kept.push(`${prop}: ${val}`);
   }
   if (kept.length) el.setAttribute('style', kept.join('; '));
   else el.removeAttribute('style');
+}
+
+/**
+ * The editor stores colour on text, not on blocks. Colour set on a paragraph, heading or
+ * list item is moved onto a span around its contents so it survives the paste.
+ */
+function pushBlockColorDown(root: Element) {
+  const doc = root.ownerDocument;
+  root.querySelectorAll<HTMLElement>('p, h1, h2, h3, h4, li, blockquote, div, td').forEach((el) => {
+    const style = el.getAttribute('style');
+    if (!style) return;
+    const props = style.split(';').map((d) => d.trim()).filter(Boolean);
+    const carry = props.filter((d) => /^(color|background-color)\s*:/i.test(d));
+    if (!carry.length) return;
+    const rest = props.filter((d) => !/^(color|background-color)\s*:/i.test(d));
+    if (rest.length) el.setAttribute('style', rest.join('; '));
+    else el.removeAttribute('style');
+    // Wrap each run of text (not text inside links, which keep the link styling).
+    const walker = doc.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const texts: Text[] = [];
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      const t = n as Text;
+      const parent = t.parentElement;
+      if (!t.data.length || !parent || parent.closest('a')) continue;
+      // Text already inside a span with its own colour keeps that colour.
+      const own = parent.closest('span[style*="color"]');
+      if (own && el.contains(own) && own !== el) continue;
+      texts.push(t);
+    }
+    texts.forEach((t) => {
+      const span = doc.createElement('span');
+      span.setAttribute('style', carry.join('; '));
+      t.replaceWith(span);
+      span.appendChild(t);
+    });
+  });
 }
 
 function isEmojiImage(img: HTMLImageElement): boolean {
@@ -109,6 +152,8 @@ function linkifyTextNodes(root: Element) {
 
 export function cleanPastedHtml(html: string): string {
   if (typeof DOMParser === 'undefined') return html;
+  // Copied from this editor (ProseMirror tags its clipboard HTML): keep every size, colour and link as is.
+  if (/data-pm-slice=/.test(html)) return html;
   const doc = new DOMParser().parseFromString(html, 'text/html');
   const body = doc.body;
 
@@ -120,6 +165,8 @@ export function cleanPastedHtml(html: string): string {
   // Legacy <font size=…> wrappers (Word, old pages): keep the text, drop the wrapper.
   body.querySelectorAll('font').forEach((f) => f.replaceWith(...Array.from(f.childNodes)));
 
+  body.querySelectorAll('a[href]').forEach((a) => a.setAttribute('href', normalizeHref(a.getAttribute('href') ?? '')));
+
   body.querySelectorAll<HTMLElement>('*').forEach((el) => {
     cleanStyle(el);
     el.removeAttribute('class');
@@ -128,6 +175,8 @@ export function cleanPastedHtml(html: string): string {
       if (el.tagName !== 'IMG') el.removeAttribute(a);
     });
   });
+
+  pushBlockColorDown(body);
 
   // Google Docs wraps everything in <b id="docs-internal-guid-…" style="font-weight:normal">.
   body.querySelectorAll<HTMLElement>('b[id^="docs-internal-guid"], b[style*="font-weight: normal"], b[style*="font-weight:normal"]').forEach((b) => {
