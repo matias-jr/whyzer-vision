@@ -1,32 +1,27 @@
+import type { ComponentType } from 'react';
 import type { RouteObject } from 'react-router-dom';
 import App from './App';
 import Index from './pages/Index';
-import Newsletter from './pages/Newsletter';
-import LiveSession from './pages/LiveSession';
-import LiveSessionConfirmed from './pages/LiveSessionConfirmed';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsAndConditions from './pages/TermsAndConditions';
-import ColdEmailD1A from './pages/ColdEmailD1A';
-import ColdEmailD1B from './pages/ColdEmailD1B';
-import ColdEmailD2A from './pages/ColdEmailD2A';
-import ColdEmailD2B from './pages/ColdEmailD2B';
-import NewsletterPost from './pages/NewsletterPost';
-import NewsletterArchive from './pages/NewsletterArchive';
-import EliteUpgrade from './pages/EliteUpgrade';
-import FreeTrial from './pages/FreeTrial';
-import AdminLogin from './pages/admin/Login';
-import AdminArticlesList from './pages/admin/ArticlesList';
-import AdminArticleEditor from './pages/admin/ArticleEditor';
-import AdminLiveSessionConfig from './pages/admin/LiveSessionConfig';
-import AdminAttribution from './pages/admin/Attribution';
-import RequireAuth from './components/admin/RequireAuth';
-import NotFound from './pages/NotFound';
-import LiveCentralize from './pages/LiveCentralize';
-import LiveCentralizeRegistered from './pages/LiveCentralizeRegistered';
-import WebinarRegistration from './pages/WebinarRegistration';
-import WebinarThankYou from './pages/WebinarThankYou';
-import ProcurementSession from './pages/ProcurementSession';
-import ProcurementSessionWatch from './pages/ProcurementSessionWatch';
+
+type PageModule = { default: ComponentType };
+
+// Routes other than the home page load on demand, so a visitor only downloads the code
+// for the page they open (admin tools and the rich-text editor stay out of the home bundle).
+// Keep each `lazy` as a literal `() => import('...')`: vite-react-ssg reads that source to
+// link the page's CSS into the prerendered HTML.
+const page = (m: PageModule) => ({ Component: m.default });
+
+const guardedPage = async (m: PageModule) => {
+  const { default: RequireAuth } = await import('./components/admin/RequireAuth');
+  const Page = m.default;
+  return {
+    Component: () => (
+      <RequireAuth>
+        <Page />
+      </RequireAuth>
+    ),
+  };
+};
 
 export const routes: RouteObject[] = [
   {
@@ -34,68 +29,48 @@ export const routes: RouteObject[] = [
     element: <App />,
     children: [
       { index: true, element: <Index /> },
-      { path: 'newsletter', element: <Newsletter /> },
-      { path: 'live-session', element: <LiveSession /> },
-      { path: 'live-session-confirmed', element: <LiveSessionConfirmed /> },
-      { path: 'privacy-policy', element: <PrivacyPolicy /> },
-      { path: 'terms-and-conditions', element: <TermsAndConditions /> },
-      { path: 'd1a', element: <ColdEmailD1A /> },
-      { path: 'd1b', element: <ColdEmailD1B /> },
-      { path: 'd2a', element: <ColdEmailD2A /> },
-      { path: 'd2b', element: <ColdEmailD2B /> },
-      { path: 'elite-upgrade', element: <EliteUpgrade /> },
-      { path: 'free-trial', element: <FreeTrial /> },
-      { path: 'live-centralize', element: <LiveCentralize /> },
-      { path: 'live-centralize-registered', element: <LiveCentralizeRegistered /> },
-      { path: 'financial-fluency', element: <WebinarRegistration /> },
-      { path: 'financial-fluency-watch', element: <WebinarThankYou /> },
-      { path: 'procurement-session', element: <ProcurementSession /> },
-      { path: 'procurement-session-watch', element: <ProcurementSessionWatch /> },
-      { path: 'newsletter/archive', element: <NewsletterArchive /> },
-      { path: 'newsletter/:slug', element: <NewsletterPost /> },
-      { path: 'admin', element: <AdminLogin /> },
+      { path: 'newsletter', lazy: () => import('./pages/Newsletter').then(page) },
+      { path: 'live-session', lazy: () => import('./pages/LiveSession').then(page) },
+      { path: 'live-session-confirmed', lazy: () => import('./pages/LiveSessionConfirmed').then(page) },
+      { path: 'privacy-policy', lazy: () => import('./pages/PrivacyPolicy').then(page) },
+      { path: 'terms-and-conditions', lazy: () => import('./pages/TermsAndConditions').then(page) },
+      { path: 'd1a', lazy: () => import('./pages/ColdEmailD1A').then(page) },
+      { path: 'd1b', lazy: () => import('./pages/ColdEmailD1B').then(page) },
+      { path: 'd2a', lazy: () => import('./pages/ColdEmailD2A').then(page) },
+      { path: 'd2b', lazy: () => import('./pages/ColdEmailD2B').then(page) },
+      { path: 'elite-upgrade', lazy: () => import('./pages/EliteUpgrade').then(page) },
+      { path: 'free-trial', lazy: () => import('./pages/FreeTrial').then(page) },
+      { path: 'live-centralize', lazy: () => import('./pages/LiveCentralize').then(page) },
+      { path: 'live-centralize-registered', lazy: () => import('./pages/LiveCentralizeRegistered').then(page) },
+      { path: 'financial-fluency', lazy: () => import('./pages/WebinarRegistration').then(page) },
+      { path: 'financial-fluency-watch', lazy: () => import('./pages/WebinarThankYou').then(page) },
+      { path: 'procurement-session', lazy: () => import('./pages/ProcurementSession').then(page) },
+      { path: 'procurement-session-watch', lazy: () => import('./pages/ProcurementSessionWatch').then(page) },
+      { path: 'newsletter/archive', lazy: () => import('./pages/NewsletterArchive').then(page) },
+      { path: 'newsletter/:slug', lazy: () => import('./pages/NewsletterPost').then(page) },
+      { path: 'admin', lazy: () => import('./pages/admin/Login').then(page) },
       {
         path: 'admin/articles',
-        element: (
-          <RequireAuth>
-            <AdminArticlesList />
-          </RequireAuth>
-        ),
+        lazy: () => import('./pages/admin/ArticlesList').then(guardedPage),
       },
       {
         path: 'admin/articles/new',
-        element: (
-          <RequireAuth>
-            <AdminArticleEditor />
-          </RequireAuth>
-        ),
+        lazy: () => import('./pages/admin/ArticleEditor').then(guardedPage),
       },
       {
         path: 'admin/articles/:id/edit',
-        element: (
-          <RequireAuth>
-            <AdminArticleEditor />
-          </RequireAuth>
-        ),
+        lazy: () => import('./pages/admin/ArticleEditor').then(guardedPage),
       },
       {
         path: 'admin/attribution',
-        element: (
-          <RequireAuth>
-            <AdminAttribution />
-          </RequireAuth>
-        ),
+        lazy: () => import('./pages/admin/Attribution').then(guardedPage),
       },
       {
         path: 'admin/live-session',
-        element: (
-          <RequireAuth>
-            <AdminLiveSessionConfig />
-          </RequireAuth>
-        ),
+        lazy: () => import('./pages/admin/LiveSessionConfig').then(guardedPage),
       },
-      { path: '404', element: <NotFound /> },
-      { path: '*', element: <NotFound /> },
+      { path: '404', lazy: () => import('./pages/NotFound').then(page) },
+      { path: '*', lazy: () => import('./pages/NotFound').then(page) },
     ],
   },
 ];

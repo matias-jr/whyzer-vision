@@ -171,7 +171,6 @@ const primingLines = [
 
 const WebinarRegistration = () => {
   useEffect(() => {
-    loadCss('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
     loadScript('https://link.msgsndr.com/js/form_embed.js');
   }, []);
 

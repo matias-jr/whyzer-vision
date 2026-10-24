@@ -21,13 +21,9 @@ const Index = () => {
           name="description"
           content="Whyzer is a financial narrative platform that turns SEC filings, earnings calls, and financial data into boardroom-ready Points of View for B2B sales reps. Covering 10,500+ public and private companies globally. From $57/month."
         />
-        {/* The v8 home uses Space Grotesk, which the rest of the site does not load. */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        />
+        {/* Self-hosted fonts (see index.css); preload the two used above the fold. */}
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk.woff2" crossOrigin="" />
+        <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossOrigin="" />
       </Head>
       <HomeV8 />
     </>

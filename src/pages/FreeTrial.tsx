@@ -2,9 +2,6 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { Head } from 'vite-react-ssg';
 import { useUtmParams } from '@/hooks/useUtmParams';
 
-const FONTS_HREF =
-  'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap';
-
 /** Matches a media query, defaulting to `false` during SSG prerender. */
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
@@ -478,15 +475,6 @@ export default function FreeTrial() {
   const band = useRef<HTMLDivElement>(null);
   const step = useRef(0);
   const [heroStep, setHeroStep] = useState(0);
-
-  useEffect(() => {
-    if (document.querySelector('link[data-et-fonts]')) return;
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = FONTS_HREF;
-    link.setAttribute('data-et-fonts', '');
-    document.head.appendChild(link);
-  }, []);
 
   useEffect(() => {
     fetch('https://ipapi.co/json/')

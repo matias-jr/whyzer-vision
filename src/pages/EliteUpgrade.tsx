@@ -208,9 +208,6 @@ const STYLES = `
 }
 `;
 
-const FONTS_HREF =
-  'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap';
-
 const TESTIMONIALS = [
   { initials: 'PH', name: 'Paul Hammond', title: 'Enterprise AE', quote: 'Whyzer flagged a cybersecurity breach that helped me book a CISO meeting on my first try using Jamal\'s technique. It worked immediately.' },
   { initials: 'BT', name: 'Brian Tripp', title: 'Strategic Account Manager', quote: 'It\'s built for our specific needs. Way better than agents like Perplexity or Claude for strategic selling.' },
@@ -236,14 +233,6 @@ export default function EliteUpgrade() {
 
   useEffect(() => {
     document.title = 'Whyzer Elite — The system behind the framework.';
-
-    if (!document.querySelector('link[data-eu-fonts]')) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = FONTS_HREF;
-      link.setAttribute('data-eu-fonts', '');
-      document.head.appendChild(link);
-    }
 
     const onScroll = () => setStuck(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });

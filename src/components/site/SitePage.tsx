@@ -9,9 +9,8 @@ import './site.css';
 const SitePage = ({ children, bare = false }: { children: React.ReactNode; bare?: boolean }) => (
   <div className="wzsite">
     <Head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+      <link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk.woff2" crossOrigin="" />
+      <link rel="preload" as="font" type="font/woff2" href="/fonts/inter.woff2" crossOrigin="" />
     </Head>
     {!bare && <SiteNav />}
     {children}

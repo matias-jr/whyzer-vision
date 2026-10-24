@@ -123,8 +123,8 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
                 </div>
               </div>
               <div className="wz-herovis" style={{ position: "relative", height: "352px", overflow: "hidden" }}>
-                <img src="/home-v8/app-home.webp" alt="Whyzer home — company search" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", transition: "opacity .7s ease", opacity: d.heroOpA }} />
-                <img src="/home-v8/app-research.webp" alt="Whyzer research view with fit score" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left", transition: "opacity .7s ease", opacity: d.heroOpB }} />
+                <img src="/home-v8/app-home.webp" srcSet="/home-v8/app-home-800.webp 800w, /home-v8/app-home-1400.webp 1400w, /home-v8/app-home.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1126} decoding="async" fetchPriority="high" alt="Whyzer home — company search" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", transition: "opacity .7s ease", opacity: d.heroOpA }} />
+                <img src="/home-v8/app-research.webp" srcSet="/home-v8/app-research-800.webp 800w, /home-v8/app-research-1400.webp 1400w, /home-v8/app-research.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1125} decoding="async" fetchPriority="low" alt="Whyzer research view with fit score" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left", transition: "opacity .7s ease", opacity: d.heroOpB }} />
                 <div className="wz-typed" style={{ position: "absolute", left: "22.4%", top: "55.5%", width: "72%", height: "34px", borderRadius: "100px", background: "rgba(255,255,255,.97)", border: "1px solid rgba(98,98,233,.5)", boxShadow: "0 8px 22px -12px rgba(98,98,233,.65)", display: "flex", alignItems: "center", padding: "0 16px 0 42px", gap: "6px", transition: "opacity .5s ease", opacity: d.heroOpA }}>
                   <span style={{ fontSize: "12px", fontWeight: "600", color: "#14141F" }}>
                     {d.typed}
@@ -308,19 +308,19 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <div style={{ overflow: "hidden" }}>
                 <div style={{ display: "flex", width: "500%", transition: "transform .8s cubic-bezier(.5,0,.2,1)", transform: `translateX(${d.stripX})` }}>
                   <div style={{ flex: "0 0 20%" }}>
-                    <img src="/home-v8/app-research.webp" alt="Research view: fit score, company profile and opportunity signals" style={{ width: "100%" }} />
+                    <img src="/home-v8/app-research.webp" srcSet="/home-v8/app-research-800.webp 800w, /home-v8/app-research-1400.webp 1400w, /home-v8/app-research.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1125} loading="lazy" decoding="async" alt="Research view: fit score, company profile and opportunity signals" style={{ width: "100%", height: "auto" }} />
                   </div>
                   <div style={{ flex: "0 0 20%" }}>
-                    <img src="/home-v8/app-dealmap.webp" alt="DealMap: strategic and financial mindmap of the account" style={{ width: "100%" }} />
+                    <img src="/home-v8/app-dealmap.webp" srcSet="/home-v8/app-dealmap-800.webp 800w, /home-v8/app-dealmap-1400.webp 1400w, /home-v8/app-dealmap.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1113} loading="lazy" decoding="async" alt="DealMap: strategic and financial mindmap of the account" style={{ width: "100%", height: "auto" }} />
                   </div>
                   <div style={{ flex: "0 0 20%" }}>
-                    <img src="/home-v8/app-earnings.webp" alt="Earnings call summary with key metrics and audio playback" style={{ width: "100%" }} />
+                    <img src="/home-v8/app-earnings.webp" srcSet="/home-v8/app-earnings-800.webp 800w, /home-v8/app-earnings-1400.webp 1400w, /home-v8/app-earnings.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1125} loading="lazy" decoding="async" alt="Earnings call summary with key metrics and audio playback" style={{ width: "100%", height: "auto" }} />
                   </div>
                   <div style={{ flex: "0 0 20%" }}>
-                    <img src="/home-v8/app-povstudio.webp" alt="POV Studio dossier with opportunity score and deck generation" style={{ width: "100%" }} />
+                    <img src="/home-v8/app-povstudio.webp" srcSet="/home-v8/app-povstudio-800.webp 800w, /home-v8/app-povstudio-1400.webp 1400w, /home-v8/app-povstudio.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1118} loading="lazy" decoding="async" alt="POV Studio dossier with opportunity score and deck generation" style={{ width: "100%", height: "auto" }} />
                   </div>
                   <div style={{ flex: "0 0 20%" }}>
-                    <img src="/home-v8/app-accounts.webp" alt="Your accounts list with pulse, ICP, intent and tech scores" style={{ width: "100%" }} />
+                    <img src="/home-v8/app-accounts.webp" srcSet="/home-v8/app-accounts-800.webp 800w, /home-v8/app-accounts-1400.webp 1400w, /home-v8/app-accounts.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1112} loading="lazy" decoding="async" alt="Your accounts list with pulse, ICP, intent and tech scores" style={{ width: "100%", height: "auto" }} />
                   </div>
                 </div>
               </div>
@@ -419,7 +419,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
                   {"DealMap · NVIDIA CORP"}
                 </span>
               </div>
-              <img src="/home-v8/app-dealmap.webp" alt="DealMap mindmap of NVIDIA strategic and financial themes" style={{ width: "100%" }} />
+              <img src="/home-v8/app-dealmap.webp" srcSet="/home-v8/app-dealmap-800.webp 800w, /home-v8/app-dealmap-1400.webp 1400w, /home-v8/app-dealmap.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1113} loading="lazy" decoding="async" alt="DealMap mindmap of NVIDIA strategic and financial themes" style={{ width: "100%", height: "auto" }} />
             </div>
           </div>
           <div className="wz-g-split wz-row" data-wz-reveal="1" style={{ display: "grid", gridTemplateColumns: "1.04fr 1fr", gap: "52px", alignItems: "center", marginBottom: "84px" }}>
@@ -431,7 +431,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
                   {"Earnings calls · Q1 2027"}
                 </span>
               </div>
-              <img src="/home-v8/app-earnings.webp" alt="Earnings call summary for Q1 2027 with key metrics" style={{ width: "100%" }} />
+              <img src="/home-v8/app-earnings.webp" srcSet="/home-v8/app-earnings-800.webp 800w, /home-v8/app-earnings-1400.webp 1400w, /home-v8/app-earnings.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1125} loading="lazy" decoding="async" alt="Earnings call summary for Q1 2027 with key metrics" style={{ width: "100%", height: "auto" }} />
             </div>
             <div>
               <div style={{ display: "inline-block", background: "#0B0B18", color: "#fff", fontSize: "11.5px", fontWeight: "700", padding: "5px 12px", borderRadius: "100px", marginBottom: "14px" }}>
@@ -533,7 +533,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
                   {"POV Studio · Dossier"}
                 </span>
               </div>
-              <img src="/home-v8/app-povstudio.webp" alt="POV Studio dossier: financial pressure POV with opportunity score 4.2" style={{ width: "100%" }} />
+              <img src="/home-v8/app-povstudio.webp" srcSet="/home-v8/app-povstudio-800.webp 800w, /home-v8/app-povstudio-1400.webp 1400w, /home-v8/app-povstudio.webp 2200w" sizes="(max-width: 900px) 100vw, 1100px" width={2200} height={1118} loading="lazy" decoding="async" alt="POV Studio dossier: financial pressure POV with opportunity score 4.2" style={{ width: "100%", height: "auto" }} />
             </div>
           </div>
         </div>
