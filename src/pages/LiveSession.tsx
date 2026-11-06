@@ -4,8 +4,8 @@ import GrainOverlay from '@/components/whyzer/GrainOverlay';
 import { getNextSessionAt } from '@/lib/siteConfig';
 
 // Fast initial paint; replaced by the value from site_config once it loads.
-// September 30, 2026 12:00 PM ET (EDT, UTC-4) = 16:00 UTC
-const FALLBACK_SESSION_DATE = new Date('2026-09-30T16:00:00Z');
+// November 18, 2026 11:00 AM ET (EST, UTC-5) = 16:00 UTC
+const FALLBACK_SESSION_DATE = new Date('2026-11-18T16:00:00Z');
 
 function useCountdown() {
   const [target, setTarget] = useState<Date>(FALLBACK_SESSION_DATE);
@@ -202,15 +202,15 @@ const LiveSession = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content="Stop Sounding Like Everybody Else — Free Live Session, September 30"
+          content="Stop Sounding Like Everybody Else — Free Live Session, November 18"
         />
         <meta
           property="og:description"
-          content="The three-part framework elite sellers use to build a Point of View sharp enough to get back in the room with the people who can actually say yes. September 30, 12PM ET."
+          content="The three-part framework elite sellers use to build a Point of View sharp enough to get back in the room with the people who can actually say yes. November 18, 11AM ET."
         />
         <meta
           name="description"
-          content="Free live session with Jamal Reimer. Learn the three-part framework elite sellers use to build a Point of View that opens doors a demo can't. September 30, 12PM ET."
+          content="Free live session with Jamal Reimer. Learn the three-part framework elite sellers use to build a Point of View that opens doors a demo can't. November 18, 11AM ET."
         />
       </Head>
       <GrainOverlay />
@@ -589,7 +589,7 @@ const LiveSession = () => {
           </p>
           <CtaButton large>Claim My Free Seat →</CtaButton>
           <p className="font-mono text-[13px] text-[#8A8AA0] mt-7 tracking-wide">
-            September 30 · 12PM ET
+            November 18 · 11AM ET
           </p>
         </div>
       </section>
