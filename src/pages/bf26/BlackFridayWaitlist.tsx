@@ -144,7 +144,7 @@ const BlackFridayWaitlist = () => {
 
   return (
     <Bf26Shell
-      title="Whyzer BF26 Waitlist"
+      title="Whyzer | Black Friday 2026 Waitlist"
       description="Get on the private Whyzer Black Friday list. Early access opens Wed Nov 25. 50 promo seats on Elite and Premium annual plans."
     >
       <div id="page" className={closed ? 'is-closed' : undefined}>
