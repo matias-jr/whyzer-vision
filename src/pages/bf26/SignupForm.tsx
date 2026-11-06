@@ -6,7 +6,7 @@ const CONFIRM_PATH = '/black-friday-join';
 const CONSENT_TEXT = 'Yes, I want to be a part of the private group to learn about exclusive opportunities.';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-/** The BF26 sign-up form. Posts to /api/bf26-signup, which adds the contact to GHL. */
+/** The BF26 sign-up form. Posts to /api/bf26, which adds the contact to GHL. */
 const SignupForm = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
@@ -31,7 +31,7 @@ const SignupForm = () => {
     setError('');
     setSending(true);
     try {
-      const res = await fetch('/api/bf26-signup', {
+      const res = await fetch('/api/bf26', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName: name, email: email.trim(), consent, website }),

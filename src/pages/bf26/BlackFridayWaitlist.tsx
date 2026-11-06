@@ -3,7 +3,7 @@ import SignupForm from './SignupForm';
 import { Bf26Footer, Bf26Shell, Tiles, scrollToForm, useCountdown, useLocalTime, useReducedMotion } from './shared';
 
 // ── Edit these ───────────────────────────────────────────────────────────────
-/** Shown until the live count (/api/bf26-count) loads, and if it ever fails. */
+/** Shown until the live count (/api/bf26) loads, and if it ever fails. */
 const LIST_COUNT_FALLBACK = 180;
 const SEATS = 50;
 /** From Nov 25: set to real purchases and the seat map shows them. While 0, it plays a 5-seat preview. */
@@ -35,7 +35,7 @@ const BlackFridayWaitlist = () => {
   const [listCount, setListCount] = useState(LIST_COUNT_FALLBACK);
   useEffect(() => {
     let cancelled = false;
-    fetch('/api/bf26-count')
+    fetch('/api/bf26')
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => { if (!cancelled && d && Number.isInteger(d.count) && d.count >= 0) setListCount(d.count); })
       .catch(() => {});
