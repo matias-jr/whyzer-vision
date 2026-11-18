@@ -13,7 +13,7 @@ interface Props {
   slug: string;
 }
 
-const TRIAL_URL_BASE = 'https://app.whyzer.ai';
+const SIGNUP_URL_BASE = 'https://app.whyzer.ai';
 
 const FOUNDER_COPY =
   "I built Whyzer because I watched the gap between elite sellers and the rest of the field open up overnight. The hardest part of selling to executives is no longer the conversation. It's earning the seat at the table. This is the tool I wish I'd had on every one of those $50M deals.";
@@ -23,7 +23,7 @@ export default function ColdEmailLP({ direction, offer, slug }: Props) {
   const isDark = direction === 'd2';
   const isOfferA = offer === 'a';
 
-  const ctaHref = `${TRIAL_URL_BASE}?source=cold_email&offer=${offer}`;
+  const ctaHref = `${SIGNUP_URL_BASE}?source=cold_email&offer=${offer}`;
 
   const heroHeadline = isOfferA ? (
     <>
@@ -36,8 +36,8 @@ export default function ColdEmailLP({ direction, offer, slug }: Props) {
   );
 
   const heroTrust = isOfferA
-    ? 'Full access for 14 days. One account. No credit card. Plus 2 bonuses on the house.'
-    : 'Full access for 14 days. One account. No credit card. Plus a personal teardown and a live workshop.';
+    ? 'Full access. One account. Plus 2 bonuses on the house.'
+    : 'Full access. One account. Plus a personal teardown and a live workshop.';
 
   const bonusIntro = isOfferA
     ? 'A masterclass on speaking the language of executives, and a live workshop where we build your meeting together.'
@@ -46,8 +46,8 @@ export default function ColdEmailLP({ direction, offer, slug }: Props) {
   const founderBubble = isOfferA ? 'What would Jamal show you first?' : 'Send me your stalled deal.';
 
   const finalSub = isOfferA
-    ? 'Full access to Whyzer for 14 days. Financial Fluency 101 and a seat in the next live workshop, on the house.'
-    : 'Full access to Whyzer for 14 days. A personal teardown from Jamal and a seat in the next live workshop, on the house.';
+    ? 'Full access to Whyzer. Financial Fluency 101 and a seat in the next live workshop, on the house.'
+    : 'Full access to Whyzer. A personal teardown from Jamal and a seat in the next live workshop, on the house.';
 
   const featuredBonus = isOfferA
     ? {
@@ -121,7 +121,7 @@ export default function ColdEmailLP({ direction, offer, slug }: Props) {
         {/* Hero */}
         <section className={`wzf-hero${isDark ? ' wzf-dark' : ''}`}>
           <div className="wzf-wrap">
-            <span className="wzf-badge"><i />Free 14-day trial · one account</span>
+            <span className="wzf-badge"><i />Full access · one account</span>
             <h1 className="wzf-h1" style={{ maxWidth: isDark ? '22ch' : '20ch' }}>{heroHeadline}</h1>
             <p className="wzf-lead">
               Turn earnings calls, 10-Ks and private company intel into the financial argument that gets executives to lean forward.
@@ -138,7 +138,7 @@ export default function ColdEmailLP({ direction, offer, slug }: Props) {
         {/* Bonuses */}
         <section className="wzf-sec">
           <div className="wzf-wrap">
-            <div className="wzf-eyebrow">Supercharge your free trial</div>
+            <div className="wzf-eyebrow">Included with your account</div>
             <h2 className="wzf-h2" style={{ marginBottom: 10 }}>Full access to Whyzer World included.</h2>
             <p className="wzsite-p" style={{ maxWidth: '60ch' }}>{bonusIntro}</p>
             <div className="wzf-grid2" style={{ marginTop: 34 }}>
@@ -192,12 +192,12 @@ export default function ColdEmailLP({ direction, offer, slug }: Props) {
         {/* Final CTA */}
         <section className="wzf-sec wzf-dark" style={{ textAlign: 'center' }}>
           <div className="wzf-wrap">
-            <div className="wzf-eyebrow">Start your trial</div>
+            <div className="wzf-eyebrow">Get started</div>
             <h2 className="wzf-h2" style={{ fontSize: 'clamp(30px, 4.4vw, 44px)', margin: '0 auto 14px', maxWidth: '16ch' }}>
-              14 days. <span className="wzf-accent">One account.</span> Plus two bonuses.
+              <span className="wzf-accent">One account.</span> Plus two bonuses.
             </h2>
             <p className="wzf-lead" style={{ maxWidth: '48ch' }}>{finalSub}</p>
-            <Cta note="One account. 14 days. No credit card." />
+            <Cta note="One account." />
           </div>
         </section>
       </FunnelPage>

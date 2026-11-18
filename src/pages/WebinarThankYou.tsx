@@ -186,8 +186,8 @@ const grid3 = [
 // ── §9 FAQ
 const faqs = [
   {
-    q: 'Do I need a credit card to start the trial?',
-    a: "Yes. A valid payment method is required to start. You won't be charged until your 14-day trial ends, and you can cancel free at any time before then from your Client Portal, the in-app chatbot, or by emailing info@whyzer.ai. If you don't cancel, your account converts automatically to a paid monthly subscription and we charge the card on file. We'll email you a reminder before that happens.",
+    q: 'Do I need a credit card to get started?',
+    a: "Yes. A valid payment method is required to start. You can cancel anytime from your Client Portal, the in-app chatbot, or by emailing info@whyzer.ai.",
   },
   {
     q: "What's different about Elite versus Premium?",
@@ -212,7 +212,7 @@ const WebinarThankYou = () => {
   // First FAQ item starts expanded, per the brief.
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const [regionSuffix, setRegionSuffix] = useState('');
-  // Elite trial checkout (was premium-monthly). Matches the URL pattern used in
+  // Elite monthly checkout (was premium-monthly). Matches the URL pattern used in
   // Pricing.tsx and EliteUpgrade.tsx, including the region suffix.
   const trialUrl = appendUtm(`https://subscribe.whyzer.ai/elite-monthly${regionSuffix}`);
 
@@ -306,7 +306,7 @@ const WebinarThankYou = () => {
           {/* POST-VIDEO CTA — scrolls to the pricing box, which carries checkout */}
           <section style={{ padding: '0 24px 30px', display: 'flex', justifyContent: 'center' }}>
             <a href="#pricing" className="wty-cta" style={{ background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 38px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(98,98,233,0.7)' }}>
-              Start My Free Trial Now &rarr;
+              Get Started Now &rarr;
             </a>
           </section>
         </div>
@@ -319,7 +319,7 @@ const WebinarThankYou = () => {
           <span aria-hidden="true">&#128293;</span> LIMITED TIME &mdash; Whyzer Elite for $57/month for your first 3 months.
         </p>
         <p style={{ margin: '8px auto 0', maxWidth: 900, fontSize: 'clamp(14px, 1.8vw, 16px)', lineHeight: 1.5, fontWeight: 600, opacity: 0.95 }}>
-          Code <strong style={{ fontWeight: 800, letterSpacing: '0.04em', padding: '2px 8px', borderRadius: 6, background: 'rgba(255,255,255,0.18)' }}>FLUENCY57</strong> at trial checkout.
+          Code <strong style={{ fontWeight: 800, letterSpacing: '0.04em', padding: '2px 8px', borderRadius: 6, background: 'rgba(255,255,255,0.18)' }}>FLUENCY57</strong> at checkout.
         </p>
       </div>
 
@@ -336,7 +336,7 @@ const WebinarThankYou = () => {
             {/* Live-session offer — set fully bold, per the copy spec, and given
                 an accent rule so it reads as the block's payoff. */}
             <p style={{ fontSize: 19, lineHeight: 1.7, margin: '6px 0 0', paddingLeft: 20, borderLeft: `3px solid ${ACCENT}`, fontWeight: 700, color: INK }}>
-              To ensure you see results FAST, with your free trial you can bring your POV to a live session with me. Once a week. And we'll analyze it together, plus decide how to move forward on your biggest deals. I want to support your decision of becoming a strategic seller. Start now.
+              To ensure you see results FAST, as an Elite member you can bring your POV to a live session with me. Once a week. And we'll analyze it together, plus decide how to move forward on your biggest deals. I want to support your decision of becoming a strategic seller. Start now.
             </p>
           </div>
         </section>
@@ -428,10 +428,9 @@ const WebinarThankYou = () => {
             {/* Billing sequence, itemised so nothing is buried in prose */}
             <ul style={{ listStyle: 'none', margin: '0 0 18px', padding: '18px 0 0', borderTop: `1px solid ${GLASS_DARK_BORDER}`, display: 'flex', flexDirection: 'column', gap: 11, textAlign: 'left' }}>
               {[
-                'Today: $0. Full Elite access free for 14 days from signup.',
-                'Months 1–3 after the trial: $57/month with code FLUENCY57.',
+                'Months 1–3: $57/month with code FLUENCY57.',
                 'Month 4 onward: $97/month, the standard Elite rate.',
-                "Cancel any time before the trial ends and you're never charged.",
+                'Cancel anytime from your Client Portal.',
               ].map((line) => (
                 <li key={line} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 14.5, lineHeight: 1.55, color: D_BODY }}>
                   <Check size={16} strokeWidth={2.6} style={{ flexShrink: 0, marginTop: 3, color: ACCENT }} />
@@ -441,10 +440,10 @@ const WebinarThankYou = () => {
             </ul>
 
             <a href={trialUrl} className="wty-cta" style={{ display: 'block', width: '100%', boxSizing: 'border-box', background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 16, padding: '16px 20px', borderRadius: 10, textDecoration: 'none', boxShadow: '0 10px 30px -8px rgba(98,98,233,0.7)' }}>
-              Start My Free Trial &rarr;
+              Get Started &rarr;
             </a>
             {/* Required disclosures: card capture, how to cancel, and the
-                no-refund policy, per TermsAndConditions.tsx §Free Trials. */}
+                no-refund policy, per TermsAndConditions.tsx. */}
             <p style={{ fontSize: 12.5, lineHeight: 1.65, margin: '12px 0 0', color: D_MUTED }}>
               Payment method required. Cancel free anytime from your Client Portal. All purchases are final &mdash; see the{' '}
               <a href="/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ color: D_EYEBROW, textDecoration: 'underline' }}>Terms &amp; Conditions</a>.
@@ -474,17 +473,17 @@ const WebinarThankYou = () => {
         </div>
       </section>
 
-      {/* TRIAL TERMS BAND — cancellation window, not a refund guarantee */}
+      {/* TERMS BAND — cancellation window, not a refund guarantee */}
       <section style={{ padding: '64px 24px', background: ACCENT_TINT, borderBottom: `1px solid ${LINE}` }}>
           <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
             <h2 style={{ ...HEADING, fontSize: 'clamp(22px, 3.2vw, 28px)', lineHeight: 1.28, margin: '0 0 16px', color: INK }}>
               Try it on the account that's gone quiet. See if it changes how you'd walk into the room.
             </h2>
             <p style={{ fontSize: 16, lineHeight: 1.7, margin: '0 0 18px', color: BODY }}>
-              Fourteen days free, full Elite access, no restrictions on which three accounts you pick. If it's not for you, cancel before the trial ends and you're never charged.
+              Full Elite access, no restrictions on which accounts you pick. Cancel anytime from your Client Portal.
             </p>
             <p style={{ fontSize: 14.5, lineHeight: 1.7, margin: 0, color: MUTED }}>
-              $0 today &rarr; $57/month for months 1&ndash;3 with code FLUENCY57 &rarr; $97/month from month 4. Payment method required; converts automatically unless you cancel before the trial ends. Cancel free anytime.
+              $57/month for months 1&ndash;3 with code FLUENCY57 &rarr; $97/month from month 4. Payment method required. Cancel free anytime.
             </p>
           </div>
         </section>
@@ -546,14 +545,14 @@ const WebinarThankYou = () => {
             Run it on the account that's gone quiet.
           </h2>
           <p style={{ fontSize: 17, lineHeight: 1.7, maxWidth: 560, margin: 0, color: D_BODY, position: 'relative' }}>
-            Fourteen days free on Whyzer Elite. $57/month for your first three months with code FLUENCY57 after that.
+            Whyzer Elite is $57/month for your first three months with code FLUENCY57.
           </p>
           <a
             href="#pricing"
             className="wty-cta"
             style={{ marginTop: 4, background: ACCENT, color: '#FFFFFF', fontWeight: 700, fontSize: 17, padding: '17px 36px', borderRadius: 10, textDecoration: 'none', display: 'inline-block', boxShadow: '0 10px 30px -8px rgba(98,98,233,0.7)', position: 'relative' }}
           >
-            Start My Free Trial &rarr;
+            Get Started &rarr;
           </a>
         </section>
       </div>

@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react';
-import type { RouteObject } from 'react-router-dom';
+import { Navigate, type RouteObject } from 'react-router-dom';
 import App from './App';
 import Index from './pages/Index';
 
@@ -39,7 +39,9 @@ export const routes: RouteObject[] = [
       { path: 'd2a', lazy: () => import('./pages/ColdEmailD2A').then(page) },
       { path: 'd2b', lazy: () => import('./pages/ColdEmailD2B').then(page) },
       { path: 'elite-upgrade', lazy: () => import('./pages/EliteUpgrade').then(page) },
-      { path: 'free-trial', lazy: () => import('./pages/FreeTrial').then(page) },
+      // BLACK FRIDAY PAUSE: /free-trial redirects to pricing. To reinstate, swap this line for the one below (see _black-friday-revert/README.md).
+      // { path: 'free-trial', lazy: () => import('./pages/FreeTrial').then(page) },
+      { path: 'free-trial', element: <Navigate to="/#pricing" replace /> },
       { path: 'live-centralize', lazy: () => import('./pages/LiveCentralize').then(page) },
       { path: 'live-centralize-registered', lazy: () => import('./pages/LiveCentralizeRegistered').then(page) },
       { path: 'financial-fluency', lazy: () => import('./pages/WebinarRegistration').then(page) },

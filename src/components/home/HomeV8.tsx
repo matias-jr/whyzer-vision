@@ -410,7 +410,7 @@ const HomeV8 = () => {
     }
     if (nav && target.closest('.wz-nav-links a')) nav.classList.remove('wz-open');
 
-    // "Try Whyzer for Free" CTAs request the monthly (free-trial) view.
+    // "Get Started" CTAs request the monthly view.
     if (target.closest('a[href="#pricing-monthly"]')) {
       ev.preventDefault();
       api.current.showMonthly();
@@ -478,9 +478,8 @@ const HomeV8 = () => {
     elitePrice: s.sym + (s.annual ? '83' : '97'),
     premiumNote: s.sym + (s.annual ? '570.00' : '684.00') + '/year',
     eliteNote: s.sym + (s.annual ? '997.00' : '1,164.00') + '/year',
-    ctaPremium: s.annual ? 'Get Started Now' : 'Start Your Free Trial',
-    ctaElite: s.annual ? 'Get Started' : 'Start Your Free Trial',
-    showTrialNote: !s.annual,
+    ctaPremium: 'Get Started Now',
+    ctaElite: 'Get Started',
     premiumLink: appendUtm('https://subscribe.whyzer.ai/premium-' + (s.annual ? 'annually' : 'monthly') + s.region),
     eliteLink: appendUtm('https://subscribe.whyzer.ai/elite-' + (s.annual ? 'annually' : 'monthly') + s.region),
     year: new Date().getFullYear(),

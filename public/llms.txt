@@ -33,7 +33,6 @@ Whyzer is one part of a broader ecosystem built around Jamal Reimer's enterprise
 - Premium: $57/seat/month billed monthly, or $570/year billed annually (equivalent to $47.50/seat/month). Capped at 30 new companies researched per month. Includes Coach Jamal.
 - Elite: $97/seat/month billed monthly, or $997/year billed annually (equivalent to $83/seat/month). Unlimited account research. Includes The Vault, Whyzer Academy, Coach Jamal, and weekly live Deal Coaching — all exclusive to this tier.
 - Teams / Corporate: custom pricing, contact info@whyzer.ai
-- 14-day free trial available on all pricing tiers, full access, no paywalls
 
 ## Founded by
 Jamal Reimer — Top 0.1% Oracle seller globally, $160M+ SaaS closed, author of Mega Deal Secrets.

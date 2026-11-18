@@ -117,7 +117,7 @@ const Pricing = () => {
           </span>
         </div>
 
-        <p className="text-center text-[13px] text-text-tertiary mb-10 max-w-[560px] mx-auto leading-relaxed">Prices shown in your local currency. Monthly plans include a 14-day free trial — cancel before it ends and you won't be charged. Annual plans are billed in full at signup.</p>
+        <p className="text-center text-[13px] text-text-tertiary mb-10 max-w-[560px] mx-auto leading-relaxed">Prices shown in your local currency. Cancel anytime from your Client Portal. Annual plans are billed in full at signup.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
           {/* PREMIUM */}
@@ -167,13 +167,8 @@ const Pricing = () => {
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(89,89,212,0.18)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(89,89,212,0.08)'; }}
             >
-              {annual ? 'Get Started Now' : 'Start Your Free Trial'}
+              Get Started Now
             </a>
-            {!annual && (
-              <p className="text-[12px] text-text-tertiary leading-relaxed text-center mt-3">
-                Free for 14 days, then {premiumPrice}/mo, unless you cancel. Cancel anytime in your Client Portal.
-              </p>
-            )}
           </div>
 
           {/* ELITE */}
@@ -228,13 +223,8 @@ const Pricing = () => {
                 className="block w-full py-3 rounded-lg text-white font-bold text-center hover:brightness-110 hover:shadow-[0_0_28px_rgba(89,89,212,0.5)] transition-all text-sm"
                 style={{ background: 'linear-gradient(135deg, #5959D4, #4343A8)' }}
               >
-                {annual ? 'Get Started' : 'Start Your Free Trial'}
+                Get Started
               </a>
-              {!annual && (
-                <p className="text-[12px] text-text-tertiary leading-relaxed text-center mt-3">
-                  Free for 14 days, then {elitePrice}/mo, unless you cancel. Cancel anytime in your Client Portal.
-                </p>
-              )}
             </div>
           </div>
 

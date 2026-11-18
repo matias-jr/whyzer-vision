@@ -78,7 +78,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               </div>
             </div>
             <a className="wz-nav-cta wzh1" href="#pricing-monthly" style={{ background: "#6262e9", color: "#fff", padding: "10px 18px", borderRadius: "8px", fontSize: "14px", fontWeight: "600", whiteSpace: "nowrap", boxShadow: "0 8px 22px -10px rgba(98,98,233,.9)" }}>
-              {"Try Whyzer for Free"}
+              {"Get Started"}
             </a>
             <button className="wz-burger" data-wz-menu="1" aria-label="Toggle menu" aria-expanded="false" style={{ display: "none", width: "40px", height: "40px", borderRadius: "10px", border: "1px solid rgba(255,255,255,.2)", background: "rgba(255,255,255,.06)", color: "#fff", fontSize: "18px", cursor: "pointer", alignItems: "center", justifyContent: "center" }}>
               {"☰"}
@@ -102,7 +102,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
             </p>
             <div style={{ display: "flex", gap: "14px", marginBottom: "24px", flexWrap: "wrap" }}>
               <a className="wzh1" href="#pricing-monthly" style={{ background: "#6262e9", color: "#fff", fontWeight: "600", fontSize: "15px", padding: "15px 28px", borderRadius: "9px", boxShadow: "0 14px 30px -12px rgba(98,98,233,.7)" }}>
-                {"Start your free trial"}
+                {"Get started"}
               </a>
               <a className="wzh2" href="#tour" style={{ background: "rgba(255,255,255,.7)", backdropFilter: "blur(12px)", color: "#14141F", fontWeight: "600", fontSize: "15px", padding: "15px 24px", borderRadius: "9px", border: "1px solid rgba(228,227,240,.9)", display: "inline-flex", alignItems: "center", gap: "9px" }}>
                 <span style={{ width: "20px", height: "20px", borderRadius: "50%", background: "#EEEEFC", color: "#4a4ad1", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "9px" }}>
@@ -655,7 +655,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
           </div>
           <div style={{ display: "flex", justifyContent: "center", gap: "14px", flexWrap: "wrap", marginTop: "48px" }}>
             <a className="wzh1" href="#pricing-monthly" style={{ background: "#6262e9", color: "#fff", fontWeight: "600", fontSize: "15px", padding: "15px 28px", borderRadius: "9px", boxShadow: "0 14px 30px -12px rgba(98,98,233,.7)" }}>
-              {"Start your free trial"}
+              {"Get started"}
             </a>
             <a className="wzh3" href="/compare/ai-account-intelligence-tools" style={{ background: "rgba(255,255,255,.08)", color: "#fff", fontWeight: "600", fontSize: "15px", padding: "15px 28px", borderRadius: "9px", border: "1px solid rgba(255,255,255,.28)" }}>
               {"Learn more"}
@@ -959,7 +959,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
             </span>
           </div>
           <div style={{ textAlign: "center", fontSize: "12px", color: "#8A8AA0", maxWidth: "560px", margin: "0 auto" }}>
-            {"Prices shown in your local currency. Monthly plans include a 14-day free trial — cancel before it ends and you won't be charged. Annual plans are billed in full at signup."}
+            {"Prices shown in your local currency. Cancel anytime from your Client Portal. Annual plans are billed in full at signup."}
           </div>
           <div className="wz-g1" style={{ display: "grid", gridTemplateColumns: "1fr 1.06fr 1fr", gap: "20px", marginTop: "40px", alignItems: "stretch" }}>
             <div style={{ background: "rgba(255,255,255,.72)", backdropFilter: "blur(16px)", border: "1px solid rgba(228,227,240,.9)", borderRadius: "18px", padding: "30px", display: "flex", flexDirection: "column" }}>
@@ -1044,15 +1044,6 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <a className="wzh7" href={d.premiumLink} data-wz-checkout="1" style={{ textAlign: "center", background: "transparent", color: "#14141F", fontWeight: "600", fontSize: "15px", padding: "14px 22px", borderRadius: "9px", border: "1.5px solid #E4E3F0" }}>
                 {d.ctaPremium}
               </a>
-              {d.showTrialNote && (
-                <>
-                  <div style={{ fontSize: "12px", color: "#8A8AA0", textAlign: "center", marginTop: "12px", lineHeight: "1.5" }}>
-                    {"Free for 14 days, then "}
-                    {d.premiumPrice}
-                    {"/mo, unless you cancel. Cancel anytime in your Client Portal."}
-                  </div>
-                </>
-              )}
             </div>
             <div style={{ position: "relative", background: "linear-gradient(180deg, rgba(238,238,252,.9), rgba(255,255,255,.85))", backdropFilter: "blur(18px)", border: "1.5px solid #6262e9", borderRadius: "18px", padding: "34px 30px 32px", display: "flex", flexDirection: "column", boxShadow: "0 30px 70px -34px rgba(98,98,233,.55)" }}>
               <span style={{ position: "absolute", top: "0", left: "0", right: "0", height: "120px", overflow: "hidden", borderRadius: "17px 17px 0 0", pointerEvents: "none" }}>
@@ -1177,15 +1168,6 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <a className="wzh1" href={d.eliteLink} data-wz-checkout="1" style={{ textAlign: "center", background: "#6262e9", color: "#fff", fontWeight: "600", fontSize: "15px", padding: "15px 24px", borderRadius: "9px", boxShadow: "0 14px 30px -12px rgba(98,98,233,.7)" }}>
                 {d.ctaElite}
               </a>
-              {d.showTrialNote && (
-                <>
-                  <div style={{ fontSize: "12px", color: "#55556B", textAlign: "center", marginTop: "12px", lineHeight: "1.5" }}>
-                    {"Free for 14 days, then "}
-                    {d.elitePrice}
-                    {"/mo, unless you cancel. Cancel anytime in your Client Portal."}
-                  </div>
-                </>
-              )}
             </div>
             <div style={{ background: "rgba(255,255,255,.72)", backdropFilter: "blur(16px)", border: "1px solid rgba(228,227,240,.9)", borderRadius: "18px", padding: "30px", display: "flex", flexDirection: "column" }}>
               <div style={{ fontSize: "11px", fontWeight: "700", letterSpacing: ".05em", color: "#8A8AA0", background: "#F2F1FB", alignSelf: "flex-start", padding: "5px 11px", borderRadius: "100px", marginBottom: "12px" }}>
@@ -1347,19 +1329,6 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <details className="wz-faq-item" {...{ name: "wz-faq" }} style={{ borderTop: "1px solid #E4E3F0" }}>
                 <summary style={{ cursor: "pointer", fontSize: "13.5px", fontWeight: "500", padding: "12px 0", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px" }}>
                   <span>
-                    {"How does the free trial work?"}
-                  </span>
-                  <span className="wz-faq-plus" style={{ color: "#8A8AA0", fontSize: "17px", lineHeight: "1.2", flexShrink: "0" }}>
-                    {"＋"}
-                  </span>
-                </summary>
-                <div style={{ fontSize: "13px", color: "#55556B", padding: "0 0 14px", lineHeight: "1.65" }}>
-                  {"Monthly Premium and Elite plans include a 14-day free trial. You'll have full access from day one, and if you don't cancel before the trial ends, we'll automatically charge your card and your subscription continues on a monthly basis. We'll email you a reminder before your trial ends so you're never caught off guard. Cancel anytime, free, from your Client Portal — no call required. Annual plans are billed in full at signup and don't include a trial."}
-                </div>
-              </details>
-              <details className="wz-faq-item" {...{ name: "wz-faq" }} style={{ borderTop: "1px solid #E4E3F0" }}>
-                <summary style={{ cursor: "pointer", fontSize: "13.5px", fontWeight: "500", padding: "12px 0", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "12px" }}>
-                  <span>
                     {"What's included in The Vault?"}
                   </span>
                   <span className="wz-faq-plus" style={{ color: "#8A8AA0", fontSize: "17px", lineHeight: "1.2", flexShrink: "0" }}>
@@ -1471,7 +1440,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
             {"10,500+ companies · 150+ markets · Built by the seller who closed $160M doing it himself."}
           </p>
           <a className="wzh1" href="#pricing" style={{ display: "inline-block", background: "#6262e9", color: "#fff", fontWeight: "600", fontSize: "15px", padding: "15px 30px", borderRadius: "9px", boxShadow: "0 14px 34px -12px rgba(98,98,233,.9)" }}>
-            {"Start your free trial"}
+            {"Get started"}
           </a>
         </div>
       </section>

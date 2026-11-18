@@ -112,9 +112,9 @@ const ProcurementSessionWatch = () => {
             </div>
             <div className="ps-step ps-step--feat">
               <span className="ps-step-n">Step 2</span>
-              <h3>Start your free trial</h3>
-              <p>Live Deal Coaching is part of Whyzer Elite. Your 14-day free trial includes full access, the Tuesday sessions included.</p>
-              <a href="/#pricing-monthly" className="ps-btn ps-btn--primary ps-btn--full">Start your free trial</a>
+              <h3>Join Whyzer Elite</h3>
+              <p>Live Deal Coaching is part of Whyzer Elite. Your membership includes full access, the Tuesday sessions included.</p>
+              <a href="/#pricing-monthly" className="ps-btn ps-btn--primary ps-btn--full">Get Elite</a>
             </div>
             <div className="ps-step">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
