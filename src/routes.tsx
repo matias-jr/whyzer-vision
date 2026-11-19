@@ -48,6 +48,8 @@ export const routes: RouteObject[] = [
       { path: 'financial-fluency-watch', lazy: () => import('./pages/WebinarThankYou').then(page) },
       { path: 'black-friday', lazy: () => import('./pages/bf26/BlackFridayWaitlist').then(page) },
       { path: 'black-friday-join', lazy: () => import('./pages/bf26/BlackFridayThankYou').then(page) },
+      // Private sales page for the list (noindex). Offer closes Wed Dec 2, midnight ET.
+      { path: 'black-friday-offer', lazy: () => import('./pages/bf26/BlackFridaySales').then(page) },
       { path: 'procurement-session', lazy: () => import('./pages/ProcurementSession').then(page) },
       { path: 'procurement-session-watch', lazy: () => import('./pages/ProcurementSessionWatch').then(page) },
       { path: 'newsletter/archive', lazy: () => import('./pages/NewsletterArchive').then(page) },
