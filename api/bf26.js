@@ -11,8 +11,13 @@
  *    email, not duplicated), then adds the BF26 tag, which is what starts the GHL workflow. Tags go
  *    on with the add-tags call rather than the upsert so a returning contact keeps the tags they have.
  *    `website` is a honeypot: people never see the field, bots fill it. Those get a fake success.
+ *
+ *  POST /api/bf26  { form: 'assessment-2027', stage, ... }  ->  { ok: true }
+ *    The 2027 Skills Assessment contact sync. Lives in this function only because the Hobby plan caps
+ *    a deployment at 12 functions; the logic is in _assessment2027.js.
  */
 import { BF26_TAG, GHL_API, bf26Token, ghlHeaders } from './_bf26.js';
+import { handleAssessment } from './_assessment2027.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const SOURCE = 'Black Friday 2026 waitlist';
@@ -47,6 +52,7 @@ async function getCount(req, res) {
 }
 
 async function signUp(req, res) {
+  if (req.body?.form === 'assessment-2027') return handleAssessment(req, res);
   const { firstName = '', email = '', consent, website } = req.body ?? {};
   if (website) return res.status(200).json({ ok: true });
 

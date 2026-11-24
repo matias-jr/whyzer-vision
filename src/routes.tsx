@@ -50,6 +50,8 @@ export const routes: RouteObject[] = [
       { path: 'black-friday-join', lazy: () => import('./pages/bf26/BlackFridayThankYou').then(page) },
       // Private sales page for the list (noindex). Offer closes Wed Dec 2, midnight ET.
       { path: 'black-friday-offer', lazy: () => import('./pages/bf26/BlackFridaySales').then(page) },
+      // Whyzer Academy skills assessment: landing form -> 25 questions -> results with the GHL calendar embedded.
+      { path: 'academy/skills-assessment-2027', lazy: () => import('./pages/academy/skills-assessment-2027/SkillsAssessment2027').then(page) },
       { path: 'procurement-session', lazy: () => import('./pages/ProcurementSession').then(page) },
       { path: 'procurement-session-watch', lazy: () => import('./pages/ProcurementSessionWatch').then(page) },
       { path: 'newsletter/archive', lazy: () => import('./pages/NewsletterArchive').then(page) },
