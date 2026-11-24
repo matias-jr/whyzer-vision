@@ -4,6 +4,7 @@ import LogoMarquee from '@/components/home/LogoMarquee';
 import { useUtmParams } from '@/hooks/useUtmParams';
 import { checkoutUrl, formatMoney, useRegion, type Region } from '@/lib/regionalPricing';
 import { ProductDemo, DeliverDemo } from './BlackFridayDemo';
+import BlackFridayTestimonials from './BlackFridayTestimonials';
 import { useReducedMotion } from './shared';
 import './bf26-sales.css';
 
@@ -31,8 +32,6 @@ const firstYear = (p: { regular: number; off: number }) => Math.round(p.regular 
 const FAQ_MONTHLY_SWITCH: string | null = null; // "I'm on a monthly plan. Can I switch?"   (was [CONFIRM: new checkout, or Client Portal?])
 const FAQ_UPGRADE_LATER: string | null = null; // "Can I start on Premium and upgrade later?" (was [CONFIRM: does the 40% Elite discount still apply after Dec 2?])
 
-/** Danny's quote, as used on the waitlist page. */
-const DANNY_QUOTE = '“I pulled up Whyzer and found his top-three priority from the last earnings call. I built my talk track around it.”';
 // ─────────────────────────────────────────────────────────────────────────────
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -111,13 +110,6 @@ const STAGES: { n: string; both?: boolean; h: string; m: string; a: string }[] =
   { n: '05', h: 'Close', m: 'The deal stalls at legal, or slips a quarter.', a: 'How to Run the Sales Cycle, live sessions with Jamal on deals in flight, Coach Jamal at 11pm before the QBR.' },
 ];
 
-const QUOTES: { tone: string; tag: string; stat: string; ctx: string; text: string; ph?: boolean; av: string; who: string; role: string }[] = [
-  { tone: 'product', tag: 'The product', stat: '€650M IT CapEx', ctx: 'the signal he built his POV around', text: '“Just 30 to 60 seconds, and I get a complete picture.”', av: 'T', who: 'Tobia', role: 'General Sales Manager, Southern Europe' },
-  { tone: 'results', tag: 'The results', stat: '65% of annual quota', ctx: 'on a single deal, from three minutes of prep', text: DANNY_QUOTE, av: 'D', who: 'Danny', role: 'Strategic AE, North America' },
-  { tone: 'access', tag: 'The access', stat: 'CISO meeting, first try', ctx: 'from a breach Whyzer flagged', text: '“Whyzer flagged a cybersecurity breach that got me a CISO meeting on my first try. It worked immediately.”', av: 'P', who: 'Paul', role: 'Enterprise AE, North America' },
-  { tone: 'value', tag: 'The value', stat: '$5.75M closed', ctx: 'and $11.5M more in pipeline', text: '$11.5M more sitting in pipeline, built the same way, account by account.', av: 'A', who: 'Anonymous', role: 'Enterprise AE, using the Whyzer method' },
-];
-
 const BlackFridaySales = () => {
   const cd = useCountdown();
   const reduce = useReducedMotion();
@@ -158,15 +150,6 @@ const BlackFridaySales = () => {
 
   // Why Elite: stage bars fill in order once the row is on screen.
   const [stagesRef, stagesSeen] = useInViewOnce<HTMLDivElement>(0.3, reduce);
-
-  // Testimonials: spotlight cycles; hover or focus takes over.
-  const [spot, setSpot] = useState(0);
-  const [quotesPaused, setQuotesPaused] = useState(false);
-  useEffect(() => {
-    if (reduce || quotesPaused) return;
-    const id = setInterval(() => setSpot((s) => (s + 1) % QUOTES.length), 3800);
-    return () => clearInterval(id);
-  }, [reduce, quotesPaused]);
 
   // ── Prices and checkout links: local currency, matching regional checkout ──
   const money = (n: number) => formatMoney(n, region);
@@ -244,7 +227,6 @@ const BlackFridaySales = () => {
             <span className="glow" aria-hidden="true"></span>
             <div className="wrap hero-grid">
               <div className="hero-copy">
-                <span className="pill rise d1"><span className="dot" aria-hidden="true"></span>Private Black Friday offer · Annual plans</span>
                 <h1 className="rise d2">Stop researching deals. <span>Start closing them.</span></h1>
                 <p className="sub rise d3">A full year of Whyzer Elite at <strong>40% off</strong>: the intelligence, plus everything it takes to close. Or Premium at 20% off. First-year pricing, for this list only, until Dec 2.</p>
                 <div className="cta-row rise d4">
@@ -414,30 +396,7 @@ const BlackFridaySales = () => {
               </div>
             </section>
 
-            <section className="band proof" aria-labelledby="proof-h">
-              <div className="wrap stack">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <span className="eyebrow">What elite sellers say</span>
-                  <h2 className="h2" id="proof-h" style={{ maxWidth: '22ch' }}>This year, Whyzer sellers walked into boardrooms with a point of view.</h2>
-                </div>
-                <div
-                  className="quotes"
-                  onMouseEnter={() => setQuotesPaused(true)}
-                  onMouseLeave={() => setQuotesPaused(false)}
-                  onFocus={() => setQuotesPaused(true)}
-                  onBlur={() => setQuotesPaused(false)}
-                >
-                  {QUOTES.map((qt, i) => (
-                    <figure key={qt.tag} className={`quote t-${qt.tone}${!reduce && !quotesPaused && i === spot ? ' spot' : ''}`}>
-                      <div className="q-top"><span className="tagline">{qt.tag}</span><svg className="qm" aria-hidden="true"><use href="#bf26s-q" /></svg></div>
-                      <div><div className="stat">{qt.stat}</div><div className="ctx">{qt.ctx}</div></div>
-                      <blockquote>{qt.text}</blockquote>
-                      <figcaption><span className="av" aria-hidden="true">{qt.av}</span><span><b>{qt.who}</b><span>{qt.role}</span></span></figcaption>
-                    </figure>
-                  ))}
-                </div>
-              </div>
-            </section>
+            <BlackFridayTestimonials />
 
             <section className="band" aria-labelledby="faq-h">
               <div className="wrap faq">
