@@ -335,10 +335,8 @@
   .bf26s .split,.bf26s .faq{gap:24px}
 }
 @media (max-width:760px){
-  .bf26s .nav .logo-link{display:none}
   .bf26s .nav-count{justify-content:flex-start}
   .bf26s .nav-count .lbl{display:none}
-  .bf26s .chip:last-child{display:none}
   .bf26s .mobile-cta{display:flex}
   .bf26s .steps,.bf26s .fit-cols{grid-template-columns:minmax(0,1fr)}
   .bf26s .fit-no{border-left:0;border-top:1px solid var(--line)}
@@ -602,7 +600,6 @@
   .bf26s .steps3 .s:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}
 }
 @media (max-width:760px){
-  .bf26s .nav .note{display:none}
   .bf26s .stgs{grid-template-columns:minmax(0,1fr)}
   .bf26s .tq{padding:24px}
   .bf26s .tq-btn{width:42px;height:42px}
@@ -852,4 +849,21 @@
 /* Before the wheel script positions the cards (SSR, first paint) keep them out of sight instead of stacked */
 @media (min-width:901px){
   .bf26s .tq-ring .tq{opacity:0}
+}
+
+/* Mobile nav: the original design hid the logo and the offer line to fit one row. Show both, on two rows. Kept last so it wins over the base rules above. */
+@media (max-width:760px){
+  .bf26s .nav .wrap{flex-wrap:wrap;gap:8px 12px;min-height:0;padding-block:10px}
+  .bf26s .nav .logo-link{order:1;display:block}
+  .bf26s .nav .logo{height:20px}
+  .bf26s .nav .btn-sm{order:2;margin-left:auto;padding:9px 14px;font-size:13px}
+  .bf26s .nav-count{order:3;flex:1 1 100%;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:6px}
+  .bf26s .nav-count .lbl{display:none}
+  .bf26s .nav .note{white-space:normal;font-size:12px;line-height:1.35}
+  .bf26s .chip{padding:4px 8px}
+  .bf26s .chip b{font-size:15px}
+}
+@media (max-width:420px){
+  .bf26s .chip{padding:4px 7px}
+  .bf26s .chip b{font-size:14px}
 }
