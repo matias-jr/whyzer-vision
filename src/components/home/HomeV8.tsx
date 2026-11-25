@@ -480,6 +480,7 @@ const HomeV8 = () => {
     eliteNote: s.sym + (s.annual ? '997.00' : '1,164.00') + '/year',
     ctaPremium: 'Get Started Now',
     ctaElite: 'Get Started',
+    annual: s.annual,
     premiumLink: appendUtm('https://subscribe.whyzer.ai/premium-' + (s.annual ? 'annually' : 'monthly') + s.region),
     eliteLink: appendUtm('https://subscribe.whyzer.ai/elite-' + (s.annual ? 'annually' : 'monthly') + s.region),
     year: new Date().getFullYear(),

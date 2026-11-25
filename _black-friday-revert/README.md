@@ -41,6 +41,7 @@ the repo), taken from origin/main immediately before the change.
 
 ## Thanksgiving banner (added 2026-11-25)
 Home page banner "Happy Thanksgiving ... WHYZER10 ... Ends Dec 2, 11:59pm ET".
-Files: src/components/home/PromoBanner.tsx (new) and one import + one `<PromoBanner />`
-line in src/components/home/HomeV8View.tsx. It hides itself after the deadline, but remove
-it after Dec 2 along with the trial revert: delete PromoBanner.tsx and those two lines.
+Files: src/components/home/PromoBanner.tsx (new; also exports the Elite-card `PromoChip`),
+the import, `<PromoBanner />` and `{!d.annual && <PromoChip />}` lines in HomeV8View.tsx,
+and the `annual: s.annual` line in HomeV8.tsx. It hides itself after the deadline, but remove
+it after Dec 2 along with the trial revert: delete PromoBanner.tsx and those lines.

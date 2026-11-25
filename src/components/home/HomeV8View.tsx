@@ -4,7 +4,7 @@
 import { Fragment } from 'react';
 
 import { LOGOS } from './logos';
-import PromoBanner from './PromoBanner';
+import PromoBanner, { PromoChip } from './PromoBanner';
 
 type Props = {
   d: Record<string, any>;
@@ -1030,6 +1030,7 @@ export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Pr
               <div style={{ position: "absolute", top: "-14px", left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", background: "#6262e9", color: "#fff", fontSize: "11px", fontWeight: "700", padding: "6px 16px", borderRadius: "100px", boxShadow: "0 8px 20px -8px rgba(98,98,233,.8)" }}>
                 {"✦ Most popular"}
               </div>
+              {!d.annual && <PromoChip />}
               <div style={{ fontSize: "11px", fontWeight: "700", letterSpacing: ".05em", color: "#4a4ad1", background: "#fff", alignSelf: "flex-start", padding: "5px 11px", borderRadius: "100px", marginBottom: "12px" }}>
                 {"FULL ACCESS"}
               </div>
