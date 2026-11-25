@@ -21,13 +21,13 @@ function usePromoActive() {
 
 const MONO = "'JetBrains Mono', monospace";
 
-// Type scales up with the viewport: phone 15px, tablet 17px, desktop 19px.
+// Type scales up with the viewport: phone 15px, tablet 17px, desktop 17.5px.
 const CSS = `
 .wz-promo{padding:11px 16px}
 .wz-promo p{font-size:15px;line-height:1.45}
 .wz-promo-code{font-size:.92em}
 @media (min-width:768px){.wz-promo{padding:13px 24px}.wz-promo p{font-size:17px}}
-@media (min-width:1100px){.wz-promo{padding:15px 32px}.wz-promo p{font-size:19px}}
+@media (min-width:1100px){.wz-promo{padding:13px 32px}.wz-promo p{font-size:17.5px}}
 `;
 
 export default function PromoBanner() {
