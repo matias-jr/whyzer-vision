@@ -38,3 +38,9 @@ the repo), taken from origin/main immediately before the change.
 - Internal/back-end trial logic: api/* (webhook, checkout, attribution), src/lib/checkoutPlans.ts,
   admin/Attribution.tsx, CheckoutPreview.tsx. Existing trials still need tracking and billing.
 - Variable name `trialUrl` in WebinarThankYou.tsx (not user-visible).
+
+## Thanksgiving banner (added 2026-11-25)
+Home page banner "Happy Thanksgiving ... WHYZER10 ... Ends Dec 2, 11:59pm ET".
+Files: src/components/home/PromoBanner.tsx (new) and one import + one `<PromoBanner />`
+line in src/components/home/HomeV8View.tsx. It hides itself after the deadline, but remove
+it after Dec 2 along with the trial revert: delete PromoBanner.tsx and those two lines.

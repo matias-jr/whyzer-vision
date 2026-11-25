@@ -4,6 +4,7 @@
 import { Fragment } from 'react';
 
 import { LOGOS } from './logos';
+import PromoBanner from './PromoBanner';
 
 type Props = {
   d: Record<string, any>;
@@ -16,6 +17,7 @@ type Props = {
 export default function HomeV8View({ d, appendUtm, chips, rootRef, onClick }: Props) {
   return (
     <div ref={rootRef} onClick={onClick} className="wzv8" style={{ fontFamily: "'Inter',sans-serif", background: "#FAFAF9", color: "#14141F", overflowX: "hidden" }}>
+      <PromoBanner />
       <nav className="wz-nav" style={{ position: "sticky", top: "0", zIndex: "60", background: "rgba(9,17,39,.72)", backdropFilter: "blur(20px) saturate(160%)", WebkitBackdropFilter: "blur(20px) saturate(160%)", borderBottom: "1px solid rgba(255,255,255,.08)" }}>
         <div className="wz-nav-in" style={{ maxWidth: "1160px", margin: "0 auto", padding: "14px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px" }}>
           <a href="https://www.whyzer.ai" target="_top" style={{ display: "flex", alignItems: "center" }}>
