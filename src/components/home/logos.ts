@@ -11,7 +11,6 @@ export const LOGOS: Logo[] = [
   { name: 'DocuSign', src: '/home-v8/logos/docusign.svg', h: 22 },
   { name: 'Check Point', src: '/home-v8/logos/checkpoint.svg', h: 28 },
   { name: 'SAS', src: '/home-v8/logos/sas.svg', h: 28 },
-  { name: 'Revolut', src: '/home-v8/logos/revolut.svg', h: 24 },
   { name: 'Wiz', src: '/home-v8/logos/wiz.svg', h: 28 },
   { name: 'UiPath', src: '/home-v8/logos/uipath.svg', h: 30 },
   { name: 'Confluent', src: '/home-v8/logos/confluent.svg', h: 24 },
